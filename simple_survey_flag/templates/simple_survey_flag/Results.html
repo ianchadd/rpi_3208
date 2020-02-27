@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Your responses
+{% endblock %}
+
+{% block content %}
+    <p> Your randomly generated ID is {{player.randomID}}</p>
+    <p> Your chosen ID is {{player.customID}}</p>
+    <p> Your other ID is {{player.otherID}}</p>
+    <p> Your flag is {{player.flag}}</p>
+    {% next_button %}
+{% endblock %}
+
+
