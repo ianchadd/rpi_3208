@@ -64,7 +64,8 @@ class Choose_Flag(Page):
             image_path_3='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][2]),
             image_path_4='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][3]),
             image_path_5='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][4]),
-            image_path_6='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][5])
+            image_path_6='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][5]),
+            participant_vars = str(self.participant.vars)
         )
 
     def before_next_page(self):
@@ -81,7 +82,8 @@ class Results(Page):
     def vars_for_template(self):
         return dict(
             my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.my_flag),
-            my_ID = self.player.my_ID
+            my_ID = self.player.my_ID,
+            participant_vars = str(self.participant.vars)
         )
 
 

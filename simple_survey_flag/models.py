@@ -44,7 +44,12 @@ class Subsession(BaseSubsession):
             p.participant.vars['my_flag_choices'].append(Constants.num_flags + 1)
             random.shuffle(p.participant.vars['my_flag_choices'])
             p.participant.vars['randomID'] = random.choice(choices2)
-
+            p.participant.vars['treat_assign'] = random()
+            if p.participant.vars['treat_assign'] <= 0.5:
+                p.participant.vars['other_flag'] = Constants.num_flags + 1
+            else:
+                p.participant.vars['other_flag'] = randrange(1,Constants.num_flags,1)
+            p.participant.vars['other_id'] = random.choice([i for  i  in choices2 if i != p.participant.vars['randomID']])
 
 class Group(BaseGroup):
     pass
