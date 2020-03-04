@@ -2,6 +2,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageColor
 import os, csv, random
 
 flag_list = []
+num_flag = 50
 
 '''
 generate RGB tuples for each possible flag
@@ -68,6 +69,6 @@ for i in range(len(flag_list)):
     if i<50:
         im.save("flag_"+str(i+1)+".png")
     else:
-        im.save("flag_pride.png")
+        im.save("flag_"+str(num_flag + 1).png")
 
 
