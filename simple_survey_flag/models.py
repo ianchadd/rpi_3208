@@ -57,13 +57,13 @@ choices = random.choices(choices1, weights = None, k=3)
 class Player(BasePlayer):
     randomID = models.StringField(label = 'temporary input field, will be changed to just randomly assigning a string') #need to turn this into a randomly generated number
     customID = models.StringField(label = 'Please create your user ID' )
-    otherID = models.IntegerField(
-        #'Please choose one of the following:'
+    otherID = models.StringField(
+        label = 'Please choose one of the following:',
         #choices = random.choices(choices1, weights = None, k=3)
-        widget=forms.widgets.CheckboxSelectMultiple(choices=choices)
-        
+        widget=forms.widgets.RadioSelect(choices=choices)
     )
     my_flag = models.IntegerField()
 
     def set_flag(self):
-        self.my_flag = self.participant.vars['my_flag_choices'][self.my_flag]
+        index = self.my_flag
+        self.my_flag = self.participant.vars['my_flag_choices'][index]

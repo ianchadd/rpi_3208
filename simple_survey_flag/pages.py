@@ -67,5 +67,7 @@ class Results(Page):
 
 
 page_sequence = [
+    Choose_ID_C,
+    Choose_ID_O,
     Choose_Flag
 ]
