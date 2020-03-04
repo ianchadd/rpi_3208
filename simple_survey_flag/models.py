@@ -24,6 +24,7 @@ Survey (part 1) flag project
 class Constants(BaseConstants):
     name_in_url = 'simple_survey_flag'
     own_ID = 'simple_survey_flag/own_ID.html'
+    other_ID = 'simple_survey_flag/other_ID.html'
     players_per_group = None
     num_rounds = 1
     num_flags = 50 #number of flags in _static file other than pride flag
@@ -44,11 +45,11 @@ class Subsession(BaseSubsession):
             p.participant.vars['my_flag_choices'].append(Constants.num_flags + 1)
             random.shuffle(p.participant.vars['my_flag_choices'])
             p.participant.vars['randomID'] = random.choice(choices2)
-            p.participant.vars['treat_assign'] = random()
+            p.participant.vars['treat_assign'] = random.random()
             if p.participant.vars['treat_assign'] <= 0.5:
                 p.participant.vars['other_flag'] = Constants.num_flags + 1
             else:
-                p.participant.vars['other_flag'] = randrange(1,Constants.num_flags,1)
+                p.participant.vars['other_flag'] = random.randrange(1,Constants.num_flags,1)
             p.participant.vars['other_id'] = random.choice([i for  i  in choices2 if i != p.participant.vars['randomID']])
 
 class Group(BaseGroup):
@@ -70,7 +71,6 @@ class Player(BasePlayer):
     customID = models.StringField(label = 'Please create your 8-character user ID.' )
 
     def customID_error_message(self, value):
-        print('ID is', value)
         if len(value) != 8:
             return 'Chosen ID must have only 8 characters.'
         
@@ -89,7 +89,19 @@ class Player(BasePlayer):
         
     def set_random_id(self):
         self.randomID = self.participant.vars['randomID']
-    ''' 
+
     def set_ID(self,this):
         self.my_ID = this
-    '''
+
+    #adjective strings for evaluation page
+    adj_1 = models.StringField()
+    adj_2 = models.StringField()
+    adj_3 = models.StringField()
+    adj_4 = models.StringField(blank=True)
+    adj_5 = models.StringField(blank=True)
+    adj_6 = models.StringField(blank=True)
+    adj_7 = models.StringField(blank=True)
+    adj_8 = models.StringField(blank=True)
+    adj_9 = models.StringField(blank=True)
+    adj_10 = models.StringField(blank=True)
+
