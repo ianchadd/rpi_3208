@@ -30,22 +30,29 @@ class Choose_ID_R(Page):
     
     def before_next_page(self):
         self.player.set_random_id()
+        #self.player.set_ID(self.randomID)
 
     def vars_for_template(self):
         return dict(
-            ID = self.player.participant.vars['randomID']
+            my_ID = self.player.participant.vars['randomID']
             )
 
 class Choose_ID_C(Page):
     #player will be able to enter a custom string ID of 8 characters
     form_model = 'player'
     form_fields = ['customID']
-
+    '''
+    def before_next_page(self):
+        #self.player.set_ID(self.customID)
+    '''
 class Choose_ID_O(Page):
     #player will be able to choose from a list of randomly generated ID options
     form_model = 'player'
     form_fields = ['otherID']
-
+    '''
+    def before_next_page(self):
+        self.player.set_ID(self.otherID)
+    '''
 class Choose_Flag(Page):
     #player will choose a flag icon on this page
     form_model = 'player'
@@ -71,12 +78,17 @@ class Choose_Flag(Page):
 
 
 class Results(Page):
-    pass
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.my_flag),
+            my_ID = self.player.my_ID
+        )
 
 
 page_sequence = [
-    Choose_ID_R,
-    Choose_ID_C,
+    #Choose_ID_R,
+    #Choose_ID_C,
     Choose_ID_O,
-    Choose_Flag
+    Choose_Flag,
+    Results
 ]

@@ -23,6 +23,7 @@ Survey (part 1) flag project
 
 class Constants(BaseConstants):
     name_in_url = 'simple_survey_flag'
+    own_ID = 'simple_survey_flag/own_ID.html'
     players_per_group = None
     num_rounds = 1
     num_flags = 50 #number of flags in _static file other than pride flag
@@ -59,6 +60,7 @@ choices = random.choices(choices1, weights = None, k=3)
 
 
 class Player(BasePlayer):
+    my_ID = models.StringField(initial = 'initial')
     randomID = models.StringField(initial = 'initial') 
     customID = models.StringField(label = 'Please create your 8-character user ID.' )
 
@@ -82,3 +84,7 @@ class Player(BasePlayer):
         
     def set_random_id(self):
         self.randomID = self.participant.vars['randomID']
+    ''' 
+    def set_ID(self,this):
+        self.my_ID = this
+    '''
