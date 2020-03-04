@@ -26,7 +26,15 @@ class MyPage(Page):
 class Choose_ID_R(Page):
     #player will click a button to choose a random ID on this page
     form_model = 'player'
-    form_fields = ['randomID']
+    form_fields = ['show_ID']
+    
+    def before_next_page(self):
+        self.player.set_random_id()
+
+    def vars_for_template(self):
+        return dict(
+            ID = self.player.participant.vars['randomID']
+            )
 
 class Choose_ID_C(Page):
     #player will be able to enter a custom string ID of 8 characters
@@ -67,6 +75,7 @@ class Results(Page):
 
 
 page_sequence = [
+    Choose_ID_R,
     Choose_ID_C,
     Choose_ID_O,
     Choose_Flag
