@@ -71,6 +71,7 @@ class Player(BasePlayer):
         label = 'Please choose one of the following:',
         widget=forms.widgets.RadioSelect(choices=choices)
     )
+    
     my_flag = models.IntegerField()
 
     show_ID = models.BooleanField(initial = False)
