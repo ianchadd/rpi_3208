@@ -13,7 +13,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 SESSION_CONFIGS = [
     dict(
         name='Simple_survey_flag',
-        display_name="Survey",
+        display_name="Flag Survey",
         num_demo_participants=3,
         app_sequence=['simple_survey_flag']
     ),

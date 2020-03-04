@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Survey
+{% endblock %}
+
+{% block content %}
+    Please fill out the following information:
+<!--
+    {% formfields %}
+-->
+
+    <div>
+        <input id="a1" type="radio" name="my_flag" value="0" />
+          <label for="a1"><img src="{% static image_path_1 %}"/></label><br/>
+        <input id="a2" type="radio" name="my_flag" value="1" />
+          <label for="a2"><img src="{% static image_path_2 %}"/></label><br/>
+        <input id="a3" type="radio" name="my_flag" value="2" />
+          <label for="a3"><img src="{% static image_path_3 %}"/></label><br/>
+        <input id="a4" type="radio" name="my_flag" value="3" />
+          <label for="a4"><img src="{% static image_path_4 %}"/></label><br/>
+        <input id="a5" type="radio" name="my_flag" value="4" />
+          <label for="a5"><img src="{% static image_path_5 %}"/></label><br/>
+        <input id="a6" type="radio" name="my_flag" value="5" />
+          <label for="a6"><img src="{% static image_path_6 %}"/></label><br/>
+    </div>
+
+    {% next_button %}
+
+{% endblock %}
+
+<!--
+<div class = "mc-ma">
+    {{players.otherID.label}}
+    <ul>
+        {% for choice in player.otherID %}
+    <li>
+        <label>{{choice.tag}}{{choice.choice_label}}</label>
+    </li>
+    {% endfor %}
+    </ul>
+</div> -->

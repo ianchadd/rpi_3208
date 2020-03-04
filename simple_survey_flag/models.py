@@ -13,6 +13,8 @@ import random
 
 
 author = 'Gaby'
+coauthor = 'Ian'
+
 
 doc = """
 Survey (part 1) flag project
@@ -23,10 +25,21 @@ class Constants(BaseConstants):
     name_in_url = 'simple_survey_flag'
     players_per_group = None
     num_rounds = 1
+    num_flags = 50 #number of flags in _static file other than pride flag
+    num_choices = 5 #number of flags a player can choose from other than pride flag
+    flag_choices = [] # list of all flag choices
+    for i in range(num_flags):
+        flag_choices.append(i+1)
 
 
 class Subsession(BaseSubsession):
-    pass
+    def creating_session(self):
+        for p in self.get_players():
+            p.participant.vars['my_flag_choices'] = Constants.flag_choices.copy()
+            random.shuffle(p.participant.vars['my_flag_choices'])
+            p.participant.vars['my_flag_choices'] = p.participant.vars['my_flag_choices'][:Constants.num_choices]
+            p.participant.vars['my_flag_choices'].append(Constants.num_flags + 1)
+            random.shuffle(p.participant.vars['my_flag_choices'])
 
 
 class Group(BaseGroup):
@@ -44,10 +57,13 @@ choices = random.choices(choices1, weights = None, k=3)
 class Player(BasePlayer):
     randomID = models.StringField(label = 'temporary input field, will be changed to just randomly assigning a string') #need to turn this into a randomly generated number
     customID = models.StringField(label = 'Please create your user ID' )
-    otherID = models.IntegerField(
-        #'Please choose one of the following:'
+    otherID = models.StringField(
+        label = 'Please choose one of the following:',
         #choices = random.choices(choices1, weights = None, k=3)
-        widget=forms.widgets.CheckboxSelectMultiple(choices=choices)
-        
+        widget=forms.widgets.RadioSelect(choices=choices)
     )
-    flag = models.IntegerField(label = 'Please enter a number corresponding to the profile image of your choice', min = 1, max = 3)
+    my_flag = models.IntegerField()
+
+    def set_flag(self):
+        index = self.my_flag
+        self.my_flag = self.participant.vars['my_flag_choices'][index]
