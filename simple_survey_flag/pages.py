@@ -30,10 +30,11 @@ class Choose_ID_R(Page):
     
     def before_next_page(self):
         self.player.set_random_id()
+        self.player.set_ID(self.player.randomID)
 
     def vars_for_template(self):
         return dict(
-            ID = self.player.participant.vars['randomID']
+            my_ID = self.player.participant.vars['randomID']
             )
 
 class Choose_ID_C(Page):
@@ -41,10 +42,16 @@ class Choose_ID_C(Page):
     form_model = 'player'
     form_fields = ['customID']
 
+    def before_next_page(self):
+        self.player.set_ID(self.player.customID)
+    
 class Choose_ID_O(Page):
     #player will be able to choose from a list of randomly generated ID options
     form_model = 'player'
     form_fields = ['otherID']
+
+    def before_next_page(self):
+        self.player.set_ID(self.player.otherID)
 
 class Choose_Flag(Page):
     #player will choose a flag icon on this page
@@ -57,7 +64,8 @@ class Choose_Flag(Page):
             image_path_3='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][2]),
             image_path_4='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][3]),
             image_path_5='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][4]),
-            image_path_6='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][5])
+            image_path_6='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][5]),
+            participant_vars = str(self.participant.vars)
         )
 
     def before_next_page(self):
@@ -71,12 +79,80 @@ class Choose_Flag(Page):
 
 
 class Results(Page):
-    pass
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.my_flag),
+            my_ID = self.player.my_ID,
+            participant_vars = str(self.participant.vars)
+        )
+    
+class Eval_adj(Page):
+    form_model = 'player'
+    form_fields = [
+        'adj_1',
+        'adj_2',
+        'adj_3',
+        'adj_4',
+        'adj_5',
+        'adj_6',
+        'adj_7',
+        'adj_8',
+        'adj_9',
+        'adj_10']
+        
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.my_flag),
+            my_ID = self.player.my_ID,
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
+            their_ID = self.player.participant.vars['other_id'],
+            participant_vars = str(self.participant.vars)
+        )
+    
+class Eval_survey(Page):
+    form_model = 'player'
+    form_fields = [
+        'inferred_gender',
+        'inferred_age',
+        'inferred_income',
+        'inferred_orientation',
+        'inferred_politics'
+        ]
+        
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.my_flag),
+            my_ID = self.player.my_ID,
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
+            their_ID = self.player.participant.vars['other_id'],
+            participant_vars = str(self.participant.vars)
+        )
+
+class Eval_own(Page):
+    form_model = 'player'
+    form_fields = ['ID_explain']
+        
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.my_flag),
+            my_ID = self.player.my_ID,
+            image_path_1='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][0]),
+            image_path_2='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][1]),
+            image_path_3='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][2]),
+            image_path_4='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][3]),
+            image_path_5='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][4]),
+            image_path_6='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][5]),
+            participant_vars = str(self.participant.vars)
+        )
 
 
 page_sequence = [
-    Choose_ID_R,
-    Choose_ID_C,
+    #Choose_ID_R,
+    #Choose_ID_C,
     Choose_ID_O,
-    Choose_Flag
+    Choose_Flag,
+    Results,
+    Eval_adj,
+    Eval_survey,
+    Eval_own
 ]

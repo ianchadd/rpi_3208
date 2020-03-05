@@ -23,6 +23,8 @@ Survey (part 1) flag project
 
 class Constants(BaseConstants):
     name_in_url = 'simple_survey_flag'
+    own_ID = 'simple_survey_flag/own_ID.html'
+    other_ID = 'simple_survey_flag/other_ID.html'
     players_per_group = None
     num_rounds = 1
     num_flags = 50 #number of flags in _static file other than pride flag
@@ -43,7 +45,12 @@ class Subsession(BaseSubsession):
             p.participant.vars['my_flag_choices'].append(Constants.num_flags + 1)
             random.shuffle(p.participant.vars['my_flag_choices'])
             p.participant.vars['randomID'] = random.choice(choices2)
-
+            p.participant.vars['treat_assign'] = random.random()
+            if p.participant.vars['treat_assign'] <= 0.5:
+                p.participant.vars['other_flag'] = Constants.num_flags + 1
+            else:
+                p.participant.vars['other_flag'] = random.randrange(1,Constants.num_flags,1)
+            p.participant.vars['other_id'] = random.choice([i for  i  in choices2 if i != p.participant.vars['randomID']])
 
 class Group(BaseGroup):
     pass
@@ -59,11 +66,11 @@ choices = random.choices(choices1, weights = None, k=3)
 
 
 class Player(BasePlayer):
+    my_ID = models.StringField(initial = 'initial')
     randomID = models.StringField(initial = 'initial') 
     customID = models.StringField(label = 'Please create your 8-character user ID.' )
 
     def customID_error_message(self, value):
-        print('ID is', value)
         if len(value) != 8:
             return 'Chosen ID must have only 8 characters.'
         
@@ -82,3 +89,57 @@ class Player(BasePlayer):
         
     def set_random_id(self):
         self.randomID = self.participant.vars['randomID']
+
+    def set_ID(self,this):
+        self.my_ID = this
+
+    #adjective strings for evaluation page
+    adj_1 = models.StringField()
+    adj_2 = models.StringField()
+    adj_3 = models.StringField()
+    adj_4 = models.StringField(blank=True)
+    adj_5 = models.StringField(blank=True)
+    adj_6 = models.StringField(blank=True)
+    adj_7 = models.StringField(blank=True)
+    adj_8 = models.StringField(blank=True)
+    adj_9 = models.StringField(blank=True)
+    adj_10 = models.StringField(blank=True)
+
+    #survey questions for second evaluation page
+    inferred_gender = models.StringField(
+        label = "I think their gender is most likely:",
+        choices = ['Male','Female','Trans/Intersex/Other'],
+        widget = forms.widgets.RadioSelect()
+        )
+    
+    inferred_age = models.StringField(
+        label = "I think their age is most likely:",
+        choices = ['Under 18','18 - 24','25 - 34', '35 - 44','45 - 54', '55 - 64','65 or Older'],
+        widget = forms.widgets.RadioSelect()
+        )
+    
+    inferred_income = models.StringField(
+        label = "I think their annual income is most likely:",
+        choices = ['less than $20,000','$20,000 - $40,000','$40,000 - $60,000','$60,000 - $80,000','$80,000 - $100,000','More than $100,000'],
+        widget = forms.widgets.RadioSelect()
+        )
+
+    inferred_orientation = models.StringField(
+        label = "I think their sexual orientation is most likely:",
+        choices = ['Heterosexual or Straight', 'Non-heterosexual or non-straight'],
+        widget = forms.widgets.RadioSelect()
+        )
+    
+    inferred_politics = models.StringField(
+        label = "Politically, I think they are:",
+        choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
+        widget = forms.widgets.RadioSelect()
+        )
+
+    ID_explain = models.LongStringField(initial = '', label = 'Why did you choose this ID? Please respond with at least 20 characters.')
+
+    def ID_explain_error_message(self, value):
+        if len(value) < 20:
+            return 'Response must include at lease 20 characters.'
+         
+

@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Evaluation
+{% endblock %}
+
+
+{% block content %}
+{% include Constants.own_ID %}
+
+<p><b>Consider the ID shown below.</b></p>
+
+{% include Constants.other_ID %}
+<p><b>Suppose you saw this ID and knew that it had been selected by another person in the same way as you selected your own ID for this survey (i.e., they were given a randomly generated name and chose the icon).
+
+Please answer the following questions about the person who chose this ID.
+</b></p>
+
+{% formfields %}
+
+
+{% next_button %}
+{% endblock %}
