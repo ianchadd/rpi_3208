@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Evaluation
+{% endblock %}
+
+
+{% block content %}
+{% include Constants.own_ID %}
+
+<p><b>The ID that you chose is displayed above.</b></p>
+
+<p><b>For the photo portion of your ID, you could have chosen from the following:</b></p>
+<div>
+    <img src="{% static image_path_1 %}"/>
+    <img src="{% static image_path_2 %}"/>
+    <img src="{% static image_path_3 %}"/><br/>
+    <br/>
+    <img src="{% static image_path_4 %}"/>
+    <img src="{% static image_path_5 %}"/>
+    <img src="{% static image_path_6 %}"/>
+
+</div>
+{% formfields %}
+
+
+{% next_button %}
+{% endblock %}

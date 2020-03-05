@@ -105,3 +105,41 @@ class Player(BasePlayer):
     adj_9 = models.StringField(blank=True)
     adj_10 = models.StringField(blank=True)
 
+    #survey questions for second evaluation page
+    inferred_gender = models.StringField(
+        label = "I think their gender is most likely:",
+        choices = ['Male','Female','Trans/Intersex/Other'],
+        widget = forms.widgets.RadioSelect()
+        )
+    
+    inferred_age = models.StringField(
+        label = "I think their age is most likely:",
+        choices = ['Under 18','18 - 24','25 - 34', '35 - 44','45 - 54', '55 - 64','65 or Older'],
+        widget = forms.widgets.RadioSelect()
+        )
+    
+    inferred_income = models.StringField(
+        label = "I think their annual income is most likely:",
+        choices = ['less than $20,000','$20,000 - $40,000','$40,000 - $60,000','$60,000 - $80,000','$80,000 - $100,000','More than $100,000'],
+        widget = forms.widgets.RadioSelect()
+        )
+
+    inferred_orientation = models.StringField(
+        label = "I think their sexual orientation is most likely:",
+        choices = ['Heterosexual or Straight', 'Non-heterosexual or non-straight'],
+        widget = forms.widgets.RadioSelect()
+        )
+    
+    inferred_politics = models.StringField(
+        label = "Politically, I think they are:",
+        choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
+        widget = forms.widgets.RadioSelect()
+        )
+
+    ID_explain = models.LongStringField(initial = '', label = 'Why did you choose this ID? Please respond with at least 20 characters.')
+
+    def ID_explain_error_message(self, value):
+        if len(value) < 20:
+            return 'Response must include at lease 20 characters.'
+         
+

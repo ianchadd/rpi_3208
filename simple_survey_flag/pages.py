@@ -108,6 +108,42 @@ class Eval_adj(Page):
             their_ID = self.player.participant.vars['other_id'],
             participant_vars = str(self.participant.vars)
         )
+    
+class Eval_survey(Page):
+    form_model = 'player'
+    form_fields = [
+        'inferred_gender',
+        'inferred_age',
+        'inferred_income',
+        'inferred_orientation',
+        'inferred_politics'
+        ]
+        
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.my_flag),
+            my_ID = self.player.my_ID,
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
+            their_ID = self.player.participant.vars['other_id'],
+            participant_vars = str(self.participant.vars)
+        )
+
+class Eval_own(Page):
+    form_model = 'player'
+    form_fields = ['ID_explain']
+        
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.my_flag),
+            my_ID = self.player.my_ID,
+            image_path_1='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][0]),
+            image_path_2='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][1]),
+            image_path_3='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][2]),
+            image_path_4='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][3]),
+            image_path_5='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][4]),
+            image_path_6='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][5]),
+            participant_vars = str(self.participant.vars)
+        )
 
 
 page_sequence = [
@@ -116,5 +152,7 @@ page_sequence = [
     Choose_ID_O,
     Choose_Flag,
     Results,
-    Eval_adj
+    Eval_adj,
+    Eval_survey,
+    Eval_own
 ]
