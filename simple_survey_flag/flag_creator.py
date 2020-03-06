@@ -62,13 +62,13 @@ staging area code
 
 
 for i in range(len(flag_list)):
-    im = Image.new('RGB', (240,20),flag_list[i][0])
+    im = Image.new('RGB', (180,15),flag_list[i][0])
     for j in range(1,len(flag_list[i])):
-        new_im = Image.new('RGB', (240,20),flag_list[i][j])
+        new_im = Image.new('RGB', (180,15),flag_list[i][j])
         im = get_concat_v(im, new_im)
     if i<50:
         im.save("flag_"+str(i+1)+".png")
     else:
-        im.save("flag_"+str(num_flag + 1).png")
+        im.save("flag_"+str(num_flag + 1)+".png")
 
 
