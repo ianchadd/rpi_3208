@@ -27,7 +27,7 @@ class Constants(BaseConstants):
     other_ID = 'simple_survey_flag/other_ID.html'
     players_per_group = None
     num_rounds = 1
-    num_flags = 50 #number of flags in _static file other than pride flag
+    num_flags = 25 #number of flags in _static file other than pride flag
     num_choices = 5 #number of flags a player can choose from other than pride flag
     flag_choices = [] # list of all flag choices
     for i in range(num_flags):
@@ -39,10 +39,11 @@ choices2= ["HQQkF10d","pcrnTLUr","7OKdu5sV","wZPeexoH","UkTbcudD","zOz9aTis","9M
 class Subsession(BaseSubsession):
     def creating_session(self):
         for p in self.get_players():
-            p.participant.vars['my_flag_choices'] = Constants.flag_choices.copy()
-            random.shuffle(p.participant.vars['my_flag_choices'])
-            p.participant.vars['my_flag_choices'] = p.participant.vars['my_flag_choices'][:Constants.num_choices]
-            p.participant.vars['my_flag_choices'].append(Constants.num_flags + 1)
+            #p.participant.vars['my_flag_choices'] = Constants.flag_choices.copy()
+            #random.shuffle(p.participant.vars['my_flag_choices'])
+            #p.participant.vars['my_flag_choices'] = p.participant.vars['my_flag_choices'][:Constants.num_choices]
+            #p.participant.vars['my_flag_choices'].append(Constants.num_flags + 1)
+            p.participant.vars['my_flag_choices'] = [11,17,20,22,25,26] #this line is just for hard-coded flag options. Lines above randomize from the list of all flags.
             random.shuffle(p.participant.vars['my_flag_choices'])
             p.participant.vars['randomID'] = random.choice(choices2)
             p.participant.vars['treat_assign'] = random.random()
@@ -66,6 +67,9 @@ choices = random.choices(choices1, weights = None, k=3)
 
 
 class Player(BasePlayer):
+    consent = models.BooleanField(
+        initial = False,
+        label = '')
     my_ID = models.StringField(initial = 'initial')
     randomID = models.StringField(initial = 'initial') 
     customID = models.StringField(label = 'Please create your 8-character user ID.' )
@@ -94,16 +98,16 @@ class Player(BasePlayer):
         self.my_ID = this
 
     #adjective strings for evaluation page
-    adj_1 = models.StringField()
-    adj_2 = models.StringField()
-    adj_3 = models.StringField()
-    adj_4 = models.StringField(blank=True)
-    adj_5 = models.StringField(blank=True)
-    adj_6 = models.StringField(blank=True)
-    adj_7 = models.StringField(blank=True)
-    adj_8 = models.StringField(blank=True)
-    adj_9 = models.StringField(blank=True)
-    adj_10 = models.StringField(blank=True)
+    adj_1 = models.StringField(label = '')
+    adj_2 = models.StringField(label = '')
+    adj_3 = models.StringField(label = '')
+    adj_4 = models.StringField(label = '',blank=True)
+    adj_5 = models.StringField(label = '',blank=True)
+    adj_6 = models.StringField(label = '',blank=True)
+    adj_7 = models.StringField(label = '',blank=True)
+    adj_8 = models.StringField(label = '',blank=True)
+    adj_9 = models.StringField(label = '',blank=True)
+    adj_10 = models.StringField(label = '',blank=True)
 
     #survey questions for second evaluation page
     inferred_gender = models.StringField(
