@@ -13,14 +13,73 @@ class Constants(BaseConstants):
     name_in_url = 'survey'
     players_per_group = None
     num_rounds = 1
-    state_list = ['Alaska', 'Alabama', 'Arkansas', 'American Samoa', 'Arizona', 'California', 'Colorado', 'Connecticut',
-                  'District of Columbia', 'Delaware', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Iowa', 'Idaho', 'Illinois',
-                  'Indiana', 'Kansas', 'Kentucky', 'Louisiana', 'Massachusetts', 'Maryland', 'Maine', 'Michigan', 'Minnesota',
-                  'Missouri', 'Northern Mariana Islands', 'Mississippi', 'Montana', 'National', 'North Carolina', 'North Dakota',
-                  'Nebraska', 'New Hampshire', 'New Jersey', 'New Mexico', 'Nevada', 'New York', 'Ohio', 'Oklahoma', 'Oregon',
-                  'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
-                  'Virginia', 'Virgin Islands', 'Vermont', 'Washington', 'Wisconsin', 'West Virginia', 'Wyoming', 'N/A']
+    
+states = {
+        'AK': 'Alaska',
+        'AL': 'Alabama',
+        'AR': 'Arkansas',
+        'AS': 'American Samoa',
+        'AZ': 'Arizona',
+        'CA': 'California',
+        'CO': 'Colorado',
+        'CT': 'Connecticut',
+        'DC': 'District of Columbia',
+        'DE': 'Delaware',
+        'FL': 'Florida',
+        'GA': 'Georgia',
+        'GU': 'Guam',
+        'HI': 'Hawaii',
+        'IA': 'Iowa',
+        'ID': 'Idaho',
+        'IL': 'Illinois',
+        'IN': 'Indiana',
+        'KS': 'Kansas',
+        'KY': 'Kentucky',
+        'LA': 'Louisiana',
+        'MA': 'Massachusetts',
+        'MD': 'Maryland',
+        'ME': 'Maine',
+        'MI': 'Michigan',
+        'MN': 'Minnesota',
+        'MO': 'Missouri',
+        'MP': 'Northern Mariana Islands',
+        'MS': 'Mississippi',
+        'MT': 'Montana',
+        'NA': 'National',
+        'NC': 'North Carolina',
+        'ND': 'North Dakota',
+        'NE': 'Nebraska',
+        'NH': 'New Hampshire',
+        'NJ': 'New Jersey',
+        'NM': 'New Mexico',
+        'NV': 'Nevada',
+        'NY': 'New York',
+        'OH': 'Ohio',
+        'OK': 'Oklahoma',
+        'OR': 'Oregon',
+        'PA': 'Pennsylvania',
+        'PR': 'Puerto Rico',
+        'RI': 'Rhode Island',
+        'SC': 'South Carolina',
+        'SD': 'South Dakota',
+        'TN': 'Tennessee',
+        'TX': 'Texas',
+        'UT': 'Utah',
+        'VA': 'Virginia',
+        'VI': 'Virgin Islands',
+        'VT': 'Vermont',
+        'WA': 'Washington',
+        'WI': 'Wisconsin',
+        'WV': 'West Virginia',
+        'WY': 'Wyoming'
+}
+state_list = []
+for key in states:
+    if key != 'NA':
+        state_list.append(key + ' (' + states[key] + ')')
 
+live_state_list = state_list + ['Other (please state below)']
+grew_up_state_list = state_list + ['Other (please state below)']
 
 class Subsession(BaseSubsession):
     pass
@@ -33,12 +92,11 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 #age
     age = models.IntegerField(label='What is your age?', min=13, max=125)
-    yob = models.StringField(
+    yob = models.IntegerField(
         label='What is your year of birth?',
+        min=1900,
+        max=2005
         )
-    def yob_error_message(self,value):
-        if len(value) !=4:
-            return 'You must enter a valid year of birth in the format YYYY.'
         
 #sex assigned at birth 
     sex = models.StringField(
@@ -67,7 +125,7 @@ class Player(BasePlayer):
         widget=widgets.CheckboxInput,
         blank = True)
     other_g = models.BooleanField(
-        label = 'Other (please indicate below)',
+        label = 'Other (please state below)',
         widget=widgets.CheckboxInput,
         blank = True)
     diff_gend = models.StringField(
@@ -86,6 +144,7 @@ class Player(BasePlayer):
         )
     other_orientation = models.StringField(
         label = '',
+        initial = '',
         blank = True
         )
 #sexual history and attraction
@@ -95,7 +154,8 @@ class Player(BasePlayer):
             'Men only',
             'Women only',
             'Both men and women',
-            'I have not had sex'],
+            'I have not had sex',
+            'I prefer not to say'],
         widget = widgets.RadioSelect,
         )
     attracted_men = models.BooleanField(
@@ -116,12 +176,13 @@ class Player(BasePlayer):
             'Domestic Partnership (living in the same home)',
             'Partnership (not living in the same home)',
             'Married',
-            'Other (please indicate below)'
+            'Other (please state below)'
             ],
         widget = widgets.RadioSelect
         )
     other_relationship = models.StringField(
         label = '',
+        initial = '',
         blank = True)
     primary_earner = models.StringField(
         label = 'Are you the primary earner in the household?',
@@ -135,7 +196,7 @@ class Player(BasePlayer):
 #income
     income = models.StringField(
         label = "Please select your household annual income from the options below",
-        choices = ['less than $20,000','$20,000 - $40,000','$40,000 - $60,000','$60,000 - $80,000','$80,000 - $100,000','More than $100,000'],
+        choices = ['less than $20,000','$20,000 - $39,999','$40,000 - $59,999','$60,000 - $79,999','$80,000 - $99,999','$100,000 or more'],
         widget = widgets.RadioSelect
         )
 #race
@@ -149,7 +210,7 @@ class Player(BasePlayer):
             'Native Hawaiian or Pacific Islander',
             'Hispanic or Latino',
             'Middle Eastern or Arab',
-            'Other (please enter below)'
+            'Other (please state below)'
             ],
         widget = widgets.RadioSelect
         )
@@ -178,19 +239,33 @@ class Player(BasePlayer):
         )
     
 #politics
-    politics = models.StringField(
-        label = "Politically, I am",
+    econ_politics = models.StringField(
+        label = "On economic issues, politically I am",
+        choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
+        widget = widgets.RadioSelect
+        )
+    
+    social_politics = models.StringField(
+        label = "On social issues, politically I am",
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
         widget = widgets.RadioSelect
         )
 #locations
     live_in = models.StringField(
         label = 'In which US state/territory do you currently live?',
-        choices = Constants.state_list
+        choices = live_state_list
         )
     grew_up_in = models.StringField(
-        label = 'In which US state/territory did you spend the most time in as a child?',
-        choices = Constants.state_list
+        label = 'In which US state/territory did you spend the most time in for the first 18 years of your life?',
+        choices = grew_up_state_list
+        )
+    other_live_location = models.StringField(
+        label = '',
+        blank = True
+        )
+    other_grew_up_location = models.StringField(
+        label = '',
+        blank = True
         )
         
         

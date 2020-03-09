@@ -17,8 +17,29 @@
 Please answer the following questions about the person who chose this ID.
 </b></p>
 
-{% formfields %}
+<p><b>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s gender is most likely: </b></p>
 
+{% formfield player.inferred_gender%}
+
+<p><b>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s age is most likely: </b></p>
+
+{% formfield player.inferred_age %}
+
+<p><b>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s income is most likely: </b></p>
+
+{% formfield player.inferred_income %}
+
+<p><b>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s sexual orientation is most likely: </b></p>
+
+{% formfield player.inferred_orientation %}
+
+<p><b>When it comes to economic issues, I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}} is politically: </b></p>
+
+{% formfield player.inferred_econ_politics %}
+
+<p><b>When it comes to social issues, I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}} is politically: </b></p>
+
+{% formfield player.inferred_social_politics %}
 
 {% next_button %}
 {% endblock %}

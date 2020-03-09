@@ -24,11 +24,19 @@ class Gender(Page):
                    'gnc',
                    'other_g',
                    'diff_gend']
+    def error_message(self,values):
+        if values['other_g'] and type(values['diff_gend']) == type(None):
+            return 'If you select Other, you must specify in the provided field'
     
 class Orientation(Page):
     form_model = 'player'
     form_fields = ['orientation',
                    'other_orientation']
+    
+    def error_message(self,values):
+        if values['orientation'] =='Other (please state below)' and type(values['other_orientation']) == type(None) :
+            return 'If you select Other, you must specify in the provided field'
+    
 
 class S_History(Page):
     form_model = 'player'
@@ -40,6 +48,11 @@ class Relationship(Page):
     form_model = 'player'
     form_fields = ['relationship',
                    'other_relationship']
+    
+    def error_message(self,values):
+        if values['relationship'] =='Other (please state below)' and type(values['other_relationship']) == type(None):
+            return 'If you select Other, you must specify in the provided field'
+    
 
 class Primary_Earner(Page):
     def is_displayed(self):
@@ -56,21 +69,33 @@ class Ethnicity(Page):
     form_model = 'player'
     form_fields = ['ethnicity',
                    'other_ethnicity']
-
+    
+    def error_message(self,values):
+        if values['ethnicity'] =='Other (please state below)' and type(values['other_ethnicity']) == type(None):
+            return 'If you select Other, you must specify in the provided field'
 class Religion(Page):
     form_model = 'player'
     form_fields = ['religion',
                    'other_religion']
+    def error_message(self,values):
+        if values['religion'] =='Some other religious affiliation (please specify below)' and type(values['other_religion']) == type(None):
+            return 'If you select Other, you must specify in the provided field'
     
 class Politics(Page):
     form_model = 'player'
-    form_fields = ['politics']
+    form_fields = ['econ_politics',
+                   'social_politics']
 
 class Location(Page):
     form_model = 'player'
     form_fields = ['live_in',
-                   'grew_up_in']
-
+                   'other_live_location',
+                   'grew_up_in',
+                   'other_grew_up_location']
+    def error_message(self,values):
+        if (values['live_in'] =='Other (please state below)' and type(values['other_live_location']) == type(None)) or(values['grew_up_in'] =='Other (please state below)' and type(values['other_grew_up_location']) == type(None)) :
+            return 'If you select Other, you must specify in the provided field'
+    
 
 page_sequence = [Instructions,
                  Age,

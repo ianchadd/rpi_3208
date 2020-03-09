@@ -116,31 +116,37 @@ class Player(BasePlayer):
 
     #survey questions for second evaluation page
     inferred_gender = models.StringField(
-        label = "I think their gender is most likely:",
+        label = '',
         choices = ['Male','Female','Trans/Intersex/Other'],
         widget = forms.widgets.RadioSelect()
         )
     
     inferred_age = models.StringField(
-        label = "I think their age is most likely:",
+        label = '',
         choices = ['Under 18','18 - 24','25 - 34', '35 - 44','45 - 54', '55 - 64','65 or Older'],
         widget = forms.widgets.RadioSelect()
         )
     
     inferred_income = models.StringField(
-        label = "I think their annual income is most likely:",
+        label = '',
         choices = ['less than $20,000','$20,000 - $40,000','$40,000 - $60,000','$60,000 - $80,000','$80,000 - $100,000','More than $100,000'],
         widget = forms.widgets.RadioSelect()
         )
 
     inferred_orientation = models.StringField(
-        label = "I think their sexual orientation is most likely:",
+        label = '',
         choices = ['Heterosexual or Straight', 'Non-heterosexual or non-straight'],
         widget = forms.widgets.RadioSelect()
         )
     
-    inferred_politics = models.StringField(
-        label = "Politically, I think they are:",
+    inferred_econ_politics = models.StringField(
+        label = '',
+        choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
+        widget = forms.widgets.RadioSelect()
+        )
+    
+    inferred_social_politics = models.StringField(
+        label = '',
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
         widget = forms.widgets.RadioSelect()
         )
