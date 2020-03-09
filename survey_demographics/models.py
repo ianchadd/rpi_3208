@@ -173,8 +173,8 @@ class Player(BasePlayer):
         label = 'Please indicate your current relationship status',
         choices = [
             'Single',
-            'Domestic Partnership (living in the same home)',
             'Partnership (not living in the same home)',
+            'Domestic Partnership (living in the same home)',
             'Married',
             'Other (please state below)'
             ],
