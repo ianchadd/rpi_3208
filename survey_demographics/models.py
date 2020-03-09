@@ -66,8 +66,12 @@ class Player(BasePlayer):
         label = 'Genderqueer / Gender non-conforming',
         widget=widgets.CheckboxInput,
         blank = True)
+    other_g = models.BooleanField(
+        label = 'Other (please indicate below)',
+        widget=widgets.CheckboxInput,
+        blank = True)
     diff_gend = models.StringField(
-        label = 'Different identity?',
+        label = '',
         blank = True)
 #sexual orientation
     orientation = models.StringField(
@@ -96,12 +100,12 @@ class Player(BasePlayer):
         )
     attracted_men = models.BooleanField(
         label = 'Are you sexually attracted to men?',
-        choices = [[True,'Yes'][False,'No']],
+        choices = [[True,'Yes'],[False,'No']],
         widget = widgets.RadioSelect,
         )
     attracted_women = models.BooleanField(
         label = 'Are you sexually attracted to women?',
-        choices = [[True,'Yes'][False,'No']],
+        choices = [[True,'Yes'],[False,'No']],
         widget = widgets.RadioSelect,
         )
 #relationship status
@@ -113,7 +117,7 @@ class Player(BasePlayer):
             'Partnership (not living in the same home)',
             'Married',
             'Other (please indicate below)'
-            ]
+            ],
         widget = widgets.RadioSelect
         )
     other_relationship = models.StringField(
@@ -125,14 +129,14 @@ class Player(BasePlayer):
             'Yes',
             'No',
             'Multiple primary earners in household'
-            ]
+            ],
         widget = widgets.RadioSelect
         )
 #income
     income = models.StringField(
         label = "Please select your household annual income from the options below",
         choices = ['less than $20,000','$20,000 - $40,000','$40,000 - $60,000','$60,000 - $80,000','$80,000 - $100,000','More than $100,000'],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect
         )
 #race
     ethnicity = models.StringField(
@@ -146,10 +150,10 @@ class Player(BasePlayer):
             'Hispanic or Latino',
             'Middle Eastern or Arab',
             'Other (please enter below)'
-            ]
+            ],
         widget = widgets.RadioSelect
         )
-    other_ethinicity = models.StringField(
+    other_ethnicity = models.StringField(
         label = '',
         blank = True
         )
@@ -165,7 +169,7 @@ class Player(BasePlayer):
             'Asian Folk Religion (e.g. Taoist, Confucian)',
             'I am not religious',
             'Some other religious affiliation (please specify below)'
-            ]
+            ],
         widget = widgets.RadioSelect
         )
     other_religion = models.StringField(
@@ -177,7 +181,7 @@ class Player(BasePlayer):
     politics = models.StringField(
         label = "Politically, I am",
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect
         )
 #locations
     live_in = models.StringField(

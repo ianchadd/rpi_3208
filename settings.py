@@ -13,9 +13,12 @@ SESSION_CONFIG_DEFAULTS = dict(
 SESSION_CONFIGS = [
     dict(
         name='Simple_survey_flag',
-        display_name="Flag Survey",
+        display_name="QSP Survey 1",
         num_demo_participants=3,
-        app_sequence=['simple_survey_flag']
+        app_sequence=['prolific_ID_begin',
+                      'simple_survey_flag',
+                      'survey_demographics',
+                      'prolific_ID_end']
     ),
     dict(
         name='guess_two_thirds',
@@ -24,10 +27,10 @@ SESSION_CONFIGS = [
         app_sequence=['guess_two_thirds', 'payment_info'],
     ),
     dict(
-        name='survey',
+        name='survey_demographics',
         display_name='survey',
         num_demo_participants=1,
-        app_sequence=['survey', 'payment_info'],
+        app_sequence=['survey_demographics'],
     ),
 ]
 

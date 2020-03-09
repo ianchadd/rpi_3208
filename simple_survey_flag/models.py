@@ -27,30 +27,36 @@ class Constants(BaseConstants):
     other_ID = 'simple_survey_flag/other_ID.html'
     players_per_group = None
     num_rounds = 1
-    num_flags = 50 #number of flags in _static file other than pride flag
+    num_flags = 25 #number of flags in _static file other than pride flag
     num_choices = 5 #number of flags a player can choose from other than pride flag
     flag_choices = [] # list of all flag choices
     for i in range(num_flags):
         flag_choices.append(i+1)
 
 choices2= ["HQQkF10d","pcrnTLUr","7OKdu5sV","wZPeexoH","UkTbcudD","zOz9aTis","9MEcfOL3","SVwZaZ7E""fFeJ8qw2","cRN5swzs","ePrKx7Ma","a1myqS0O","b4RWtHe9","F8I03MH2","C8feS7p2","K4zdqslW","3IbkRtps","CiBI3ZYx","9ME9zgnn","ZdIpJIRH"]
+consonants = ['q','w','r','t','y','p','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
 
 
 class Subsession(BaseSubsession):
     def creating_session(self):
         for p in self.get_players():
-            p.participant.vars['my_flag_choices'] = Constants.flag_choices.copy()
+            #p.participant.vars['my_flag_choices'] = Constants.flag_choices.copy()
+            #random.shuffle(p.participant.vars['my_flag_choices'])
+            #p.participant.vars['my_flag_choices'] = p.participant.vars['my_flag_choices'][:Constants.num_choices]
+            #p.participant.vars['my_flag_choices'].append(Constants.num_flags + 1)
+            p.participant.vars['my_flag_choices'] = [11,17,20,22,25,26] #this line is just for hard-coded flag options. Lines above randomize from the list of all flags.
             random.shuffle(p.participant.vars['my_flag_choices'])
-            p.participant.vars['my_flag_choices'] = p.participant.vars['my_flag_choices'][:Constants.num_choices]
-            p.participant.vars['my_flag_choices'].append(Constants.num_flags + 1)
-            random.shuffle(p.participant.vars['my_flag_choices'])
-            p.participant.vars['randomID'] = random.choice(choices2)
+            #p.participant.vars['randomID'] = random.choice(choices2)
+            p.participant.vars['randomID'] = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants)
+            p.participant.vars['randomID'] = p.participant.vars['randomID'] + str(random.randrange(111,1000,1))
             p.participant.vars['treat_assign'] = random.random()
             if p.participant.vars['treat_assign'] <= 0.5:
                 p.participant.vars['other_flag'] = Constants.num_flags + 1
             else:
                 p.participant.vars['other_flag'] = random.randrange(1,Constants.num_flags,1)
-            p.participant.vars['other_id'] = random.choice([i for  i  in choices2 if i != p.participant.vars['randomID']])
+            p.participant.vars['other_id'] = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants)
+            p.participant.vars['other_id'] = p.participant.vars['other_id'] + str(random.randrange(111,1000,1))
+            #p.participant.vars['other_id'] = random.choice([i for  i  in choices2 if i != p.participant.vars['randomID']])
 
 class Group(BaseGroup):
     pass
@@ -66,6 +72,9 @@ choices = random.choices(choices1, weights = None, k=3)
 
 
 class Player(BasePlayer):
+    consent = models.BooleanField(
+        initial = False,
+        label = '')
     my_ID = models.StringField(initial = 'initial')
     randomID = models.StringField(initial = 'initial') 
     customID = models.StringField(label = 'Please create your 8-character user ID.' )
@@ -94,16 +103,16 @@ class Player(BasePlayer):
         self.my_ID = this
 
     #adjective strings for evaluation page
-    adj_1 = models.StringField()
-    adj_2 = models.StringField()
-    adj_3 = models.StringField()
-    adj_4 = models.StringField(blank=True)
-    adj_5 = models.StringField(blank=True)
-    adj_6 = models.StringField(blank=True)
-    adj_7 = models.StringField(blank=True)
-    adj_8 = models.StringField(blank=True)
-    adj_9 = models.StringField(blank=True)
-    adj_10 = models.StringField(blank=True)
+    adj_1 = models.StringField(label = '')
+    adj_2 = models.StringField(label = '')
+    adj_3 = models.StringField(label = '')
+    adj_4 = models.StringField(label = '',blank=True)
+    adj_5 = models.StringField(label = '',blank=True)
+    adj_6 = models.StringField(label = '',blank=True)
+    adj_7 = models.StringField(label = '',blank=True)
+    adj_8 = models.StringField(label = '',blank=True)
+    adj_9 = models.StringField(label = '',blank=True)
+    adj_10 = models.StringField(label = '',blank=True)
 
     #survey questions for second evaluation page
     inferred_gender = models.StringField(

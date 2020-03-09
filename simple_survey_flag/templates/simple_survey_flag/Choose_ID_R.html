@@ -6,18 +6,10 @@
 {% endblock %}
 
 {% block content %}
-    {% if player.show_ID == False %}
     <p><b>To create a randomly-generated ID, please click the button below.</b></p>
     <div>
         <button name="show_ID" value= True class="btn btn-primary btn-large">Randomize ID</button>
     </div>
-    {% else %}
-    <p><b>Your randomly generated ID is {{ my_ID }}</b></p>
-
-
-    {% next_button %}
-    {% endif %}
-
 {% endblock %}
 
 <!--
