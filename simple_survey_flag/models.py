@@ -34,6 +34,7 @@ class Constants(BaseConstants):
         flag_choices.append(i+1)
 
 choices2= ["HQQkF10d","pcrnTLUr","7OKdu5sV","wZPeexoH","UkTbcudD","zOz9aTis","9MEcfOL3","SVwZaZ7E""fFeJ8qw2","cRN5swzs","ePrKx7Ma","a1myqS0O","b4RWtHe9","F8I03MH2","C8feS7p2","K4zdqslW","3IbkRtps","CiBI3ZYx","9ME9zgnn","ZdIpJIRH"]
+consonants = ['q','w','r','t','y','p','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
 
 
 class Subsession(BaseSubsession):
@@ -45,13 +46,17 @@ class Subsession(BaseSubsession):
             #p.participant.vars['my_flag_choices'].append(Constants.num_flags + 1)
             p.participant.vars['my_flag_choices'] = [11,17,20,22,25,26] #this line is just for hard-coded flag options. Lines above randomize from the list of all flags.
             random.shuffle(p.participant.vars['my_flag_choices'])
-            p.participant.vars['randomID'] = random.choice(choices2)
+            #p.participant.vars['randomID'] = random.choice(choices2)
+            p.participant.vars['randomID'] = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants)
+            p.participant.vars['randomID'] = p.participant.vars['randomID'] + str(random.randrange(111,1000,1))
             p.participant.vars['treat_assign'] = random.random()
             if p.participant.vars['treat_assign'] <= 0.5:
                 p.participant.vars['other_flag'] = Constants.num_flags + 1
             else:
                 p.participant.vars['other_flag'] = random.randrange(1,Constants.num_flags,1)
-            p.participant.vars['other_id'] = random.choice([i for  i  in choices2 if i != p.participant.vars['randomID']])
+            p.participant.vars['other_id'] = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants)
+            p.participant.vars['other_id'] = p.participant.vars['other_id'] + str(random.randrange(111,1000,1))
+            #p.participant.vars['other_id'] = random.choice([i for  i  in choices2 if i != p.participant.vars['randomID']])
 
 class Group(BaseGroup):
     pass
