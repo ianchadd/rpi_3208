@@ -29,6 +29,11 @@ class Instructions(Page):
 class Informed_Consent(Page):
     form_model = 'player'
     form_fields = ['consent']
+
+    def vars_for_template(self):
+        return dict(
+            informed_consent = 'flag_survey/consent.pdf'
+            )
         
 class Choose_ID_R(Page):
     #player will click a button to choose a random ID on this page
@@ -163,6 +168,7 @@ class Eval_own(Page):
 
 
 page_sequence = [
+    Informed_Consent,
     Instructions,
     Choose_ID_R,ID_result,
     #Choose_ID_C,
