@@ -24,10 +24,10 @@ def get_concat_v(im1, im2):
     return dst
 
 '''
-generate 50 random flags, each with 6 colors
+generate num_flag random flags, each with 6 colors
 '''
 
-for i in range(1,51):
+for i in range(1,num_flag + 1):
     flag = []
     for j in range(1,7):
         color = (random.randint(0,255),random.randint(0,255), random.randint(0,255))
