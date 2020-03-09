@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageColor
 import os, csv, random
 
 flag_list = []
-num_flag = 50
+num_flag = 25
 
 '''
 generate RGB tuples for each possible flag
