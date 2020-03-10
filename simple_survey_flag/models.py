@@ -129,7 +129,7 @@ class Player(BasePlayer):
     
     inferred_income = models.StringField(
         label = '',
-        choices = ['less than $20,000','$20,000 - $40,000','$40,000 - $60,000','$60,000 - $80,000','$80,000 - $100,000','More than $100,000'],
+        choices = ['less than $20,000','$20,000 - $39,999','$40,000 - $59,999','$60,000 - $79,999','$80,000 - $99,999','$100,000 or more'],
         widget = forms.widgets.RadioSelect()
         )
 

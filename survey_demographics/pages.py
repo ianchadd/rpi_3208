@@ -86,6 +86,10 @@ class Politics(Page):
     form_fields = ['econ_politics',
                    'social_politics']
 
+class LGBT_Free(Page):
+    form_model = 'player'
+    form_fields = ['lgbt_free']
+
 class Location(Page):
     form_model = 'player'
     form_fields = ['live_in',
@@ -109,4 +113,5 @@ page_sequence = [Instructions,
                  Ethnicity,
                  Religion,
                  Politics,
+                 LGBT_Free,
                  Location]

@@ -129,6 +129,9 @@ class Eval_adj(Page):
             their_ID = self.player.participant.vars['other_id'],
             participant_vars = str(self.participant.vars)
         )
+    def error_message(self,values):
+        if (values['adj_1'] == values['adj_2']) or (values['adj_1'] == values['adj_3']) or (values['adj_2'] == values['adj_3']):
+            return 'You must submit 3 adjectives/phrases that are different from one another.'
     
 class Eval_survey(Page):
     form_model = 'player'
