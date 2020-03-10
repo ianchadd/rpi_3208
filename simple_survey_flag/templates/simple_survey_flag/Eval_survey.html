@@ -8,36 +8,37 @@
 
 {% block content %}
 {% include Constants.own_ID %}
-
-<p><b>Consider the ID shown below.</b></p>
-
+<br>
+<p>Consider the ID shown below.</p>
+<br>
 {% include Constants.other_ID %}
-<p><b>Suppose you saw this ID and knew that it had been selected by another person in the same way as you selected your own ID for this survey (i.e., they were given a randomly generated name and chose the icon).
+<br>
+<p>Suppose you saw this ID <b>and</b> knew that it had been selected by another person in the same way as you selected your own ID for this survey
+  (i.e. they were given a randomly generated alpha-numeric string of characters and chose the icon).  </p>
+<br>
+<p> Please answer the following questions about <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}.</p>
 
-Please answer the following questions about the person who chose this ID.
-</b></p>
-
-<p><b>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s gender is most likely: </b></p>
+<p>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s gender is most likely: </p>
 
 {% formfield player.inferred_gender%}
 
-<p><b>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s age is most likely: </b></p>
+<p>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s age is most likely: </p>
 
 {% formfield player.inferred_age %}
 
-<p><b>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s income is most likely: </b></p>
+<p>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s income is most likely: </p>
 
 {% formfield player.inferred_income %}
 
-<p><b>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s sexual orientation is most likely: </b></p>
+<p>I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}}'s sexual orientation is most likely: </p>
 
 {% formfield player.inferred_orientation %}
 
-<p><b>When it comes to economic issues, I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}} is politically: </b></p>
+<p>When it comes to economic issues, I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}} is politically: </p>
 
 {% formfield player.inferred_econ_politics %}
 
-<p><b>When it comes to social issues, I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}} is politically: </b></p>
+<p>When it comes to social issues, I think that <img style="height: 30px; width:auto;" src="{% static their_flag %}"/> {{their_ID}} is politically: </p>
 
 {% formfield player.inferred_social_politics %}
 

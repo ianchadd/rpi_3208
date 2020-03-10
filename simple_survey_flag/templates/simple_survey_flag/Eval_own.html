@@ -8,20 +8,21 @@
 
 {% block content %}
 {% include Constants.own_ID %}
-
-<p><b>The ID that you chose is displayed above.</b></p>
-
-<p><b>For the photo portion of your ID, you could have chosen from the following:</b></p>
+<br>
+<p>The ID that you chose is displayed above.</p>
+<br>
+<p>For the icon portion of your ID, you could have chosen from the following:</p>
 <div>
-    <img src="{% static image_path_1 %}"/>
-    <img src="{% static image_path_2 %}"/>
-    <img src="{% static image_path_3 %}"/><br/>
+    <img style = "height:auto; width:33%" src="{% static image_path_1 %}"/>
+    <img style = "height:auto; width:33%" src="{% static image_path_2 %}"/>
+    <img style = "height:auto; width:33%" src="{% static image_path_3 %}"/><br/>
     <br/>
-    <img src="{% static image_path_4 %}"/>
-    <img src="{% static image_path_5 %}"/>
-    <img src="{% static image_path_6 %}"/>
+    <img style = "height:auto; width:33%" src="{% static image_path_4 %}"/>
+    <img style = "height:auto; width:33%" src="{% static image_path_5 %}"/>
+    <img style = "height:auto; width:33%" src="{% static image_path_6 %}"/>
 
 </div>
+<br>
 {% formfields %}
 
 

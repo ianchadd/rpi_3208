@@ -250,6 +250,20 @@ class Player(BasePlayer):
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
         widget = widgets.RadioSelect
         )
+#lgbt_attitude
+    #used in Aksoy et al. EER paper
+    lgbt_free = models.IntegerField(
+        label = 'Do you believe that gay men and lesbians should be free to live their own life as they wish?',
+        choices = [[5,'Strongly Agree'],
+                   [4,'Agree'],
+                   [3,'Neither Agree nor Disagree'],
+                   [2,'Disagree'],
+                   [1,'Strongly Disagree']
+                   ],
+        widget = widgets.RadioSelect
+        )
+
+    
 #locations
     live_in = models.StringField(
         label = 'In which US state/territory do you currently live?',
