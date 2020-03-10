@@ -67,7 +67,7 @@ choices1= [["HQQkF10d","HQQkF10d"], ["pcrnTLUr","pcrnTLUr"], ["7OKdu5sV","7OKdu5
 
 #choices1= [[1,"HQQkF10d"], [2,"pcrnTLUr"], [3,"7OKdu5sV"], [4,"wZPeexoH"], [5,"UkTbcudD"], [6,"zOz9aTis"], [7,"9MEcfOL3"], [8,"SVwZaZ7E"], [9,"fFeJ8qw2"], [10,"cRN5swzs"],\
     # [11,"ePrKx7Ma"], [12,"a1myqS0O"], [13,"b4RWtHe9"], [14,"F8I03MH2"], [15,"C8feS7p2"], [16,"K4zdqslW"], [17,"3IbkRtps"], [18,"CiBI3ZYx"], [19,"9ME9zgnn"], [20,"ZdIpJIRH"]]
-choices = random.choices(choices1, weights = None, k=3)
+#choices = random.choices(choices1, weights = None, k=3)
 
 
 
@@ -85,7 +85,7 @@ class Player(BasePlayer):
         
     otherID = models.StringField(
         label = 'Please choose one of the following:',
-        widget=forms.widgets.RadioSelect(choices=choices)
+        #widget=forms.widgets.RadioSelect(choices=choices)
     )
     
     my_flag = models.IntegerField()
