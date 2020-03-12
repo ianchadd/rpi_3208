@@ -26,6 +26,7 @@ class Constants(BaseConstants):
     own_ID = 'simple_survey_flag/own_ID.html'
     other_ID = 'simple_survey_flag/other_ID.html'
     q_title = 'simple_survey_flag/q_title.html'
+    both_IDs = 'simple_survey_flag/both_IDs.html'
     players_per_group = None
     num_rounds = 1
     num_flags = 25 #number of flags in _static file other than pride flag
@@ -136,7 +137,7 @@ class Player(BasePlayer):
 
     inferred_orientation = models.StringField(
         label = '',
-        choices = ['Heterosexual or Straight', 'Non-heterosexual or non-straight'],
+        choices = ['Heterosexual or Straight', 'Non-heterosexual or Non-straight'],
         widget = forms.widgets.RadioSelect()
         )
     
