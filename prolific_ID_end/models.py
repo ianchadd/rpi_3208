@@ -26,5 +26,5 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    p_ID = models.StringField(label='Paste your Prolific ID here')
+    p_ID = models.StringField()
 
