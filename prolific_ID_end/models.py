@@ -26,5 +26,5 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    p_ID = models.StringField()
+    p_ID = models.StringField(label = '')
 
