@@ -9,8 +9,13 @@ class Instructions(Page):
     
 class Age(Page):
     form_model = 'player'
-    form_fields = ['age', 'yob']
-
+    form_fields = [#'age',
+                   'yob']
+    
+class Attn_Check(Page):
+    form_model = 'player'
+    form_fields = ['attn_check_1']
+    
 class Sex(Page):
     form_model = 'player'
     form_fields = ['sex']
@@ -25,7 +30,12 @@ class Gender(Page):
                    'other_g',
                    'diff_gend']
     def error_message(self,values):
-        if values['other_g'] and type(values['diff_gend']) == type(None):
+        #if values['other_g'] and type(values['diff_gend']) == type(None):
+        #    return 'If you select Other, you must specify in the provided field'
+        
+        if values['male'] == 0 and values['female'] == 0 and values['t_male'] == 0 and values['t_female'] == 0 and values['gnc'] == 0 and values['other_g'] == 0:
+            return 'You must select at least one response.'
+        elif values['other_g'] and type(values['diff_gend']) == type(None):
             return 'If you select Other, you must specify in the provided field'
     
 class Orientation(Page):
@@ -110,6 +120,7 @@ page_sequence = [Instructions,
                  Relationship,
                  Primary_Earner,
                  Income,
+                 Attn_Check,
                  Ethnicity,
                  Religion,
                  Politics,

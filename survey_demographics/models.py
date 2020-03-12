@@ -111,26 +111,37 @@ class Player(BasePlayer):
     female = models.BooleanField(
         label = 'Female',
         widget=widgets.CheckboxInput,
+        initial = False,
         blank = True)
     t_male = models.BooleanField(
         label = 'Trans male / Trans man',
         widget=widgets.CheckboxInput,
+        initial = False,
         blank = True)
     t_female = models.BooleanField(
         label = 'Trans female / Trans woman',
         widget=widgets.CheckboxInput,
+        initial = False,
         blank = True)
     gnc = models.BooleanField(
         label = 'Genderqueer / Gender non-conforming',
         widget=widgets.CheckboxInput,
+        initial = False,
         blank = True)
     other_g = models.BooleanField(
         label = 'Other (please state below)',
         widget=widgets.CheckboxInput,
+        initial = False,
         blank = True)
     diff_gend = models.StringField(
         label = '',
+        initial = '',
         blank = True)
+
+    def diff_gend_error_message(self,value):
+        if self.other_g and type(value) == type(None):
+            return 'If you select Other, you must specify in the provided field'
+            
 #sexual orientation
     orientation = models.StringField(
         label = 'Which do you consider yourself to be:',
@@ -240,20 +251,20 @@ class Player(BasePlayer):
     
 #politics
     econ_politics = models.StringField(
-        label = "On economic issues, politically I am",
+        label = '',
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
         widget = widgets.RadioSelect
         )
     
     social_politics = models.StringField(
-        label = "On social issues, politically I am",
+        label = '',
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
         widget = widgets.RadioSelect
         )
 #lgbt_attitude
     #used in Aksoy et al. EER paper
     lgbt_free = models.IntegerField(
-        label = 'Do you believe that gay men and lesbians should be free to live their own life as they wish?',
+        label = 'Do you believe that gay men and lesbians should be free to live their own lives as they wish?',
         choices = [[5,'Strongly Agree'],
                    [4,'Agree'],
                    [3,'Neither Agree nor Disagree'],
@@ -280,6 +291,11 @@ class Player(BasePlayer):
     other_grew_up_location = models.StringField(
         label = '',
         blank = True
+        )
+#attention check
+    attn_check_1 = models.IntegerField(
+        label = '(Attention Check) Please select 1 in the list below.',
+        choices = [1,2,3,4,5]
         )
         
         

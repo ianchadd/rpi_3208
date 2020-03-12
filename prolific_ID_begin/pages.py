@@ -11,5 +11,8 @@ class P_ID(Page):
     def before_next_page(self):
         self.player.participant.vars['p_id_begin'] = self.player.p_ID
 
+    def error_message(self, values):
+        if len(values['p_ID']) !=24:
+            return 'You must enter a valid 24 character Prolific ID.'
 
 page_sequence = [P_ID]

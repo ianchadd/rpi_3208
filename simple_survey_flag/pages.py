@@ -141,7 +141,8 @@ class Eval_survey(Page):
         'inferred_income',
         'inferred_orientation',
         'inferred_econ_politics',
-        'inferred_social_politics'
+        'inferred_social_politics',
+        'attn_check_3'
         ]
         
     def vars_for_template(self):
