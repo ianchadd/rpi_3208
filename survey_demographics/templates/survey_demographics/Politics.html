@@ -6,9 +6,11 @@
 
 {% block content %}
 
+<p>On <b>economic</b> issues, politically I am:</p>
+    {% formfield player.econ_politics %}
 
-    {% formfields %}
-
+<p>On <b>social</b> issues, politically I am:</p>
+        {% formfield player.social_politics %}
     {% next_button %}
 
 {% endblock %}

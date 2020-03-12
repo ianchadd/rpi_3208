@@ -9,7 +9,8 @@ class Instructions(Page):
     
 class Age(Page):
     form_model = 'player'
-    form_fields = ['age', 'yob']
+    form_fields = [#'age',
+                   'yob']
 
 class Sex(Page):
     form_model = 'player'

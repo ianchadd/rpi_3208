@@ -240,13 +240,13 @@ class Player(BasePlayer):
     
 #politics
     econ_politics = models.StringField(
-        label = "On economic issues, politically I am",
+        label = '',
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
         widget = widgets.RadioSelect
         )
     
     social_politics = models.StringField(
-        label = "On social issues, politically I am",
+        label = '',
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
         widget = widgets.RadioSelect
         )
