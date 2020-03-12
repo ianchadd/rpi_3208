@@ -281,5 +281,10 @@ class Player(BasePlayer):
         label = '',
         blank = True
         )
+#attention check
+    attn_check_1 = models.IntegerField(
+        label = '(Attention Check) Please select 1 in the list below.',
+        choices = [1,2,3,4,5]
+        )
         
         

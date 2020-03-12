@@ -11,7 +11,10 @@ class Age(Page):
     form_model = 'player'
     form_fields = [#'age',
                    'yob']
-
+class Attn_Check(Page):
+    form_model = 'player'
+    form_fields = ['attn_check_1']
+    
 class Sex(Page):
     form_model = 'player'
     form_fields = ['sex']
@@ -111,6 +114,7 @@ page_sequence = [Instructions,
                  Relationship,
                  Primary_Earner,
                  Income,
+                 Attn_Check.
                  Ethnicity,
                  Religion,
                  Politics,

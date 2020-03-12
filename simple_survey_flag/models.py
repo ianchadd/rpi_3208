@@ -150,6 +150,11 @@ class Player(BasePlayer):
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
         widget = forms.widgets.RadioSelect()
         )
+    
+    attn_check_3 = models.IntegerField(
+        label = '(Attention Check) Please select 3 in the list below.',
+        choices = [1,2,3,4,5]
+        )
 
     ID_explain = models.LongStringField(initial = '', label = 'Why did you choose this ID? Please respond with at least 20 characters.')
 
