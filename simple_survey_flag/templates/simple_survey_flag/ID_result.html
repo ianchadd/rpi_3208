@@ -1,9 +1,7 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
-{% block title %}
-    ID Generation
-{% endblock %}
+{% include Constants.q_title %}
 
 {% block content %}
     <p>Your randomly generated ID is {{ my_ID }}</p>

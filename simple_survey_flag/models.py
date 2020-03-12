@@ -25,6 +25,7 @@ class Constants(BaseConstants):
     name_in_url = 'simple_survey_flag'
     own_ID = 'simple_survey_flag/own_ID.html'
     other_ID = 'simple_survey_flag/other_ID.html'
+    q_title = 'simple_survey_flag/q_title.html'
     players_per_group = None
     num_rounds = 1
     num_flags = 25 #number of flags in _static file other than pride flag
