@@ -155,7 +155,8 @@ class Player(BasePlayer):
     
     attn_check_3 = models.IntegerField(
         label = '(Attention Check) Please select 3 in the list below.',
-        choices = [1,2,3,4,5]
+        choices = [1,2,3,4,5],
+        blank = True
         )
 
     ID_explain = models.LongStringField(initial = '', label = 'Why did you choose this ID? Please respond with at least 20 characters.')
