@@ -19,6 +19,12 @@ SESSION_CONFIGS = [
                       'simple_survey_flag',
                       'survey_demographics',
                       'prolific_ID_end']
+    ),
+    dict(
+        name='demo_survey',
+        display_name="Demographic Survey",
+        num_demo_participants=3,
+        app_sequence=['survey_demographics']
     )
 ]
 

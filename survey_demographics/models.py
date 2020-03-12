@@ -111,26 +111,37 @@ class Player(BasePlayer):
     female = models.BooleanField(
         label = 'Female',
         widget=widgets.CheckboxInput,
+        initial = False,
         blank = True)
     t_male = models.BooleanField(
         label = 'Trans male / Trans man',
         widget=widgets.CheckboxInput,
+        initial = False,
         blank = True)
     t_female = models.BooleanField(
         label = 'Trans female / Trans woman',
         widget=widgets.CheckboxInput,
+        initial = False,
         blank = True)
     gnc = models.BooleanField(
         label = 'Genderqueer / Gender non-conforming',
         widget=widgets.CheckboxInput,
+        initial = False,
         blank = True)
     other_g = models.BooleanField(
         label = 'Other (please state below)',
         widget=widgets.CheckboxInput,
+        initial = False,
         blank = True)
     diff_gend = models.StringField(
         label = '',
+        initial = '',
         blank = True)
+
+    def diff_gend_error_message(self,value):
+        if self.other_g and type(value) == type(None):
+            return 'If you select Other, you must specify in the provided field'
+            
 #sexual orientation
     orientation = models.StringField(
         label = 'Which do you consider yourself to be:',
