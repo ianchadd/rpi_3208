@@ -253,7 +253,7 @@ class Player(BasePlayer):
 #lgbt_attitude
     #used in Aksoy et al. EER paper
     lgbt_free = models.IntegerField(
-        label = 'Do you believe that gay men and lesbians should be free to live their own life as they wish?',
+        label = 'Do you believe that gay men and lesbians should be free to live their own lives as they wish?',
         choices = [[5,'Strongly Agree'],
                    [4,'Agree'],
                    [3,'Neither Agree nor Disagree'],
