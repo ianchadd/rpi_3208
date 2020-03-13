@@ -18,7 +18,8 @@ SESSION_CONFIGS = [
         app_sequence=['prolific_ID_begin',
                       'simple_survey_flag',
                       'survey_demographics',
-                      'prolific_ID_end']
+                      'prolific_ID_end'],
+        participation_fee = 2.00
     ),
     dict(
         name='demo_survey',
