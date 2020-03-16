@@ -18,10 +18,10 @@ class P_ID(Page):
 class P_Return(Page):
     form_model = 'player'
     
-        
     def vars_for_template(self):
         return dict(
-            p_return_url = 'https://app.prolific.co/submissions/complete?cc=622B404C',
-            )
+            p_return_url = self.session.config['p_completion_link'],
+        )
+            
 page_sequence = [P_ID,
                  P_Return]

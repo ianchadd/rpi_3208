@@ -19,7 +19,12 @@ SESSION_CONFIGS = [
                       'simple_survey_flag',
                       'survey_demographics',
                       'prolific_ID_end'],
-        participation_fee = 2.00
+        participation_fee = 2.00,
+        p_completion_link = 'xxxxxxxx',
+        doc="""
+    Edit the p_completion_link variable with the completion code for Prolific session
+    """
+        
     ),
     dict(
         name='demo_survey',
