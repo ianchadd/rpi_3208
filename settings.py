@@ -26,6 +26,12 @@ SESSION_CONFIGS = [
         display_name="Demographic Survey",
         num_demo_participants=3,
         app_sequence=['survey_demographics']
+    ),
+    dict(
+        name='volunteer',
+        display_name="Volunteer Dilemma",
+        num_demo_participants=3,
+        app_sequence=['volunteer_dilemma']
     )
 ]
 
@@ -44,6 +50,8 @@ ROOMS = [
         participant_label_file='_rooms/econ101.txt',
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
+    dict(name='prolific_qsp', display_name='Prolific Room for QSP (no participant labels)'),
+
 ]
 
 ADMIN_USERNAME = 'admin'
