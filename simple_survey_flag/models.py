@@ -91,12 +91,22 @@ class Player(BasePlayer):
     )
     
     my_flag = models.IntegerField()
-
+    other_flag = models.IntegerField()
+    
     show_ID = models.BooleanField(initial = False)
 
+    part_vars = models.LongStringField()
+    
     def set_flag(self):
         index = self.my_flag
         self.my_flag = self.participant.vars['my_flag_choices'][index]
+        
+    def participant_vars_dump(self):
+        self.part_vars = str(self.participant.vars)
+        
+    def set_other_flag(self):
+        self.other_flag = self.participant.vars['other_flag']
+        
         
     def set_random_id(self):
         self.randomID = self.participant.vars['randomID']
