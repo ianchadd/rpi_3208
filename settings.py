@@ -18,13 +18,20 @@ SESSION_CONFIGS = [
         app_sequence=['prolific_ID_begin',
                       'simple_survey_flag',
                       'survey_demographics',
-                      'prolific_ID_end']
+                      'prolific_ID_end'],
+        participation_fee = 2.00
     ),
     dict(
         name='demo_survey',
         display_name="Demographic Survey",
         num_demo_participants=3,
         app_sequence=['survey_demographics']
+    ),
+    dict(
+        name='volunteer',
+        display_name="Volunteer Dilemma",
+        num_demo_participants=3,
+        app_sequence=['volunteer_dilemma']
     )
 ]
 
@@ -43,6 +50,8 @@ ROOMS = [
         participant_label_file='_rooms/econ101.txt',
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
+    dict(name='prolific_qsp', display_name='Prolific Room for QSP (no participant labels)'),
+
 ]
 
 ADMIN_USERNAME = 'admin'

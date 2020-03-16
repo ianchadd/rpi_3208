@@ -14,4 +14,14 @@ class P_ID(Page):
     def error_message(self, values):
         if len(values['p_ID']) !=24:
             return 'You must enter a valid 24 character Prolific ID.'
-page_sequence = [P_ID]
+        
+class P_Return(Page):
+    form_model = 'player'
+    
+        
+    def vars_for_template(self):
+        return dict(
+            p_return_url = 'https://app.prolific.co/submissions/complete?cc=622B404C',
+            )
+page_sequence = [P_ID,
+                 P_Return]
