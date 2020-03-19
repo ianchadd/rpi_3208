@@ -154,6 +154,23 @@ class Eval_survey(Page):
             their_ID = self.player.participant.vars['other_id'],
             participant_vars = str(self.participant.vars)
         )
+    
+class Higher_Eval_survey(Page):
+    form_model = 'player'
+    form_fields = [
+        'higher_inferred_gender',
+        'higher_inferred_orientation',
+        'higher_inferred_ally'
+        ]
+        
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.my_flag),
+            my_ID = self.player.my_ID,
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
+            their_ID = self.player.participant.vars['other_id'],
+            participant_vars = str(self.participant.vars)
+        )
 
 class Eval_own(Page):
     form_model = 'player'
@@ -185,5 +202,6 @@ page_sequence = [
     Results,
     Eval_adj,
     Eval_survey,
+    Higher_Eval_survey,
     Eval_own
 ]

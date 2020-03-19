@@ -186,5 +186,26 @@ class Player(BasePlayer):
     def ID_explain_error_message(self, value):
         if len(value) < 20:
             return 'Response must include at lease 20 characters.'
-         
+
+#higher order belief questions
+    higher_inferred_ally = models.IntegerField(
+        label = '',
+        choices = [
+                    [1,'Yes'],
+                    [0,'No']
+                   ],
+        widget = forms.widgets.RadioSelect()
+        )
+    
+    higher_inferred_gender = models.StringField(
+        label = '',
+        choices = ['Male','Female','Trans/Intersex/Other'],
+        widget = forms.widgets.RadioSelect()
+        )
+    
+    higher_inferred_orientation = models.StringField(
+        label = '',
+        choices = ['Heterosexual or Straight', 'Non-heterosexual or Non-straight'],
+        widget = forms.widgets.RadioSelect()
+        )
 
