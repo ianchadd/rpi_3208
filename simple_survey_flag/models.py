@@ -166,6 +166,15 @@ class Player(BasePlayer):
         widget = forms.widgets.RadioSelect()
         )
     
+    inferred_ally = models.IntegerField(
+        label = '',
+        choices = [
+                    [1,'Yes'],
+                    [0,'No']
+                   ],
+        widget = forms.widgets.RadioSelect()
+        )
+    
     attn_check_3 = models.IntegerField(
         label = '(Attention Check) Please select 3 in the list below.',
         choices = [1,2,3,4,5],

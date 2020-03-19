@@ -142,6 +142,7 @@ class Eval_survey(Page):
         'inferred_orientation',
         'inferred_econ_politics',
         'inferred_social_politics',
+        'inferred_ally',
         'attn_check_3'
         ]
         
