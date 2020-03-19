@@ -202,6 +202,6 @@ page_sequence = [
     Results,
     Eval_adj,
     Eval_survey,
-    #Higher_Eval_survey,
+    Higher_Eval_survey,
     Eval_own
 ]
