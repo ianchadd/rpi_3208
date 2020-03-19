@@ -100,6 +100,11 @@ class LGBT_Free(Page):
     form_model = 'player'
     form_fields = ['lgbt_free']
 
+class LGBT_Ally(Page):
+    form_model = 'player'
+    form_fields = ['consider_lgbt_ally',
+                   'program_lgbt_ally']
+
 class Location(Page):
     form_model = 'player'
     form_fields = ['live_in',
@@ -125,4 +130,5 @@ page_sequence = [Instructions,
                  Religion,
                  Politics,
                  LGBT_Free,
+                 LGBT_Ally,
                  Location]

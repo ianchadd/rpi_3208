@@ -298,5 +298,17 @@ class Player(BasePlayer):
         choices = [1,2,3,4,5],
         blank = True
         )
+    
+#allyship questions
+    consider_lgbt_ally = models.IntegerField(
+        label = 'Do you consider yourself to be an ally to the LGBTQ+ community?',
+        choices = [[1, 'Yes'],[0,'No']],
+        widget = widgets.RadioSelect
+        )
+    program_lgbt_ally = models.IntegerField(
+        label = 'Are you formally registered as an LGBTQ+ ally (e.g. Safe Zone Training, Campus Ally programs, etc.) in your workplace, school, university, or other institution?',
+        choices = [[1, 'Yes'],[0,'No']],
+        widget = widgets.RadioSelect
+        )
         
         

@@ -37,6 +37,10 @@
 
 {% formfield player.inferred_social_politics %}
 
+<p>Do you think that <img style="height: 25px; width:auto;" src="{% static their_flag %}"/> <b>{{their_ID}}</b> considers themselves to be an ally to the LGBTQ+ community? </p>
+
+{% formfield player.inferred_ally %}
+
 {% formfield player.attn_check_3 %}
 
 {% next_button %}

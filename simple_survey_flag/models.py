@@ -46,16 +46,13 @@ class Subsession(BaseSubsession):
             #random.shuffle(p.participant.vars['my_flag_choices'])
             #p.participant.vars['my_flag_choices'] = p.participant.vars['my_flag_choices'][:Constants.num_choices]
             #p.participant.vars['my_flag_choices'].append(Constants.num_flags + 1)
-            p.participant.vars['my_flag_choices'] = [11,17,20,22,25,26] #this line is just for hard-coded flag options. Lines above randomize from the list of all flags.
+            #p.participant.vars['my_flag_choices'] = [11,17,20,22,25,26] #this line is just for hard-coded flag options. Lines above randomize from the list of all flags. Used until March 19th
+            p.participant.vars['my_flag_choices'] = [11,17,26] #restricted as of March 19th to just three flags
             random.shuffle(p.participant.vars['my_flag_choices'])
             #p.participant.vars['randomID'] = random.choice(choices2)
             p.participant.vars['randomID'] = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants)
             p.participant.vars['randomID'] = p.participant.vars['randomID'] + str(random.randrange(111,1000,1))
             p.participant.vars['treat_assign'] = random.random()
-            if p.participant.vars['treat_assign'] <= 0.5:
-                p.participant.vars['other_flag'] = Constants.num_flags + 1
-            else:
-                p.participant.vars['other_flag'] = random.randrange(1,Constants.num_flags,1)
             p.participant.vars['other_id'] = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants)
             p.participant.vars['other_id'] = p.participant.vars['other_id'] + str(random.randrange(111,1000,1))
             #p.participant.vars['other_id'] = random.choice([i for  i  in choices2 if i != p.participant.vars['randomID']])
@@ -105,8 +102,14 @@ class Player(BasePlayer):
         self.part_vars = str(self.participant.vars)
         
     def set_other_flag(self):
-        self.other_flag = self.participant.vars['other_flag']
-        
+        choices = [i for i in self.participant.vars['my_flag_choices'] if i!=Constants.num_flags+1 and i!=self.my_flag]
+
+        if self.participant.vars['treat_assign'] <= 0.5:
+            self.participant.vars['other_flag'] = Constants.num_flags + 1
+            self.other_flag = self.participant.vars['other_flag']
+        else:
+            self.participant.vars['other_flag'] = random.choice(choices)
+            self.other_flag = self.participant.vars['other_flag']
         
     def set_random_id(self):
         self.randomID = self.participant.vars['randomID']
@@ -160,6 +163,15 @@ class Player(BasePlayer):
     inferred_social_politics = models.StringField(
         label = '',
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
+        widget = forms.widgets.RadioSelect()
+        )
+    
+    inferred_ally = models.IntegerField(
+        label = '',
+        choices = [
+                    [1,'Yes'],
+                    [0,'No']
+                   ],
         widget = forms.widgets.RadioSelect()
         )
     
