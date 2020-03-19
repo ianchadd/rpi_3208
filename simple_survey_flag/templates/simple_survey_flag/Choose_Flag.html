@@ -15,9 +15,6 @@
       .f1{background-image:url("{% static image_path_1 %}");}
       .f2{background-image:url("{% static image_path_2 %}");}
       .f3{background-image:url("{% static image_path_3 %}");}
-      .f4{background-image:url("{% static image_path_4 %}");}
-      .f5{background-image:url("{% static image_path_5 %}");}
-      .f6{background-image:url("{% static image_path_6 %}");}
 
       .flag-selector input:active +.drinkcard-flag{opacity: .9;}
       .flag-selector input:checked +.drinkcard-flag{
@@ -56,6 +53,7 @@
         <label for="a2" class="drinkcard-flag f2"></label>
       <input id="a3" type="radio" name="my_flag" value="2" />
         <label for="a3" class="drinkcard-flag f3"></label><br/>
+<!--
       <input id="a4" type="radio" name="my_flag" value="3" />
         <label for="a4" class="drinkcard-flag f4"></label>
       <input id="a5" type="radio" name="my_flag" value="4" />
@@ -63,7 +61,7 @@
       <input id="a6" type="radio" name="my_flag" value="5" />
         <label for="a6" class="drinkcard-flag f6"></label><br/>
     </div>
-
+-->
 <!--
     <div>
         <input id="a1" type="radio" name="my_flag" value="0" />
@@ -73,11 +71,7 @@
         <input id="a3" type="radio" name="my_flag" value="2" />
           <label for="a3"><img src="{% static image_path_3 %}"/></label><br/>
         <input id="a4" type="radio" name="my_flag" value="3" />
-          <label for="a4"><img src="{% static image_path_4 %}"/></label><br/>
-        <input id="a5" type="radio" name="my_flag" value="4" />
-          <label for="a5"><img src="{% static image_path_5 %}"/></label><br/>
-        <input id="a6" type="radio" name="my_flag" value="5" />
-          <label for="a6"><img src="{% static image_path_6 %}"/></label><br/>
+
     </div> -->
 
     {% next_button %}
