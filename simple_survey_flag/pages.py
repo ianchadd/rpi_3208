@@ -155,7 +155,7 @@ class Eval_survey(Page):
             participant_vars = str(self.participant.vars)
         )
     
-class Higher_Eval_survey(Page):
+class Higher_eval(Page):
     form_model = 'player'
     form_fields = [
         'higher_inferred_gender',
@@ -202,6 +202,6 @@ page_sequence = [
     Results,
     Eval_adj,
     Eval_survey,
-    Higher_Eval_survey,
+    Higher_eval,
     Eval_own
 ]
