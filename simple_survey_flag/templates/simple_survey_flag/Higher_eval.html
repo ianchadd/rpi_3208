@@ -8,7 +8,7 @@
 <br>
 {% include Constants.both_IDs %}
 <br>
-<!--
+
 <p>Suppose the ID on the right has been selected by another person in the same way as you selected your own ID for this survey (i.e., they were given a randomly generated alpha-numeric string of characters and chose the icon).  </p>
 <br>
 <p> Please answer the following questions regarding what you think <b>most people</b> (not yourself) would think about <img style="height: 25px; width:auto;" src="{% static their_flag %}"/> <b>{{their_ID}}</b>.</p>
@@ -24,6 +24,6 @@
 <p>Do you think that <b>most people</b> would think that <img style="height: 25px; width:auto;" src="{% static their_flag %}"/> <b>{{their_ID}}</b> considers themselves to be an ally to the LGBTQ+ community? </p>
 
 {% formfield player.higher_inferred_ally %}
--->
+
 {% next_button %}
 {% endblock %}
