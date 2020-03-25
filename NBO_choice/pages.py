@@ -3,6 +3,26 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
+class Instructions(Page):
+    form_model = 'player'
+    form_fields = []
+    
+    def is_displayed(self):
+        return self.round_number == 1
+    
+    def vars_for_template(self):
+        return dict(
+            img = 'no_choice/option_images/option_example.png',
+            )
+
+class Instructions_NBO(Page):
+    form_model = 'player'
+    form_fields = []
+    
+    def is_displayed(self):
+        return self.round_number == 1
+
+    
 class NBO_choice(Page):
     form_model = 'player'
     form_fields = ['nbo_choice']
@@ -80,6 +100,8 @@ class Final_Results(Page):
 
 
 page_sequence = [
+    Instructions,
+    Instructions_NBO,
     NBO_choice,
     o10a40,
     Results,

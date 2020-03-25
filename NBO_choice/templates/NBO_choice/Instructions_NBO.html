@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+  <span style="font-family: courier">
+    <p>
+      In each Decision Problem, you could see {{Constants.num_options}} options, each with {{Constants.num_attributes}} characters (i.e. #'s and %'s).
+    </p>
+    <p>
+      However, in each Decision Problem, you will be given a chance to choose an <b>outside option</b> that is worth {{Constants.nbo_value}} points.
+      If you choose this outside option, you will earn {{Constants.nbo_value}} points for that Decision Problem,
+      but you will <b>not</b> see the regular options for that Decision Problem.
+    </p>
+
+    <p>
+      In other words, if you choose the outside option for some Decision Problem, you are choosing not to see your options for that problem
+      and will earn {{Constants.nbo_value}} points instead.
+    </p>
+    <p>If you choose to see your options for the Decision Problem, you will have X seconds to evaluate your options and choose one.
+    If you do not choose an option within the X seconds, you will earn 0 points for the Decision Problem.
+    </p>
+
+  </span>
+    {% next_button %}
+
+{% endblock %}
