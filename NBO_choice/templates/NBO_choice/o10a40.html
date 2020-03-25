@@ -8,7 +8,7 @@
 {% block content %}
 <style>
   .option-selector input{
-      margin:0;padding:0;
+      margin:0px;padding:0px;
       -webkit-appearance:none;
          -moz-appearance:none;
               appearance:none;
@@ -29,7 +29,8 @@
       background-size:contain;
       background-repeat:no-repeat;
       display:inline-block;
-      width:600px;height:50px;
+      margin:0px;padding-top:8px;
+      width:800px;height:50px;
       -webkit-transition: all 100ms ease-in;
          -moz-transition: all 100ms ease-in;
               transition: all 100ms ease-in;
@@ -43,6 +44,7 @@
               filter: grayscale(0) opacity(.9);
   }
 
+
   /* Extras */
   a:visited{color:#888}
   a{color:#444;text-decoration:none;}
@@ -52,17 +54,26 @@
     <p>
         Please select one of the following options.<br/>
     </p>
-
+    <br/>
     <p>
         If this problem is chosen for payment, you will be paid for the number of {{Constants.pay_attribute}} displayed for the option you choose. <br/>
     </p>
-  </span>
+
     <div id="choices_2" class="option-selector">
+      <table style="width:100%; font-size:20px">
+        <tr><td></td><td></td></tr>
       {% for i, img in img_list %}
-      <input id="{{i}}" type="radio" name="option_choose" value= "{{i}}" />
-        <label for="{{i}}" class = "card-option o{{i}}"></label><br/>
+      <tr>
+        <td> Option {{i}}: </td>
+        <td> <center> <input id="{{i}}" type="radio" name="option_choose" value= "{{i}}" />
+             <label for="{{i}}" class = "card-option"><img src="{% static img %}"></label> </center> </td>
+      </tr>
       {% endfor %}
+      <tr><td></td><td></td></tr>
+      </table>
     </div>
+
+    </span>
 
 
     {% next_button %}
