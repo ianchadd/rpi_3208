@@ -37,7 +37,12 @@ SESSION_CONFIGS = [
         display_name="Volunteer Dilemma",
         num_demo_participants=3,
         app_sequence=['volunteer_dilemma']
-    )
+    ),
+    dict(
+        name='nbo_choice',
+        num_demo_participants=1,
+        app_sequence=['NBO_choice']
+    ),
 ]
 
 # ISO-639 code
@@ -56,7 +61,10 @@ ROOMS = [
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
     dict(name='prolific_qsp', display_name='Prolific Room for QSP (no participant labels)'),
-
+    dict(
+        name='rpi_lab',
+        display_name='RPI Virtual Econ Laboratory'
+    ),
 ]
 
 ADMIN_USERNAME = 'admin'

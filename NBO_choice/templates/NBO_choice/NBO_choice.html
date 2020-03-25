@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Decision Problem: {{player.round_number}}
+{% endblock %}
+
+{% block content %}
+  <span style="font-family: courier">
+    <p>
+      In this Decision Problem, you could see {{Constants.num_options}} options, each with {{Constants.num_attributes}} 40 attributes. <br/>
+
+      Or, you could take an outside option that will pay {{Constants.nbo_value}} ECU and not see any of these options.<br/>
+    </p>
+{% formfields %}
+<p>
+  Remember, if you take the outside option, you will be paid {{Constants.nbo_value}} ECU and will not see options for this decision problem. <br/>
+  If you don't, you will move on the Decision Problem where you will choose from among the displayed options. <br/>
+</p>
+  </span>
+    {% next_button %}
+
+{% endblock %}

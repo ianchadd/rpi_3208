@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        You chose  {{ player.option_choose }}.
+    </p>
+    <p>
+        If this round is chosen for payment, you will earn {{ player.value }}.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

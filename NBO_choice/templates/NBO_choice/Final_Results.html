@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Final Results
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        You will be paid for your decision in round {{my_pay_round}}.
+    </p>
+
+    <p>
+          {% if my_nbo_choice %}
+
+          You chose the No Choice option in this round and earned {{ my_payoff}}.
+
+          {% else %}
+
+          You chose from available options in that round and earned {{ my_payoff}}.
+
+          {% endif %}
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

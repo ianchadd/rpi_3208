@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Decision Problem: {{player.round_number}}
+{% endblock %}
+
+{% block content %}
+  <span style="font-family: courier">
+    <p>
+        Please select one of the following options.<br/>
+    </p>
+
+    <p>
+        If this problem is chosen for payment, you will be paid for the number of {{Constants.pay_attribute}} displayed for the option you choose. <br/>
+    </p>
+
+    <div>
+        <input id="a1" type="radio" name="option_choose" value="1" />
+          <label for="a1"><img src="{% static image_path_1 %}"/></label><br/>
+        <input id="a2" type="radio" name="option_choose" value="2" />
+          <label for="a2"><img src="{% static image_path_2 %}"/></label><br/>
+        <input id="a3" type="radio" name="option_choose" value="3" />
+          <label for="a3"><img src="{% static image_path_3 %}"/></label><br/>
+        <input id="a4" type="radio" name="option_choose" value="4" />
+          <label for="a4"><img src="{% static image_path_4 %}"/></label><br/>
+        <input id="a5" type="radio" name="option_choose" value="5" />
+          <label for="a5"><img src="{% static image_path_5 %}"/></label><br/>
+        <input id="a6" type="radio" name="option_choose" value="6" />
+          <label for="a6"><img src="{% static image_path_6 %}"/></label><br/>
+        <input id="a7" type="radio" name="option_choose" value="7" />
+          <label for="a7"><img src="{% static image_path_7 %}"/></label><br/>
+        <input id="a8" type="radio" name="option_choose" value="8" />
+          <label for="a8"><img src="{% static image_path_8 %}"/></label><br/>
+        <input id="a9" type="radio" name="option_choose" value="9" />
+          <label for="a9"><img src="{% static image_path_9 %}"/></label><br/>
+        <input id="a10" type="radio" name="option_choose" value="10" />
+          <label for="a10"><img src="{% static image_path_10 %}"/></label><br/>
+    </div>
+  </span>
+    {% next_button %}
+
+{% endblock %}
