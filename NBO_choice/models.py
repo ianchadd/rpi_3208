@@ -21,9 +21,10 @@ class Constants(BaseConstants):
     num_rounds = len(option_values)
     #num_rounds = 3
     nbo_value = 2
-    num_options = 10
-    num_attributes = 40
+    num_options = 8
+    num_attributes = 50
     pay_attribute = '#'
+    timeout = 120 #set at 2 minutes for now as a bookmark
 
 
 class Subsession(BaseSubsession):

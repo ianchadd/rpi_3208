@@ -35,6 +35,8 @@ class NBO_choice(Page):
 class o10a40(Page):
     form_model = 'player'
     form_fields = ['option_choose']
+    timeout_seconds = Constants.timeout
+    
     def is_displayed(self):
         return self.player.nbo_choice == False
     def vars_for_template(self):
@@ -72,6 +74,8 @@ class o10a40(Page):
     def before_next_page(self):
             self.player.set_value()
             self.player.set_payoff()
+            if self.timeout_happened:
+                self.player.payoff = 0
     
     
 #class ResultsWaitPage(WaitPage):
