@@ -6,27 +6,22 @@
 {% endblock %}
 
 {% block content %}
+<style>
+  .border { border-width: 10px; border-color: black; border-style: solid; }
+</style>
+
   <span style="font-family: courier">
     <p>
       In this study, you will make decisions in each of {{Constants.num_rounds}} Decision Problems.<br/>
     </p>
-    <p>
-      In each Decision Problem, your task is to earn points which will be converted to cash at the end of the experiment at a rate of X.
-    </p>
+    <p>In each Decision Problem, you will see a screen that is similar to what is displayed below:</p>
+    <p><img src="{% static dp_img %}" class = "border"></p>
 
-    <p> You earn points in each Decision Problem by choosing one from a number of strings of characters.
-      Each string of characters is a combination of #'s and %'s.
-      The number of points you earn in the Decision Problem is the number of #'s in the option that you choose.
+    <p>On this screen, you can see some "options" which are just displayed as a combination of pound signs (#) and percent signs (%). Your job is to choose one of these options in the Decision Problem.
     </p>
-
-    <p>An example option is displayed below:</p>
-    <p><img src="{% static img %}"></p>
-    <p>Notice that this option has 50 characters, 28 of which are #'s.
-      Then you would earn 28 points if you chose this option in the Decision Problem.
+    <p>  Choosing an option earns you points which will be converted to cash at the end of the experiment at a rate of X and paid to you. The number of points an option will earn you is equal to the number of pound signs (#) in the option.
     </p>
-    <p>At the end of this study, one Decsision Problem out of the {{Constants.num_rounds}} you complete will be chosen at random
-    and you will be paid for your points earned in that Decision Problem <b>only</b>.
-    This is a bonus payment in addition to the X payment you will receive just for completing this study.  </p>
+    <p>On the next page, we'll go through an example of one option and the number of points it would earn you.</p>
   </span>
     {% next_button %}
 

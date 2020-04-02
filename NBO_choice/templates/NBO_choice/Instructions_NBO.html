@@ -8,20 +8,16 @@
 {% block content %}
   <span style="font-family: courier">
     <p>
-      In each Decision Problem, you could see {{Constants.num_options}} options, each with {{Constants.num_attributes}} characters (i.e. #'s and %'s).
+      At the beginning of each Decision Problem, you are going to be given a choice between two courses of action: <br>
+      1. See {{Constants.num_options}} options, each with {{Constants.num_attributes}} characters (i.e. #'s and %'s) and earn points by choosing from those options <br>
+      2. Take an <b>outside option</b> that earns you {{Constants.nbo_value}} points and skip seeing any displayed options
     </p>
     <p>
-      However, in each Decision Problem, you will be given a chance to choose an <b>outside option</b> that is worth {{Constants.nbo_value}} points.
-      If you choose this outside option, you will earn {{Constants.nbo_value}} points for that Decision Problem,
-      but you will <b>not</b> see the regular options for that Decision Problem.
+      This <b>outside option</b> has no display and earns you {{Constants.nbo_value}} points if you choose it.
+      Choosing the <b>outside option</b> effectively means that you are skipping making any choices in the Decision Problem, opting to take {{Constants.nbo_value}} points instead of earning them by selecting a displayed option.
     </p>
-
     <p>
-      In other words, if you choose the outside option for some Decision Problem, you are choosing not to see your options for that problem
-      and will earn {{Constants.nbo_value}} points instead.
-    </p>
-    <p>If you choose to see your options for the Decision Problem, you will have X seconds to evaluate your options and choose one.
-    If you do not choose an option within the X seconds, you will earn 0 points for the Decision Problem.
+      You will be given this choice in <b>every</b> Decision Problem. So if you decide to take the <b>outside option</b> in one Decision Problem, you can still choose to see your displayed options in a later Decision Problem.
     </p>
 
   </span>

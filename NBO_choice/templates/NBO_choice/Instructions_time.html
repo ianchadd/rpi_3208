@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+<style>
+  .border { border-width: 10px; border-color: black; border-style: solid; }
+</style>
+
+  <span style="font-family: courier">
+
+<p>
+  Whenever you see the {{Constants.num_options}} displayed options that you can choose, you will only have {{Constants.timeout}} seconds to make a choice.
+</p>
+<p>
+  To make a choice you must click on the option you are choosing and then click the Next button on the screen.
+</p>
+<p>
+  If you do not submit a choice of option in the Decision Problem before your time is up, you will earn 0 points for that Decision Problem. 
+</p>
+</span>
+    {% next_button %}
+
+{% endblock %}
