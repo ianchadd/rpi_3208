@@ -48,8 +48,9 @@ class Player(BasePlayer):
 
     nbo_choice = models.BooleanField(
             choices=[
-                [True, 'I want to take the outside option of ' + str(Constants.nbo_value) + ' ECU'],
                 [False, 'I want to choose for myself, show me my options'],
+                [True, 'I want to take the outside option of ' + str(Constants.nbo_value) + ' points'],
+                
             ],
         label='Would you like to take the outside option?',
         widget=widgets.RadioSelect)

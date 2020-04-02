@@ -12,7 +12,7 @@ class Instructions(Page):
     
     def vars_for_template(self):
         return dict(
-            img = 'no_choice/option_images/option_example.png',
+            dp_img = 'no_choice/dp_example.png'
             )
 
 class Instructions_NBO(Page):
@@ -21,6 +21,32 @@ class Instructions_NBO(Page):
     
     def is_displayed(self):
         return self.round_number == 1
+    
+class Instructions_payment(Page):
+    form_model = 'player'
+    form_fields = []
+    
+    def is_displayed(self):
+        return self.round_number == 1
+    
+class Instructions_time(Page):
+    form_model = 'player'
+    form_fields = []
+    
+    def is_displayed(self):
+        return self.round_number == 1
+    
+class Instructions_option_example(Page):
+    form_model = 'player'
+    form_fields = []
+    
+    def is_displayed(self):
+        return self.round_number == 1
+    
+    def vars_for_template(self):
+        return dict(
+            opt_img = 'no_choice/option_images/option_example.png',
+            )
 
     
 class NBO_choice(Page):
@@ -105,7 +131,10 @@ class Final_Results(Page):
 
 page_sequence = [
     Instructions,
+    Instructions_option_example,
     Instructions_NBO,
+    Instructions_time,
+    Instructions_payment,
     NBO_choice,
     o10a40,
     #Results,
