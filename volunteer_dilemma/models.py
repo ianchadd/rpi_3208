@@ -21,7 +21,7 @@ Resolution, 605-610.
 
 class Constants(BaseConstants):
     name_in_url = 'volunteer_dilemma'
-    players_per_group = 3
+    players_per_group = 4
     num_rounds = 1
 
     instructions_template = 'volunteer_dilemma/instructions.html'
