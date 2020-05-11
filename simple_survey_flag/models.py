@@ -37,6 +37,10 @@ class Constants(BaseConstants):
 
 choices2= ["HQQkF10d","pcrnTLUr","7OKdu5sV","wZPeexoH","UkTbcudD","zOz9aTis","9MEcfOL3","SVwZaZ7E""fFeJ8qw2","cRN5swzs","ePrKx7Ma","a1myqS0O","b4RWtHe9","F8I03MH2","C8feS7p2","K4zdqslW","3IbkRtps","CiBI3ZYx","9ME9zgnn","ZdIpJIRH"]
 consonants = ['q','w','r','t','y','p','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
+id_choices = []
+for i in range(3):
+    new_id = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + str(random.randrange(111,1000,1))
+    id_choices.append(new_id)
 
 
 class Subsession(BaseSubsession):
@@ -50,11 +54,11 @@ class Subsession(BaseSubsession):
             p.participant.vars['my_flag_choices'] = [11,17,26] #restricted as of March 19th to just three flags
             random.shuffle(p.participant.vars['my_flag_choices'])
             #p.participant.vars['randomID'] = random.choice(choices2)
-            p.participant.vars['randomID'] = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants)
-            p.participant.vars['randomID'] = p.participant.vars['randomID'] + str(random.randrange(111,1000,1))
+            #p.participant.vars['randomID'] = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants)
+            #p.participant.vars['randomID'] = p.participant.vars['randomID'] + str(random.randrange(111,1000,1))
             p.participant.vars['treat_assign'] = random.random()
-            p.participant.vars['other_id'] = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants)
-            p.participant.vars['other_id'] = p.participant.vars['other_id'] + str(random.randrange(111,1000,1))
+            #p.participant.vars['other_id'] = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants)
+            #p.participant.vars['other_id'] = p.participant.vars['other_id'] + str(random.randrange(111,1000,1))
             #p.participant.vars['other_id'] = random.choice([i for  i  in choices2 if i != p.participant.vars['randomID']])
 
 class Group(BaseGroup):
@@ -77,15 +81,16 @@ class Player(BasePlayer):
     my_ID = models.StringField(initial = 'initial')
     randomID = models.StringField(initial = 'initial') 
     customID = models.StringField(label = 'Please create your 8-character user ID.' )
-
+    chooseID = models.StringField(
+        label = 'Please choose one of the following IDs.',
+        choices = id_choices,
+        widget = forms.widgets.RadioSelect(),
+        )
+    
     def customID_error_message(self, value):
         if len(value) != 8:
             return 'Chosen ID must have only 8 characters.'
-        
-    otherID = models.StringField(
-        label = 'Please choose one of the following:',
-        #widget=forms.widgets.RadioSelect(choices=choices)
-    )
+
     
     my_flag = models.IntegerField()
     other_flag = models.IntegerField()

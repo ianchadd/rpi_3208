@@ -69,10 +69,10 @@ class Choose_ID_C(Page):
 class Choose_ID_O(Page):
     #player will be able to choose from a list of randomly generated ID options
     form_model = 'player'
-    form_fields = ['otherID']
+    form_fields = ['chooseID']
 
     def before_next_page(self):
-        self.player.set_ID(self.player.otherID)
+        self.player.set_ID(self.player.chooseID)
 
 class Choose_Flag(Page):
     #player will choose a flag icon on this page
@@ -195,13 +195,14 @@ class Eval_own(Page):
 page_sequence = [
     Informed_Consent,
     Instructions,
-    Choose_ID_R,ID_result,
+    #Choose_ID_R,
+    #ID_result,
     #Choose_ID_C,
-    #Choose_ID_O,
+    Choose_ID_O,
     Choose_Flag,
     Results,
-    Eval_adj,
-    Eval_survey,
-    Higher_eval,
-    Eval_own
+    #Eval_adj,
+    #Eval_survey,
+    #Higher_eval,
+    #Eval_own
 ]
