@@ -33,6 +33,12 @@ SESSION_CONFIGS = [
         app_sequence=['survey_demographics']
     ),
     dict(
+        name='demo_survey_2',
+        display_name="Demographic Survey 2",
+        num_demo_participants=3,
+        app_sequence=['survey_demographics']
+    ),
+    dict(
         name='volunteer',
         display_name="Volunteer Dilemma",
         num_demo_participants=3,
