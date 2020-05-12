@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+
+    <div class="form-group required">
+        <table class="table table-bordered text-center" style="width: auto; margin: auto">
+            <tr>
+                <th colspan="2" rowspan="3"></th>
+            </tr>
+            <tr>
+              <th colspan="2"> <span style="font-size:30px"> The Other Participant</span> <br> <img style="height: 50px; width:auto;" src="{% static their_flag %}"/> <span style="font-size:50px">{{their_ID}}</span></th>
+            </tr>
+            <tr>
+                <th>A</th>
+                <th>B</th>
+            </tr>
+            <tr>
+                <th rowspan="2"><img style="height: 50px; width:auto;" src="{% static my_flag %}"/> <span style="font-size:50px">{{my_ID}}</span></th>
+                <td><button name="decision_first" value="A" class="btn btn-primary btn-large">I choose A</button></td>
+                <td>{{Constants.both_defect_payoff}}, {{Constants.both_defect_payoff}}</td>
+                <td>{{Constants.betray_payoff}}, {{ Constants.betrayed_payoff }} </td>
+            </tr>
+            <tr>
+                <td><button name="decision_first" value="B" class="btn btn-primary btn-large">I choose B</button></td>
+                <td>{{ Constants.betrayed_payoff }}, {{Constants.betray_payoff}} </td>
+                <td>{{Constants.both_cooperate_payoff}}, {{Constants.both_cooperate_payoff}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+    {% include Constants.instructions_template %}
+
+{% endblock %}

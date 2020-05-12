@@ -113,9 +113,11 @@ class Player(BasePlayer):
         if self.participant.vars['treat_assign'] <= 0.5:
             self.participant.vars['other_flag'] = Constants.num_flags + 1
             self.other_flag = self.participant.vars['other_flag']
+            self.participant.vars['third_flag'] = random.choice(choices)
         else:
             self.participant.vars['other_flag'] = random.choice(choices)
             self.other_flag = self.participant.vars['other_flag']
+            self.participant.vars['third_flag'] = Constants.num_flags + 1
         
     def set_random_id(self):
         self.randomID = self.participant.vars['randomID']
@@ -125,6 +127,8 @@ class Player(BasePlayer):
         self.participant.vars['my_ID'] = self.my_ID
         other_ID_choices = [i for i in id_choices if i != self.my_ID]
         self.participant.vars['other_id'] = random.choice(other_ID_choices)
+        other_ID_choices = [i for i in other_ID_choices if i!= self.participant.vars['other_id']]
+        self.participant.vars['third_id'] = random.choice(other_ID_choices)
 
     #adjective strings for evaluation page
     adj_1 = models.StringField(label = '')
