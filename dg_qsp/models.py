@@ -23,9 +23,9 @@ S285-S300.
 
 class Constants(BaseConstants):
     name_in_url = 'dg_qsp'
-    players_per_group = 1 #pairs are made ex-post
+    players_per_group = None #pairs are made ex-post
     num_rounds = 1
-
+    both_IDs = 'dg_qsp/both_IDs.html'
     instructions_template = 'dg_qsp/instructions.html'
 
     # Initial amount allocated to the dictator

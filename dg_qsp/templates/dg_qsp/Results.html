@@ -7,14 +7,7 @@
 
 {% block content %}
     <p>
-
-        {% if player.id_in_group == 1 %}
-            You decided to keep <strong>{{ group.kept }}</strong> for yourself.
-        {% else %}
-            Participant 1 decided to keep <strong>{{ group.kept }}</strong>, so
-            you got <strong>{{ offer }}</strong>.
-        {% endif %}
-
+            You decided to keep <strong>{{ player.kept }}</strong> for yourself.
         {% next_button %}
     </p>
     {% include Constants.instructions_template %}

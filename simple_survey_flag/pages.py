@@ -101,6 +101,8 @@ class Choose_Flag(Page):
 
 
 class Results(Page):
+
+        
     def vars_for_template(self):
         return dict(
             my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.my_flag),

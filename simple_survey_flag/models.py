@@ -102,6 +102,7 @@ class Player(BasePlayer):
     def set_flag(self):
         index = self.my_flag
         self.my_flag = self.participant.vars['my_flag_choices'][index]
+        self.participant.vars['my_flag'] = self.my_flag
         
     def participant_vars_dump(self):
         self.part_vars = str(self.participant.vars)
@@ -121,6 +122,9 @@ class Player(BasePlayer):
 
     def set_ID(self,this):
         self.my_ID = this
+        self.participant.vars['my_ID'] = self.my_ID
+        other_ID_choices = [i for i in id_choices if i != self.my_ID]
+        self.participant.vars['other_id'] = random.choice(other_ID_choices)
 
     #adjective strings for evaluation page
     adj_1 = models.StringField(label = '')
