@@ -37,11 +37,12 @@ class Constants(BaseConstants):
 
 choices2= ["HQQkF10d","pcrnTLUr","7OKdu5sV","wZPeexoH","UkTbcudD","zOz9aTis","9MEcfOL3","SVwZaZ7E""fFeJ8qw2","cRN5swzs","ePrKx7Ma","a1myqS0O","b4RWtHe9","F8I03MH2","C8feS7p2","K4zdqslW","3IbkRtps","CiBI3ZYx","9ME9zgnn","ZdIpJIRH"]
 consonants = ['q','w','r','t','y','p','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
-id_choices = []
+id_choices = ['rzxw4' , 'wxzr4', 'zrwx4' ]
+'''
 for i in range(3):
     new_id = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + str(random.randrange(111,1000,1))
     id_choices.append(new_id)
-
+'''
 
 class Subsession(BaseSubsession):
     def creating_session(self):
