@@ -43,6 +43,20 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
         app_sequence=['NBO_choice']
     ),
+    dict(
+        name='id_dg',
+        display_name="QSP ID + DG",
+        num_demo_participants=1,
+        app_sequence=['prolific_ID_begin',
+                      'simple_survey_flag',
+                      'dg_qsp',
+                      'prolific_ID_end'],
+        participation_fee = 2.00,
+        p_completion_link = 'xxxxxxxx',
+        doc="""
+    Edit the p_completion_link variable with the completion code for Prolific session
+    """  
+    ),
 ]
 
 # ISO-639 code
