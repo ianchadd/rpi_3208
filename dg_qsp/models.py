@@ -43,8 +43,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     kept = models.CurrencyField(
     doc="""Amount dictator decided to keep for himself""",
-    min=0,
-    max=Constants.endowment,
+    choices = currency_range(c(0),c(100), c(1)),
     )
     gave = models.CurrencyField()
 
