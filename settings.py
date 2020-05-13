@@ -51,7 +51,7 @@ SESSION_CONFIGS = [
     ),
     dict(
         name='id_dg',
-        display_name="QSP ID + DG",
+        display_name="QSP ID + DG (Testing)",
         num_demo_participants=1,
         app_sequence=['prolific_ID_begin',
                       'simple_survey_flag',

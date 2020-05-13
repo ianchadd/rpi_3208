@@ -4,7 +4,25 @@ from .models import Constants
 
 
 class Introduction(Page):
-    timeout_seconds = 100
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
+            my_ID = self.player.participant.vars['my_ID'],
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
+            their_ID = self.player.participant.vars['other_id'],
+            participant_vars = str(self.participant.vars)
+        )
+    
+class Scenario_1(Page):
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
+            my_ID = self.player.participant.vars['my_ID'],
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
+            their_ID = self.player.participant.vars['other_id'],
+            participant_vars = str(self.participant.vars)
+        )
+class Scenario_2(Page):
     def vars_for_template(self):
         return dict(
             my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
@@ -14,6 +32,38 @@ class Introduction(Page):
             participant_vars = str(self.participant.vars)
         )
 
+class Scenario_3(Page):
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
+            my_ID = self.player.participant.vars['my_ID'],
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
+            their_ID = self.player.participant.vars['other_id'],
+            participant_vars = str(self.participant.vars)
+        )
+
+class Scenario_4(Page):
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
+            my_ID = self.player.participant.vars['my_ID'],
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
+            their_ID = self.player.participant.vars['other_id'],
+            participant_vars = str(self.participant.vars)
+        )
+
+class Understanding(Page):
+    form_model = 'player'
+    form_fields = []
+    def vars_for_template(self):
+        return dict(
+            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
+            my_ID = self.player.participant.vars['my_ID'],
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
+            their_ID = self.player.participant.vars['other_id'],
+            participant_vars = str(self.participant.vars)
+        )
+    
 class Decision_First(Page):
     form_model = 'player'
     form_fields = ['decision_first']
@@ -60,6 +110,10 @@ class Results_First(Page):
         )
 
 page_sequence = [Introduction,
+                 Scenario_1,
+                 Scenario_2,
+                 Scenario_3,
+                 Scenario_4,
                  Decision_First,
                  #ResultsWaitPage,
                  Results_First

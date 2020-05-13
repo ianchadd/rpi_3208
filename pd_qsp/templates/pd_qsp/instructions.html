@@ -11,11 +11,12 @@
           href="{% static 'global/matrix.css' %}"/>
 
     <p>
-        In this study, you will be randomly and anonymously paired with another
-        participant.
-        Each of you simultaneously and privately chooses whether you want to
-        cooperate or defect.
-        Your payoffs will be determined by the choices of both as below:
+
+      In this Part, you are randomly matched with another participant with the following ID: <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+       You and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>will choose an action (A or B) simultaneously.
+       Your earnings are determined by the action you choose and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> chooses.
+      After everyone makes their decisions, we will calculate your earnings.
+
     </p>
     <p><i>In each cell, the amount to the left is the payoff for
         you and to the right for the other participant.</i></p>
@@ -25,24 +26,30 @@
                 <th colspan="2" rowspan="3"></th>
             </tr>
             <tr>
-              <th colspan="2"> The Other Participant</th>
+              <th colspan="2"> <span style="font-size:30px"> The Other Participant</span> <br> <img style="height: 50px; width:auto;" src="{% static their_flag %}"/> <span style="font-size:50px">{{their_ID}}</span></th>
             </tr>
             <tr>
                 <th>A</th>
                 <th>B</th>
             </tr>
             <tr>
-                <th rowspan="2"> You </th>
-                <td> A </td>
+                <th rowspan="2"><img style="height: 50px; width:auto;" src="{% static my_flag %}"/> <span style="font-size:50px">{{my_ID}}</span></th>
+                <td>A</td>
                 <td>{{Constants.both_defect_payoff}}, {{Constants.both_defect_payoff}}</td>
                 <td>{{Constants.betray_payoff}}, {{ Constants.betrayed_payoff }} </td>
             </tr>
             <tr>
-                <td> B </td>
+                <td>B</td>
                 <td>{{ Constants.betrayed_payoff }}, {{Constants.betray_payoff}} </td>
                 <td>{{Constants.both_cooperate_payoff}}, {{Constants.both_cooperate_payoff}}</td>
             </tr>
         </table>
-
+        <p>
+          Please note: Due to our ID selection process, it is possible that multiple people will have the same ID. Our random matching mechanism is designed so that each participant is paid only once for this part of the study if this part is randomly selected for payment.
+        </p>
+        <p>
+          Also note: Our random matching mechanism might lead to multiple people being matched with <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>. In this case, we will randomly choose one person's decision to count, so that <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>. is only paid once for this choice.
+          You will not know whether this is the case for your current decision, so it is in your best interest to make this decision as if it matters for  <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}'s</b> payoff.
+        </p>
 </div>
 </div>
