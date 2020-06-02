@@ -41,6 +41,7 @@ class Subsession(BaseSubsession):
             rounds = list(range(1,Constants.num_rounds + 1))
             random.shuffle(rounds)
             p.participant.vars['pay_round'] = rounds[0]
+            p.participant.vars['points_per_dollar'] = int(1/self.session.config['real_world_currency_per_point'])
 
 
 class Group(BaseGroup):

@@ -47,19 +47,22 @@ SESSION_CONFIGS = [
     dict(
         name='nbo_choice',
         num_demo_participants=3,
-        app_sequence=['NBO_choice']
+        app_sequence=['NBO_choice'],
+        real_world_currency_per_point = 0.10
     ),
     dict(
         name='nbo_choice_baseline',
         num_demo_participants=3,
         app_sequence=['NBO_choice'],
-        treat = 'baseline'
+        treat = 'baseline',
+        real_world_currency_per_point = 0.10
     ),
     dict(
         name='nbo_choice_nbo',
         num_demo_participants=3,
         app_sequence=['NBO_choice'],
-        treat = 'nbo'
+        treat = 'nbo',
+        real_world_currency_per_point = 0.10
     ),
     dict(
         name='id_dg',

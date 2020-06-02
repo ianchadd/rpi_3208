@@ -12,6 +12,7 @@ class Instructions(Page):
     
     def vars_for_template(self):
         return dict(
+            exchange_rate = self.participant.vars['points_per_dollar'],
             dp_img = 'no_choice/dp_example.png',
             participant_vars = str(str(self.participant.vars))
             )
