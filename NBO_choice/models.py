@@ -30,7 +30,7 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     def creating_session(self):
         import itertools
-        treats = itertools.cycle(['no_choice','choice']) #no choice refers to baseline and choice refers to having NBO
+        treats = itertools.cycle(['baseline','nbo']) #no choice refers to baseline and choice refers to having NBO
         
         for p in self.get_players():
             p.participant.vars['treat'] = next(treats) #sets treatment var at participant level with balanced treatment

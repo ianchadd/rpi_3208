@@ -53,13 +53,13 @@ SESSION_CONFIGS = [
         name='nbo_choice_baseline',
         num_demo_participants=3,
         app_sequence=['NBO_choice'],
-        treat = 'no_choice'
+        treat = 'baseline'
     ),
     dict(
         name='nbo_choice_nbo',
         num_demo_participants=3,
         app_sequence=['NBO_choice'],
-        treat = 'choice'
+        treat = 'nbo'
     ),
     dict(
         name='id_dg',

@@ -21,7 +21,7 @@ class Instructions_NBO(Page):
     form_fields = []
     
     def is_displayed(self):
-        return self.round_number == 1
+        return self.round_number == 1 and self.player.participant.vars['treat'] == 'nbo'
 
     def vars_for_template(self):
         return dict(
@@ -36,6 +36,27 @@ class Instructions_payment(Page):
     
     def vars_for_template(self):
         return dict(
+            nbo_scheme = self.participant.vars['treat'] == 'nbo',
+            participant_vars = str(str(self.participant.vars))
+            )
+    
+class Instructions_options(Page):
+    form_model = 'player'
+    form_fields = []
+    
+    def is_displayed(self):
+        return self.round_number == 1
+    
+    def vars_for_template(self):
+        nbo_scheme = self.participant.vars['treat'] == 'nbo'
+        if nbo_scheme:
+            value_distribution_img = 'no_choice/distribution_nbo.png'
+        else:
+            value_distribution_img = 'no_choice/distribution.png'
+            
+        return dict(
+            nbo_scheme = nbo_scheme,
+            value_distribution_img = value_distribution_img,
             participant_vars = str(str(self.participant.vars))
             )
     
@@ -67,6 +88,9 @@ class Instructions_option_example(Page):
 class NBO_choice(Page):
     form_model = 'player'
     form_fields = ['nbo_choice']
+
+    def is_displayed(self):
+        return self.participant.vars['treat'] == 'nbo'
     
     def vars_for_template(self):
         return dict(
@@ -78,13 +102,13 @@ class NBO_choice(Page):
             self.player.set_value()
             self.player.set_payoff()
 
-class o10a40(Page):
+class Decision(Page):
     form_model = 'player'
     form_fields = ['option_choose']
     timeout_seconds = Constants.timeout
     
     def is_displayed(self):
-        return self.player.nbo_choice == False
+        return self.player.nbo_choice == False or self.participant.vars['treat'] == 'baseline'
     def vars_for_template(self):
         vars_dict = {}
         img_list = []
@@ -153,10 +177,11 @@ page_sequence = [
     Instructions,
     Instructions_option_example,
     Instructions_NBO,
+    Instructions_options,
     Instructions_time,
     Instructions_payment,
     NBO_choice,
-    o10a40,
+    Decision,
     #Results,
     Final_Results
 ]
