@@ -20,8 +20,8 @@ class Constants(BaseConstants):
     option_values = option_value_list
     num_rounds = len(option_values)
     #num_rounds = 3
-    nbo_value = 2
-    num_options = 8
+    nbo_value = 14
+    num_options = 10
     num_attributes = 50
     pay_attribute = '#'
     timeout = 120 #set at 2 minutes for now as a bookmark
@@ -29,7 +29,11 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self):
+        import itertools
+        treats = itertools.cycle(['no_choice','choice']) #no choice refers to baseline and choice refers to having NBO
+        
         for p in self.get_players():
+            p.participant.vars['treat'] = next(treats) #sets treatment var at participant level with balanced treatment
             p.participant.vars['order'] = list(range(1,Constants.num_rounds + 1))
             random.shuffle(p.participant.vars['order'])
             rounds = list(range(1,Constants.num_rounds + 1))
