@@ -46,7 +46,7 @@ SESSION_CONFIGS = [
     ),
     dict(
         name='nbo_choice',
-        num_demo_participants=1,
+        num_demo_participants=3,
         app_sequence=['NBO_choice']
     ),
     dict(
