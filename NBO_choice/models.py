@@ -4,6 +4,7 @@ from otree.api import (
 )
 import random
 import csv
+import ast
 option_value_list = []
 with open("_static/no_choice/options_input.csv", newline='') as csvfile:
     my_list = csv.reader(csvfile, delimiter=',')
@@ -62,11 +63,26 @@ class Player(BasePlayer):
         label='Would you like to take the outside option?',
         widget=widgets.RadioSelect)
     
-    option_values = models.IntegerField(
-        label='These are the values for each option',
-        widget=widgets.RadioSelect)
+    option_values = models.StringField()
     
     option_choose = models.IntegerField()
+
+    round_max = models.IntegerField()
+
+    correct = models.BooleanField()
+
+    def set_option_values(self):
+        self.option_values = str(Constants.option_values[self.participant.vars['order'][self.round_number-1]-1])
+
+    def set_round_max(self):
+        vals = self.option_values
+        vals = ast.literal_eval(vals)
+        vals = [int(i) for i in vals]
+        vals.sort()
+        self.round_max = vals[-1]
+
+    def set_correct(self):
+        self.correct = self.value == self.round_max
     
     def set_value(self):
         if self.nbo_choice:

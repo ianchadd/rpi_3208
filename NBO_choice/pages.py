@@ -95,7 +95,7 @@ class NBO_choice(Page):
     
     def vars_for_template(self):
         return dict(
-            participant_vars = str(str(self.participant.vars))
+            participant_vars = str(str(self.participant.vars)),
             )
     
     def before_next_page(self):
@@ -111,6 +111,8 @@ class Decision(Page):
     def is_displayed(self):
         return self.player.nbo_choice == False or self.participant.vars['treat'] == 'baseline'
     def vars_for_template(self):
+        self.player.set_option_values()
+        self.player.set_round_max()
         vars_dict = {}
         img_list = []
         '''
@@ -138,7 +140,9 @@ class Decision(Page):
         
         return dict(
             img_list = img_list,
-            problem = self.participant.vars['order'][self.round_number-1]
+            problem = self.participant.vars['order'][self.round_number-1],
+            option_values = self.player.option_values,
+            round_max = self.player.round_max
             )
         
         #return vars_dict
@@ -147,6 +151,7 @@ class Decision(Page):
             self.player.set_payoff()
             if self.timeout_happened:
                 self.player.payoff = 0
+            self.player.set_correct()
     
     
 #class ResultsWaitPage(WaitPage):
