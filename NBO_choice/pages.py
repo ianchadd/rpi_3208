@@ -12,7 +12,8 @@ class Instructions(Page):
     
     def vars_for_template(self):
         return dict(
-            dp_img = 'no_choice/dp_example.png'
+            dp_img = 'no_choice/dp_example.png',
+            participant_vars = str(str(self.participant.vars))
             )
 
 class Instructions_NBO(Page):
@@ -21,7 +22,11 @@ class Instructions_NBO(Page):
     
     def is_displayed(self):
         return self.round_number == 1
-    
+
+    def vars_for_template(self):
+        return dict(
+            participant_vars = str(str(self.participant.vars))
+            )
 class Instructions_payment(Page):
     form_model = 'player'
     form_fields = []
@@ -29,12 +34,21 @@ class Instructions_payment(Page):
     def is_displayed(self):
         return self.round_number == 1
     
+    def vars_for_template(self):
+        return dict(
+            participant_vars = str(str(self.participant.vars))
+            )
+    
 class Instructions_time(Page):
     form_model = 'player'
     form_fields = []
     
     def is_displayed(self):
         return self.round_number == 1
+    def vars_for_template(self):
+        return dict(
+            participant_vars = str(str(self.participant.vars))
+            )
     
 class Instructions_option_example(Page):
     form_model = 'player'
@@ -46,12 +60,18 @@ class Instructions_option_example(Page):
     def vars_for_template(self):
         return dict(
             opt_img = 'no_choice/option_images/option_example.png',
+            participant_vars = str(str(self.participant.vars))
             )
 
     
 class NBO_choice(Page):
     form_model = 'player'
     form_fields = ['nbo_choice']
+    
+    def vars_for_template(self):
+        return dict(
+            participant_vars = str(str(self.participant.vars))
+            )
     
     def before_next_page(self):
         if self.player.nbo_choice:
