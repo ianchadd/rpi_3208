@@ -67,6 +67,10 @@ class Player(BasePlayer):
     
     option_choose = models.IntegerField()
 
+    def option_choose_error_message(self,value):
+        if type(value) == type(None):
+            return 'You must select one of the displayed options.'
+
     round_max = models.IntegerField()
 
     correct = models.BooleanField()

@@ -47,22 +47,37 @@ SESSION_CONFIGS = [
     dict(
         name='nbo_choice',
         num_demo_participants=3,
-        app_sequence=['NBO_choice'],
-        real_world_currency_per_point = 0.10
+        app_sequence=['prolific_ID_begin',
+                      'informed_consent',
+                      'NBO_choice',
+                      'survey_demographics_nbo',
+                      'prolific_ID_end',],
+        real_world_currency_per_point = 0.10,
+        consent = 'no_choice/consent.pdf',
+        p_completion_link = 'xxxxxxxx',
+        doc="""
+    Edit the p_completion_link variable with the completion code for Prolific session
+    """ 
     ),
     dict(
         name='nbo_choice_baseline',
         num_demo_participants=3,
-        app_sequence=['NBO_choice'],
+        app_sequence=['informed_consent',
+                      'NBO_choice',
+                      'survey_demographics_nbo'],
         treat = 'baseline',
-        real_world_currency_per_point = 0.10
+        real_world_currency_per_point = 0.10,
+        consent = 'no_choice/consent.pdf'
     ),
     dict(
         name='nbo_choice_nbo',
         num_demo_participants=3,
-        app_sequence=['NBO_choice'],
+        app_sequence=['informed_consent',
+                      'NBO_choice',
+                      'survey_demographics_nbo'],
         treat = 'nbo',
-        real_world_currency_per_point = 0.10
+        real_world_currency_per_point = 0.10,
+        consent = 'no_choice/consent.pdf'
     ),
     dict(
         name='id_dg',

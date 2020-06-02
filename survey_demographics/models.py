@@ -128,6 +128,11 @@ class Player(BasePlayer):
         widget=widgets.CheckboxInput,
         initial = False,
         blank = True)
+    nb = models.BooleanField(
+        label = 'Nonbinary',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
     other_g = models.BooleanField(
         label = 'Other (please state below)',
         widget=widgets.CheckboxInput,

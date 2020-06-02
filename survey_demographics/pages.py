@@ -27,6 +27,7 @@ class Gender(Page):
                    't_male',
                    't_female',
                    'gnc',
+                   'nb',
                    'other_g',
                    'diff_gend']
     def error_message(self,values):

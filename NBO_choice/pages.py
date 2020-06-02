@@ -145,17 +145,16 @@ class Decision(Page):
             round_max = self.player.round_max
             )
         
-        #return vars_dict
     def before_next_page(self):
             self.player.set_value()
             self.player.set_payoff()
             if self.timeout_happened:
                 self.player.payoff = 0
             self.player.set_correct()
-    
-    
-#class ResultsWaitPage(WaitPage):
-
+            
+    def error_message(self,values):
+        if type(values['option_choose']) == type(None):
+            return 'You must select of the displayed options.'
             
 class Results(Page):
     def vars_for_template(self):
