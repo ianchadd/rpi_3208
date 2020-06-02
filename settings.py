@@ -50,6 +50,18 @@ SESSION_CONFIGS = [
         app_sequence=['NBO_choice']
     ),
     dict(
+        name='nbo_choice_baseline',
+        num_demo_participants=3,
+        app_sequence=['NBO_choice'],
+        treat = 'no_choice'
+    ),
+    dict(
+        name='nbo_choice_nbo',
+        num_demo_participants=3,
+        app_sequence=['NBO_choice'],
+        treat = 'choice'
+    ),
+    dict(
         name='id_dg',
         display_name="QSP ID + DG (Testing)",
         num_demo_participants=1,

@@ -34,6 +34,8 @@ class Subsession(BaseSubsession):
         
         for p in self.get_players():
             p.participant.vars['treat'] = next(treats) #sets treatment var at participant level with balanced treatment
+            if 'treat' in self.session.config:
+                p.participant.vars['treat'] = self.session.config['treat']
             p.participant.vars['order'] = list(range(1,Constants.num_rounds + 1))
             random.shuffle(p.participant.vars['order'])
             rounds = list(range(1,Constants.num_rounds + 1))
