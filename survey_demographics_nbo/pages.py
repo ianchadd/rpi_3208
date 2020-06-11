@@ -132,4 +132,5 @@ page_sequence = [Instructions,
                  #Politics,
                  #LGBT_Free,
                  #LGBT_Ally,
-                 Location]
+                 #Location
+                 ]
