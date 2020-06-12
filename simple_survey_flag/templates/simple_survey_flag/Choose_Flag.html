@@ -1,12 +1,19 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
-{% include Constants.q_title %}
+{% block title %}
+  Part 1: Creation of Personal ID
+{% endblock %}
 
 {% block content %}
-    Please choose an icon for your ID from the options below. <br>
-    Once chosen, your ID will always be shown to you whenever it is necessary. That is, you <b>will not</b> need to remember which icon you chose or which random alpha-numeric ID was assigned to you. <br>
-    
+<p>
+  Please choose an icon for your ID from the options below.
+</p>
+<p>
+  Once chosen, your ID will always be shown to you whenever it is necessary.
+  That is, you <b>will not</b> need to remember which icon you chose or which random alpha-numeric ID was assigned to you. <br>
+</p>
+
     <style>
       .flag-selector input{
           margin:0;padding:0;

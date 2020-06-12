@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Part 2
+{% endblock %}
+
+{% block content %}
+<table class="table table-bordered text-center" style="width: auto; margin: auto">
+    <tr>
+        <th colspan="2" rowspan="3"></th>
+    </tr>
+    <tr>
+      <th colspan="2"> <span style="font-size:30px"> The Other Participant</span> <br> <img style="height: 50px; width:auto;" src="{% static their_flag %}"/> <span style="font-size:50px">{{their_ID}}</span></th>
+    </tr>
+    <tr>
+        <th><span style="background-color: #FFFF00">A</span></th>
+        <th>B</th>
+    </tr>
+    <tr>
+        <th rowspan="2"><img style="height: 50px; width:auto;" src="{% static my_flag %}"/> <span style="font-size:50px">{{my_ID}}</span></th>
+        <th><span >A</span></th>
+        <td><span >{{Constants.both_defect_payoff}}, {{Constants.both_defect_payoff}}</span></td>
+        <td>{{Constants.betray_payoff}}, {{ Constants.betrayed_payoff }} </td>
+    </tr>
+    <tr>
+        <th><span style="background-color: #FFFF00">B</span></th>
+        <td><span style="background-color: #FFFF00">{{ Constants.betrayed_payoff }}, {{Constants.betray_payoff}}</span> </td>
+        <td>{{Constants.both_cooperate_payoff}}, {{Constants.both_cooperate_payoff}}</td>
+    </tr>
+</table>
+<br>
+<p>If you choose B and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> chooses A: you earn {{Constants.betrayed_payoff}} and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> earns {{Constants.betray_payoff}}.</p>
+    {% next_button %}
+
+{% endblock %}

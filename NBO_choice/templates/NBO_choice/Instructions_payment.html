@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+
 <style>
   .border { border-width: 10px; border-color: black; border-style: solid; }
 </style>
@@ -15,12 +16,24 @@
 <p>
   At the end of the study, one of the {{Constants.num_rounds}} Decision Problems you completed will be chosen at random and you will <b>only</b> be paid for the points that you earned in that Decision Problem.
 </p>
+
+{% if nbo_scheme %}
+
 <p>If you chose to see your displayed options for that Decision Problem, you will be paid the number of points awarded by the option that you chose in that Decision Problem. Remember that you earn 0 points if you
 do not choose an option and click Next in the time allotted.</p>
 <p>If you chose the <b>outside option</b> for that Decision Problem, you will be paid for the {{Constants.nbo_value}} points that you earned.</p>
+
+{% else %}
+
+<p>You will be paid the number of points awarded by the option that you chose in that Decision Problem. Remember that you earn 0 points if you
+do not choose an option and click Next in the time allotted.</p>
+
+{% endif %}
+
 <p>You will not know which Decision Problem will be chosen at random for payment while you are making decisions. So it is in your best interest to act as if each Decision Problem is the one for which you will be paid.</p>
-<p>Clicking on the Next button below will bring you to the first Decision Problem.</p>
+<p><b>Clicking on the Next button below will bring you to the first Decision Problem.</b></p>
   </span>
+
     {% next_button %}
 
 {% endblock %}

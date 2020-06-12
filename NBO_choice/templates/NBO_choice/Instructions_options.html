@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+<style>
+  .border { border-width: 10px; border-color: black; border-style: solid; }
+</style>
+
+  <span style="font-family: courier">
+
+    <p>All of the option values come from the probability distribution displayed below:</p>
+    <p><img src="{% static value_distribution_img %}" class = "border"></p>
+    <p>In order to generate options for each Decision Problem, we drew {{Constants.num_options}} of them
+      randomly using the distribution above. We then checked whether there were multiple options with the
+        highest value (i.e the highest number of #s). If there were, we drew {{Constants.num_options}} again from the same distribution.
+        We repeated this process for each Decision Problem until each Decision Problem had a unique option with maximum value.
+    </p>
+    {% if nbo_scheme %}
+    <p>Note also where the value of the <b>outside option</b> is in the distribution above.</p>
+    {% endif %}
+  </span>
+
+    {% next_button %}
+
+{% endblock %}

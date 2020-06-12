@@ -12,7 +12,9 @@ class Instructions(Page):
     
     def vars_for_template(self):
         return dict(
-            dp_img = 'no_choice/dp_example.png'
+            exchange_rate = self.participant.vars['points_per_dollar'],
+            dp_img = 'no_choice/dp_example.png',
+            participant_vars = str(str(self.participant.vars))
             )
 
 class Instructions_NBO(Page):
@@ -20,8 +22,12 @@ class Instructions_NBO(Page):
     form_fields = []
     
     def is_displayed(self):
-        return self.round_number == 1
-    
+        return self.round_number == 1 and self.player.participant.vars['treat'] == 'nbo'
+
+    def vars_for_template(self):
+        return dict(
+            participant_vars = str(str(self.participant.vars))
+            )
 class Instructions_payment(Page):
     form_model = 'player'
     form_fields = []
@@ -29,12 +35,42 @@ class Instructions_payment(Page):
     def is_displayed(self):
         return self.round_number == 1
     
+    def vars_for_template(self):
+        return dict(
+            nbo_scheme = self.participant.vars['treat'] == 'nbo',
+            participant_vars = str(str(self.participant.vars))
+            )
+    
+class Instructions_options(Page):
+    form_model = 'player'
+    form_fields = []
+    
+    def is_displayed(self):
+        return self.round_number == 1
+    
+    def vars_for_template(self):
+        nbo_scheme = self.participant.vars['treat'] == 'nbo'
+        if nbo_scheme:
+            value_distribution_img = 'no_choice/distribution_nbo.png'
+        else:
+            value_distribution_img = 'no_choice/distribution.png'
+            
+        return dict(
+            nbo_scheme = nbo_scheme,
+            value_distribution_img = value_distribution_img,
+            participant_vars = str(str(self.participant.vars))
+            )
+    
 class Instructions_time(Page):
     form_model = 'player'
     form_fields = []
     
     def is_displayed(self):
         return self.round_number == 1
+    def vars_for_template(self):
+        return dict(
+            participant_vars = str(str(self.participant.vars))
+            )
     
 class Instructions_option_example(Page):
     form_model = 'player'
@@ -46,26 +82,37 @@ class Instructions_option_example(Page):
     def vars_for_template(self):
         return dict(
             opt_img = 'no_choice/option_images/option_example.png',
+            participant_vars = str(str(self.participant.vars))
             )
 
     
 class NBO_choice(Page):
     form_model = 'player'
     form_fields = ['nbo_choice']
+
+    def is_displayed(self):
+        return self.participant.vars['treat'] == 'nbo'
+    
+    def vars_for_template(self):
+        return dict(
+            participant_vars = str(str(self.participant.vars)),
+            )
     
     def before_next_page(self):
         if self.player.nbo_choice:
             self.player.set_value()
             self.player.set_payoff()
 
-class o10a40(Page):
+class Decision(Page):
     form_model = 'player'
     form_fields = ['option_choose']
     timeout_seconds = Constants.timeout
     
     def is_displayed(self):
-        return self.player.nbo_choice == False
+        return self.player.nbo_choice == False or self.participant.vars['treat'] == 'baseline'
     def vars_for_template(self):
+        self.player.set_option_values()
+        self.player.set_round_max()
         vars_dict = {}
         img_list = []
         '''
@@ -93,19 +140,21 @@ class o10a40(Page):
         
         return dict(
             img_list = img_list,
-            problem = self.participant.vars['order'][self.round_number-1]
+            problem = self.participant.vars['order'][self.round_number-1],
+            option_values = self.player.option_values,
+            round_max = self.player.round_max
             )
         
-        #return vars_dict
     def before_next_page(self):
             self.player.set_value()
             self.player.set_payoff()
             if self.timeout_happened:
                 self.player.payoff = 0
-    
-    
-#class ResultsWaitPage(WaitPage):
-
+            self.player.set_correct()
+            
+    def error_message(self,values):
+        if type(values['option_choose']) == type(None):
+            return 'You must select of the displayed options.'
             
 class Results(Page):
     def vars_for_template(self):
@@ -133,10 +182,11 @@ page_sequence = [
     Instructions,
     Instructions_option_example,
     Instructions_NBO,
+    Instructions_options,
     Instructions_time,
     Instructions_payment,
     NBO_choice,
-    o10a40,
+    Decision,
     #Results,
     Final_Results
 ]

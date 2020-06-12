@@ -5,26 +5,26 @@
     <h3>
         Instructions
     </h3>
-    {% include Constants.both_IDs %}
-    <p>
-        In this part of the survey, you will be paired with another Participant
-        whose ID is shown above. They chose their ID in the same way that you did.
-        That is, they chose from a list of several alpha-numeric Names and a list
-        of several Icons.
-    </p>
-    <p>
-        Your given {{ Constants.endowment }} to split between you and
-        this other Participant. From the  {{ Constants.endowment }}, you
-        will choose a number X points to retain for yourself.
-    </p>
+<p>
+  In Part 2, you are randomly matched with another participant with the following ID: <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+</p>
+
+<p>
+  You will be asked to make one simple decision that can affect the payoff of <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> for this study.
+</p>
+<p>
+  Your Decision: You will be asked how you would like to allocate {{ Constants.endowment }} between yourself and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+</p>
+<p>
+  You can keep any amount in increments of 1 points. The remaining amount, if any, will be given to <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+</p>
 
     <p>
-        The remaining points will be given to the
-        other Participant.
+      Please note: Due to our ID selection process, it is possible that multiple people will have the same ID. Our random matching mechanism is designed so that each participant is paid only once for this part of the study if this part is randomly selected for payment.
     </p>
-
     <p>
-        [Notes]
+      Also note: Our random matching mechanism might lead to multiple people being matched with <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>. In this case, we will randomly choose one person's decision to count, so that <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>. is only paid once for this choice.
+      You will not know whether this is the case for your current decision, so it is in your best interest to make this decision as if it matters for  <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}'s</b> payoff.
     </p>
 </div>
 </div>
