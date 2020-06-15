@@ -1,12 +1,20 @@
 from os import environ
+import json
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
-
+sample_participants = []
+with open('sample_participants.json') as sample_participants:
+    sample_participants=json.load(sample_participants)
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
+    real_world_currency_per_point=1.00, participation_fee=1.50, doc="",
+    data_pages_enabled=True,
+    sample_participants=sample_participants,
+    num_sample_participants=10,
+    round_values = ["0.25", "0.50","0.75","1.00","1.25","1.50","1.75"],
+    seconds_for_counting_task=10
 )
 
 
@@ -25,6 +33,31 @@ SESSION_CONFIGS = [
     Edit the p_completion_link variable with the completion code for Prolific session
     """
         
+    ),
+    dict(
+        name='QCP',
+        num_demo_participants=1,
+        #use_browser_bots=True,
+        app_sequence=[
+            #'Introduction',
+            #'Introduction_Practice',
+            'Game_1',
+            'Game_1_Game',
+            'Game_1_Data',
+            'Game_2',
+            'Game_2_Game',
+            'Game_2_Data',
+            'Game_3',
+            'Game_3_Game',
+            'Game_3_Data',
+            'Game_4',
+            'Game_4_Data',
+            #'Game_5',
+            #'Game_5_Game',
+            #'Game_5_Data',
+            'Performance_Guesses',
+            #'Survey',
+            'Summary']
     ),
     dict(
         name='demo_survey',
@@ -143,7 +176,7 @@ Here are some oTree games.
 # don't share this with anybody.
 SECRET_KEY = '7vfsh(zo@d)v)zizkf#@xqzb3q%juzu65zoh4r+#$tckdfji5r'
 
-INSTALLED_APPS = ['otree']
+INSTALLED_APPS = ['otree','custom_templates']
 
 # inactive session configs
 # dict(name='trust', display_name="Trust Game", num_demo_participants=2, app_sequence=['trust', 'payment_info']),

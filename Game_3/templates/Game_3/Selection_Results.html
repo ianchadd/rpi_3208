@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load custom_tags %}
+
+{% block title %}
+    Game 3 – Choice
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Randomly Chosen Rate: ${{ value }}
+    </p>
+    <p>
+        At this rate, you chose to be paid by {% if game_3_piece_rate %} <strong>piece rate</strong> {% else %} <strong>tournament</strong> {% endif %} scheme.
+    </p>
+    <p>
+        Your payment per piece will be {% if game_3_piece_rate %} $0.50 {% else %} ${{ value }} {% endif %}
+    </p>
+
+    <br>
+
+    {% delayed_next %}
+
+{% endblock %}
