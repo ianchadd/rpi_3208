@@ -39,8 +39,8 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
         #use_browser_bots=True,
         app_sequence=[
-            #'Introduction',
-            #'Introduction_Practice',
+            'Introduction',
+            'Introduction_Practice',
             'Game_1',
             'Game_1_Game',
             'Game_1_Data',
