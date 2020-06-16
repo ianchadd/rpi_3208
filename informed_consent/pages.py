@@ -9,7 +9,8 @@ class Informed_Consent(Page):
 
     def vars_for_template(self):
         return dict(
-            informed_consent = self.session.config['consent']
+            informed_consent = self.session.config['consent'],
+            message = self.session.config['consent_additional_message']
             )
         
 
