@@ -13,6 +13,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     data_pages_enabled=True,
     sample_participants=sample_participants,
     num_sample_participants=10,
+    consent_additional_message = """""",
     round_values = ["0.25", "0.50","0.75","1.00","1.25","1.50","1.75"],
     seconds_for_counting_task=10
 )
@@ -88,6 +89,10 @@ SESSION_CONFIGS = [
         real_world_currency_per_point = 0.10,
         consent = 'no_choice/consent.pdf',
         p_completion_link = 'xxxxxxxx',
+        consent_additional_message = """
+        Please note that the form above is used for several experiments.
+        In this experiment we expect that you will make at least $2.25 plus a bonus payment based on your decisions.
+        """,
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
     """ 
