@@ -20,10 +20,10 @@ class Data(Page):
         
         self.player.calc_stats(game_name, participants)
 
-        potential_payouts = self.player.calc_potential_payouts(['0.50'])
+        potential_payouts = self.player.calc_potential_payouts([str(self.session.config['piece_rate'])])
         
-        self.player.payout = potential_payouts['0.50']
-        self.participant.vars['game_1_value'] = ['0.50']
+        self.player.payout = potential_payouts[str(self.session.config['piece_rate'])]
+        self.participant.vars['game_1_value'] = [str(self.session.config['piece_rate'])]
         self.player.scheme = 'Piece Rate'
         self.participant.vars[game_name + '_scheme'] = self.player.scheme
         self.player.dump_vars(game_name, self.participant.vars)

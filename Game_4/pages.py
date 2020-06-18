@@ -8,8 +8,14 @@ round_values = [0.25,0.50,0.75,1.00,1.25,1.50,1.75]
 
 class Instructions(Page):
     def vars_for_template(self):
+        round_values = ''
+        for i in self.session.config['round_values']:
+            round_values = round_values + '$' + i + ', '
+        round_values = round_values[:len(round_values)-2]
         return {
-            'participant_vars': self.participant.vars
+            'participant_vars': self.participant.vars,
+            'round_values': round_values,
+            'piece_rate': self.session.config['piece_rate'],
         }
 
 class Selection(Page):
@@ -29,7 +35,8 @@ class Selection(Page):
             pass
         return {
             'game_1_score': game_1_score,
-            'participant_vars': self.participant.vars
+            'participant_vars': self.participant.vars,
+            'piece_rate': self.session.config['piece_rate']
         }
 
 

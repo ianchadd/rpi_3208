@@ -32,7 +32,8 @@ class Game_3(Page):
             'round': self.player.round_number-1,
             'piece_rate': piece_rate,
             'value': value,
-            'participant_vars': self.participant.vars
+            'participant_vars': self.participant.vars,
+            'piece_rate_rate': self.session.config['piece_rate']
         }
 
 

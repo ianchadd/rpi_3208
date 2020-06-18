@@ -4,10 +4,11 @@ from .models import Constants
 import random, json
 
 
-payment_values = [0.50,0.75,1.00,1.25,1.50,1.75,2.00,2.25,2.50]
+
 
 class Summary(Page):
     def vars_for_template(self):
+        payment_values = self.session.config['round_values']
         parvars = self.participant.vars
         if 'payment_game' in parvars:
             payment_game = parvars['payment_game']
@@ -15,7 +16,7 @@ class Summary(Page):
             payment_game = random.randint(1,5)
 
         parvars['payment_game'] = payment_game
-        parvars['game_1_value'] = ['0.50']
+        parvars['game_1_value'] = [str(self.session.config['piece_rate'])]
         scheme = parvars['game_%d_scheme' % payment_game]
         score = parvars['game_%d_score' % payment_game]
         win = parvars['game_%d_place' % payment_game] == 1
@@ -26,7 +27,7 @@ class Summary(Page):
         guess_payment = int(parvars['game_1_place'] == parvars['belief_game_1']) + int(parvars['game_2_place'] == parvars['belief_game_2'])
         #calc payout
         payment = parvars['game_%d_payout' % payment_game]
-        payout = 2 + guess_payment + payment
+        payout = 1.5 + guess_payment + payment
         payment_value = None
         if payment_game is not 5:
             payment_value = parvars['game_%d_value' % payment_game]
@@ -38,6 +39,7 @@ class Summary(Page):
             payment_value = 5 * points_B
         self.player.participant_vars = json.dumps(parvars)
 
+        participation_fee = self.session.config['participation_fee']
         return {
             'payment_game': payment_game,
             'scheme': scheme,
@@ -47,7 +49,8 @@ class Summary(Page):
             'payment': payment,
             'payout': payout,
             'payment_value': payment_value,
-            'participant_vars': parvars
+            'participant_vars': parvars,
+            'participation_fee': participation_fee
         }
 
 
