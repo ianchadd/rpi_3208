@@ -12,13 +12,13 @@
 </p>
 
 <p>
-    Your Payment Scheme: {% if piece_rate %}$0.50 <strong>piece rate payment</strong> {% else %}${{ value }} <strong>Tournament Payment</strong> {% endif %}
+    Your Payment Scheme: {% if piece_rate %}${{piece_rate_rate}} <strong>piece rate payment</strong> {% else %}${{ value }} <strong>Tournament Payment</strong> {% endif %}
 </p>
 
 {% counting_box "counting_box" img answer %}
 
 <br>
-<p>Determine the number of 
-zeros in the box. You will receive some amount from {0.5, … 3.5} per box, chosen randomly, if you complete more boxes than your group members for Game 2. Otherwise you will receive nothing.</p>
+<p>Determine the number of
+zeros in the box.</p>
 
 {% endblock %}

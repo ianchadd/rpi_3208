@@ -11,7 +11,8 @@ class Performance_Guesses(Page):
         self.participant.vars['belief_game_2'] = self.player.belief_game_2
     def vars_for_template(self):
         return {
-            'participant_vars': self.participant.vars
+            'participant_vars': self.participant.vars,
+            'guess_rate': self.session.config['guess_rate']
         }
 
 

@@ -26,7 +26,9 @@ class Game_1(Page):
             "answer": num_zeros,
             "score": self.player.get_score(),
             "round": self.player.round_number-1,
-            'participant_vars': self.participant.vars
+            'participant_vars': self.participant.vars,
+            'piece_rate': int(100* self.session.config['piece_rate']),
+            'time_limit': self.session.config['seconds_for_counting_task']
         }
 
 

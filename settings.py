@@ -15,7 +15,9 @@ SESSION_CONFIG_DEFAULTS = dict(
     num_sample_participants=10,
     consent_additional_message = """""",
     round_values = ["0.25", "0.50","0.75","1.00","1.25","1.50","1.75"],
-    seconds_for_counting_task=10
+    piece_rate = 0.25,
+    seconds_for_counting_task=10,
+    guess_rate = 0.20
 )
 
 
@@ -40,14 +42,14 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
         #use_browser_bots=True,
         app_sequence=[
-            'Introduction',
-            'Introduction_Practice',
-            'Game_1',
-            'Game_1_Game',
-            'Game_1_Data',
-            'Game_2',
-            'Game_2_Game',
-            'Game_2_Data',
+            #'Introduction',
+            #'Introduction_Practice',
+            #'Game_1',
+            #'Game_1_Game',
+            #'Game_1_Data',
+            #'Game_2',
+            #'Game_2_Game',
+            #'Game_2_Data',
             'Game_3',
             'Game_3_Game',
             'Game_3_Data',

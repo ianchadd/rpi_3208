@@ -33,7 +33,7 @@ class Data(Page):
                     self.player.won_tiebreaker)
                 )
             else:
-                i = 0.5
+                i = self.session.config['piece_rate']
             return i
 
         potential_payouts = self.player.calc_potential_payouts(

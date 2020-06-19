@@ -21,12 +21,18 @@ class Game_2(Page):
             return upcoming_apps[0]
     def vars_for_template(self):
         img, num_zeros = get_box()
+        round_values = ''
+        for i in self.session.config['round_values']:
+            round_values = round_values + '$' + i + ', '
+        round_values = round_values[:len(round_values)-2]
         return {
             "img": img,
             "answer": num_zeros,
             'participant_vars': self.participant.vars,
             "score": self.player.get_score(),
-            "round": self.player.round_number-1
+            "round": self.player.round_number-1,
+            'time_limit': self.session.config['seconds_for_counting_task'],
+            'round_values': round_values
         }
 
 

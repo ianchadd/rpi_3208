@@ -17,7 +17,9 @@ class Instructions(Page):
         return {
             "img": "boxes/" + img,
             "answer": num_zeros,
-            'participant_vars': self.participant.vars
+            'participant_vars': self.participant.vars,
+            'time_limit': self.session.config["seconds_for_counting_task"],
+            'piece_rate': int(100 * self.session.config['piece_rate'])
         }
 
 
