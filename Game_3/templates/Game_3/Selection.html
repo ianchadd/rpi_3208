@@ -99,19 +99,31 @@
             const idArr = $(this).attr('id').split('_');
             const side = idArr[idArr.length-1];
             const val = idArr[idArr.length-2];
+            let switch_point = "{{ Constants.round_values|last }}";
             $('.switch_point').each(function() {
                 const currIdArr = $(this).attr('id').split('_');
                 const currSide = currIdArr[currIdArr.length-1];
                 const currVal = currIdArr[currIdArr.length-2];
                 const after = parseFloat(currVal) > parseFloat(val)
                 if (val === currVal) {
-                    if (currSide === '1') {
-                        $('[name="game_3_switch"]').attr('value', currVal);
-                    }
-                    console.log(currVal, currSide, side, side === currSide, this)
                     $(this).prop('checked', side === currSide);
                 } else {
+                    if (parseFloat(currVal) < parseFloat(switch_point)) {
+                        $('[name="game_3_switch"]').attr('value', currVal);
+                    }
                     $(this).prop('checked', after == parseInt(currSide));
+                }
+                
+                // use smallest (first) tournament checkmark as switch_point
+                if (
+                    currSide === '1' &&
+                    $(this).prop('checked') &&
+                    parseFloat(currVal) < parseFloat(switch_point)
+                ) {
+                    switch_point = currVal;
+                    console.log('switch_point', switch_point)
+                    $('[name="game_3_switch"]').attr('value', currVal);
+                    console.log(currVal, currSide, side, side === currSide, this);
                 }
             });
         });
