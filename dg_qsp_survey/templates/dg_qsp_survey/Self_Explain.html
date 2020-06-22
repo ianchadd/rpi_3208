@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}Task 4: Survey{% endblock %}
+
+{% block content %}
+<h5><u>Part 3</u></h5>
+<p>Here is the ID you have constructed in Task 1:</p>
+
+<br>
+<table>
+  <tr>
+    <th>String chosen:</th>
+    <td></td>
+    <td><b>{{my_ID}}</b></td>
+  </tr>
+  <tr>
+    <th>Icon chosen:</th>
+    <td></td>
+    <td><img style="height: 25px; width:auto;" src="{% static my_flag %}"></td>
+  </tr>
+</table>
+
+<br>
+
+
+<p>
+Why did you choose <strong>{{my_ID}}</strong> to be part of your ID?
+{% formfield player.id_explain %}
+</p>
+
+<p>
+Why did you choose <img style="height: 25px; width:auto;" src="{% static my_flag %}"> to be part of your ID?
+{% formfield player.icon_explain %}
+</p>
+
+<div style="text-align: right;">
+  {% next_button %}
+</div>
+
+{% endblock %}
