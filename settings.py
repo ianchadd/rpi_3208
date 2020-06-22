@@ -126,7 +126,7 @@ SESSION_CONFIGS = [
         app_sequence=[
                     #'prolific_ID_begin',
                         'informed_consent',
-                        'qsp_dg_dict_introduction',
+                        'qsp_dg_dict_intro',
                       'qsp_dg_dict_id',
                       'dg_qsp',
                       'dg_qsp_survey',
