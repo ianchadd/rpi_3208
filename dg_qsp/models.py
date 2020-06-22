@@ -78,4 +78,7 @@ class Player(BasePlayer):
         self.gave = self.gave
         self.kept = Constants.endowment - self.gave
         self.payoff = self.kept
+        self.participant.vars['gave_'+str(self.round_number)] = self.gave
+        self.participant.vars['kept_'+str(self.round_number)] = self.kept
+            
 

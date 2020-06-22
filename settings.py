@@ -125,10 +125,12 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
         app_sequence=[
                     #'prolific_ID_begin',
-                    #'informed_consent',
-                    #'qsp_dg_dict_introduction',
+                        'informed_consent',
+                        'qsp_dg_dict_introduction',
                       'qsp_dg_dict_id',
                       'dg_qsp',
+                      'dg_qsp_survey',
+                      'survey_demographics',
                     #'prolific_ID_end'
                       ],
         participation_fee = 2.00,
