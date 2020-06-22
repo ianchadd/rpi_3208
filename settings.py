@@ -123,11 +123,14 @@ SESSION_CONFIGS = [
         name='qsp_dictator',
         display_name="QSP ID Choice and Dictator Choice",
         num_demo_participants=1,
-        app_sequence=['prolific_ID_begin',
-                      'informed_cosent',
-                      'simple_survey_flag',
+        app_sequence=[
+                    #'prolific_ID_begin',
+                    #'informed_consent',
+                    #'qsp_dg_dict_introduction',
+                      'qsp_dg_dict_id',
                       'dg_qsp',
-                      'prolific_ID_end'],
+                    #'prolific_ID_end'
+                      ],
         participation_fee = 2.00,
         consent = 'flag_survey/consent.pdf',
         p_completion_link = 'xxxxxxxx',

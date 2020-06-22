@@ -4,26 +4,47 @@ from .models import Constants
 
 class Introduction(Page):
     def vars_for_template(self):
+        if self.round_number == 1:
+            their_flag = 'other_flag'
+            their_id = 'other_id'
+        else:
+            their_flag = 'third_flag'
+            their_id = 'third_id'
+        task_2 = self.round_number == 1
+        task_3 = not task_2
         return dict(
+            task_2 = task_2,
+            task_3 = task_3,
             my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
             my_ID = self.player.participant.vars['my_ID'],
-            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
-            their_ID = self.player.participant.vars['other_id'],
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars[their_flag]),
+            their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)
         )
 
 
 class Offer(Page):
     form_model = 'player'
-    form_fields = ['kept']
+    form_fields = ['gave','attn_check_color', 'attn_check_color_2']
     def vars_for_template(self):
+        if self.round_number == 1:
+            their_flag = 'other_flag'
+            their_id = 'other_id'
+        else:
+            their_flag = 'third_flag'
+            their_id = 'third_id'
+        task_2 = self.round_number == 1
+        task_3 = not task_2
         return dict(
+            task_2 = task_2,
+            task_3 = task_3,
             my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
             my_ID = self.player.participant.vars['my_ID'],
-            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
-            their_ID = self.player.participant.vars['other_id'],
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars[their_flag]),
+            their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)
         )
+
     def before_next_page(self):
         self.player.set_payoffs()
 '''
@@ -41,17 +62,24 @@ class ResultsWaitPage(WaitPage):
 
 class Results(Page):
     def vars_for_template(self):
+        if self.round_number == 1:
+            their_flag = 'other_flag'
+            their_id = 'other_id'
+        else:
+            their_flag = 'third_flag'
+            their_id = 'third_id'        
         return dict(
-            offer=Constants.endowment - self.player.kept,
             my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
             my_ID = self.player.participant.vars['my_ID'],
-            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
-            their_ID = self.player.participant.vars['other_id'],
+            their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars[their_flag]),
+            their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)
         )
+
 
 
 page_sequence = [Introduction,
                  Offer,
                  #ResultsWaitPage,
-                 Results]
+                 #Results
+                 ]

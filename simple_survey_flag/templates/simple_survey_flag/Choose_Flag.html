@@ -2,17 +2,15 @@
 {% load otree static %}
 
 {% block title %}
-  Part 1: Creation of Personal ID
+  Task 1: Creation of Personal ID
 {% endblock %}
 
 {% block content %}
-<p>
-  Please choose an icon for your ID from the options below.
+<p> In Task 1, you will be asked to create a personal ID that is a combination of (i) an 8-digit alpha-numeric string of characters and (ii) an icon.
 </p>
-<p>
-  Once chosen, your ID will always be shown to you whenever it is necessary.
-  That is, you <b>will not</b> need to remember which icon you chose or which random alpha-numeric ID was assigned to you. <br>
-</p>
+
+<p><u>Step 2: Choose Icon</u></p>
+<p>All participants in this study are given these three options:</p>
 
     <style>
       .flag-selector input{
@@ -82,7 +80,9 @@
         <input id="a4" type="radio" name="my_flag" value="3" />
 
     </div> -->
-
+<p>Please select one of these options to form the icon part of your personal ID.</p>
+<p>You <strong>do not</strong> need to remember which alpha-numeric part you have selected.
+Your ID will always be shown to you whenever it is necessary.</p>
     {% next_button %}
 
 {% endblock %}

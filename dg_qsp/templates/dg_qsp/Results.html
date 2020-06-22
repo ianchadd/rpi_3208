@@ -6,9 +6,10 @@
 {% endblock %}
 
 {% block content %}
-    <p>
-            You decided to keep <strong>{{ player.kept }}</strong> for yourself.
-        {% next_button %}
-    </p>
-    {% include Constants.instructions_template %}
+<p>You decided to keep <strong>{{ player.kept }}</strong> for yourself.
+</p>
+<p>The remainder <strong>{{player.gave}}</strong> will be given to your partner.</p>
+<div style="text-align: right;">
+  {% next_button %}
+</div>
 {% endblock %}
