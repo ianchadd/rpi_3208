@@ -120,14 +120,16 @@ SESSION_CONFIGS = [
         consent = 'no_choice/consent.pdf'
     ),
     dict(
-        name='id_dg',
-        display_name="QSP ID + DG (Testing)",
+        name='qsp_dictator',
+        display_name="QSP ID Choice and Dictator Choice",
         num_demo_participants=1,
         app_sequence=['prolific_ID_begin',
+                      'informed_cosent',
                       'simple_survey_flag',
                       'dg_qsp',
                       'prolific_ID_end'],
         participation_fee = 2.00,
+        consent = 'flag_survey/consent.pdf',
         p_completion_link = 'xxxxxxxx',
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
