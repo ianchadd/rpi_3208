@@ -26,7 +26,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    instructions_clear = models.LongStringField(
+    instructions_feedback = models.LongStringField(
         label = '',
         blank = True
     )
@@ -34,4 +34,9 @@ class Player(BasePlayer):
         label = '',
         blank = True
     )
+    
+    
+    
+          DEFINE THESE 'instruction_clear', 'earnings_clear', '
+
 
