@@ -43,6 +43,8 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
         #use_browser_bots=True,
         app_sequence=[
+            'prolific_ID_begin',
+            'informed_consent',
             'Introduction',
             'Introduction_Practice',
             'Game_1',
@@ -62,7 +64,12 @@ SESSION_CONFIGS = [
             'Performance_Guesses',
             'qcp_demographics',
             #'Survey',
-            'Summary']
+            'Summary',
+            'prolific_ID_end'],
+            consent = 'qcp/consent.pdf',
+        p_completion_link = 'xxxxxxxx',
+        consent_additional_message = """
+        """,
     ),
     dict(
         name='demo_survey',
