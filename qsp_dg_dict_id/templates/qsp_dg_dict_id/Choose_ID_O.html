@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% block title %}
+  Task 1: Creation of Personal ID
+{% endblock %}
+
+{% block content %}
+<p> In Task 1, you will be asked to create a personal ID that is a combination of (i) an 8-digit alpha-numeric string of characters and (ii) an icon.
+</p>
+
+<p><u>Step 1: Choose Alpha-Numeric String</u></p>
+
+<p>We have randomly generated these three options for all the participants in this study:</p>
+    {% formfields %}
+
+<p>You <strong>do not</strong> need to remember which alpha-numeric part you have selected.
+Your ID will always be shown to you whenever it is necessary.</p>
+    {% next_button %}
+
+{% endblock %}
+
+<!--
+<div class = "mc-ma">
+    {{players.otherID.label}}
+    <ul>
+        {% for choice in player.otherID %}
+    <li>
+        <label>{{choice.tag}}{{choice.choice_label}}</label>
+    </li>
+    {% endfor %}
+    </ul>
+</div> -->

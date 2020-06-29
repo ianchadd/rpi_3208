@@ -19,6 +19,8 @@
 
 <br>
 <p>Determine the number of
-zeros in the box.</p>
+zeros in the box.
+You will receive {% if piece_rate %}${{piece_rate_rate}} per box you complete. {% else %}${{ value }} per box you complete if you win the tournament, $0 otherwise.{% endif %}
+</p>
 
 {% endblock %}

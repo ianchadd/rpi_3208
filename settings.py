@@ -11,6 +11,7 @@ with open('sample_participants.json') as sample_participants:
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=1.50, doc="",
     data_pages_enabled=True,
+    summary_page_enabled=True,
     sample_participants=sample_participants,
     num_sample_participants=10,
     consent_additional_message = """""",
@@ -42,14 +43,16 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
         #use_browser_bots=True,
         app_sequence=[
-            #'Introduction',
-            #'Introduction_Practice',
-            #'Game_1',
-            #'Game_1_Game',
-            #'Game_1_Data',
-            #'Game_2',
-            #'Game_2_Game',
-            #'Game_2_Data',
+            'prolific_ID_begin',
+            'informed_consent',
+            'Introduction',
+            'Introduction_Practice',
+            'Game_1',
+            'Game_1_Game',
+            'Game_1_Data',
+            'Game_2',
+            'Game_2_Game',
+            'Game_2_Data',
             'Game_3',
             'Game_3_Game',
             'Game_3_Data',
@@ -59,8 +62,16 @@ SESSION_CONFIGS = [
             #'Game_5_Game',
             #'Game_5_Data',
             'Performance_Guesses',
+            'qcp_demographics',
             #'Survey',
-            'Summary']
+            'Summary',
+            'prolific_ID_end'],
+            consent = 'qcp/consent.pdf',
+        p_completion_link = 'xxxxxxxx',
+        consent_additional_message = """
+        """,
+        seed_data = True,
+        participation_fee=2.00,
     ),
     dict(
         name='demo_survey',
@@ -120,14 +131,21 @@ SESSION_CONFIGS = [
         consent = 'no_choice/consent.pdf'
     ),
     dict(
-        name='id_dg',
-        display_name="QSP ID + DG (Testing)",
+        name='qsp_dictator',
+        display_name="QSP ID Choice and Dictator Choice",
         num_demo_participants=1,
-        app_sequence=['prolific_ID_begin',
-                      'simple_survey_flag',
+        app_sequence=[
+                    #'prolific_ID_begin',
+                        'informed_consent',
+                        'qsp_dg_dict_intro',
+                      'qsp_dg_dict_id',
                       'dg_qsp',
-                      'prolific_ID_end'],
+                      'dg_qsp_survey',
+                      'survey_demographics',
+                    #'prolific_ID_end'
+                      ],
         participation_fee = 2.00,
+        consent = 'flag_survey/consent.pdf',
         p_completion_link = 'xxxxxxxx',
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session

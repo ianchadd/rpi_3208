@@ -10,11 +10,13 @@ class Instructions(Page):
         for i in self.session.config['round_values']:
             round_values = round_values + '$' + i + ', '
         round_values = round_values[:len(round_values)-2]
+        seed_data = self.session.config['seed_data']
         return {
             'participant_vars': self.participant.vars,
             'time_limit': self.session.config['seconds_for_counting_task'],
             'round_values': round_values,
-            'piece_rate': int(100*self.session.config['piece_rate'])
+            'piece_rate': int(100*self.session.config['piece_rate']),
+            'seed_data': seed_data
         }
     pass
 

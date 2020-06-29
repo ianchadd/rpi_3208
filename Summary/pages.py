@@ -7,13 +7,18 @@ import random, json
 
 
 class Summary(Page):
+    def is_displayed(self):
+        if self.session.config['summary_page_enabled']:
+            return True
+        else:
+            return self.vars_for_template()
     def vars_for_template(self):
         payment_values = self.session.config['round_values']
         parvars = self.participant.vars
         if 'payment_game' in parvars:
             payment_game = parvars['payment_game']
         else:
-            payment_game = random.randint(1,5)
+            payment_game = random.randint(1,4)
 
         parvars['payment_game'] = payment_game
         parvars['game_1_value'] = [str(self.session.config['piece_rate'])]
@@ -24,7 +29,7 @@ class Summary(Page):
         if parvars['game_%d_won_tiebreaker' % payment_game] not in (None, True):
             win = False
         # Calculate guess payment
-        guess_payment = int(parvars['game_1_place'] == parvars['belief_game_1']) + int(parvars['game_2_place'] == parvars['belief_game_2'])
+        guess_payment = self.session.config['guess_rate'] * (int(parvars['game_1_place'] == parvars['belief_game_1']) + int(parvars['game_2_place'] == parvars['belief_game_2']))
         #calc payout
         payment = parvars['game_%d_payout' % payment_game]
         payout = 1.5 + guess_payment + payment

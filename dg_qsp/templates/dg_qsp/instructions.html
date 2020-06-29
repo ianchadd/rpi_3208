@@ -1,30 +1,18 @@
 {% load otree %}
 
-<div class="card bg-light m-3">
-<div class="card-body">
-    <h3>
-        Instructions
-    </h3>
 <p>
-  In Part 2, you are randomly matched with another participant with the following ID: <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+  You are randomly matched <strong>with a participant who has chosen the following ID</strong>: <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
 </p>
 
 <p>
-  You will be asked to make one simple decision that can affect the payoff of <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> for this study.
+  You and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> will be asked to make one simple decision which will determine the bonus payments that you and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> will receive from this task.
 </p>
 <p>
-  Your Decision: You will be asked how you would like to allocate {{ Constants.endowment }} between yourself and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+  <u>Your Decision: </u> You will be asked how you would like to allocate {{ Constants.endowment }} between yourself and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
 </p>
 <p>
-  You can keep any amount in increments of 1 points. The remaining amount, if any, will be given to <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+  You can send any amount to <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> in increments of 1 points between 0 and 100 points. The remaining amount, if any, will be yours to keep.
 </p>
-
     <p>
-      Please note: Due to our ID selection process, it is possible that multiple people will have the same ID. Our random matching mechanism is designed so that each participant is paid only once for this part of the study if this part is randomly selected for payment.
+      If this task is randomly chosen to be the paying task, then your decision in this task will determine both your and your partner’s earnings.
     </p>
-    <p>
-      Also note: Our random matching mechanism might lead to multiple people being matched with <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>. In this case, we will randomly choose one person's decision to count, so that <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>. is only paid once for this choice.
-      You will not know whether this is the case for your current decision, so it is in your best interest to make this decision as if it matters for  <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}'s</b> payoff.
-    </p>
-</div>
-</div>

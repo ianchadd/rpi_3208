@@ -1,21 +1,47 @@
 {% extends "global/Page.html" %}
 {% load otree %}
 
-{% block title %}Part 2: Decision Phase{% endblock %}
+{% block title %} {% if task_2 %} Task 2 {% else %} Task 3 {% endif %}: Decision Phase{% endblock %}
 
 {% block content %}
-<p>
-  Now, we ask you to decide how you would like to allocate {{Constants.endowment}} between yourself and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+    {% include Constants.decision_template %}
 
-</p>
-<p>
-  Please decide how much of your {{Constants.endowment}}, you would like to keep. Any remaining amount will be sent to <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>. 
-</p>
+<div style="text-align: center;">
+  <button type="button" onclick="show_hide_Instructions()">Show/Hide Instructions</button>
+</div>
+    <div id="instructions">
+      <div class="card bg-light m-3">
+      <div class="card-body">
+          {% include Constants.instructions_template %}
+        </div>
+        </div>
+    </div>
 
-{% formfield player.kept label="I will keep" %}
+    <style>
+    #instructions {
+      display: none;
+    }
+</style>
 
-{% next_button %}
+    </style>
+    <script>
+    function show_hide_Instructions() {
+      var x = document.getElementById("instructions");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    </script>
 
-    {% include Constants.instructions_template %}
+{% if task_2 %}
+{% formfield player.attn_check_color %}
+{% else %}
+{% formfield player.attn_check_color_2 %}
+{% endif %}
+<div style="text-align: right;">
+  {% next_button %}
+</div>
 
 {% endblock %}

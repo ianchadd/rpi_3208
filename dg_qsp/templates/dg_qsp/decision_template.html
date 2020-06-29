@@ -1,0 +1,93 @@
+{% load otree %}
+
+<p>
+Please choose how you would like to allocate 100 ECU between yourself and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>
+</p>
+
+<style>
+.slidecontainer {
+  width: 100%;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 75%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+input[type=range]:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+        height: 20px !important;
+        width: 20px !important;
+        background: #4CAF50 !important;
+        cursor: pointer !important !important;
+        -webkit-appearance: none !important;
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    border: 0px;
+    height: 0px;
+    width: 0px;
+    border-radius: 0px;
+    -webkit-appearance: none;
+}
+</style>
+</head>
+<body>
+<div class="input-group">
+  <div class="input-group-prepend">
+      <span class="input-group-text">0</span>
+  </div>
+  <input type="range" min="0" max="100" step="1" name="gave" id="myRange">
+<div class="input-group-append">
+    <span class="input-group-text">100</span>
+</div>
+</div>
+<p>Note: you must click on the above in order for the selection slider to be displayed.</p>
+<table>
+  <tr>
+    <th>Me</th>
+    <td></td>
+    <td><span id="my_amt"></span></td>
+  </tr>
+  <tr>
+    <th><img style="height: 25px; width:auto;" src="{% static their_flag %}"><b>{{their_ID}}</b></th>
+    <td>
+    </td><td><span id="their_amt"></span></td>
+  </tr>
+</table>
+
+<script>
+var slider = document.getElementById("myRange");
+var output_1 = document.getElementById("their_amt");
+var output_2 = document.getElementById("my_amt");
+
+slider.oninput = function() {
+  output_1.innerHTML = this.value;
+  output_2.innerHTML = 100 - this.value;
+}
+$(document).ready(function () {
+    $('input[type=range]').on('input change', function () {
+        $('input[type=range]').addClass('slider');
+    });
+
+});
+</script>
+
+
+</body>
