@@ -18,7 +18,7 @@ class Summary(Page):
         if 'payment_game' in parvars:
             payment_game = parvars['payment_game']
         else:
-            payment_game = random.randint(1,5)
+            payment_game = random.randint(1,4)
 
         parvars['payment_game'] = payment_game
         parvars['game_1_value'] = [str(self.session.config['piece_rate'])]

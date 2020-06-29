@@ -24,7 +24,7 @@
     <tbody>
         <tr>
             <td>
-                (Attention check) Please select Piece Rate for this row:
+                Please select Piece Rate for this row:
             </td>
             <input type="hidden" name="attention_check" value="False"/>
             <td></td>
@@ -40,7 +40,7 @@
         {% for i in Constants.round_values %}
         <tr>
             <td>
-                If the tournament prize is {{i}}, which scheme do you choose:
+                If the tournament prize is ${{i}}, which scheme do you choose:
             </td>
             <div class="form-check">
             <td>
@@ -113,7 +113,7 @@
                     }
                     $(this).prop('checked', after == parseInt(currSide));
                 }
-                
+
                 // use smallest (first) tournament checkmark as switch_point
                 if (
                     currSide === '1' &&
