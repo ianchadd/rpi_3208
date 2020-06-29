@@ -28,7 +28,9 @@
             If, for the randomly chosen prize, you chose the piece rate you receive {{piece_rate}} cents per box you complete.
         </li>
         <li>
-            If, for the randomly chosen prize, you chose the tournament, your performance will be evaluated relative to the performance of the other three participants of your assigned group in the Game 2-tournament. The Game 2-tournament is the one you just completed. If you complete more boxes than the three other members of your assigned group did in Game 2, then you receive the randomly chosen tournament prize per each box completed. You will receive no earnings for this game if you chose the tournament and one or more of your group members have a higher Game 2-tournament performance than your Game-3 performance. Your group members are the same three individuals as the ones in your assigned group in Game 2. You will not be informed of how you did in the tournament until all five tasks have been completed. If there are ties, the winner will be randomly determined among those who tied for first place.
+            If, for the randomly chosen prize, you chose the tournament, your performance will be evaluated relative to the performance of the other three participants of your assigned group in the Game 2-tournament. The Game 2-tournament is the one you just completed. If you complete more boxes than the three other members of your assigned group did in Game 2, then you receive the randomly chosen tournament prize per each box completed. You will receive no earnings for this game if you chose the tournament and one or more of your group members have a higher Game 2-tournament performance than your Game-3 performance. Your group members are the same three individuals as the ones in your assigned group in Game 2.
+            You will not be informed of how you did in the tournament until {% if seed_data is not True %} all games have been completed {% else %} everyone has completed this study {% endif %}. 
+            If there are ties, the winner will be randomly determined among those who tied for first place.
         </li>
     </ul>
     <p>
