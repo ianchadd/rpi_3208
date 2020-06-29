@@ -6,8 +6,8 @@ from .models import Constants
 
 class Feedback(Page):
     form_model = 'player'
-    form_fields = ['instructions_clear', 'general_feedback']
-
+    form_fields = ['instruction_clear', 'earnings_clear', 'instructions_feedback', 'general_feedback']
+   
 
 
 page_sequence = [Feedback]
