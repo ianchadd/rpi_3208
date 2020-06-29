@@ -17,7 +17,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     consent_additional_message = """""",
     round_values = ["0.25", "0.50","0.75","1.00","1.25","1.50","1.75"],
     piece_rate = 0.25,
-    seconds_for_counting_task=10,
+    seconds_for_counting_task=5,
     guess_rate = 0.20
 )
 
