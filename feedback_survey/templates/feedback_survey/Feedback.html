@@ -7,20 +7,30 @@
 
 {% block content %}
 
+  <p>
+The instructions were clear.
+   </p>
+
+    {% formfield player.instruction_clear %}
+
+  <p>
+   The instructions helped me understand how my earnings are calculated.
+   </p>
+
+    {% formfield player.earnings_clear %}
+
     <p>
-        Were the instructions clear?
-    </p>
+    We would like to know what you think about the instructions. Using the text below, please tell us about your thoughts on the game instructions.      </p>
 
     {% formfield player.instructions_feedback %}
 
     <p>
-        [Text for general_feedback]
+     Is there anything else you would like to share with us that would help us improve this study?    
     </p>
 
     {% formfield player.general_feedback %}
 
     {% next_button %}
 
-
-
 {% endblock %}
+
