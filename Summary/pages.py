@@ -29,7 +29,7 @@ class Summary(Page):
         if parvars['game_%d_won_tiebreaker' % payment_game] not in (None, True):
             win = False
         # Calculate guess payment
-        guess_payment = int(parvars['game_1_place'] == parvars['belief_game_1']) + int(parvars['game_2_place'] == parvars['belief_game_2'])
+        guess_payment = self.session.config['guess_rate'] * (int(parvars['game_1_place'] == parvars['belief_game_1']) + int(parvars['game_2_place'] == parvars['belief_game_2']))
         #calc payout
         payment = parvars['game_%d_payout' % payment_game]
         payout = 1.5 + guess_payment + payment

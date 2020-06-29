@@ -70,6 +70,8 @@ SESSION_CONFIGS = [
         p_completion_link = 'xxxxxxxx',
         consent_additional_message = """
         """,
+        seed_data = True,
+        participation_fee=2.00,
     ),
     dict(
         name='demo_survey',

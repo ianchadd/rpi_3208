@@ -32,9 +32,15 @@
         </li>
     </ul>
     <p>
+      {% if seed_data is not True %}
       Note: nothing you do in this study will affect the payoffs of any other participants in this study.
       Your group is constructed using answers from participants who <strong>already participated</strong> in this study.
       Those subjects have already been paid and are not affected by your choices at all.
+      {% else %}
+      Note: nothing you do in Game 3 will affect the payoffs of any other participants in this study.
+      Your performance in Game 3 will be compared with the performance of your group members in Game 2, which is already complete.
+      Your group members' peformance in Game 3 will likewise be compared with your performance in Game 2, which is already complete.
+      {% endif %}
     </p>
 
     <p>The next computer screen will ask you to choose whether you want the piece rate or the tournament applied to your performance for each of the tournament prizes of {{round_values}}. A new screen will then show you the randomly chosen prize and your choice for that prize. You will then start Game-3 and will have {{time_limit}} seconds to complete boxes.</p>
