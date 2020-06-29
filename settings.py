@@ -64,6 +64,7 @@ SESSION_CONFIGS = [
             'Performance_Guesses',
             #'qcp_demographics',
             #'Survey',
+            'feedback_survey',
             'Summary',
             'prolific_ID_end'],
             consent = 'qcp/consent.pdf',
