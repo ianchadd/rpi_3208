@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Feedback
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        [Text for instructions_clear]
+    </p>
+
+    {% formfield player.instructions_clear %}
+
+    <p>
+        [Text for general_feedback]
+    </p>
+
+    {% formfield player.general_feedback %}
+
+    {% next_button %}
+
+{% endblock %}
