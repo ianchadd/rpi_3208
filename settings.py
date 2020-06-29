@@ -11,6 +11,7 @@ with open('sample_participants.json') as sample_participants:
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=1.50, doc="",
     data_pages_enabled=True,
+    summary_page_enabled=True,
     sample_participants=sample_participants,
     num_sample_participants=10,
     consent_additional_message = """""",
@@ -59,6 +60,7 @@ SESSION_CONFIGS = [
             #'Game_5_Game',
             #'Game_5_Data',
             'Performance_Guesses',
+            'qcp_demographics',
             #'Survey',
             'Summary']
     ),

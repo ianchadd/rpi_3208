@@ -7,6 +7,11 @@ import random, json
 
 
 class Summary(Page):
+    def is_displayed(self):
+        if self.session.config['summary_page_enabled']:
+            return True
+        else:
+            return self.vars_for_template()
     def vars_for_template(self):
         payment_values = self.session.config['round_values']
         parvars = self.participant.vars
