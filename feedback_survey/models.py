@@ -34,9 +34,11 @@ class Player(BasePlayer):
         label = '',
         blank = True
     )
-    
-    
-    
-          DEFINE THESE 'instruction_clear', 'earnings_clear', '
-
-
+    instruction_clear = models.StringField(
+        label = 'The instructions were clear.',
+        choices = ['Completely Agree', 'Agree', 'Neither agree nor disagree', 'Disagree', 'Completely Disagree']
+    )   
+    earnings_clear = models.StringField(
+        label = 'The instructions helped me understand how my earnings are calculated.',
+        choices = ['Completely Agree', 'Agree', 'Neither agree nor disagree', 'Disagree', 'Completely Disagree']
+    )
