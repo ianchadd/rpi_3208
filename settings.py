@@ -62,7 +62,7 @@ SESSION_CONFIGS = [
             #'Game_5_Game',
             #'Game_5_Data',
             'Performance_Guesses',
-            'qcp_demographics',
+            #'qcp_demographics',
             #'Survey',
             'Summary',
             'prolific_ID_end'],
@@ -71,6 +71,8 @@ SESSION_CONFIGS = [
         consent_additional_message = """
         """,
         seed_data = True,
+        data_pages_enabled=False,
+        summary_page_enabled=False,
         participation_fee=2.00,
     ),
     dict(
