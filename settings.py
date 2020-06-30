@@ -38,6 +38,16 @@ SESSION_CONFIGS = [
         
     ),
     dict(
+        name='faces',
+        display_name="Faces Exp 1",
+        num_demo_participants=3,
+        app_sequence=['testing_pw'
+                      ],
+        participation_fee = 2.00,
+        p_completion_link = 'xxxxxxxx',
+        pw = 'faces_testing'
+    ),
+    dict(
         name='QCP',
         num_demo_participants=1,
         #use_browser_bots=True,
