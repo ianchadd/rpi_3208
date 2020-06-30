@@ -49,6 +49,7 @@ input[type=range]::-webkit-slider-thumb {
 </style>
 </head>
 <body>
+  <p>Amount given to: <img style="height: 25px; width:auto;" src="{% static their_flag %}"><b>{{their_ID}}</b> </p>
 <div class="input-group">
   <div class="input-group-prepend">
       <span class="input-group-text">0</span>
@@ -61,6 +62,7 @@ input[type=range]::-webkit-slider-thumb {
 <p>Note: you must click on the above in order for the selection slider to be displayed.</p>
 <table>
   <tr>
+    <th rowspan="2"><strong>Final Allocation</strong></th>
     <th>Me</th>
     <td></td>
     <td><span id="my_amt"></span></td>

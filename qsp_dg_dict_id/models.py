@@ -8,7 +8,7 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-from django import forms
+#from django import forms
 import random
 
 
@@ -84,7 +84,7 @@ class Player(BasePlayer):
     chooseID = models.StringField(
         label = 'Please choose one of the following IDs.',
         choices = id_choices,
-        widget = forms.widgets.RadioSelect(),
+        widget = widgets.RadioSelectHorizontal(),
         )
     
     def customID_error_message(self, value):
@@ -101,7 +101,7 @@ class Player(BasePlayer):
                     [3,'Bird']
                    ],
         blank=True,
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect()
         )
     
     my_flag = models.IntegerField()
@@ -158,37 +158,37 @@ class Player(BasePlayer):
     inferred_gender = models.StringField(
         label = '',
         choices = ['Male','Female','Trans/Intersex/Other'],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect()
         )
     
     inferred_age = models.StringField(
         label = '',
         choices = ['Under 18','18 - 24','25 - 34', '35 - 44','45 - 54', '55 - 64','65 or Older'],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect()
         )
     
     inferred_income = models.StringField(
         label = '',
         choices = ['less than $20,000','$20,000 - $39,999','$40,000 - $59,999','$60,000 - $79,999','$80,000 - $99,999','$100,000 or more'],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect()
         )
 
     inferred_orientation = models.StringField(
         label = '',
         choices = ['Heterosexual or Straight', 'Non-heterosexual or Non-straight'],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect()
         )
     
     inferred_econ_politics = models.StringField(
         label = '',
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect()
         )
     
     inferred_social_politics = models.StringField(
         label = '',
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect()
         )
     
     inferred_ally = models.IntegerField(
@@ -197,7 +197,7 @@ class Player(BasePlayer):
                     [1,'Yes'],
                     [0,'No']
                    ],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect()
         )
     
     attn_check_3 = models.IntegerField(
@@ -219,18 +219,18 @@ class Player(BasePlayer):
                     [1,'Yes'],
                     [0,'No']
                    ],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect()
         )
     
     higher_inferred_gender = models.StringField(
         label = '',
         choices = ['Male','Female','Trans/Intersex/Other'],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect()
         )
     
     higher_inferred_orientation = models.StringField(
         label = '',
         choices = ['Heterosexual or Straight', 'Non-heterosexual or Non-straight'],
-        widget = forms.widgets.RadioSelect()
+        widget = widgets.RadioSelect()
         )
 
