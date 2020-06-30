@@ -1,6 +1,7 @@
 from os import environ
 import json
 
+OTREE_PRODUCTION = 1
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
 # the session config can be accessed from methods in your apps as self.session.config,
@@ -146,8 +147,10 @@ SESSION_CONFIGS = [
         name='qsp_dictator',
         display_name="QSP ID Choice and Dictator Choice",
         num_demo_participants=1,
+        pw = 'qsp_testing',
         app_sequence=[
                     #'prolific_ID_begin',
+                        'testing_pw',
                         'informed_consent',
                         'qsp_dg_dict_intro',
                       'qsp_dg_dict_id',
