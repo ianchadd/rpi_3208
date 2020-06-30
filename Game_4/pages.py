@@ -12,10 +12,12 @@ class Instructions(Page):
         for i in self.session.config['round_values']:
             round_values = round_values + '$' + i + ', '
         round_values = round_values[:len(round_values)-2]
+        seed_data = self.session.config['seed_data']
         return {
             'participant_vars': self.participant.vars,
             'round_values': round_values,
             'piece_rate': self.session.config['piece_rate'],
+            'seed_data': seed_data
         }
 
 class Selection(Page):

@@ -11,13 +11,12 @@ with open('sample_participants.json') as sample_participants:
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=1.50, doc="",
     data_pages_enabled=True,
-    summary_page_enabled=True,
     sample_participants=sample_participants,
     num_sample_participants=10,
     consent_additional_message = """""",
     round_values = ["0.25", "0.50","0.75","1.00","1.25","1.50","1.75"],
     piece_rate = 0.25,
-    seconds_for_counting_task=10,
+    seconds_for_counting_task=5,
     guess_rate = 0.20
 )
 
@@ -37,6 +36,16 @@ SESSION_CONFIGS = [
     Edit the p_completion_link variable with the completion code for Prolific session
     """
         
+    ),
+    dict(
+        name='faces',
+        display_name="Faces Exp 1",
+        num_demo_participants=3,
+        app_sequence=['testing_pw'
+                      ],
+        participation_fee = 2.00,
+        p_completion_link = 'xxxxxxxx',
+        pw = 'faces_testing'
     ),
     dict(
         name='QCP',
@@ -64,6 +73,7 @@ SESSION_CONFIGS = [
             'Performance_Guesses',
             #'qcp_demographics',
             #'Survey',
+            'feedback_survey',
             'Summary',
             'prolific_ID_end'],
             consent = 'qcp/consent.pdf',

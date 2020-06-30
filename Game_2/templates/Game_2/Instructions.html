@@ -48,7 +48,6 @@
             <p>
                 We refer to this as the <strong>tournament payment</strong>.
                 If there are ties, the winner will be randomly determined among the group members who tied for first place.
-                You will not be informed of how you did in the tournament or the tournament prize until all five tasks have been completed.
             </p>
             <p>
               {% if seed_data is not True %}
@@ -64,6 +63,6 @@
 
     <br>
 
-    {% delayed_next wait=3000 label='START'%}
+    {% delayed_next wait=60000 label='START'%}
 
 {% endblock %}
