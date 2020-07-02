@@ -73,7 +73,7 @@
 {% endblock %}
 
 {% block show_button_script %}
-    <script src="{% static "/global/_md5.js" %}" type="text/javascript"></script>
+    <script src="{% static "global/_md5.js" %}" type="text/javascript"></script>
     <script type="text/javascript">$(() => {
         const submit = function() {
             const answer = parseInt($('#answer_input').val());
