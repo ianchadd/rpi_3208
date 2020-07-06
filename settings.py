@@ -17,7 +17,8 @@ SESSION_CONFIG_DEFAULTS = dict(
     round_values = ["0.25", "0.50","0.75","1.00","1.25","1.50","1.75"],
     piece_rate = 0.25,
     seconds_for_counting_task=5,
-    guess_rate = 0.20
+    guess_rate = 0.20,
+    delay = False
 )
 
 
@@ -46,6 +47,18 @@ SESSION_CONFIGS = [
         participation_fee = 2.00,
         p_completion_link = 'xxxxxxxx',
         pw = 'faces_testing'
+    ),
+    dict(
+        name='cw',
+        display_name="CW",
+        num_demo_participants=3,
+        app_sequence=['testing_pw',
+                      'cw_instructions',
+                      'cw_practice'
+                      ],
+        participation_fee = 2.00,
+        p_completion_link = 'xxxxxxxx',
+        pw = 'cw_testing'
     ),
     dict(
         name='QCP',
