@@ -1,0 +1,317 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %} Cash Withdrawal Task {% endblock %}
+
+{% block content %}
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="description" content="Economics Experiment">
+  <meta name="author" content="SitePoint">
+
+  <!--If integrating into Qualtrics, important to set "Page Transition" in Look&Feel->General to "None"  -->
+
+  <!-- Put the following lines into Look & Feel -> Advanced -> Header window -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script>var $j = jQuery.noConflict();</script>
+
+
+<!-- Paste the following linkes into HTML window for QUALTRICS question -->
+<style>
+	li {
+	    display: inline;
+	    margin: 20px;
+	    color:gray;
+	    font-size:70%;
+	}
+	ul{
+		text-align: center;
+	}
+</style>
+
+</head>
+
+<body>
+
+	<!-- Paste the following HTML into HTML window for QUALTRICS question -->
+	<br><br>
+	<div id="status" style="text-align:center;color:gray;font-size:80%;"></div>
+	<div id="container" style="height: 400px">&nbsp;</div>
+	<ul>
+		<li id="points"></li>
+		<li id="p"> </li>
+		<li id="h"> </li>
+		<li id="q"> </li>
+	</ul>
+
+
+	<script> //Javascript
+
+			// Paste all of the Javascript code into the "Qualtrics.SurveyEngine.addOnload" function for QUALTRICS question
+
+			//Function to get an embedded data variable from Qualtrics
+			getEmbeddedData=function(key){
+			   var fieldName='ED~'+key;
+			   if($(fieldName))
+			   {
+			      return $(fieldName).value;
+			   }
+			}
+
+			//function for creating the chart
+			makeChart=function(){
+
+				chart = new Highcharts.Chart("container",{
+					  chart: {
+					      renderTo: 'container',
+					      animation: false,
+					      events: {
+					        click: function(event) {
+					          var x = event.xAxis[0].value;
+					          var y = event.yAxis[0].value;
+
+					            if(started==false){
+					              barrier=Math.round(y)
+					              chart.series[1].setData([[minX,barrier],[maxX,barrier]])
+
+					            }else{
+
+					            }
+
+					        }
+					      }
+					  },
+					  credits: {enabled: false},
+					  legend: {enabled: false},
+					  title: {text: ''},
+					  tooltip: {enabled: false},
+					  xAxis: {
+						  	labels: {
+						  	    formatter: function() {
+						  	        return this.value>=0 ? this.value : ""
+						  	    },
+						  	},
+					      title: {text: 'Time'},min: minX, max:maxX,gridLineWidth: 0,minorGridLineWidth: 0,lineWidth:0.5,lineColor:"gray"
+					  },
+					  yAxis: {
+					      title: {text: 'Cash'},min: 0, max:yRange,gridLineWidth: 0,minorGridLineWidth: 0
+					  },
+					  plotOptions: {
+					      series: {
+					      	  animation: false,
+					      	  states: {hover: {enabled: false}},
+					          line:{
+					            marker:{enabled:false},
+					            lineWidth:1
+					          },
+					          stickyTracking: false
+					      }
+					  },
+					  series: [
+					  	{ // Cash line
+					  	  type: "line",
+					  	  lineWidth:1,
+					      data: [[0, startCash]]
+					  	},
+					  	{ // Barrier
+					  	  type:"line",
+					  	  lineWidth:1,
+					  	  dashStyle: "LongDash",
+					  	  marker:{enabled:false},
+					  	  color:"black",allowOverlap:true,
+					  	  data:[[minX,barrier],[maxX,barrier]]
+					  	},
+				  		{ // Cash dot
+				  		  type: "scatter", marker:{symbol:"circle",radius:2,color:"grey"},
+				  	      data: [[0, startCash]]
+				  		},
+			  			{ // Profit line
+			  			  type: "line",
+			  		      data: [[0, null]]
+			  			}
+
+					  ]
+				});
+
+
+			}
+
+      function show_Next() {
+        var x = document.getElementById("next");
+          x.style.display = "block";
+      }
+
+			//function called in each tick, main experiment logic
+			tickEvents=function() {
+
+		  		now=chart.series[0].data[chart.series[0].data.length-1] //latest data point
+
+		  		var delta=Math.random()<=p ? h : -h, //draw change in cash
+					cash=now.y, //current cash
+					profitBlip=null //a variable used for marking profits on graph
+
+		  		//Carry out main operations
+		  		if(cash<=0 | cash+delta<=0){ //if bankrupt
+
+		  		  nextval=0
+
+		  		  document.getElementById("status").innerHTML = "You are BANKRUPT"
+
+		  		  //change color of line if bankrupt
+		  		  chart.series[0].color = "#FF0000";
+		  		  chart.series[0].graph.attr({ stroke: '#FF0000' });
+		  		  document.getElementById("status").style.color="red"
+
+		  		}else{
+
+		  		  if(cash+delta>=barrier){ //if you earned a profit
+
+		  		    nextval=barrier;
+		  		    profitBlip=barrier+(cash+delta-barrier);
+		  		    points=points+(cash+delta-barrier)
+		  		    document.getElementById("points").innerHTML = "Points:  " + Math.round(points * 100) / 100;
+
+		  		  }else{ //if no profits, not bankrupt
+
+		  		    nextval=cash+delta
+
+		  		  }
+
+		  		}
+		  		//Rescale axes
+		  		if(chart.series[0].data.length>-0.5*xRange+alpha*xRange){
+		  		  minX = chart.series[0].data.length-xRange*alpha
+		  		  maxX = minX+xRange
+		  		}
+
+		  		chart.xAxis[0].update({min:minX,max:maxX})
+
+		  		//Update chart series
+		  		chart.series[0].addPoint([now.x+1,nextval]) //cash line
+		  		chart.series[1].setData([[minX,barrier],[maxX,barrier]]) //barrier
+		  		chart.series[2].setData([[now.x+1,nextval]]) //cash dot
+
+		  		//Update profit blips
+		  		if(cash+delta>=barrier){
+		  			chart.series[3].addPoint([now.x+1,barrier]) //profit lines
+		  		}
+		  		chart.series[3].addPoint([now.x+1,profitBlip])
+
+		  		//Flash screen when bankruptcy occur
+		  		if(cash+delta<0 & cash>0){
+		  			chart.plotBackground.attr({fill: "#ff6666"});
+		  		}else{
+		  			chart.plotBackground.attr({fill: 'white'});
+		  		}
+
+		  		//Stop timer when game is over
+		  		if (now.x >= length) {
+		  		  clearInterval(ticker);
+		  		  document.getElementById("status").innerHTML = "The period is over.  Click to continue.";
+            document.getElementById("otree_barrier").value = barrier;
+            document.getElementById("otree_points").value = points;
+            show_Next();
+		  		  cashSeries=[]
+		  		  chart.series[0].data.forEach(function(fdata){
+		  		  	cashSeries.push([fdata.x,fdata.y])
+		  		  })
+				  	//For Printing Data To QUALTRICS Embedded variables
+				    //  var temp= Qualtrics.SurveyEngine.getEmbeddedData("parameters");
+					// temp=temp+"|"+ barrier.toString() + "," + points.toString()+h.toString()+","+ p.toString()+","+ startCash.toString()
+					// Qualtrics.SurveyEngine.setEmbeddedData("parameters",temp)
+
+					// var temp= Qualtrics.SurveyEngine.getEmbeddedData("cashSeries");
+					// temp=temp+"|"+ cashSeries.toString()
+					// Qualtrics.SurveyEngine.setEmbeddedData("cashSeries",temp)
+
+					//Qualtrics.SurveyEngine.setEmbeddedData("finished",1)
+					//$('NextButton').show();
+
+		  		}
+			}
+
+			//Define variables
+			var chart,
+				ticker, // Defines the timer object
+				started=false, // Has the game started
+				alpha=0.75, // How far on graph does the dot reach?
+				xRange=500, yRange=60, //total width and height
+				length={{ticks}}, //number of ticks in the round
+				h=1, p=0.5113, //size of brownian change, probability up
+				q=0.0029, //ending hazard parameter (reported to subjects but not used to determine period length in this code)
+				startCash=40, //starting amount of cash
+				barrier=undefined, //initial barrier
+				points=0, period=1, minX=-0.5*xRange, maxX=0.5*xRange //Set initial range for plot
+
+
+				// For getting parameters from QUALTRICS loop and merge
+				// var period= JSON.parse("${lm://Field/1}"),
+				//  	p= JSON.parse("${lm://Field/2}"),
+				// 		h= JSON.parse("${lm://Field/3}"),
+				// 		startCash= JSON.parse("${lm://Field/4}"),
+				// 		length= JSON.parse("${lm://Field/5}")
+
+				$j.getScript("https://code.highcharts.com/highcharts.js", function(){
+
+					// Hide the QUALTRICS 'next' button until period is over
+					// $('NextButton').hide()
+
+					makeChart()
+
+					// Put the parameters into the HTML on screen
+					document.getElementById("status").innerHTML = "Please choose your barrier";
+					document.getElementById("points").innerHTML = "Points:  "+points;
+					document.getElementById("p").innerHTML = "Prob(change):  "+p;
+					document.getElementById("h").innerHTML = "Size(change):  "+h;
+					document.getElementById("q").innerHTML = "Prob(end):  "+q;
+
+				});
+
+			//Keyboard events
+		    $j(document).on('keydown', (e) => {
+
+		    	if (e.which == 13 & !ticker & barrier!=undefined) { //press Enter/Return
+
+		    	  	document.getElementById("status").innerHTML = "The period has started"
+		    	    ticker = setInterval(tickEvents,50)
+		    	    started=true
+
+		    	}
+
+		        if (e.which == 38 & started==false & barrier!=undefined) { //press up arrow
+		        	barrier= (barrier+1<yRange) ? barrier+1 : yRange
+		        }
+
+		        if (e.which == 40 & started==false & barrier!=undefined) { //press down arrow
+		        	barrier= (barrier-1>0) ? barrier-1 : 0
+		        }
+
+		        chart.series[1].setData([[minX,barrier],[maxX,barrier]])
+
+		    });
+
+	</script>
+
+</body>
+<input type="hidden" id="otree_barrier" name="barrier" />
+<input type="hidden" id="otree_points" name="points" />
+
+
+</html>
+
+
+<div id="next" style="text-align: right;">
+  {% next_button %}
+</div>
+<style>
+#next {
+  display: none;
+}
+</style>
+
+{% endblock %}

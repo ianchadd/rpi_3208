@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+<!-- {% load custom_tags %} -->
+
+{% block title %}
+The Counting Task
+{% endblock %}
+
+{% block content %}
+<p>
+    As mentioned before, you will participate in four games. In some of these games, you will be asked to participate in the Counting Task.
+    In this task, you will see a number of boxes, each containing 49 ones and zeros as presented below.
+    For each box, your job is to determine the number of <strong>zeros</strong> contained in each box.
+</p>
+
+
+    <img src="{% static img %}" class="rounded mx-auto d-block">
+<p>
+    In the Counting Task, your goal is to solve as many of these boxes as possible in a given amount of time.
+</p>
+<p>
+    Next, you will see several of these boxes so that you can practice using them.
+</p>
+
+<br>
+
+{% delayed_next wait=20000 %}
+
+{% endblock %}

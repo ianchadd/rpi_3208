@@ -87,14 +87,11 @@
                 $('#correct-answer').text("incorrect");
             }
             if (answer >= 0 && answer <= 49) {
-                // Bypass modal by clicking the modal continue button instead of displaying the modal
-                $('#modal-continue').click();
-                // $('#submit-modal').modal('show');
-                // $('#player-answer').text(answer);
-                // $('#answer_input').prop('disabled', true);
-                // $('#submit-answer').prop('disabled', true);
+                $('#submit-modal').modal('show');
+                $('#player-answer').text(answer);
+                $('#answer_input').prop('disabled', true);
+                $('#submit-answer').prop('disabled', true);
             } else {
-                // Still show the invalid selection modal
                 $('#invalid-selection-modal').modal('show');
             }
         }
