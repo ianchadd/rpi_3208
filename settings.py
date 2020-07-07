@@ -179,19 +179,15 @@ SESSION_CONFIGS = [
     """  
     ),
     dict(
-        name='id_pd',
-        display_name="QSP ID + PD (Testing)",
-        num_demo_participants=1,
-        app_sequence=[#'prolific_ID_begin',
-                      'simple_survey_flag',
-                      'pd_qsp',
-                      #'prolific_ID_end'
-                      ],
-        participation_fee = 2.00,
+        name = 'image_upload',
+        display_name = 'using camera in oTree',
+        num_demo_participants =  1,
+        app_sequence = ['image_upload'],
+        participation_fee = 1.00,
+        consent = '',
         p_completion_link = 'xxxxxxxx',
-        doc="""
-    Edit the p_completion_link variable with the completion code for Prolific session
-    """  
+        doc=    """
+                """  
     ),
 ]
 
@@ -228,7 +224,7 @@ Here are some oTree games.
 # don't share this with anybody.
 SECRET_KEY = '7vfsh(zo@d)v)zizkf#@xqzb3q%juzu65zoh4r+#$tckdfji5r'
 
-INSTALLED_APPS = ['otree','custom_templates']
+INSTALLED_APPS = ['otree','custom_templates', 'django.contrib.humanize']
 
 # inactive session configs
 # dict(name='trust', display_name="Trust Game", num_demo_participants=2, app_sequence=['trust', 'payment_info']),

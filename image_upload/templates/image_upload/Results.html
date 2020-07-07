@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+{% load humanize %}
+
+{% block title %}
+    Resulting photo
+{% endblock %}
+
+{% block content %}
+
+
+    <img src="{% static myphoto %}"/>
+
+    <p><b>Would you like to delete this photo?</b></p>
+        <div>
+            <button name="delete_photo" value="True" class="btn btn-danger btn-large">Delete it!</button>
+            <button name="delete_photo" value="False" class="btn btn-success btn-large">Keep it!</button>
+        </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+
+{% endblock %}
+{% block styles %}
+
+{% endblock %}
