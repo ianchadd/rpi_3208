@@ -9,39 +9,44 @@
 {% block content %}
 
     <p>
-        Thank you for completing Game 1!
+        Thank you for completing Game 1 - Piece Rate!
     </p>
 
+    <h4>Overview</h4>
+
     <p>
-        In Game 2, as in Game 1, you will be given {{time_limit}} seconds to participate in the Counting Task where you will be asked to complete as many boxes as possible.
+        In Game 2 - Tournament, as in Game 1 - Piece Rate, you will be given {{time_limit}} seconds to participate in the Counting Task.
         However, for this game, your payment depends on your performance relative to that of a group of other participants.
+        In Game 2 – Tournament, you will only be paid if your performance in the Counting Task is the highest in your group (in case of ties, the winner will be randomly determined among the top performers).
+        If you are the winner of this tournament, the amount that you will receive per completed box will be randomly determined from the following amounts: {{round_values}}.
+        Otherwise you will not receive any payments in Game 2 - Tournament.
         Each group consists of four people, including you.
     </p>
 
-    <h6>Constructing Groups</h6>
+    <h6>Details: Constructing Groups</h6>
     <div class="row">
         <div class="col-1"></div>
         <p class="col">
           {% if seed_data is not True %}
             Previously, a representative group of subjects on Prolific, like yourself, participated in this study.
             We coded their anonymous answers into this program.
-            In order to construct your group of four, we will randomly select three past participants from this group and use their answers in determination of your earnings for Game 2.
+            In order to construct your group of four, we will randomly select three past participants from this group and use their answers in determination of your earnings for Game 2 - Tournament
           {% else %}
-          In order to construct your group of four, we will randomly select three other participants and use their answers in determination of your earnings for Game 2.
+          In order to construct your group of four, we will randomly select three other participants and use their answers in determination of your earnings for Game 2 - Tournament.
           This group will be constructed <strong>after</strong> all participants have made their decisions in the current study.
-          For this reason, you will only be informed of your performance in the tournament if Game 2 is chosen for payment <strong>after</strong> the current study is over and when you are paid your bonus payment.
+          For this reason, you will only be informed of your performance in the tournament if Game 2 - Tournament is chosen for payment <strong>after</strong> the current study is over and when you are paid your bonus payment.
           {% endif %}
         </p>
     </div>
 
-    <h6>Determining Payments</h6>
+    <h6>Details: Determining Payments</h6>
     <div class="row">
         <div class="col-1"></div>
         <div class="col">
             <p>
-                If Game 2 is the one randomly selected for payment, then your earnings depend on the number of boxes you completed compared to the other three people in your group.
+                If Game 2 - Tournament is the one randomly selected for payment, then your earnings depend on the number of boxes you completed compared to the other three people in your group.
                 If you complete more boxes than the other three people in your group, you will be paid some amount per completed box.
-                Otherwise, you will not be paid anything for Game 2.
+                Otherwise, you will not be paid anything for Game 2 - Tournament.
                 The amount paid per completed box will be randomly determined at the end of the experiment from the following amounts: {{round_values}}.
                 Each of these prizes has an equal chance of being chosen.
             </p>
@@ -59,7 +64,7 @@
         </div>
     </div>
 
-    <h6>You are now ready to start Game-2.  Remember, you will have {{time_limit}} seconds to complete this game.</h6>
+    <h6>You are now ready to start Game 2 - Tournament.  Remember, you will have {{time_limit}} seconds to complete this game.</h6>
 
     <br>
 

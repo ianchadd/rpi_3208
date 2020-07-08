@@ -9,31 +9,42 @@
 {% block content %}
 
     <p>
-        Thank you for completing Game 3!
+        Thank you for completing Game 3 - Choice!
     </p>
-
+    <h4>Overview</h4>
     <p>
-        You do not have to complete any boxes for Game 4.
-        Instead, if this game is chosen for payment, you will be paid based on the number of boxes you have already completed in Game-1 Piece Rate.
+        You do not have to complete any boxes for Game 4 - Choice-II.
+        Instead, if this game is chosen for payment, you will be paid based on the number of boxes you have already completed in Game 1 - Piece Rate.
         You will have the option to choose which payment scheme you want.
         You can either choose to be paid according to the <strong>piece rate</strong>, or according to the <strong>tournament</strong>.
         You will make this decision for each of the possible tournament prizes (i.e., {{round_values}}).
+        If you choose the piece rate, you will be paid ${{piece_rate}} per completed box in Game 1 - Piece Rate.
+        If you choose the tournament, your performance will be evaluated relative to your group members’ performance in Game 1 - Piece Rate.
+        And, you will be paid the tournament prize only if you win the tournament (in case of ties, the winner will be randomly determined among the top performers).
+        As you are making these decisions, you will be shown your Game 1 - Piece Rate score.
     </p>
 
-    <p>If Game 4 is the one selected for payment, then one tournament prize will be randomly chosen. Each of these prizes has an equal chance of being chosen. Your earnings for this task are determined as follows:</p>
-    <ul>
+    <h6>Details: Determining Payments</h6>
+
+    <div class="row">
+        <div class="col-1"></div>
+        <p class="col">
+          If Game 4 - Choice-II is the one selected for payment, then one tournament prize will be randomly chosen. Each of these prizes has an equal chance of being chosen. Your earnings for this task are determined as follows:
+    <ul style="PADDING-LEFT: 150px">
         <li>
-            If you chose the piece rate for that prize, you receive ${{piece_rate}} per box you completed in Game 1-Piece Rate.
+            If you chose the piece rate for that prize, you receive ${{piece_rate}} per box you completed in Game 1 - Piece Rate.
         </li>
         <li>
-            If you chose the tournament for that prize, your performance will be evaluated relative to the performance of the other three participants of your assigned group in Game-1 Piece Rate.
-            If you completed more boxes than the other three group members did in Game 1-Piece Rate, then you receive the chosen prize per completed box.
+            If you chose the tournament for that prize, your performance will be evaluated relative to the performance of the other three participants of your assigned group in Game 1 - Piece Rate.
+            If you completed more boxes than the other three group members did in Game 1 - Piece Rate, then you receive the chosen prize per completed box.
             Otherwise, you receive no earnings for this game.
             If there are ties, the winner will be randomly determined among the group members who tied for first place.
         </li>
     </ul>
+    </p>
+    </div>
 
-    <p>The next computer screen will tell you how many boxes you completed in Game 1, and will ask you to choose whether you want the piece rate or the tournament applied to your performance for the prizes of {{round_values}}.</p>
+    <p>The next computer screen will tell you how many boxes you completed in Game 1 - Piece Rate, and will ask you to choose whether you want the piece rate or the tournament applied to your performance for the prizes of {{round_values}}.</p>
 
     <br>
 
