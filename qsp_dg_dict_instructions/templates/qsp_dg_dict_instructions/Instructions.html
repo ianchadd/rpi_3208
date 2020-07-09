@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load custom_tags %}
+
+{% block title %}
+  Overview of Study
+{% endblock %}
+
+
+{% block content %}
+  <p>This survey consists of several Tasks. In the upcoming Task, you will be matched with another person taking part in this survey. [Further instructions]
+  </p>
+
+  <p>
+    Both you and the person with whom you are matched will stay completely anonymous. They will only be identified to you using a personal ID that they have chosen.
+    This personal ID that is a combination of i) an 8-digit alpha-numeric string of characters and ii) a photo icon.
+  </p>
+
+  <p>
+    On the next few pages, you'll be shown how the person with whom you are matched chose their personal ID. 
+  </p>
+
+
+{% delayed_next wait=1000 label='NEXT'%}
+
+{% endblock %}
+
+<!--
+<div class = "mc-ma">
+    {{players.otherID.label}}
+    <ul>
+        {% for choice in player.otherID %}
+    <li>
+        <label>{{choice.tag}}{{choice.choice_label}}</label>
+    </li>
+    {% endfor %}
+    </ul>
+</div> -->

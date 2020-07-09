@@ -157,7 +157,7 @@ SESSION_CONFIGS = [
     ),
     dict(
         name='qsp_dictator',
-        display_name="QSP ID Choice and Dictator Choice",
+        display_name="QSP Dictator",
         num_demo_participants=1,
         pw = 'qsp_testing',
         app_sequence=[
@@ -165,7 +165,7 @@ SESSION_CONFIGS = [
                         'testing_pw',
                         'informed_consent',
                         'qsp_dg_dict_intro',
-                      'qsp_dg_dict_id',
+                      'qsp_dg_dict_instructions',
                       'dg_qsp',
                       'dg_qsp_survey',
                       'survey_demographics',
