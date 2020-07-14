@@ -1,5 +1,7 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
+
 
 {% block title %} {% if task_2 %} Task 1 {% else %} Task 2 {% endif %}: Decision Phase{% endblock %}
 
@@ -21,9 +23,11 @@
     #instructions {
       display: none;
     }
+    #submit {
+      display: none;
+    }
 </style>
 
-    </style>
     <script>
     function show_hide_Instructions() {
       var x = document.getElementById("instructions");
@@ -35,13 +39,31 @@
     }
     </script>
 
+
 {% if task_2 %}
 {% formfield player.attn_check_color %}
 {% else %}
 {% formfield player.attn_check_color_2 %}
 {% endif %}
-<div style="text-align: right;">
-  {% next_button %}
+
+<div id="submit">
+  {% delayed_next wait=0 label='SUBMIT'%}
 </div>
+
+<script>
+  var slider = document.getElementById("myRange");
+  var output_1 = document.getElementById("their_amt");
+  var output_2 = document.getElementById("my_amt");
+  var button = document.getElementById("submit");
+
+
+  slider.oninput = function() {
+    output_1.innerHTML = this.value;
+    output_2.innerHTML = 100 - this.value;
+    button.style.display = "block";
+  }
+
+
+</script>
 
 {% endblock %}

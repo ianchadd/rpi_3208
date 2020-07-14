@@ -1,5 +1,7 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
+
 
 
 {% block title %} {% if task_2 %} Task 1 {% else %} Task 2 {% endif %}: Instructions{% endblock %}
@@ -15,7 +17,5 @@
 {% endif %}
 
 {% include Constants.instructions_template %}
-<div style="text-align: right;">
-  {% next_button %}
-</div>
+{% delayed_next wait=1000 label='NEXT'%}
 {% endblock %}
