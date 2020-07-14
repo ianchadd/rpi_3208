@@ -15,8 +15,8 @@ class Introduction(Page):
         return dict(
             task_2 = task_2,
             task_3 = task_3,
-            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
-            my_ID = self.player.participant.vars['my_ID'],
+            #my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
+            #my_ID = self.player.participant.vars['my_ID'],
             their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars[their_flag]),
             their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)
@@ -38,8 +38,8 @@ class Offer(Page):
         return dict(
             task_2 = task_2,
             task_3 = task_3,
-            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
-            my_ID = self.player.participant.vars['my_ID'],
+            #my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
+            #my_ID = self.player.participant.vars['my_ID'],
             their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars[their_flag]),
             their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)
@@ -69,8 +69,8 @@ class Results(Page):
             their_flag = 'third_flag'
             their_id = 'third_id'        
         return dict(
-            my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
-            my_ID = self.player.participant.vars['my_ID'],
+            #my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
+            #my_ID = self.player.participant.vars['my_ID'],
             their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars[their_flag]),
             their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)

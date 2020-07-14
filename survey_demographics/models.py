@@ -269,7 +269,7 @@ class Player(BasePlayer):
 #lgbt_attitude
     #used in Aksoy et al. EER paper
     lgbt_free = models.IntegerField(
-        label = 'Do you believe that gay men and lesbians should be free to live their own lives as they wish?',
+        label = 'To what extent do you agree with the following statement: "Gay men and lesbians should be free to live their own lives as they wish."',
         choices = [[5,'Strongly Agree'],
                    [4,'Agree'],
                    [3,'Neither Agree nor Disagree'],
@@ -299,7 +299,7 @@ class Player(BasePlayer):
         )
 #attention check
     attn_check_1 = models.IntegerField(
-        label = '(Attention Check) Please select 1 in the list below.',
+        label = 'Please select 1 in the list below.',
         choices = [1,2,3,4,5],
         blank = True
         )

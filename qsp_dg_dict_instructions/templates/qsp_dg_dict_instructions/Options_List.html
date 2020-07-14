@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load custom_tags %}
+
+{% block title %}
+Choosing an ID
+{% endblock %}
+
+
+{% block content %}
+
+<p> Based on the options available to them, the person with whom you will be matched could have chosen any one of the following personal IDs:
+</p>
+<div class="container-fluid">
+<div class="row">
+{% for an_id, flag in recip_options %}
+<div class="col-4" style="background-color:#D0D3D4;">
+  <p style="font-size:35px"><img src="{% static flag %}"/> {{an_id}}
+  </p>
+
+</div>
+{% endfor %}
+</div>
+</div>
+<p>
+  Please move to the next page when you are ready to start Task 1.
+</p>
+{% delayed_next wait=1000 label='NEXT'%}
+
+{% endblock %}
+
+
+
+<!--
+<div class = "mc-ma">
+    {{players.otherID.label}}
+    <ul>
+        {% for choice in player.otherID %}
+    <li>
+        <label>{{choice.tag}}{{choice.choice_label}}</label>
+    </li>
+    {% endfor %}
+    </ul>
+</div> -->

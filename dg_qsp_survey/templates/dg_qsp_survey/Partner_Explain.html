@@ -1,10 +1,9 @@
 {% extends "global/Page.html" %}
 {% load otree %}
 
-{% block title %}Task 4: Survey {% endblock %}
+{% block title %}Task 3: Survey (Part 2) {% endblock %}
 
 {% block content %}
-<h5><u>Part 2</u></h5>
 <p>In the earlier tasks, you gave the following amounts:</p>
 
 <table>
@@ -18,7 +17,7 @@
 <br>
 
 <p>
-Please briefly explain the factors influencing your decision as to how many points to send to <img style="height: 25px; width:auto;" src="{% static flag_1 %}"><b>{{id_1}}</b> and <img style="height: 25px; width:auto;" src="{% static flag_2 %}"><b>{{id_2}}</b>.
+Please briefly explain the factors influencing your decision as to how many ECU to send to <img style="height: 25px; width:auto;" src="{% static flag_1 %}"><b>{{id_1}}</b> and <img style="height: 25px; width:auto;" src="{% static flag_2 %}"><b>{{id_2}}</b>.
 </p>
 
 {% formfield player.give_explain %}
