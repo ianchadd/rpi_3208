@@ -34,7 +34,7 @@ class Gender(Page):
         #if values['other_g'] and type(values['diff_gend']) == type(None):
         #    return 'If you select Other, you must specify in the provided field'
         
-        if values['male'] == 0 and values['female'] == 0 and values['t_male'] == 0 and values['t_female'] == 0 and values['gnc'] == 0 and values['other_g'] == 0:
+        if values['male'] == 0 and values['female'] == 0 and values['t_male'] == 0 and values['t_female'] == 0 and values['gnc'] == 0 and values['nb'] == 0 and values['other_g'] == 0:
             return 'You must select at least one response.'
         elif values['other_g'] and type(values['diff_gend']) == type(None):
             return 'If you select Other, you must specify in the provided field'
