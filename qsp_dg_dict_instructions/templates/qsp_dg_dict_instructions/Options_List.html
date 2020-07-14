@@ -3,16 +3,20 @@
 {% load custom_tags %}
 
 {% block title %}
-Choosing an ID
+Task 1: Instructions Part I
 {% endblock %}
 
 
 {% block content %}
 
-<p> Based on the options available to them, the person with whom you will be matched could have chosen any one of the following personal IDs:
+<p>
+Given the options presented on the previous screen, all the participants have constructed a personal ID that takes one of the following <strong>nine</strong> formats:
 </p>
 <div class="container-fluid">
 <div class="row">
+  <div class="col-12" style="background-color:#D0D3D4;">
+    <p></p>
+  </div>
 {% for an_id, flag in recip_options %}
 <div class="col-4" style="background-color:#D0D3D4;">
   <p style="font-size:35px"><img src="{% static flag %}"/> {{an_id}}
@@ -22,9 +26,7 @@ Choosing an ID
 {% endfor %}
 </div>
 </div>
-<p>
-  Please move to the next page when you are ready to start Task 1.
-</p>
+
 {% delayed_next wait=1000 label='NEXT'%}
 
 {% endblock %}

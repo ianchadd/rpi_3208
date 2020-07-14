@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
+{% load custom_tags %}
 
 {% block title %}
 Overview of study
@@ -52,9 +53,7 @@ Overview of study
 
   </body>
 </html>
-<div style="text-align: right;">
-  {% next_button %}
-</div>
+{% delayed_next wait=1000 label='NEXT'%}
 
 
 {% endblock %}
