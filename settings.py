@@ -39,16 +39,6 @@ SESSION_CONFIGS = [
         
     ),
     dict(
-        name='faces',
-        display_name="Faces Exp 1",
-        num_demo_participants=3,
-        app_sequence=['testing_pw'
-                      ],
-        participation_fee = 2.00,
-        p_completion_link = 'xxxxxxxx',
-        pw = 'faces_testing'
-    ),
-    dict(
         name='cw',
         display_name="CW",
         num_demo_participants=3,
@@ -59,6 +49,12 @@ SESSION_CONFIGS = [
         participation_fee = 2.00,
         p_completion_link = 'xxxxxxxx',
         pw = 'cw_testing'
+    ),
+    dict(
+        name='icl',
+        display_name='Staircase Risk Elicitation',
+        num_demo_participants=1,
+        app_sequence=['icl']
     ),
     dict(
         name='QCP',
@@ -179,10 +175,15 @@ SESSION_CONFIGS = [
     """  
     ),
     dict(
-        name = 'image_upload',
-        display_name = 'using camera in oTree',
+        name = 'faces',
+        display_name = 'Faces Barebones Code',
         num_demo_participants =  1,
-        app_sequence = ['image_upload'],
+        app_sequence = [
+            'testing_pw',
+            'icl',
+            'image_upload'
+            ],
+        pw = 'faces_testing',
         participation_fee = 1.00,
         consent = '',
         p_completion_link = 'xxxxxxxx',
