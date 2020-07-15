@@ -51,12 +51,6 @@ SESSION_CONFIGS = [
         pw = 'cw_testing'
     ),
     dict(
-        name='icl',
-        display_name='Staircase Risk Elicitation',
-        num_demo_participants=1,
-        app_sequence=['icl']
-    ),
-    dict(
         name='QCP',
         num_demo_participants=1,
         #use_browser_bots=True,
@@ -93,24 +87,6 @@ SESSION_CONFIGS = [
         data_pages_enabled=False,
         summary_page_enabled=False,
         participation_fee=2.00,
-    ),
-    dict(
-        name='demo_survey',
-        display_name="Demographic Survey",
-        num_demo_participants=3,
-        app_sequence=['survey_demographics']
-    ),
-    dict(
-        name='demo_survey_2',
-        display_name="Demographic Survey 2",
-        num_demo_participants=3,
-        app_sequence=['survey_demographics']
-    ),
-    dict(
-        name='volunteer',
-        display_name="Volunteer Dilemma",
-        num_demo_participants=3,
-        app_sequence=['volunteer_dilemma']
     ),
     dict(
         name='nbo_choice',
@@ -181,7 +157,8 @@ SESSION_CONFIGS = [
         app_sequence = [
             'testing_pw',
             'icl',
-            'image_upload'
+            'image_upload',
+            'survey_faces'
             ],
         pw = 'faces_testing',
         participation_fee = 1.00,
