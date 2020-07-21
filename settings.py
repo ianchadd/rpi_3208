@@ -140,7 +140,7 @@ SESSION_CONFIGS = [
                       'qsp_dg_dict_instructions',
                       'dg_qsp',
                       'dg_qsp_survey',
-                      'survey_demographics',
+                      'survey_demographics_qsp',
                     #'prolific_ID_end'
                       ],
         participation_fee = 2.00,

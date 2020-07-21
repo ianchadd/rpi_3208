@@ -3,6 +3,10 @@ from .models import Constants
 
 
 class Introduction(Page):
+    form_model = 'player'
+    form_fields = [
+        'thoughts'
+        ]
     def is_displayed(self):
         return self.round_number == 1
     def vars_for_template(self):
@@ -30,11 +34,13 @@ class Survey_Partner(Page):
         'inferred_gender',
         'inferred_age',
         'inferred_orientation',
+        'inferred_ally',
         'inferred_politics',
         'gender_confidence',
         'age_confidence',
         'orientation_confidence',
-        'politics_confidence'
+        'politics_confidence',
+        'ally_confidence'
         ]
     def vars_for_template(self):
         if self.round_number == 1:
@@ -54,7 +60,7 @@ class Survey_Partner(Page):
             their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)
         )
-class Partner_Explain(Page):
+class Partner_Explain_1(Page):
     form_model = 'player'
     form_fields = [
         'give_explain'
@@ -76,6 +82,32 @@ class Partner_Explain(Page):
             participant_vars = str(self.participant.vars),
             gave_1 = self.participant.vars['gave_1'],
             gave_2 = self.participant.vars['gave_2'],
+        )
+
+class Partner_Explain_2(Page):
+    form_model = 'player'
+    form_fields = [
+        'different_explain'
+        ]
+    def is_displayed(self):
+        return self.round_number == 2
+    def vars_for_template(self):
+        task_2 = self.round_number == 1
+        task_3 = not task_2 ,
+        same = self.participant.vars['gave_1'] == self.participant.vars['gave_2']
+        return dict(
+            task_2 = task_2,
+            task_3 = task_3,
+            #my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
+            #my_ID = self.player.participant.vars['my_ID'],
+            flag_1 = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['other_flag']),
+            id_1 = self.player.participant.vars['other_id'],
+            flag_2 = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['third_flag']),
+            id_2 = self.player.participant.vars['third_id'],
+            participant_vars = str(self.participant.vars),
+            gave_1 = self.participant.vars['gave_1'],
+            gave_2 = self.participant.vars['gave_2'],
+            same = same
         )
     
 class Self_Explain(Page):
@@ -108,6 +140,7 @@ class Self_Explain(Page):
 
 page_sequence = [Introduction,
                  Survey_Partner,
-                 Partner_Explain,
+                 Partner_Explain_1,
+                 Partner_Explain_2,
                  #Self_Explain
                  ]
