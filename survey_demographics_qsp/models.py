@@ -195,6 +195,7 @@ class Player(BasePlayer):
             "Master's Degree",
             "PhD or Higher"
             ]
+        )
         
 #relationship status
     relationship = models.StringField(

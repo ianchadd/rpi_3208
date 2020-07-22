@@ -3,12 +3,12 @@
 <div id="next-section" style="display: none;">
 <div id="next-section">
 <p><b>Please click {{label}} when you are ready.</b></p>
-{% if label == "NEXT" %}
+{% if label == "NEXT"%}
 <div class="row">
     <div class="col-11"></div>
     <button id="delayed-next-button" class="col-1 next_button btn btn-outline-dark">{{label}}</button>
 </div>
-{% elif label == "SUBMIT" %}
+{% elif label == "SUBMIT" or label == "START"  %}
 <div class="row">
     <div class="col-4"></div>
     <button id="delayed-next-button" class="col-4 next_button btn btn-outline-dark">{{label}}</button>
