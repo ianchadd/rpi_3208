@@ -33,5 +33,12 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    attention_check = models.BooleanField()
+    attention_check = models.BooleanField(
+        label = 'Please select Option 2 below',
+        choices = [
+            [False, 'Option 1'],
+            [True, 'Option 2']
+            ],
+        widget=widgets.RadioSelect
+        )
     game_4_switch = models.StringField()

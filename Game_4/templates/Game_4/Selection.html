@@ -55,24 +55,11 @@
 
             </tr>
             {% endfor %}
-            <tr>
-                <td>
-                    Please select Tournament for this row:
-                </td>
-                <input type="hidden" name="attention_check" value="False"/>
-                <td></td>
-                <td>
-                    <input name="attention_check_button" id="attention_check_False" type="radio" class="form-check-input attention_check_radio">
-                </td>
-                <td></td>
-                <td>
-                    <input name="attention_check_button" id="attention_check_True" type="radio" class="form-check-input attention_check_radio">
-                </td>
-            </tr>
         </tbody>
     </table>
     <br>
-    <p>Before submitting your decisions, please be sure to review the entire table above to make sure it reflects your intended decisions.</p>
+    <p>Before submitting your decisions, please be sure to review the entire table above to make sure it reflects your intended decisions and answer the question below.</p>
+{% formfield player.attention_check %}
     {% delayed_next wait=20000 label='SUBMIT'%}
 
 
@@ -99,11 +86,6 @@
 
 {% block scripts %}
     <script type="text/javascript">$(() => {
-        $('.attention_check_radio').click(function() {
-            const idArr = $(this).attr('id').split('_');
-            const val = idArr[idArr.length-1];
-            $('[name="attention_check"]').attr('value', val);
-        });
         $('.switch_point').click(function() {
             const idArr = $(this).attr('id').split('_');
             const side = idArr[idArr.length-1];

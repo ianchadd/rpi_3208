@@ -52,9 +52,11 @@ class Subsession(BaseSubsession):
         for p in self.get_players():
             p.participant.vars['my_flag_choices'] = flag_choices #restricted as of March 19th to just three flags
             random.shuffle(p.participant.vars['my_flag_choices'])
+            p.participant.vars['id_choices'] = id_choices
+            random.shuffle(p.participant.vars['id_choices'])
             p.participant.vars['treat_assign'] = random.random()
             p.participant.vars['recip_options'] = id_options
-            random.shuffle(p.participant.vars['recip_options'])
+            #random.shuffle(p.participant.vars['recip_options']) #got rid of randomization 7/14/20
 
 
 class Group(BaseGroup):
@@ -130,7 +132,9 @@ class Player(BasePlayer):
         other_ID_choices = [i for i in id_choices if i != self.my_ID]
         self.participant.vars['other_id'] = random.choice(other_ID_choices)
         other_ID_choices = [i for i in other_ID_choices if i!= self.participant.vars['other_id']]
-        self.participant.vars['third_id'] = random.choice(other_ID_choices)
+        #self.participant.vars['third_id'] = random.choice(other_ID_choices) #got rid of this 7/14/20
+        self.participant.vars['third_id'] = self.participant.vars['other_id'] #added this 7/14/20 per meeting
+
 
     #adjective strings for evaluation page
     adj_1 = models.StringField(label = '')

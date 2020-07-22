@@ -5,7 +5,7 @@
 
 {% block content %}
 <p>Please answer the following questions <strong>about the participant you were matched with in {% if task_2 %} Task 1 {% else %} Task 2 {% endif %}</strong></p>
-<p>We will randomly select <strong>one</strong> out of the four questions below and you will receive $2 if your guess for that question is correct.</p>
+<p>We will randomly select <strong>one</strong> out of the five questions below and you will receive $2 if your guess for that question is correct.</p>
 
 <p>Consider <img style="height: 25px; width:auto;" src="{% static their_flag %}"><b>{{their_ID}}</b> from {% if task_2 %} Task 1 {% else %} Task 2 {% endif %}
 </p>
@@ -28,6 +28,12 @@
     <td>{% formfield player.inferred_orientation %}</td>
     <td>Confidence level:</td>
     <td>{% formfield player.orientation_confidence %}</td>
+  </tr>
+  <tr>
+    <td>I think they are an ally to the LGBTQ+ community:</td>
+    <td>{% formfield player.inferred_ally %}</td>
+    <td>Confidence level:</td>
+    <td>{% formfield player.ally_confidence %}</td>
   </tr>
   <tr>
     <td>Politically, I think they are most likely:</td>

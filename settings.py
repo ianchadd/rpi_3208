@@ -39,16 +39,6 @@ SESSION_CONFIGS = [
         
     ),
     dict(
-        name='faces',
-        display_name="Faces Exp 1",
-        num_demo_participants=3,
-        app_sequence=['testing_pw'
-                      ],
-        participation_fee = 2.00,
-        p_completion_link = 'xxxxxxxx',
-        pw = 'faces_testing'
-    ),
-    dict(
         name='cw',
         display_name="CW",
         num_demo_participants=3,
@@ -84,37 +74,19 @@ SESSION_CONFIGS = [
             #'Game_5_Game',
             #'Game_5_Data',
             'Performance_Guesses',
-            #'qcp_demographics',
+            'qcp_demographics',
             #'Survey',
-            'feedback_survey',
+            #'feedback_survey',
             'Summary',
             'prolific_ID_end'],
             consent = 'qcp/consent.pdf',
         p_completion_link = 'xxxxxxxx',
         consent_additional_message = """
         """,
-        seed_data = True,
+        seed_data = False,
         data_pages_enabled=False,
-        summary_page_enabled=False,
+        summary_page_enabled=True,
         participation_fee=2.00,
-    ),
-    dict(
-        name='demo_survey',
-        display_name="Demographic Survey",
-        num_demo_participants=3,
-        app_sequence=['survey_demographics']
-    ),
-    dict(
-        name='demo_survey_2',
-        display_name="Demographic Survey 2",
-        num_demo_participants=3,
-        app_sequence=['survey_demographics']
-    ),
-    dict(
-        name='volunteer',
-        display_name="Volunteer Dilemma",
-        num_demo_participants=3,
-        app_sequence=['volunteer_dilemma']
     ),
     dict(
         name='nbo_choice',
@@ -168,7 +140,7 @@ SESSION_CONFIGS = [
                       'qsp_dg_dict_instructions',
                       'dg_qsp',
                       'dg_qsp_survey',
-                      'survey_demographics',
+                      'survey_demographics_qsp',
                     #'prolific_ID_end'
                       ],
         participation_fee = 2.00,
@@ -179,10 +151,16 @@ SESSION_CONFIGS = [
     """  
     ),
     dict(
-        name = 'image_upload',
-        display_name = 'using camera in oTree',
+        name = 'faces',
+        display_name = 'Faces Barebones Code',
         num_demo_participants =  1,
-        app_sequence = ['image_upload'],
+        app_sequence = [
+            'testing_pw',
+            'icl',
+            'image_upload',
+            'survey_faces'
+            ],
+        pw = 'faces_testing',
         participation_fee = 1.00,
         consent = '',
         p_completion_link = 'xxxxxxxx',

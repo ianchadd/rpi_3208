@@ -24,6 +24,7 @@ class Selection(Page):
     form_model = 'player'
     form_fields = ['attention_check', 'game_4_switch']
     def before_next_page(self):
+        self.participant.vars['game_4_attn_check'] = self.player.attention_check
         if (self.player.game_4_switch == Constants.round_values[0]):
             self.player.game_4_switch = '0'
         elif (self.player.game_4_switch == Constants.round_values[-1]):
