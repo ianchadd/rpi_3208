@@ -184,7 +184,7 @@ class Player(BasePlayer):
         choices = [[True,'Yes'],[False,'No']],
         widget = widgets.RadioSelect,
         )
-#educaction
+#education
     education = models.StringField(
         label = 'What is the highest education level you have attained?',
         choices = [

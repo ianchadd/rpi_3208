@@ -39,6 +39,23 @@ SESSION_CONFIGS = [
         
     ),
     dict(
+        name='gt_survey_test',
+        display_name="Gender Typicality",
+        num_demo_participants=3,
+        app_sequence=['testing_pw',
+                      'gender_typicality'],
+        participation_fee = 0,
+        p_completion_link = 'xxxxxxxx',
+        pw = 'gt_testing',
+        questions = ['tobacco','pray'],
+        random = True,
+        survey_title = 'GT Survey',
+        doc="""
+    Edit the p_completion_link variable with the completion code for Prolific session
+    """
+        
+    ),
+    dict(
         name='cw',
         display_name="CW",
         num_demo_participants=3,
