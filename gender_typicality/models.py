@@ -194,7 +194,7 @@ class Player(BasePlayer):
         widget = widgets.RadioSelect
         )
     tired = models.IntegerField(
-        label = 'In an average week, you fel too tired to do things',
+        label = 'In an average week, you feel too tired to do things',
         choices = [
             [0, 'Never or rarely'],
             [1, ''],
