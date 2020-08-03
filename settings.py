@@ -32,16 +32,6 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
     dict(
-        name='iat',
-        display_name="IAT SO",
-        num_demo_participants=3,
-        app_sequence=[  
-                        'iat_so'
-                        ],
-        participation_fee = 2.00,
-        p_completion_link = 'xxxxxxxx',        
-    ),
-    dict(
         name='qsp_recip',
         display_name="QSP Recipient",
         num_demo_participants=3,
@@ -70,7 +60,7 @@ SESSION_CONFIGS = [
                       'dg_qsp',
                       'dg_qsp_survey',
                       'survey_demographics_qsp',
-                        'iat_so'
+                        #'iat_so'
                     #'prolific_ID_end'
                       ],
         participation_fee = 2.00,
@@ -262,7 +252,11 @@ Here are some oTree games.
 # don't share this with anybody.
 SECRET_KEY = '7vfsh(zo@d)v)zizkf#@xqzb3q%juzu65zoh4r+#$tckdfji5r'
 
-INSTALLED_APPS = ['otree','custom_templates', 'django.contrib.humanize','otreeutils']
+INSTALLED_APPS = ['otree',
+                  'custom_templates',
+                  'django.contrib.humanize',
+                  #'otreeutils'
+                  ]
 
 # inactive session configs
 # dict(name='trust', display_name="Trust Game", num_demo_participants=2, app_sequence=['trust', 'payment_info']),
