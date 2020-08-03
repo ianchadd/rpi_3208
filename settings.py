@@ -24,14 +24,17 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
     dict(
-        name='Simple_survey_flag',
-        display_name="QSP Survey 1",
+        name='qsp_recip',
+        display_name="QSP Recipient",
         num_demo_participants=3,
-        app_sequence=['prolific_ID_begin',
-                      'simple_survey_flag',
-                      'survey_demographics',
-                      'prolific_ID_end'],
+        app_sequence=[  'testing_pw',
+                        'qsp_dg_recip_intro',
+                        'qsp_dg_dict_id',
+                        'dg_recip_survey',
+                        'prolific_ID_end'
+                    ],
         participation_fee = 2.00,
+        pw = 'qsp_testing',
         p_completion_link = 'xxxxxxxx',
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session

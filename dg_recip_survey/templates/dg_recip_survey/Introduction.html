@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+
+
+{% block title %} Task 2: Survey (Part 1){% endblock %}
+
+
+
+{% block content %}
+<p>In this task, we ask you to answer some questions.
+  Please answer the following questions to the best of your ability.
+  You may receive additional bonus payments based on your responses to some of the questions.
+</p>
+
+<p>
+The survey consists of five main parts.
+</p>
+
+
+
+{% delayed_next wait=1000 label='NEXT'%}
+{% endblock %}
