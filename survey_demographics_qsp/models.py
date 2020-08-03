@@ -184,6 +184,27 @@ class Player(BasePlayer):
         choices = [[True,'Yes'],[False,'No']],
         widget = widgets.RadioSelect,
         )
+    relations_same = models.BooleanField(
+        label='',
+        choices = [[True,'Yes'],[False,'No']],
+        widget = widgets.RadioSelect,
+        )
+    relations_different = models.BooleanField(
+        label='',
+        choices = [[True,'Yes'],[False,'No']],
+        widget = widgets.RadioSelect,
+        )
+    attraction_same = models.BooleanField(
+        label='',
+        choices = [[True,'Yes'],[False,'No']],
+        widget = widgets.RadioSelect,
+        )
+    attraction_different = models.BooleanField(
+        label='',
+        choices = [[True,'Yes'],[False,'No']],
+        widget = widgets.RadioSelect,
+        )
+    
 #education
     education = models.StringField(
         label = 'What is the highest education level you have attained?',
@@ -305,6 +326,46 @@ class Player(BasePlayer):
                    ],
         widget = widgets.RadioSelect
         )
+    lgbt_discrim = models.IntegerField(
+        label = 'To what extent do you agree with the following statement: "It should be legal for business owners to refuse to serve same-sex partners."',
+        choices = [[5,'Strongly Agree'],
+                   [4,'Agree'],
+                   [3,'Neither Agree nor Disagree'],
+                   [2,'Disagree'],
+                   [1,'Strongly Disagree']
+                   ],
+        widget = widgets.RadioSelect
+        )
+    lgbt_adopt = models.IntegerField(
+        label = 'To what extent do you agree with the following statement: "It should be legal for same-sex partners to adopt a child."',
+        choices = [[5,'Strongly Agree'],
+                   [4,'Agree'],
+                   [3,'Neither Agree nor Disagree'],
+                   [2,'Disagree'],
+                   [1,'Strongly Disagree']
+                   ],
+        widget = widgets.RadioSelect
+        )
+    lgbt_marriage = models.IntegerField(
+        label = 'To what extent do you agree with the following statement: "Marriages between same-sex partners should be recognized by the law as valid, with the same rights as traditional marriages."',
+        choices = [[5,'Strongly Agree'],
+                   [4,'Agree'],
+                   [3,'Neither Agree nor Disagree'],
+                   [2,'Disagree'],
+                   [1,'Strongly Disagree']
+                   ],
+        widget = widgets.RadioSelect
+        )
+    lgbt_bathroom = models.IntegerField(
+        label = 'To what extent do you agree with the following statement: "Transgender people should have to use the bathroom/locker rooms of the sex they were assigned at birth."',
+        choices = [[5,'Strongly Agree'],
+                   [4,'Agree'],
+                   [3,'Neither Agree nor Disagree'],
+                   [2,'Disagree'],
+                   [1,'Strongly Disagree']
+                   ],
+        widget = widgets.RadioSelect
+        )
         
 #lgbt friend
     lgbt_friend = models.BooleanField(
@@ -312,7 +373,16 @@ class Player(BasePlayer):
         choices = [
             [True, 'Yes'],
             [False, 'No']
-            ]
+            ],
+        widget = widgets.RadioSelect
+        )
+    lgbt_met = models.BooleanField(
+        label = 'Have you ever met someone who identifies as LGBTQ+?',
+        choices = [
+            [True, 'Yes'],
+            [False, 'No']
+            ],
+        widget = widgets.RadioSelect
         )
 
     
@@ -351,5 +421,43 @@ class Player(BasePlayer):
         choices = [[1, 'Yes'],[0,'No']],
         widget = widgets.RadioSelect
         )
-        
-        
+
+#prolific guesses
+    prolific_female = models.StringField(
+        label = 'Which of the following best describes your opinion?',
+        choices = [
+            ['<','I think less than 51% of the Prolific participants are female'],
+            ['=','I think about 51% of the Prolific participants are female'],
+            ['>','I think more than 51% of the Prolific participants are female'],
+            ],
+        widget = widgets.RadioSelect
+        )
+    prolific_lgbt = models.StringField(
+        label = 'Which of the following best describes your opinion?',
+        choices = [
+            ['<','I think less than 5% of the Prolific participants identify as LGBT'],
+            ['=','I think about 5% of the Prolific participants identify as LGBT'],
+            ['>','I think more than 5% of the Prolific participants identify as LGBT'],
+            ],
+        widget = widgets.RadioSelect
+        )
+    prolific_ally = models.IntegerField(
+        label = 'What percentage of Prolific participants do you think are allies to the LGBTQ+ community? Please enter a number between 0 and 100',
+        min=0,
+        max=100,
+        )
+    prolific_liberal = models.IntegerField(
+        label = 'Percentage of Prolific participants who are more liberal than conservative on social issues',
+        min=0,
+        max=100,
+        )
+    prolific_equal = models.IntegerField(
+        label = 'Percentage of Prolific participants who are equally liberal and conservative on social issues',
+        min=0,
+        max=100,
+        )
+    prolific_conservative = models.IntegerField(
+        label = 'Percentage of Prolific participants who are less liberal than conservative on social issues',
+        min=0,
+        max=100,
+        )

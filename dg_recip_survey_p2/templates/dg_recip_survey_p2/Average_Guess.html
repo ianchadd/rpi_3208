@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+
+{% block title %} Task 2: Survey (Part 2){% endblock %}
+
+
+
+{% block content %}
+
+<p>
+  {% if round_1 %}First,{% else %}Next,{% endif%} consider a participant who has chosen the following ID: <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+  What do you think would be the average number of ECU that will be sent to <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> by their matched partner(s)?
+
+
+</p>
+
+<p>
+  You may receive additional bonus payments based on the accuracy of your answer. It is in your best interest to state your guess as accurately as possible.
+</p>
+{% include Constants.guess_template %}
+
+<div id="submit">
+  {% delayed_next wait=0 label='SUBMIT'%}
+</div>
+
+<style>
+#submit {
+  display: none;
+}
+</style>
+
+<script>
+  var slider = document.getElementById("myRange");
+  var output_1 = document.getElementById("their_amt");
+  var button = document.getElementById("submit");
+
+
+  slider.oninput = function() {
+    output_1.innerHTML = this.value;
+    button.style.display = "block";
+  }
+
+
+</script>
+
+{% endblock %}

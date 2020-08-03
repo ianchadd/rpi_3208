@@ -33,6 +33,20 @@ class Recip_Offer(Page):
 
     def before_next_page(self):
         self.player.set_payoffs()
+
+class Check_Understanding(Page):
+    form_model = 'player'
+    form_fields = ['check_understanding']
+    def vars_for_template(self):
+        return dict(
+            participant_vars = str(self.participant.vars)
+        )
+
+    def error_message(self, values):
+        print('You answered', values)
+        if values['check_understanding']:
+            return 'You chose True. This is incorrect. Remember that your bonus payment from Task 2 is determined by the total amounts that all your matched partners choose to allocate to you.'
+
 '''
 class ResultsWaitPage(WaitPage):
     after_all_players_arrive = 'set_payoffs'
@@ -67,6 +81,7 @@ class Results(Page):
 page_sequence = [Introduction,
                  DG_Instructions,
                  Recip_Offer,
+                 Check_Understanding,
                  #ResultsWaitPage,
                  #Results
                  ]

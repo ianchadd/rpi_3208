@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<p>
+We will now ask you for your opinions about the participants on Prolific.
+</p>
+
+<p>According to US Census Data, about 51% of the <b>US population</b> is female.</p>
+{% formfield player.prolific_female %}
+
+<p>According to the Gallup report, about 5% of the <b>US population</b> identifies as LGBT.</p>
+{% formfield player.prolific_lgbt %}
+
+{% formfield player.prolific_ally %}
+
+<p>What percentage of <b>Prolific Participants</b> do you think are more, less, or equally liberal and conservative on social issues?
+Please enter a number between 0 and 100 in each field.
+The sum of these numbers must <b>add up to 100.</b></p>
+{% formfield player.prolific_liberal %}
+{% formfield player.prolific_equal %}
+{% formfield player.prolific_conservative %}
+
+{% delayed_next wait=0 label='NEXT' %}
+
+{% endblock %}

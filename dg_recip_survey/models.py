@@ -72,6 +72,13 @@ class Player(BasePlayer):
         label = 'Please select the third option below',
         widget = forms.widgets.RadioSelect(),
         )
+    
+    check_understanding = models.BooleanField(
+        blank = False,
+        choices = [True, False],
+        label = '',
+        widget = forms.widgets.RadioSelect(),
+        )
 
     def set_payoffs(self):
         self.gave = self.gave
