@@ -7,6 +7,7 @@ class Introduction(Page):
         return self.round_number == 1
     def vars_for_template(self):
         return dict(
+            details = 'dg_recip/details.pdf',
             participant_vars = str(self.participant.vars)
         )
 

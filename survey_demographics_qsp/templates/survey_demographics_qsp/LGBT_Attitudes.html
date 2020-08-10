@@ -1,14 +1,17 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 {% block title %}
 {% endblock %}
 
 {% block content %}
 
-
+<p>
+To what extent do you agree with the following statements?
+</p>
     {% formfields %}
 
-    {% next_button %}
+{% delayed_next wait=0 label='NEXT'%}
 
 {% endblock %}

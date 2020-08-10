@@ -26,7 +26,7 @@ S285-S300.
 class Constants(BaseConstants):
     name_in_url = 'dg_recip'
     players_per_group = None #pairs are made ex-post
-    num_rounds = 2
+    num_rounds = 1
     instructions_template = 'dg_recip_survey/instructions.html'
     decision_template = 'dg_recip_survey/decision_template.html'
 
@@ -79,6 +79,15 @@ class Player(BasePlayer):
         label = '',
         widget = forms.widgets.RadioSelect(),
         )
+
+    check_understanding_mistakes = models.IntegerField(
+        initial = 0
+        )
+
+    def check_understanding_error_message(self,value):
+        if value:
+            self.check_understanding_mistakes += 1
+            return 'You chose True. This is incorrect. Remember that your bonus payment from Task 2 is determined by the total amounts that all your matched partners choose to allocate to you.'
 
     def set_payoffs(self):
         self.gave = self.gave

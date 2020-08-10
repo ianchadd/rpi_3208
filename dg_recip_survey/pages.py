@@ -41,12 +41,6 @@ class Check_Understanding(Page):
         return dict(
             participant_vars = str(self.participant.vars)
         )
-
-    def error_message(self, values):
-        print('You answered', values)
-        if values['check_understanding']:
-            return 'You chose True. This is incorrect. Remember that your bonus payment from Task 2 is determined by the total amounts that all your matched partners choose to allocate to you.'
-
 '''
 class ResultsWaitPage(WaitPage):
     after_all_players_arrive = 'set_payoffs'

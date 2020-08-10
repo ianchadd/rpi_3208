@@ -83,9 +83,13 @@ class Player(BasePlayer):
     customID = models.StringField(label = 'Please create your 8-character user ID.' )
     chooseID = models.StringField(
         label = 'Please choose one of the following IDs.',
-        choices = id_choices,
         widget = widgets.RadioSelect(),
         )
+    
+    def chooseID_choices(self):
+        choices = id_choices
+        random.shuffle(choices)
+        return choices
     
     def customID_error_message(self, value):
         if len(value) != 8:

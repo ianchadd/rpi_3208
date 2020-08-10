@@ -19,6 +19,11 @@ class Birth(Page):
         'yob',
         'sex',
         ]
+class Care(Page):
+    form_model='player'
+    form_fields = [
+        'care_others',
+        ]
 class Gender_SO(Page):
     form_model='player'
     form_fields = ['male',
@@ -73,13 +78,15 @@ class Gen_Demographics(Page):
             return 'If you select Other, you must specify in the provided field'
         elif values['religion'] =='Some other religious affiliation (please specify below)' and type(values['other_religion']) == type(None):
             return 'If you select Other, you must specify in the provided field'
-        elif values['religion'] =='Some other religious affiliation (please specify below)' and type(values['other_religion']) == type(None):
+        elif (values['live_in'] =='Other (please state below)' and type(values['other_live_location']) == type(None)) or (values['grew_up_in'] =='Other (please state below)' and type(values['other_grew_up_location']) == type(None)) :
             return 'If you select Other, you must specify in the provided field'
+    
 
 class Politics(Page):
     form_model = 'player'
     form_fields = ['econ_politics',
-                   'social_politics']
+                   'social_politics',
+                   'election_2016']
 
 class LGBT_Attitudes(Page):
     form_model = 'player'
@@ -118,6 +125,7 @@ page_sequence = [Instructions,
                  S_History,
                  Gen_Demographics,
                  Politics,
+                 Care,
                  LGBT_Attitudes,
                  LGBT_Experience,
                  Prolific_Guess]

@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 {% block title %}
 {% if recip %} Task 2: Survey (Part 5) {% else %} Task 3: Survey (Part 3) {% endif %}
@@ -14,6 +15,6 @@
         Please answer each question to the best of your ability.
     </p>
 
-    {% next_button %}
+{% delayed_next wait=0 label='NEXT' %}
 
 {% endblock %}
