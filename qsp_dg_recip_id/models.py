@@ -82,7 +82,7 @@ class Player(BasePlayer):
     randomID = models.StringField(initial = 'initial') 
     customID = models.StringField(label = 'Please create your 8-character user ID.' )
     chooseID = models.StringField(
-        label = 'Please choose one of the following IDs.',
+        label = 'All the participants in this study are given these three options. Please select one of these options to form the alpha-numeric part of your personal ID.',
         widget = widgets.RadioSelect(),
         )
     
@@ -96,13 +96,12 @@ class Player(BasePlayer):
             return 'Chosen ID must have only 8 characters.'
 
     #attention check variables
-    attn_check_1 = models.IntegerField(
-        initial = 0,
+    attn_check_1 = models.BooleanField(
         label = 'Please select the word "Dog"',
         choices = [
-                    [1,'Cat'],
-                    [2,'Dog'],
-                    [3,'Bird']
+                    [False,'Cat'],
+                    [True,'Dog'],
+                    [False,'Bird']
                    ],
         blank=True,
         widget = widgets.RadioSelect()

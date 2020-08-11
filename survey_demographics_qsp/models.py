@@ -418,9 +418,15 @@ class Player(BasePlayer):
         blank = True
         )
 #attention check
-    attn_check_1 = models.IntegerField(
+    attn_check_1 = models.BooleanField(
         label = 'Please select 1 in the list below.',
-        choices = [1,2,3,4,5],
+        choices = [
+            [True,1],
+            [False,2],
+            [False,3],
+            [False,4],
+            [False,5],
+            ],
         blank = True
         )
     

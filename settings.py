@@ -32,29 +32,22 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
     dict(
-        name='iat',
-        display_name="IAT SO",
-        num_demo_participants=3,
-        app_sequence=[  
-                        'iat_so'
-                        ],
-        participation_fee = 2.00,
-        recip = True,
-        p_completion_link = 'xxxxxxxx',        
-    ),
-    dict(
         name='qsp_recip',
         display_name="QSP Recipient",
         num_demo_participants=3,
-        app_sequence=[  
+        app_sequence=[
+                        #'prolific_ID_begin',
+                        'informed_consent',
                         'qsp_dg_recip_intro',
                         'qsp_dg_recip_id',
                         'dg_recip_survey',
                         'dg_recip_survey_p2',
-                        'survey_demographics_qsp'
+                        'survey_demographics_qsp',
+                        #'prolific_ID_end'
                         ],
         participation_fee = 2.00,
         recip = True,
+        consent = 'flag_survey/consent.pdf',
         p_completion_link = 'xxxxxxxx',        
     ),
     dict(
@@ -266,7 +259,7 @@ SECRET_KEY = '7vfsh(zo@d)v)zizkf#@xqzb3q%juzu65zoh4r+#$tckdfji5r'
 INSTALLED_APPS = ['otree',
                   'custom_templates',
                   'django.contrib.humanize',
-                  'otreeutils'
+                  #'otreeutils'
                   ]
 
 # inactive session configs

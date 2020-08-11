@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
+{% load custom_tags %}
 {% block title %}
   Task 1: Creation of Personal ID
 {% endblock %}
@@ -10,12 +11,11 @@
 
 <p><u>Step 1: Choose Alpha-Numeric String</u></p>
 
-<p>We have randomly generated these three options for all the participants in this study:</p>
     {% formfields %}
 
 <p>You <strong>do not</strong> need to remember which alpha-numeric part you have selected.
 Your ID will always be shown to you whenever it is necessary.</p>
-    {% next_button %}
+{% delayed_next wait=0 label="NEXT" %}
 
 {% endblock %}
 

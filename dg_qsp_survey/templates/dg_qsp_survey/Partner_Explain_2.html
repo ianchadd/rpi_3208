@@ -6,16 +6,14 @@
 {% block title %}Task 3: Survey (Part 2) {% endblock %}
 
 {% block content %}
-<p>In the earlier tasks, you gave the following amounts:</p>
+<p><b>You made the following decisions:</b>:</p>
+<p>
+In Task 1, you sent {{gave_1}} to <img style="height: 25px; width:auto;" src="{% static flag_1 %}"><b>{{id_1}}</b>.
+</p>
 
-<table>
-  <tr>
-    <td><img style="height: 25px; width:auto;" src="{% static flag_1 %}"><b>{{id_1}}</b></td> <td>{{gave_1}}</td>
-  </tr>
-  <tr>
-    <td><img style="height: 25px; width:auto;" src="{% static flag_2 %}"><b>{{id_2}}</b></td> <td>{{gave_2}}</td>
-  </tr>
-</table>
+<p>
+In Task 2, you sent {{gave_2}} to <img style="height: 25px; width:auto;" src="{% static flag_2 %}"><b>{{id_2}}</b>.
+</p>
 <br>
 
 <p>

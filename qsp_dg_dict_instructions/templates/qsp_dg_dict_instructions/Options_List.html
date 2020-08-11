@@ -19,7 +19,7 @@ Given the options presented on the previous screen, all the participants have co
   </div>
 {% for an_id, flag in recip_options %}
 <div class="col-4" style="background-color:#D0D3D4;">
-  <p style="font-size:35px"><img src="{% static flag %}"/> {{an_id}}
+  <p style="font-size:35px;text-align:center"><img style="height: 35px; width:auto;" src="{% static flag %}"/> {{an_id}}
   </p>
 
 </div>
@@ -27,7 +27,7 @@ Given the options presented on the previous screen, all the participants have co
 </div>
 </div>
 
-{% delayed_next wait=1000 label='NEXT'%}
+{% delayed_next wait=0 label='NEXT'%}
 
 {% endblock %}
 

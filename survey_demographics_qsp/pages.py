@@ -24,6 +24,8 @@ class Care(Page):
     form_fields = [
         'care_others',
         ]
+    def is_displayed(self):
+        return not self.session.config['recip']
 class Gender_SO(Page):
     form_model='player'
     form_fields = ['male',
@@ -113,6 +115,8 @@ class Prolific_Guess(Page):
                    'prolific_equal',
                    'prolific_conservative',
                    ]
+    def is_displayed(self):
+        return self.session.config['recip']
     def error_message(self,values):
         if values['prolific_liberal'] + values['prolific_equal'] + values['prolific_conservative'] != 100:
             return 'Your answers to the final three questions on this page must add up to 100.'

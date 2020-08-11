@@ -50,24 +50,24 @@ class Player(BasePlayer):
         choices = currency_range(c(0),c(100), c(1))
         )
     
-    attn_check_color = models.IntegerField(
+    attn_check_color = models.BooleanField(
         blank = True,
         choices = [
-            [1,'Orange'],
-            [2,'Red'],
-            [3,'Blue']
+            [False,'Orange'],
+            [True,'Red'],
+            [False,'Blue']
             ],
         label = 'Please select the second option below',
         widget = forms.widgets.RadioSelect(),
         )
     
-    attn_check_color_2 = models.IntegerField(
+    attn_check_color_2 = models.BooleanField(
         blank = True,
         choices = [
-            [1,'Red'],
-            [2,'Blue'],
-            [3,'White'],
-            [4, 'Black']
+            [False,'Red'],
+            [False,'Blue'],
+            [True,'White'],
+            [False, 'Black']
             ],
         label = 'Please select the third option below',
         widget = forms.widgets.RadioSelect(),
