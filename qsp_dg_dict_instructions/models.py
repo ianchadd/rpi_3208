@@ -51,7 +51,7 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         for p in self.get_players():
             p.participant.vars['my_flag_choices'] = flag_choices #restricted as of March 19th to just three flags
-            random.shuffle(p.participant.vars['my_flag_choices'])
+            #random.shuffle(p.participant.vars['my_flag_choices'])
             p.participant.vars['id_choices'] = id_choices
             random.shuffle(p.participant.vars['id_choices'])
             p.participant.vars['treat_assign'] = random.random()

@@ -6,18 +6,18 @@
 {% endblock %}
 
 {% block content %}
-<p>
-We will now ask you for your opinions about the participants on Prolific.
-</p>
-
-<p>According to US Census Data, about 51% of the <b>US population</b> is female.</p>
+<h5>
+We will now ask you for your opinions about the participants on <u>Prolific</u>.
+</h5>
+<br>
+<p>According to US Census Data, <b>about 51% of the US population is female.</b></p>
 {% formfield player.prolific_female %}
-
-<p>According to the Gallup report, about 5% of the <b>US population</b> identifies as LGBT.</p>
+<br>
+<p>According to the Gallup report, <b>about 5% of the US population identifies as LGBT.</b></p>
 {% formfield player.prolific_lgbt %}
-
+<br>
 {% formfield player.prolific_ally %}
-
+<br>
 <p>For each category below, please enter a number between 0 and 100 to indicate your beliefs about the political leanings of <b>Prolific participants</b>.
 The sum of these numbers must <b>add up to 100.</b></p>
 {% formfield player.prolific_liberal %}
