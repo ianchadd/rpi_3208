@@ -31,7 +31,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 
 SESSION_CONFIGS = [
-    #dict(name='iat', display_name="IAT", num_demo_participants=2, app_sequence=['iat_so']),
+    dict(name='iat', display_name="IAT", num_demo_participants=2, app_sequence=['iat_so']),
     dict(
         name='qsp_recip',
         display_name="QSP Recipient",
@@ -260,7 +260,7 @@ SECRET_KEY = '7vfsh(zo@d)v)zizkf#@xqzb3q%juzu65zoh4r+#$tckdfji5r'
 INSTALLED_APPS = ['otree',
                   'custom_templates',
                   'django.contrib.humanize',
-                  #'otreeutils'
+                  'otreeutils'
                   ]
 
 # inactive session configs
