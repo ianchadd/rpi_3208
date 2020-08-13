@@ -31,6 +31,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 
 SESSION_CONFIGS = [
+    #dict(name='iat', display_name="IAT", num_demo_participants=2, app_sequence=['iat_so']),
     dict(
         name='qsp_recip',
         display_name="QSP Recipient",
