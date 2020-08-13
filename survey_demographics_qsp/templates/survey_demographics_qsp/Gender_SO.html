@@ -6,6 +6,11 @@
 {% endblock %}
 
 {% block content %}
+{% if form.errors %}
+<div class = "custom-form-errors alert alert-danger">
+   {{ form.non_field_errors }}
+</div>
+{% endif %}
 
     <p>
         What is your current gender identity? Select all that apply.

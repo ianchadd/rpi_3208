@@ -6,6 +6,11 @@
 {% endblock %}
 
 {% block content %}
+{% if form.errors %}
+<div class = "custom-form-errors alert alert-danger">
+   {{ form.non_field_errors }}
+</div>
+{% endif %}
 <h5>
 We will now ask you for your opinions about the participants on <u>Prolific</u>.
 </h5>
