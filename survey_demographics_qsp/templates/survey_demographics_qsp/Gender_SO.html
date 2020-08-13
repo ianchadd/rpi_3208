@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 {% block title %}
 {% endblock %}
@@ -12,6 +13,6 @@
 
     {% formfields %}
 
-    {% next_button %}
+{% delayed_next wait=0 label='NEXT' %}
 
 {% endblock %}

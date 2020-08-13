@@ -84,7 +84,7 @@ class Player(BasePlayer):
     chooseID = models.StringField(
         label = 'Please choose one of the following IDs.',
         choices = id_choices,
-        widget = widgets.RadioSelectHorizontal(),
+        widget = widgets.RadioSelect(),
         )
     
     def customID_error_message(self, value):

@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 {% block title %}
 {% endblock %}
@@ -11,6 +12,8 @@
 
 <p>On <b>social</b> issues, politically I am:</p>
         {% formfield player.social_politics %}
-    {% next_button %}
+
+{% formfield player.election_2016 %}
+{% delayed_next wait=0 label='NEXT' %}
 
 {% endblock %}

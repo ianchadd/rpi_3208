@@ -75,6 +75,11 @@ class Primary_Earner(Page):
 class Income(Page):
     form_model = 'player'
     form_fields = ['income']
+    
+class Education(Page):
+    form_model = 'player'
+    form_fields = ['education']
+    
 
 class Ethnicity(Page):
     form_model = 'player'
@@ -126,6 +131,7 @@ page_sequence = [Instructions,
                  Relationship,
                  Primary_Earner,
                  Income,
+                 Education,
                  Attn_Check,
                  Ethnicity,
                  Religion,

@@ -67,6 +67,9 @@ class Partner_Explain_1(Page):
         ]
     def is_displayed(self):
         return self.round_number == 2
+    def error_message(self,values):
+        if len(values['give_explain']) < 5:
+            return 'Your response on this page must be at least 5 characters long.'
     def vars_for_template(self):
         task_2 = self.round_number == 1
         task_3 = not task_2
@@ -91,6 +94,9 @@ class Partner_Explain_2(Page):
         ]
     def is_displayed(self):
         return self.round_number == 2
+    def error_message(self,values):
+        if len(values['different_explain']) < 5:
+            return 'Your response on this page must be at least 5 characters long.'
     def vars_for_template(self):
         task_2 = self.round_number == 1
         task_3 = not task_2 ,

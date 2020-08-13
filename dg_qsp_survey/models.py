@@ -104,6 +104,10 @@ class Player(BasePlayer):
     different_explain = models.LongStringField(
         label = '')
 
+    def different_explain_error_message(self,value):
+        if len(value) < 5:
+            return "Your response must be at least 5 characters long."
+
     #own id explanation variables
     id_explain = models.LongStringField(
         label = '')

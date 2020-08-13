@@ -1,0 +1,86 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+
+{% block title %} Task 2: Survey (Part 1){% endblock %}
+
+{% block content %}
+<p>
+Once your matched participants have read the instructions, they will make their decisions on a screen as shown below: </p>
+
+<div class="card bg-secondary text-white m-3">
+    <div class="card-body">
+{% include Constants.decision_template %}
+</div>
+</div>
+<div style="text-align: center;">
+  <button type="button" onclick="show_hide_Instructions()">Show/Hide Instructions</button>
+</div>
+    <div id="instructions">
+      <div class="card bg-secondary text-white m-3">
+      <div class="card-body">
+          {% include Constants.instructions_template %}
+        </div>
+        </div>
+    </div>
+    <br>
+<p>
+  Each of your matched participant(s) will use the slider above to allocate ECU between themselves and you.
+  Please use the slider above to ensure that you completely understand this task.
+  <strong><u>
+    You will not be able to move forward without first clicking on the slider.
+  </u></strong>
+</p>
+<p>
+<b>There is no decision for you to make here,</b> but we want to make sure that you understand this task before continuing.
+</p>
+
+<p>
+<b>Your Payment:</b> Since you might end up being matched with more than one participant, you should know that <b>all</b> of the participants with whom you are matched will decide how many of 100 ECU to allocate to you. Your bonus payment for Task 2 will be the sum of all of those decisions.
+</p>
+
+    <style>
+    #instructions {
+      display: none;
+    }
+    #submit {
+      display: none;
+    }
+</style>
+
+    <script>
+    function show_hide_Instructions() {
+      var x = document.getElementById("instructions");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    </script>
+
+
+{% formfield player.attn_check_color %}
+
+<div id="submit">
+  {% delayed_next wait=0 label='NEXT'%}
+</div>
+
+<script>
+  var slider = document.getElementById("myRange");
+  var output_1 = document.getElementById("their_amt");
+  var output_2 = document.getElementById("my_amt");
+  var button = document.getElementById("submit");
+
+
+  slider.oninput = function() {
+    output_1.innerHTML = this.value;
+    output_2.innerHTML = 100 - this.value;
+    button.style.display = "block";
+  }
+
+
+</script>
+
+{% endblock %}

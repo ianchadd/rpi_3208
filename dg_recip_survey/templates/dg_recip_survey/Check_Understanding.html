@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+
+
+{% block title %} Task 2: Survey (Part 1){% endblock %}
+
+
+
+{% block content %}
+<p>
+  We would like to be sure that you understand how your bonus payments are determined.
+  Please answer the following question.
+</p>
+<p>
+My bonus payment from Task 2 is determined by the decisions of <b>one</b> randomly chosen partner I have been matched with.
+</p>
+
+{% formfields %}
+
+
+
+{% delayed_next wait=1000 label='CHECK ANSWERS'%}
+{% endblock %}

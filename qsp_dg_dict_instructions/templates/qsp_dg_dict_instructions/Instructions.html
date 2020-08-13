@@ -26,6 +26,7 @@ For each component, all the participants in the study were given the same three 
   <li>
     Alpha-numeric String:
     <br>
+    <div class="col-12" style="background-color:#D0D3D4;">
     <div class="row">
 
   {% for id in id_list %}
@@ -33,6 +34,7 @@ For each component, all the participants in the study were given the same three 
     <p style="text-align: center;"><strong>{{id}}</strong></p>
   </div>
   {% endfor %}
+</div>
 </div>
 
   </li>
@@ -54,6 +56,8 @@ For each component, all the participants in the study were given the same three 
 </ol>
 <p>They were then asked to choose one option of alpha-numeric string and one option of icon to form their personal ID.
 </p>
+
+{% formfields %}
 
 
 {% delayed_next wait=1000 label='NEXT'%}

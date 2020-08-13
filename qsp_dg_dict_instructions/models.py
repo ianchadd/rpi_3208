@@ -51,7 +51,7 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         for p in self.get_players():
             p.participant.vars['my_flag_choices'] = flag_choices #restricted as of March 19th to just three flags
-            random.shuffle(p.participant.vars['my_flag_choices'])
+            #random.shuffle(p.participant.vars['my_flag_choices'])
             p.participant.vars['id_choices'] = id_choices
             random.shuffle(p.participant.vars['id_choices'])
             p.participant.vars['treat_assign'] = random.random()
@@ -83,17 +83,28 @@ class Player(BasePlayer):
             return 'Chosen ID must have only 8 characters.'
 
     #attention check variables
-    attn_check_1 = models.IntegerField(
-        initial = 0,
+    attn_check_dog = models.BooleanField(
         label = 'Please select the word "Dog"',
         choices = [
-                    [1,'Cat'],
-                    [2,'Dog'],
-                    [3,'Bird']
+                    [False,'Cat'],
+                    [True,'Dog'],
+                    [False,'Bird']
                    ],
         blank=True,
         widget = widgets.RadioSelect()
         )
+    
+    attn_check_bird = models.BooleanField(
+        label = 'Please select the word "Bird"',
+        choices = [
+                    [False,'Cat'],
+                    [False,'Dog'],
+                    [True,'Bird']
+                   ],
+        blank=True,
+        widget = widgets.RadioSelect()
+        )
+    
     
     my_flag = models.IntegerField(
         initial = 0)

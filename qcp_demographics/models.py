@@ -209,6 +209,18 @@ class Player(BasePlayer):
             ],
         widget = widgets.RadioSelect
         )
+#education
+    education = models.StringField(
+        label = 'What is the highest education level you have attained?',
+        choices = [
+            'Did not complete High School',
+            'Graduated from High School',
+            'Some College',
+            "Bachelor's Degree",
+            "Master's Degree",
+            "PhD or Higher"
+            ]
+        )
 #income
     income = models.StringField(
         label = "Please select your household annual income from the options below",

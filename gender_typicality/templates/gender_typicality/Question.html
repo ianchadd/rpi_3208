@@ -1,14 +1,15 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 {% block title %}
+    {{survey_title}}
 {% endblock %}
 
 {% block content %}
 
-
     {% formfields %}
 
-    {% next_button %}
+    {% delayed_next label='NEXT' wait=0 %}
 
 {% endblock %}

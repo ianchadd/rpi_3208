@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load custom_tags %}
+
+{% block title %}
+  Task 1: Creation of Personal ID
+{% endblock %}
+
+{% block content %}
+<p style='text-align:center;'>Your personal ID is:</p>
+<p style="text-align:center; font-size:60px">
+    <img src="{% static my_flag %}"/> {{my_ID}}
+</p>
+<br>
+
+<p>You <strong>do not</strong> need to remember your ID.
+Your ID will always be shown to you whenever it is necessary.</p>
+<p>We are now ready to begin Task 2</p>
+    {% formfields %}
+
+{% delayed_next wait=0 label='NEXT' %}
+{% endblock %}

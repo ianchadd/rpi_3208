@@ -5,6 +5,7 @@ from .models import Constants
 
 class Instructions(Page):
     form_model = 'player'
+    form_fields = ['attn_check_bird']
     
     def vars_for_template(self):
         id_list = []

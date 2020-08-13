@@ -1,0 +1,70 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load custom_tags %}
+
+{% block title %}
+Overview of study
+{% endblock %}
+
+{% block content %}
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <p>Welcome!
+      Here is a brief overview of the study.</p>
+
+    <h5><u>What will I have to do?</u></h5>
+
+        <p>    This study consists of <strong>two</strong> tasks which will be explained in detail later.
+        The study should take no longer than <strong>20</strong> minutes in total.
+        </p>
+    <h5>  <u>How much payment will I receive for my participation?</u>
+    </h5>
+        <p>    You will be paid 1 USD for completing the study.
+        </p>
+        <p>    Additionally, you may receive <b>additional bonus payments</b> based on your decisions in the tasks.
+          Hence, you should pay close attention the tasks as your decisions may determine your earnings.
+        </p>
+    <h5>    <u>How will payment be made?</u>
+    </h5>
+        <p>During the study, we will be trading in experimental currency units (ECU).
+          At the end of the study, any ECU you have received from the tasks will be converted to USD using the following conversion rate: <strong>20 ECU = 1 USD</strong>.
+        </p>
+        <p>This experiment will continue over the next 21 days.
+          Once all participants complete this study, we will determine your bonus payments based on the decisions made in the tasks.
+          This bonus payment will be made via the Prolific platform.
+        </p>
+
+<h5> <u>Please note!</u>
+</h5>
+
+<p>    There will be several <strong>Attention Check</strong> questions throughout this study meant to test whether you are paying attention.
+  If you fail to correctly complete any of these Attention Check questions, you may not be paid.
+</p>
+
+<p>    Finally, please note that this research <strong>does not employ deception</strong>.
+  This means that the instructions that you are about to read are true and not deceptive.
+  This is regulated by the researchers’ institutional ethics committees.
+</p>
+
+
+  </body>
+</html>
+{% delayed_next wait=1000 label='NEXT'%}
+
+
+{% endblock %}
+
+<!--
+<div class = "mc-ma">
+    {{players.otherID.label}}
+    <ul>
+        {% for choice in player.otherID %}
+    <li>
+        <label>{{choice.tag}}{{choice.choice_label}}</label>
+    </li>
+    {% endfor %}
+    </ul>
+</div> -->
