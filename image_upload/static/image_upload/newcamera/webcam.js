@@ -218,7 +218,7 @@ var Webcam = {
 			targetImg.src = canvas.toDataURL();
 		}, false);
 		// start transformation by load event
-		img.src = origObjURL;
+		img.srcObject = origObjURL;
 	},
 
 	attach: function(elem) {
@@ -358,7 +358,7 @@ var Webcam = {
 			// add input listener to load the selected image
 			input.addEventListener('change', function(event) {
 				if (event.target.files.length > 0 && event.target.files[0].type.indexOf('image/') == 0) {
-					var objURL = URL.createObjectURL(event.target.files[0]);
+					var objURL = event.target.files[0];
 
 					// load image with auto scale and crop
 					var image = new Image();
@@ -391,7 +391,7 @@ var Webcam = {
 							self.fixOrientation(objURL, orientation, image);
 						} else {
 							// load image data to image object
-							image.src = objURL;
+							image.srcObject = objURL;
 						}
 					}, false);
 
