@@ -210,10 +210,10 @@ SESSION_CONFIGS = [
         display_name = 'Faces Barebones Code',
         num_demo_participants =  1,
         app_sequence = [
-            'testing_pw',
-            'icl',
+            #'testing_pw',
+            #'icl',
             'image_upload',
-            'survey_faces'
+            #'survey_faces'
             ],
         pw = 'faces_testing',
         participation_fee = 1.00,

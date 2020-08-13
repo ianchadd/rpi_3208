@@ -5,7 +5,6 @@
 // Based on JPEGCam: http://code.google.com/p/jpegcam/
 // Copyright (c) 2012 - 2017 Joseph Huckaby
 // Licensed under the MIT License
-
 (function(window) {
 var _userMedia;
 
