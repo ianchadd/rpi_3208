@@ -31,6 +31,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 
 SESSION_CONFIGS = [
+    dict(name='iat', display_name="IAT", num_demo_participants=2, app_sequence=['iat_so']),
     dict(
         name='qsp_recip',
         display_name="QSP Recipient",
@@ -209,10 +210,10 @@ SESSION_CONFIGS = [
         display_name = 'Faces Barebones Code',
         num_demo_participants =  1,
         app_sequence = [
-            'testing_pw',
-            'icl',
+            #'testing_pw',
+            #'icl',
             'image_upload',
-            'survey_faces'
+            #'survey_faces'
             ],
         pw = 'faces_testing',
         participation_fee = 1.00,
@@ -259,7 +260,7 @@ SECRET_KEY = '7vfsh(zo@d)v)zizkf#@xqzb3q%juzu65zoh4r+#$tckdfji5r'
 INSTALLED_APPS = ['otree',
                   'custom_templates',
                   'django.contrib.humanize',
-                  #'otreeutils'
+                  'otreeutils'
                   ]
 
 # inactive session configs
