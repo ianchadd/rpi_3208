@@ -34,7 +34,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     attention_check = models.BooleanField(
-        label = 'Please select Option 2 below',
+        label = 'This question is to check your attention. Please select Option 2 below',
         choices = [
             [False, 'Option 1'],
             [True, 'Option 2']
