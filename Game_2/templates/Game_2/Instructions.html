@@ -16,11 +16,11 @@
 
     <p>
         In Game 2 - Tournament, as in Game 1 - Piece Rate, you will be given {{time_limit}} seconds to participate in the Counting Task.
-        However, for this game, your payment depends on your performance relative to that of a group of other participants.
-        In Game 2 – Tournament, you will only be paid if your performance in the Counting Task is the highest in your group (in case of ties, the winner will be randomly determined among the top performers).
+        However, for this game, your payment depends on your performance relative to that of a group of 3 other participants.
+        In Game 2 – Tournament, you will only be paid if your performance in the Counting Task is the <strong>highest</strong> in your group (in case of ties, the winner will be randomly determined among the top performers).
         If you are the winner of this tournament, the amount that you will receive per completed box will be randomly determined from the following amounts: {{round_values}}.
-        Otherwise you will not receive any payments in Game 2 - Tournament.
-        Each group consists of four people, including you.
+        Otherwise you will not receive any payments in Game 2 - Tournament.  We refer to this as the <strong>tournament payment</strong>. 
+        Each group consists of <strong>four</strong> people, including you.
     </p>
 
     <h6>Details: Constructing Groups</h6>
@@ -28,9 +28,9 @@
         <div class="col-1"></div>
         <p class="col">
           {% if seed_data is not True %}
-            Previously, a representative group of subjects on Prolific, like yourself, participated in this study.
+            Previously, a group of subjects on Prolific, like yourself, participated in this study.
             We coded their anonymous answers into this program.
-            In order to construct your group of four, we will randomly select three past participants from this group and use their answers in determination of your earnings for Game 2 - Tournament
+            In order to construct your group of four, we will randomly select three past participants from this group and use their answers in determination of your earnings for Game 2 - Tournament.
           {% else %}
           In order to construct your group of four, we will randomly select three other participants and use their answers in determination of your earnings for Game 2 - Tournament.
           This group will be constructed <strong>after</strong> all participants have made their decisions in the current study.
@@ -48,12 +48,9 @@
                 If you complete more boxes than the other three people in your group, you will be paid some amount per completed box.
                 Otherwise, you will not be paid anything for Game 2 - Tournament.
                 The amount paid per completed box will be randomly determined at the end of the experiment from the following amounts: {{round_values}}.
-                Each of these prizes has an equal chance of being chosen.
+                Each of these prizes has an equal chance of being chosen. If there are ties, the winner will be randomly determined among the group members who tied for first place.
             </p>
-            <p>
-                We refer to this as the <strong>tournament payment</strong>.
-                If there are ties, the winner will be randomly determined among the group members who tied for first place.
-            </p>
+
             <p>
               {% if seed_data is not True %}
               Note: nothing you do in this study will affect the payoffs of any other participants in this study.
