@@ -29,6 +29,11 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    def participant_vars_dump(self, page):
+        for field in page.form_fields:
+            if type(getattr(self, field)) != type(None):
+                self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
+            
     #inferred demographic variables
     inferred_gender = models.StringField(
         label = '',
@@ -102,7 +107,7 @@ class Player(BasePlayer):
     #explanation variables
     give_explain = models.LongStringField(
         label = '')
-    different_explain = models.LongStringField(
+    samedifferent_explain = models.LongStringField(
         label = '')
 
     #own id explanation variables
@@ -124,7 +129,7 @@ class Player(BasePlayer):
         label ='First of all, what do you think of the study today?')
 
     #average guesses
-    average_guess = models.CurrencyField(
-        choices = currency_range(c(0),c(100), c(1))
+    average_guess = models.IntegerField(
+        choices = range(0,100, 1)
         )
 

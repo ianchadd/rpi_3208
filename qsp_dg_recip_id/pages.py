@@ -116,7 +116,9 @@ class Results(Page):
             my_ID = self.player.my_ID,
             participant_vars = str(self.participant.vars)
         )
-    
+
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
 class Eval_adj(Page):
     form_model = 'player'
     form_fields = [

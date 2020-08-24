@@ -90,6 +90,13 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    def participant_vars_dump(self, page):
+        for field in page.form_fields:
+            if type(getattr(self, field)) != type(None):
+                if Constants.num_rounds > 1:
+                    self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
+                else:
+                    self.participant.vars[field] = getattr(self, field)
 #age
     age = models.IntegerField(label='What is your age?', min=13, max=125)
     yob = models.IntegerField(
@@ -340,7 +347,7 @@ class Player(BasePlayer):
                    ],
         widget = widgets.RadioSelect
         )
-    lgbt_discrim = models.IntegerField(
+    lgbt_business = models.IntegerField(
         label = "It should be legal for business owners to refuse to serve same-sex partners.",
         choices = [[5,'Strongly Agree'],
                    [4,'Agree'],

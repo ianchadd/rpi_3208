@@ -47,6 +47,7 @@ class Offer(Page):
 
     def before_next_page(self):
         self.player.set_payoffs()
+        self.player.participant_vars_dump(self)
 '''
 class ResultsWaitPage(WaitPage):
     after_all_players_arrive = 'set_payoffs'

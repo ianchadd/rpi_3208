@@ -27,6 +27,8 @@ class Introduction(Page):
             their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)
         )
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
 
 class Survey_Partner(Page):
     form_model = 'player'
@@ -60,6 +62,8 @@ class Survey_Partner(Page):
             their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)
         )
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
 class Partner_Explain_1(Page):
     form_model = 'player'
     form_fields = [
@@ -67,9 +71,6 @@ class Partner_Explain_1(Page):
         ]
     def is_displayed(self):
         return self.round_number == 2
-    def error_message(self,values):
-        if len(values['give_explain']) < 5:
-            return 'Your response on this page must be at least 5 characters long.'
     def vars_for_template(self):
         task_2 = self.round_number == 1
         task_3 = not task_2
@@ -86,16 +87,18 @@ class Partner_Explain_1(Page):
             gave_1 = self.participant.vars['gave_1'],
             gave_2 = self.participant.vars['gave_2'],
         )
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
 
 class Partner_Explain_2(Page):
     form_model = 'player'
     form_fields = [
-        'different_explain'
+        'samedifferent_explain'
         ]
     def is_displayed(self):
         return self.round_number == 2
     def error_message(self,values):
-        if len(values['different_explain']) < 5:
+        if len(values['samedifferent_explain']) < 5:
             return 'Your response on this page must be at least 5 characters long.'
     def vars_for_template(self):
         task_2 = self.round_number == 1
@@ -115,6 +118,8 @@ class Partner_Explain_2(Page):
             gave_2 = self.participant.vars['gave_2'],
             same = same
         )
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
     
 class Self_Explain(Page):
     form_model = 'player'
@@ -142,6 +147,8 @@ class Self_Explain(Page):
             their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)
         )
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
 
 
 page_sequence = [Introduction,

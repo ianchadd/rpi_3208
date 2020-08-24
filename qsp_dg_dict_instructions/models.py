@@ -66,6 +66,14 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    def participant_vars_dump(self, page):
+        for field in page.form_fields:
+            if type(getattr(self, field)) != type(None):
+                if Constants.num_rounds > 1:
+                    self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
+                else:
+                    self.participant.vars[field] = getattr(self, field)
+                    
     consent = models.BooleanField(
         initial = False,
         label = '')
@@ -118,9 +126,6 @@ class Player(BasePlayer):
         index = self.my_flag
         self.my_flag = self.participant.vars['my_flag_choices'][index]
         self.participant.vars['my_flag'] = self.my_flag
-        
-    def participant_vars_dump(self):
-        self.part_vars = str(self.participant.vars)
         
     def set_other_flag(self):
         choices = [i for i in self.participant.vars['my_flag_choices'] if i!=Constants.num_flags+1 and i!=self.my_flag]

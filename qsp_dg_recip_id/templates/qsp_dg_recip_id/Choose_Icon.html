@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
+{% load custom_tags %}
 
 {% block title %}
   Task 1: Creation of Personal ID
@@ -83,7 +84,9 @@
 <p>Please select one of these options to form the icon part of your personal ID.</p>
 <p>You <strong>do not</strong> need to remember which icon you have selected.
 Your ID will always be shown to you whenever it is necessary.</p>
-    {% next_button %}
+
+
+{% delayed_next wait=0 label='NEXT'%}
 
 {% endblock %}
 

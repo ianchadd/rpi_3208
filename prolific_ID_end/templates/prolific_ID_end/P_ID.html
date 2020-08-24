@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 {% block title %}
     Prolific ID Entry
@@ -11,6 +12,6 @@
 <p><b>Please enter your Prolific ID again.</b></p>
     {% formfields %}
 
-    {% next_button %}
+{% delayed_next wait=0 label='NEXT' %}
 
 {% endblock %}

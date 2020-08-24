@@ -32,7 +32,7 @@ class Recip_Offer(Page):
         )
 
     def before_next_page(self):
-        self.player.set_payoffs()
+        self.player.participant_vars_dump(self)
 
 class Check_Understanding(Page):
     form_model = 'player'
@@ -41,6 +41,8 @@ class Check_Understanding(Page):
         return dict(
             participant_vars = str(self.participant.vars)
         )
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
 '''
 class ResultsWaitPage(WaitPage):
     after_all_players_arrive = 'set_payoffs'

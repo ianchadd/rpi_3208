@@ -31,7 +31,7 @@ class Constants(BaseConstants):
     decision_template = 'dg_recip_survey/decision_template.html'
 
     # Initial amount allocated to the dictator
-    endowment = c(100)
+    endowment = 100
 
 
 class Subsession(BaseSubsession):
@@ -43,11 +43,19 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    kept = models.CurrencyField(
+    def participant_vars_dump(self, page):
+        for field in page.form_fields:
+            if type(getattr(self, field)) != type(None):
+                if Constants.num_rounds > 1:
+                    self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
+                else:
+                    self.participant.vars[field] = getattr(self, field)
+            
+    kept = models.IntegerField(
     doc="""Amount dictator decided to keep for himself""",
     )
-    gave = models.CurrencyField(
-        choices = currency_range(c(0),c(100), c(1))
+    gave = models.IntegerField(
+        choices = range(0,100,1)
         )
     
     attn_check_color = models.BooleanField(
@@ -88,12 +96,5 @@ class Player(BasePlayer):
         if value:
             self.check_understanding_mistakes += 1
             return 'You chose True. This is incorrect. Remember that your bonus payment from Task 2 is determined by the total amounts that all your matched partners choose to allocate to you.'
-
-    def set_payoffs(self):
-        self.gave = self.gave
-        self.kept = Constants.endowment - self.gave
-        self.payoff = self.kept
-        self.participant.vars['gave_'+str(self.round_number)] = self.gave
-        self.participant.vars['kept_'+str(self.round_number)] = self.kept
             
 

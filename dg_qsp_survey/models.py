@@ -28,6 +28,14 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    def participant_vars_dump(self, page):
+        for field in page.form_fields:
+            if type(getattr(self, field)) != type(None):
+                if Constants.num_rounds > 1:
+                    self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
+                else:
+                    self.participant.vars[field] = getattr(self, field)
+
     #inferred demographic variables
     inferred_gender = models.StringField(
         label = '',
@@ -101,10 +109,15 @@ class Player(BasePlayer):
     #explanation variables
     give_explain = models.LongStringField(
         label = '')
-    different_explain = models.LongStringField(
+    
+    def give_explain_error_message(self,value):
+        if len(value) < 5:
+            return "Your response must be at least 5 characters long."
+
+    samedifferent_explain = models.LongStringField(
         label = '')
 
-    def different_explain_error_message(self,value):
+    def samedifferent_explain_error_message(self,value):
         if len(value) < 5:
             return "Your response must be at least 5 characters long."
 
@@ -117,4 +130,6 @@ class Player(BasePlayer):
     #open ended response
     thoughts = models.LongStringField(
         label ='First of all, what do you think of the study today?')
+
+            
 

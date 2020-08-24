@@ -75,6 +75,11 @@ choices1= [["HQQkF10d","HQQkF10d"], ["pcrnTLUr","pcrnTLUr"], ["7OKdu5sV","7OKdu5
 
 
 class Player(BasePlayer):
+    
+    def participant_vars_dump(self, page):
+        for field in page.form_fields:
+            self.participant.vars[field] = getattr(self, field)
+            
     consent = models.BooleanField(
         initial = False,
         label = '')
@@ -118,9 +123,6 @@ class Player(BasePlayer):
         index = self.my_flag
         self.my_flag = self.participant.vars['my_flag_choices'][index]
         self.participant.vars['my_flag'] = self.my_flag
-        
-    def participant_vars_dump(self):
-        self.part_vars = str(self.participant.vars)
         
     def set_other_flag(self):
         options = [i for i in self.participant.vars['my_flag_choices'] if i!=Constants.num_flags + 1]

@@ -19,6 +19,16 @@ class Birth(Page):
         'yob',
         'sex',
         ]
+
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        parvars = self.participant.vars
+
+        return dict(
+            parvars = parvars
+            )
+        
 class Care(Page):
     form_model='player'
     form_fields = [
@@ -26,6 +36,14 @@ class Care(Page):
         ]
     def is_displayed(self):
         return not self.session.config['recip']
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        parvars = self.participant.vars
+
+        return dict(
+            parvars = parvars
+            )
 class Gender_SO(Page):
     form_model='player'
     form_fields = ['male',
@@ -48,6 +66,15 @@ class Gender_SO(Page):
         elif values['orientation'] =='Other (please state below)' and type(values['other_orientation']) == type(None) :
             return 'If you select Other, you must specify in the provided field'
 
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        parvars = self.participant.vars
+
+        return dict(
+            parvars = parvars
+            )
+
 class S_History(Page):
     form_model = 'player'
     form_fields = ['relations_same',
@@ -56,6 +83,14 @@ class S_History(Page):
                    'attraction_different',
                    'attn_check_1'
                    ]
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        parvars = self.participant.vars
+
+        return dict(
+            parvars = parvars
+            )
 
 class Gen_Demographics(Page):
     form_model = 'player'
@@ -82,22 +117,45 @@ class Gen_Demographics(Page):
             return 'If you select Other, you must specify in the provided field'
         elif (values['live_in'] =='Other (please state below)' and type(values['other_live_location']) == type(None)) or (values['grew_up_in'] =='Other (please state below)' and type(values['other_grew_up_location']) == type(None)) :
             return 'If you select Other, you must specify in the provided field'
-    
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        parvars = self.participant.vars
+
+        return dict(
+            parvars = parvars
+            )
 
 class Politics(Page):
     form_model = 'player'
     form_fields = ['econ_politics',
                    'social_politics',
                    'election_2016']
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        parvars = self.participant.vars
+
+        return dict(
+            parvars = parvars
+            )
 
 class LGBT_Attitudes(Page):
     form_model = 'player'
     form_fields = ['lgbt_free',
-                   'lgbt_discrim',
+                   'lgbt_business',
                    'lgbt_adopt',
                    'lgbt_marriage',
                    'lgbt_bathroom'
                    ]
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        parvars = self.participant.vars
+
+        return dict(
+            parvars = parvars
+            )
 
 class LGBT_Experience(Page):
     form_model = 'player'
@@ -105,6 +163,14 @@ class LGBT_Experience(Page):
                    'lgbt_friend',
                    'consider_lgbt_ally',
                    'program_lgbt_ally']
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        parvars = self.participant.vars
+
+        return dict(
+            parvars = parvars
+            )
 
 class Prolific_Guess(Page):
     form_model = 'player'
@@ -120,7 +186,14 @@ class Prolific_Guess(Page):
     def error_message(self,values):
         if values['prolific_liberal'] + values['prolific_equal'] + values['prolific_conservative'] != 100:
             return 'Your answers to the final three questions on this page must add up to 100.'
-    
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        parvars = self.participant.vars
+
+        return dict(
+            parvars = parvars
+            )
     
 
 page_sequence = [Instructions,

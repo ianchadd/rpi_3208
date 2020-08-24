@@ -23,6 +23,8 @@ class Instructions(Page):
     def before_next_page(self):
         self.player.set_ID(self.player.chooseID)
         self.player.set_other_flag()
+        self.player.participant_vars_dump(self)
+
 
     
 class Recip_Choose_ID_O(Page):
