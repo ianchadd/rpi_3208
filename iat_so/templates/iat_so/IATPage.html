@@ -305,7 +305,19 @@ function prepareNextTrial() {
 
 function nextTrial() {
     var trial = trials[cur_trial_idx];
-    $('#stimulus').prop('class', 'class ' + trial[2]).text(trial[1]).show();
+    var stim = trial[1];
+    if (stim.includes("img")){
+      var img_stim = document.createElement("img");
+      var img = "/static/iat_so/"+stim.substring(4)+".png";
+      img_stim.src = img;
+      img_stim.setAttribute("height", "100");
+      $('#stimulus').text('');
+      document.getElementById("stimulus").appendChild(img_stim);
+      $('#stimulus').prop('class', 'class ' + trial[2]).show();
+    }
+    else {
+      $('#stimulus').prop('class', 'class ' + trial[2]).text(stim).show();
+    }
     input_start_time = new Date().getTime();
 }
 
