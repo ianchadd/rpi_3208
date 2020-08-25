@@ -10,12 +10,9 @@
 
 {% block content %}
 
-{% if task_3 %}
 
-<p>Task 2 is identical to Task 1 with one exception: you are matched with a <strong>different</strong> participant.</p>
-
-{% endif %}
 
 {% include Constants.instructions_template %}
+<br>
 {% delayed_next wait=1000 label='NEXT'%}
 {% endblock %}

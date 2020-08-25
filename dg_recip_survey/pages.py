@@ -23,7 +23,7 @@ class DG_Instructions(Page):
 
 class Recip_Offer(Page):
     form_model = 'player'
-    form_fields = ['gave','attn_check_color', 'attn_check_color_2']
+    form_fields = ['gave']
     def vars_for_template(self):
         return dict(
             my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
@@ -43,6 +43,7 @@ class Check_Understanding(Page):
         )
     def before_next_page(self):
         self.player.participant_vars_dump(self)
+        self.player.participant.vars['check_understanding_mistakes'] = self.player.check_understanding_mistakes
 '''
 class ResultsWaitPage(WaitPage):
     after_all_players_arrive = 'set_payoffs'

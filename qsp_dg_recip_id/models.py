@@ -36,7 +36,7 @@ class Constants(BaseConstants):
 
 choices2= ["HQQkF10d","pcrnTLUr","7OKdu5sV","wZPeexoH","UkTbcudD","zOz9aTis","9MEcfOL3","SVwZaZ7E""fFeJ8qw2","cRN5swzs","ePrKx7Ma","a1myqS0O","b4RWtHe9","F8I03MH2","C8feS7p2","K4zdqslW","3IbkRtps","CiBI3ZYx","9ME9zgnn","ZdIpJIRH"]
 consonants = ['q','w','r','t','y','p','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
-id_choices = ['rzxw4' , 'wxzr4', 'zrwx4' ]
+id_choices = ['rgzxw471' , 'gwxzr174', 'zrwgx741']
 '''
 for i in range(3):
     new_id = random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + random.choice(consonants) + str(random.randrange(111,1000,1))
@@ -87,13 +87,14 @@ class Player(BasePlayer):
     randomID = models.StringField(initial = 'initial') 
     customID = models.StringField(label = 'Please create your 8-character user ID.' )
     chooseID = models.StringField(
-        label = 'All the participants in this study are given these three options. Please select one of these options to form the alpha-numeric part of your personal ID.',
+        label = 'All the participants in this study are given these three options. Please select one to form the alpha-numeric part of your personal ID.',
         widget = widgets.RadioSelect(),
         )
     
     def chooseID_choices(self):
         choices = id_choices
         random.shuffle(choices)
+        self.participant.vars['id_choices'] = choices
         return choices
     
     def customID_error_message(self, value):
@@ -102,7 +103,7 @@ class Player(BasePlayer):
 
     #attention check variables
     attn_check_1 = models.BooleanField(
-        label = 'Please select the word "Dog"',
+        label = 'This is to check your attention. Please select the word "Dog"',
         choices = [
                     [False,'Cat'],
                     [True,'Dog'],

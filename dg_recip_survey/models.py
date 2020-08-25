@@ -65,7 +65,7 @@ class Player(BasePlayer):
             [True,'Red'],
             [False,'Blue']
             ],
-        label = 'Please select the second option below',
+        label = 'This is to check your attention. Please select the second option below',
         widget = forms.widgets.RadioSelect(),
         )
     
@@ -77,7 +77,7 @@ class Player(BasePlayer):
             [True,'White'],
             [False, 'Black']
             ],
-        label = 'Please select the third option below',
+        label = 'This is to check your attention. Please select the third option below',
         widget = forms.widgets.RadioSelect(),
         )
     
@@ -95,6 +95,6 @@ class Player(BasePlayer):
     def check_understanding_error_message(self,value):
         if value:
             self.check_understanding_mistakes += 1
-            return 'You chose True. This is incorrect. Remember that your bonus payment from Task 2 is determined by the total amounts that all your matched partners choose to allocate to you.'
+            return 'This statement is false. Remember that your bonus payment from this part of Task 2 is the sum of the amounts that ALL your matched partners choose to allocate to you.'
             
 

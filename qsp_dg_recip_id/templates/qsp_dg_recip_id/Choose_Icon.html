@@ -7,11 +7,9 @@
 {% endblock %}
 
 {% block content %}
-<p> You will be asked to create a personal ID that is a combination of (i) an 8-digit alpha-numeric string of characters and (ii) an icon.
-</p>
 
 <p><u>Step 2: Choose Icon</u></p>
-<p>All participants in this study are given these three options:</p>
+<p>All participants in this study are given these three options. Please select one to form the icon part of your personal ID.</p>
 
     <style>
       .flag-selector input{
@@ -54,13 +52,20 @@
       a{color:#444;text-decoration:none;}
       p{margin-bottom:.3em;}
     </style>
-    <div class="flag-selector">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="flag-selector">
       <input id="a1" type="radio" name="my_flag" value="0" />
         <label for="a1" class= "drinkcard-flag f1"></label>
       <input id="a2" type="radio" name="my_flag" value="1" />
         <label for="a2" class="drinkcard-flag f2"></label>
       <input id="a3" type="radio" name="my_flag" value="2" />
         <label for="a3" class="drinkcard-flag f3"></label><br/>
+    </div>
+    </div>
+    </div>
+    </div>
 <!--
       <input id="a4" type="radio" name="my_flag" value="3" />
         <label for="a4" class="drinkcard-flag f4"></label>
@@ -81,9 +86,9 @@
         <input id="a4" type="radio" name="my_flag" value="3" />
 
     </div> -->
-<p>Please select one of these options to form the icon part of your personal ID.</p>
-<p>You <strong>do not</strong> need to remember which icon you have selected.
+<p>You <strong>do not</strong> need to remember which option you have selected.
 Your ID will always be shown to you whenever it is necessary.</p>
+<br>
 
 
 {% delayed_next wait=0 label='NEXT'%}

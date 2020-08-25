@@ -35,7 +35,7 @@ class Constants(BaseConstants):
         flag_choices.append(i+1)
 
 consonants = ['q','w','r','t','y','p','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
-id_choices = ['rzxw4' , 'wxzr4', 'zrwx4' ]
+id_choices = ['rgzxw471' , 'gwxzr174', 'zrwgx741']
 flag_choices = [11,17,26]
 id_options = []
 for an_id in id_choices:
@@ -103,7 +103,7 @@ class Player(BasePlayer):
         )
     
     attn_check_bird = models.BooleanField(
-        label = 'Please select the word "Bird"',
+        label = 'This is to check your attention. Please select the word "Bird"',
         choices = [
                     [False,'Cat'],
                     [False,'Dog'],

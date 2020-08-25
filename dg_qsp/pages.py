@@ -25,7 +25,7 @@ class Introduction(Page):
 
 class Offer(Page):
     form_model = 'player'
-    form_fields = ['gave','attn_check_color', 'attn_check_color_2']
+    form_fields = ['gave']
     def vars_for_template(self):
         if self.round_number == 1:
             their_flag = 'other_flag'

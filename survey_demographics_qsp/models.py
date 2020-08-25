@@ -252,7 +252,7 @@ class Player(BasePlayer):
         )
 #income
     income = models.StringField(
-        label = "Please select your household annual income from the options below",
+        label = 'Please select your household annual income from the options below',
         choices = ['less than $20,000','$20,000 - $39,999','$40,000 - $59,999','$60,000 - $79,999','$80,000 - $99,999','$100,000 or more'],
         widget = widgets.RadioSelect
         )
@@ -317,15 +317,15 @@ class Player(BasePlayer):
             'Jill Stein',
             'Darrell Castle',
             'Evan McMullin',
-            'I was eligible, but I did not vote',
-            'I was not eligible to vote'
+            'I was eligible, but I did not vote.',
+            'I was not eligible to vote.'
             ],
         widget = widgets.RadioSelect
         )
         
 #care about what others think
     care_others = models.IntegerField(
-        label = 'To what extent do you agree with the following statement: "I care about what others think of my actions."',
+        label = '"I care about what others think of my actions"',
         choices = [[5,'Strongly Agree'],
                    [4,'Agree'],
                    [3,'Neither Agree nor Disagree'],
@@ -338,7 +338,7 @@ class Player(BasePlayer):
 #lgbt_attitude
     #used in Aksoy et al. EER paper
     lgbt_free = models.IntegerField(
-        label = "Gay men and lesbians should be free to live their own lives as they wish.",
+        label = '"Gay men and lesbians should be free to live their own lives as they wish"',
         choices = [[5,'Strongly Agree'],
                    [4,'Agree'],
                    [3,'Neither Agree nor Disagree'],
@@ -348,7 +348,7 @@ class Player(BasePlayer):
         widget = widgets.RadioSelect
         )
     lgbt_business = models.IntegerField(
-        label = "It should be legal for business owners to refuse to serve same-sex partners.",
+        label = '"It should be legal for business owners to refuse to serve same-sex partners"',
         choices = [[5,'Strongly Agree'],
                    [4,'Agree'],
                    [3,'Neither Agree nor Disagree'],
@@ -358,7 +358,7 @@ class Player(BasePlayer):
         widget = widgets.RadioSelect
         )
     lgbt_adopt = models.IntegerField(
-        label = "It should be legal for same-sex partners to adopt a child.",
+        label = '"It should be legal for same-sex partners to adopt a child"',
         choices = [[5,'Strongly Agree'],
                    [4,'Agree'],
                    [3,'Neither Agree nor Disagree'],
@@ -368,7 +368,7 @@ class Player(BasePlayer):
         widget = widgets.RadioSelect
         )
     lgbt_marriage = models.IntegerField(
-        label = "Marriages between same-sex partners should be recognized by the law as valid, with the same rights as traditional marriages.",
+        label = '"Marriages between same-sex partners should be recognized by the law as valid, with the same rights as traditional marriages"',
         choices = [[5,'Strongly Agree'],
                    [4,'Agree'],
                    [3,'Neither Agree nor Disagree'],
@@ -378,7 +378,7 @@ class Player(BasePlayer):
         widget = widgets.RadioSelect
         )
     lgbt_bathroom = models.IntegerField(
-        label = "Transgender people should have to use the bathroom/locker rooms of the sex they were assigned at birth.",
+        label = '"Transgender individuals should be allowed to use the bathroom corresponding to the gender that they identify as"',
         choices = [[5,'Strongly Agree'],
                    [4,'Agree'],
                    [3,'Neither Agree nor Disagree'],
@@ -425,13 +425,13 @@ class Player(BasePlayer):
         blank = True
         )
 #attention check
-    attn_check_1 = models.BooleanField(
-        label = 'Please select 1 in the list below.',
+    attn_check_4 = models.BooleanField(
+        label = 'This is to check your attention. Please select 4 in the list below.',
         choices = [
-            [True,1],
+            [False,1],
             [False,2],
             [False,3],
-            [False,4],
+            [True,4],
             [False,5],
             ],
         blank = True
@@ -444,7 +444,7 @@ class Player(BasePlayer):
         widget = widgets.RadioSelect
         )
     program_lgbt_ally = models.IntegerField(
-        label = 'Are you formally registered as an LGBTQ+ ally (e.g. Safe Zone Training, Campus Ally programs, etc.) in your workplace, school, university, or other institution?',
+        label = 'Are you formally registered as an LGBTQ+ ally (e.g. Safe Zone Training or Campus Ally programs) in your workplace, school, university, or other institution?',
         choices = [[1, 'Yes'],[0,'No']],
         widget = widgets.RadioSelect
         )
@@ -453,38 +453,38 @@ class Player(BasePlayer):
     prolific_female = models.StringField(
         label = 'Which of the following best describes your opinion?',
         choices = [
-            ['<','I think less than 51% of the Prolific participants are female.'],
-            ['=','I think about 51% of the Prolific participants are female.'],
-            ['>','I think more than 51% of the Prolific participants are female.'],
+            ['<','I think less than 51% of Prolific participants in the US are female.'],
+            ['=','I think about 51% of Prolific participants in the US are female.'],
+            ['>','I think more than 51% of Prolific participants in the US are female.'],
             ],
         widget = widgets.RadioSelect
         )
     prolific_lgbt = models.StringField(
         label = 'Which of the following best describes your opinion?',
         choices = [
-            ['<','I think less than 5% of the Prolific participants identify as LGBT.'],
-            ['=','I think about 5% of the Prolific participants identify as LGBT.'],
-            ['>','I think more than 5% of the Prolific participants identify as LGBT.'],
+            ['<','I think less than 5% of Prolific participants in the US identify as LGBT.'],
+            ['=','I think about 5% of Prolific participants in the US identify as LGBT.'],
+            ['>','I think more than 5% of Prolific participants in the US identify as LGBT.'],
             ],
         widget = widgets.RadioSelect
         )
     prolific_ally = models.IntegerField(
-        label = 'What percentage of Prolific participants do you think are allies to the LGBTQ+ community? Please enter a number between 0 and 100',
+        label = 'What percentage of Prolific participants in the US do you think are allies to the LGBTQ+ community? Please enter a number between 0 and 100',
         min=0,
         max=100,
         )
     prolific_liberal = models.IntegerField(
-        label = '(a) Percentage of Prolific participants who are more liberal than conservative on social issues',
+        label = '(a) Percentage of Prolific participants in the US who are more liberal than conservative on social issues',
         min=0,
         max=100,
         )
     prolific_equal = models.IntegerField(
-        label = '(b) Percentage of Prolific participants who are equally liberal and conservative on social issues',
+        label = '(b) Percentage of Prolific participants in the US who are equally liberal and conservative on social issues',
         min=0,
         max=100,
         )
     prolific_conservative = models.IntegerField(
-        label = '(c) Percentage of Prolific participants who are less liberal than conservative on social issues',
+        label = '(c) Percentage of Prolific participants in the US who are less liberal than conservative on social issues',
         min=0,
         max=100,
         )

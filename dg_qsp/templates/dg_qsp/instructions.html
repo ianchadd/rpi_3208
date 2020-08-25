@@ -1,20 +1,26 @@
 {% load otree %}
+{% if task_3 %}
 
+<p>Task 2 is identical to Task 1 with one exception.</p>
+<p> You are matched with a <strong>different</strong> participant who has chosen the following ID: &nbsp; <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.</p>
+
+{% else %}
 <p>
-  You are randomly matched <strong>with a participant who has chosen the following ID</strong>: <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+  You are randomly matched <strong>with a participant who has chosen the following ID</strong>: &nbsp; <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
 </p>
 
 <p>
-  You will be asked to make one simple decision which will determine the bonus payments that you and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> will receive from this task.
+  You will be asked to make one decision which will determine the bonus payments that you and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> will receive from this task.
 </p>
+{% endif %}
 <br>
 <p>
-  <b>Your Decision: </b> You will be asked how you would like to allocate {{ Constants.endowment }} between yourself and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+  <b><u>Your Decision:</u></b> You will be asked how you would like to allocate {{ Constants.endowment }} ECU between yourself and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
 </p>
 <p>
-  You can send any amount to <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> in increments of 1 points between 0 and 100 points. The remaining amount, if any, will be yours to keep.
+  You can send any amount to <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> in increments of 1 ECU between 0 and 100 ECU. The remaining amount, if any, will be yours to keep.
 </p>
 <br>
     <p>
-      If this task is randomly chosen to be the paying task, then your decision in this task will determine <b>both</b> your and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>’s earnings.
+      If this task is randomly chosen to be the paying task, then your decision will determine <b><u>both</u></b> your and <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>’s earnings.
     </p>

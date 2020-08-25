@@ -57,11 +57,9 @@ input[type=range]::-webkit-slider-thumb {
 }
 </style>
 </head>
-<body>
-  <p>Amount given to: <img style="height: 25px; width:auto;" src="{% static their_flag %}"><b>{{their_ID}}</b> </p>
-  ​
+<body>  ​
   <div class="input-group" align="center">
-    <label for="my_amt" class="float-left" style="width:50px"><b><span id="my_amt"></span></b>&nbsp &nbsp</label>
+    <label for="my_amt" class="float-left" style="width:75px"><b><span id="my_amt" style="font-size:larger"></span></b>&nbsp &nbsp</label>
       <div class="input-group-prepend">
         <span class="input-group-text">ME</span>
     </div>
@@ -73,7 +71,7 @@ input[type=range]::-webkit-slider-thumb {
       <span class="input-group-text"><img style="height: 25px; padding:0 5px; width:auto;" src="{% static their_flag %}"/> <b>{{their_ID}}</b></span>
     </div>
   ​
-    <label for="their_amt" class="float-right" style="width:50px" >&nbsp &nbsp <b><span id="their_amt"></span></b></label>
+    <label for="their_amt" class="float-right" style="width:75px" >&nbsp &nbsp <b><span id="their_amt" style="font-size:larger"></span></b></label>
   ​
   </div>
 <p>Note: you must click on the above in order for the selection slider to be displayed.</p>

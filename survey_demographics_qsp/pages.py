@@ -81,7 +81,7 @@ class S_History(Page):
                    'relations_different',
                    'attraction_same',
                    'attraction_different',
-                   'attn_check_1'
+                   'attn_check_4'
                    ]
     def before_next_page(self):
         self.player.participant_vars_dump(self)
