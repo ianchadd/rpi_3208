@@ -44,6 +44,7 @@ SESSION_CONFIGS = [
                         'dg_recip_survey',
                         'dg_recip_survey_p2',
                         'survey_demographics_qsp',
+                        'feedback_survey',
                         'prolific_ID_end'
                         ],
         participation_fee = 2.00,
@@ -64,7 +65,8 @@ SESSION_CONFIGS = [
                       'dg_qsp',
                       'dg_qsp_survey',
                       'survey_demographics_qsp',
-                        #'iat_so'
+                        'iat_so',
+                    'feedback_survey',
                     'prolific_ID_end'
                       ],
         participation_fee = 2.00,
