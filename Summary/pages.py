@@ -7,11 +7,6 @@ import random, json
 
 
 class Summary(Page):
-    def is_displayed(self):
-        if self.session.config['summary_page_enabled']:
-            return True
-        else:
-            return self.vars_for_template()
     def vars_for_template(self):
         payment_values = self.session.config['round_values']
         parvars = self.participant.vars
@@ -45,6 +40,7 @@ class Summary(Page):
         self.player.participant_vars = json.dumps(parvars)
 
         participation_fee = self.session.config['participation_fee']
+        seed_data = self.session.config['seed_data']
         return {
             'payment_game': payment_game,
             'scheme': scheme,
@@ -55,7 +51,8 @@ class Summary(Page):
             'payout': payout,
             'payment_value': payment_value,
             'participant_vars': parvars,
-            'participation_fee': participation_fee
+            'participation_fee': participation_fee,
+            'seed_data': seed_data
         }
 
 

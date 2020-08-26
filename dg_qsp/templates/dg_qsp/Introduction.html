@@ -1,21 +1,20 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 
-{% block title %} {% if task_2 %} Task 2 {% else %} Task 3 {% endif %}: Instructions{% endblock %}
+
+{% block title %}
+{{block.super}}: Instructions {% if task == 1 %} II {% endif %}
+{% endblock %}
 
 
 
 {% block content %}
 
-{% if task_3 %}
 
-<p>Task 3 is identical to Task 2 with one exception: you are matched with a <strong>different</strong> partner.</p>
-
-{% endif %}
 
 {% include Constants.instructions_template %}
-<div style="text-align: right;">
-  {% next_button %}
-</div>
+<br>
+{% delayed_next wait=1000 label='NEXT'%}
 {% endblock %}

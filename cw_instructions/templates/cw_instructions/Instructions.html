@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+<!-- {% load custom_tags %} -->
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+<p>INSTRUCTIONS CONTENT</p>
+
+<p>
+
+  These are the instructions for the experiment.
+  They should be read aloud by Samantha (female) or Tom (male).
+</p>
+{% if delay %}
+    {% delayed_next wait=30000 label='NEXT'%}
+{% else %}
+    {% delayed_next wait=0 label='NEXT'%}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+{% block title %}
+{{block.super}}
+{% endblock %}
+
+{% block content %}
+
+<p>On <b>economic</b> issues, politically I am:</p>
+    {% formfield player.econ_politics %}
+
+<p>On <b>social</b> issues, politically I am:</p>
+        {% formfield player.social_politics %}
+
+{% formfield player.election_2016 %}
+{% delayed_next wait=0 label='NEXT' %}
+
+{% endblock %}

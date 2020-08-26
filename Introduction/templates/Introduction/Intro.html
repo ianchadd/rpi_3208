@@ -8,11 +8,13 @@
 
 {% block content %}
     <p>
-        This is an experiment in decision-making. You will earn money based on the decisions that you and others make during this study. Since you could earn a significant amount of money from this study, please pay attention to the instructions. We will include several questions throughout this study that are intended to check your attention. If you fail any of these attention checks, your response may be rejected.
+        This is an experiment in decision-making. You will earn money based on the decisions that you and others make during this study. Since you could earn a significant amount of money from this study, please pay attention to the instructions.
+        We will include several questions throughout this study that are intended to check your attention.
+        <strong>If you fail any of these attention checks, your response may be REJECTED.</strong>
     </p>
 
     <p>
-        We anticipate that this study will take approximately 15 minutes.
+        We anticipate that this study will take approximately 18 minutes.
         At the end, you will receive a participation payment of {{ participation_fee }}.
         In addition to this, you will have the opportunity to make more money during this study.
         Your entire payment ({{participation_fee}} + whatever additional amount you earn) will be paid to you via the Prolific platform once your responses have been validated (usually within 48 hours of your participation).
@@ -21,9 +23,18 @@
     <p>
         Your participation and your answers will be kept anonymous.
     </p>
+    <p>Finally, please note that this research does not employ deception.
+      This means that the instructions that you are about to read are true and not deceptive.
+      This is regulated by the researchers’ intuitional ethics committees.
+    </p>
 
     <br>
+    <p>
+      On most pages in this experiment, a NEXT button will appear after some delay.
+      This is to ensure that you have read the instructions/interface and is not a bug.
+      A NEXT button will appear on this page 30 seconds after it was loaded.
+    </p>
 
-    {% delayed_next %}
+    {% delayed_next wait=30000 label='NEXT'%}
 
 {% endblock %}

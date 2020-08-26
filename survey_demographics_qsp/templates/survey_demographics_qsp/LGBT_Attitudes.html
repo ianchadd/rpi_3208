@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+{% block title %}
+{{block.super}}
+{% endblock %}
+
+{% block content %}
+
+<p>
+To what extent do you agree with the following statements?
+</p>
+    {% formfields %}
+
+{% delayed_next wait=0 label='NEXT'%}
+
+{% endblock %}

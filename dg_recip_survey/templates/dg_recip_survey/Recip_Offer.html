@@ -1,0 +1,81 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+
+{% block title %} Task 2: Survey (Part 1){% endblock %}
+
+{% block content %}
+<p>
+Your matched participant(s) will make their decisions on a screen as shown below: </p>
+
+<div class="card bg-secondary text-white m-3">
+    <div class="card-body">
+{% include Constants.decision_template %}
+</div>
+</div>
+<div style="text-align: center;">
+  <button type="button" onclick="show_hide_Instructions()">Show/Hide Information from Previous Screen</button>
+</div>
+    <div id="instructions">
+      <div class="card bg-secondary text-white m-3">
+      <div class="card-body">
+          {% include Constants.instructions_template %}
+        </div>
+        </div>
+    </div>
+    <br>
+<p>
+  Each of your matched participant(s) will use the slider above to allocate 100 ECU between themselves and you.
+</p>
+<p>
+To ensure that you completely understand this task, please use the slider above to see how it works.
+<b><u>There is no decision for you to make here, but you will not be able to move forward without first clicking on the slider</u></b>.
+</p>
+
+<p>
+<b>Your Payment:</b> Since you may be matched with more than one participant, your bonus payment for this part of Task 2 will be the <b>sum</b> of all their decisions.
+</p>
+
+    <style>
+    #instructions {
+      display: none;
+    }
+    #submit {
+      display: none;
+    }
+</style>
+
+    <script>
+    function show_hide_Instructions() {
+      var x = document.getElementById("instructions");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    </script>
+
+
+<div id="submit">
+  {% delayed_next wait=0 label='NEXT'%}
+</div>
+
+<script>
+  var slider = document.getElementById("myRange");
+  var output_1 = document.getElementById("their_amt");
+  var output_2 = document.getElementById("my_amt");
+  var button = document.getElementById("submit");
+
+
+  slider.oninput = function() {
+    output_1.innerHTML = this.value;
+    output_2.innerHTML = 100 - this.value;
+    button.style.display = "block";
+  }
+
+
+</script>
+
+{% endblock %}

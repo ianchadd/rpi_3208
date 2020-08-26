@@ -1,6 +1,14 @@
 from os import environ
 import json
 
+if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
+    DEBUG = False
+    APPS_DEBUG = False
+else:
+    DEBUG = True
+    APPS_DEBUG = True   # also enables random fill in of forms
+
+
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
 # the session config can be accessed from methods in your apps as self.session.config,
@@ -11,32 +19,116 @@ with open('sample_participants.json') as sample_participants:
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=1.50, doc="",
     data_pages_enabled=True,
-    summary_page_enabled=True,
     sample_participants=sample_participants,
     num_sample_participants=10,
     consent_additional_message = """""",
     round_values = ["0.25", "0.50","0.75","1.00","1.25","1.50","1.75"],
     piece_rate = 0.25,
-    seconds_for_counting_task=10,
-    guess_rate = 0.20
+    seconds_for_counting_task=5,
+    guess_rate = 0.20,
+    delay = False
 )
 
 
 SESSION_CONFIGS = [
+    dict(name='iat', display_name="IAT", num_demo_participants=2, app_sequence=['iat_so']),
     dict(
-        name='Simple_survey_flag',
-        display_name="QSP Survey 1",
+        name='qsp_recip',
+        display_name="QSP Recipient",
         num_demo_participants=3,
-        app_sequence=['prolific_ID_begin',
-                      'simple_survey_flag',
-                      'survey_demographics',
-                      'prolific_ID_end'],
+        app_sequence=[
+                        'prolific_ID_begin',
+                        'informed_consent',
+                        'qsp_dg_recip_intro',
+                        'qsp_dg_recip_id',
+                        'dg_recip_survey',
+                        'qsp_dg_recip_id_2',
+                        'dg_recip_survey_p2',
+                        'survey_demographics_qsp',
+                        'feedback_survey',
+                        'prolific_ID_end'
+                        ],
         participation_fee = 2.00,
+        recip = True,
+        consent = 'flag_survey/consent.pdf',
+        p_completion_link = 'xxxxxxxx',        
+    ),
+    dict(
+        name='qsp_dictator',
+        display_name="QSP Dictator",
+        num_demo_participants=1,
+        pw = 'qsp_testing',
+        app_sequence=[
+                    'prolific_ID_begin',
+                        'informed_consent',
+                        'qsp_dg_dict_intro',
+                      'qsp_dg_dict_instructions',
+                      'dg_qsp',
+                      'dg_qsp_survey',
+                      'survey_demographics_qsp',
+                        'iat_so',
+                    'feedback_survey',
+                    'prolific_ID_end'
+                      ],
+        participation_fee = 2.00,
+        recip=False,
+        consent = 'flag_survey/consent.pdf',
         p_completion_link = 'xxxxxxxx',
+        doc="""
+    Edit the p_completion_link variable with the completion code for Prolific session
+    """  
+    ),
+    dict(
+        name='gt_survey_test',
+        display_name="Gender Typicality",
+        num_demo_participants=3,
+        app_sequence=['testing_pw',
+                      'gender_typicality'],
+        participation_fee = 0,
+        p_completion_link = 'xxxxxxxx',
+        pw = 'gt_testing',
+        questions = [
+                     'arrested',
+                     'intelligent',
+                     'imagination',
+                     'military',
+                     'mood',
+                     'others_problems',
+                     'others_interested',
+                     'pray',
+                     'risks',
+                     'stress',
+                     'sun',
+                     'sunblock',
+                     'strength',
+                     'sweat',
+                     'team_sports',
+                     'tired',
+                     'walk',
+                     'sympathize',
+                     'talk',
+                     'tobacco',
+                     'video_games',
+                     'worry'
+                     ],
+        random = True,
+        survey_title = 'GT Survey',
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
     """
         
+    ),
+    dict(
+        name='cw',
+        display_name="CW",
+        num_demo_participants=3,
+        app_sequence=['testing_pw',
+                      'cw_instructions',
+                      'cw_practice'
+                      ],
+        participation_fee = 2.00,
+        p_completion_link = 'xxxxxxxx',
+        pw = 'cw_testing'
     ),
     dict(
         name='QCP',
@@ -72,26 +164,10 @@ SESSION_CONFIGS = [
         p_completion_link = 'xxxxxxxx',
         consent_additional_message = """
         """,
-        seed_data = True,
+        seed_data = False,
+        data_pages_enabled=False,
+        summary_page_enabled=True,
         participation_fee=2.00,
-    ),
-    dict(
-        name='demo_survey',
-        display_name="Demographic Survey",
-        num_demo_participants=3,
-        app_sequence=['survey_demographics']
-    ),
-    dict(
-        name='demo_survey_2',
-        display_name="Demographic Survey 2",
-        num_demo_participants=3,
-        app_sequence=['survey_demographics']
-    ),
-    dict(
-        name='volunteer',
-        display_name="Volunteer Dilemma",
-        num_demo_participants=3,
-        app_sequence=['volunteer_dilemma']
     ),
     dict(
         name='nbo_choice',
@@ -133,40 +209,21 @@ SESSION_CONFIGS = [
         consent = 'no_choice/consent.pdf'
     ),
     dict(
-        name='qsp_dictator',
-        display_name="QSP ID Choice and Dictator Choice",
-        num_demo_participants=1,
-        app_sequence=[
-                    #'prolific_ID_begin',
-                        'informed_consent',
-                        'qsp_dg_dict_intro',
-                      'qsp_dg_dict_id',
-                      'dg_qsp',
-                      'dg_qsp_survey',
-                      'survey_demographics',
-                    #'prolific_ID_end'
-                      ],
-        participation_fee = 2.00,
-        consent = 'flag_survey/consent.pdf',
+        name = 'faces',
+        display_name = 'Faces Barebones Code',
+        num_demo_participants =  1,
+        app_sequence = [
+            #'testing_pw',
+            #'icl',
+            'image_upload',
+            #'survey_faces'
+            ],
+        pw = 'faces_testing',
+        participation_fee = 1.00,
+        consent = '',
         p_completion_link = 'xxxxxxxx',
-        doc="""
-    Edit the p_completion_link variable with the completion code for Prolific session
-    """  
-    ),
-    dict(
-        name='id_pd',
-        display_name="QSP ID + PD (Testing)",
-        num_demo_participants=1,
-        app_sequence=[#'prolific_ID_begin',
-                      'simple_survey_flag',
-                      'pd_qsp',
-                      #'prolific_ID_end'
-                      ],
-        participation_fee = 2.00,
-        p_completion_link = 'xxxxxxxx',
-        doc="""
-    Edit the p_completion_link variable with the completion code for Prolific session
-    """  
+        doc=    """
+                """  
     ),
 ]
 
@@ -203,7 +260,11 @@ Here are some oTree games.
 # don't share this with anybody.
 SECRET_KEY = '7vfsh(zo@d)v)zizkf#@xqzb3q%juzu65zoh4r+#$tckdfji5r'
 
-INSTALLED_APPS = ['otree','custom_templates']
+INSTALLED_APPS = ['otree',
+                  'custom_templates',
+                  'django.contrib.humanize',
+                  'otreeutils'
+                  ]
 
 # inactive session configs
 # dict(name='trust', display_name="Trust Game", num_demo_participants=2, app_sequence=['trust', 'payment_info']),

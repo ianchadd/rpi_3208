@@ -9,44 +9,61 @@
 {% block content %}
 
     <p>
-        Thank you for completing Game 2!
+        Thank you for completing Game 2 - Tournament!
     </p>
+
+    <h4>Overview</h4>
 
     <p>
         As in the previous two games, you will be given {{time_limit}} seconds to participate in the Counting Task.
         However, you will now get to choose which of the two previous payment schemes (<strong>piece rate</strong> or <strong>tournament</strong>) you prefer to apply to your performance in the third game.
-        You will make this decision for each possible tournament prize of {{round_values}}. Each of these prizes has an equal chance of being chosen.
-        After you make your choices, but before you start the Counting Task, we will let you know which of the prizes was randomly chosen to apply to this task.
+        You will make this decision for each possible tournament prize of {{round_values}}.
+        If you choose the piece rate, you will be paid {{piece_rate}} cents per completed box.
+        If you choose the tournament, your performance will be evaluated relative to your group members’ past performance in Game 2 – Tournament.
+        And, you will be paid the tournament prize only if you win the tournament (in case of ties, the winner will be randomly determined among the top performers).
     </p>
 
-    <p>If Game 3 is the one randomly selected for payment, then your earnings for this game are determined as follows:</p>
-    <ul>
-        <li>
-            First, the computer will randomly select the tournament prize.
-        </li>
-        <li>
-            If, for the randomly chosen prize, you chose the piece rate you receive {{piece_rate}} cents per box you complete.
-        </li>
-        <li>
-            If, for the randomly chosen prize, you chose the tournament, your performance will be evaluated relative to the performance of the other three participants of your assigned group in the Game 2-tournament. The Game 2-tournament is the one you just completed. If you complete more boxes than the three other members of your assigned group did in Game 2, then you receive the randomly chosen tournament prize per each box completed. You will receive no earnings for this game if you chose the tournament and one or more of your group members have a higher Game 2-tournament performance than your Game-3 performance. Your group members are the same three individuals as the ones in your assigned group in Game 2. You will not be informed of how you did in the tournament until all five tasks have been completed. If there are ties, the winner will be randomly determined among those who tied for first place.
-        </li>
-    </ul>
+    <h6>Details: Determining Payments</h6>
+    <div class="row">
+        <div class="col-1"></div>
+        <p class="col">
+          If Game 3 - Choice is the one randomly selected for payment, then your earnings for this game are determined as follows:
+          <ul style="PADDING-LEFT: 150px">
+              <li>
+                  First, the computer will randomly select the tournament prize.
+              </li>
+              <li>
+                  If, for the randomly chosen prize, you chose the piece rate you receive {{piece_rate}} cents per box you complete.
+              </li>
+              <li>
+                  If, for the randomly chosen prize, you chose the tournament, then your performance will be evaluated relative to your group members’ past performance in Game 2 – Tournament.
+                  If you completed more boxes than the other three group members did in Game 2 - Tournament, then you receive the chosen prize per completed box.
+                  Otherwise, you receive no earnings for this game.
+                  If there are ties, the winner will be randomly determined among the group members who tied for first place.
+              </li>
+          </ul>
+        </p>
+
+    </div>
     <p>
+
       {% if seed_data is not True %}
       Note: nothing you do in this study will affect the payoffs of any other participants in this study.
       Your group is constructed using answers from participants who <strong>already participated</strong> in this study.
       Those subjects have already been paid and are not affected by your choices at all.
       {% else %}
-      Note: nothing you do in Game 3 will affect the payoffs of any other participants in this study.
-      Your performance in Game 3 will be compared with the performance of your group members in Game 2, which is already complete.
-      Your group members' peformance in Game 3 will likewise be compared with your performance in Game 2, which is already complete.
+      Note: nothing you do in Game 3 - Choice will affect the payoffs of any other participants in this study.
+      Your performance in Game 3 - Choice will be compared with the performance of your group members in Game 2 - Tournament, which is already complete.
+      Your group members' performance in Game 3 - Choice will likewise be compared with your performance in Game 2 - Tournament, which is already complete.
       {% endif %}
     </p>
 
-    <p>The next computer screen will ask you to choose whether you want the piece rate or the tournament applied to your performance for each of the tournament prizes of {{round_values}}. A new screen will then show you the randomly chosen prize and your choice for that prize. You will then start Game-3 and will have {{time_limit}} seconds to complete boxes.</p>
+    <p>The next computer screen will ask you to choose whether you want the piece rate or the tournament applied to your performance for each of the tournament prizes of {{round_values}}.
+      A new screen will then show you the randomly chosen prize and your choice for that prize.
+      You will then start Game 3 - Choice and will have {{time_limit}} seconds to complete boxes.</p>
 
     <br>
 
-    {% delayed_next %}
+    {% delayed_next wait=60000%}
 
 {% endblock %}

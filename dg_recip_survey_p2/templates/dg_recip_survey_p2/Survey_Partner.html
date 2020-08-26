@@ -1,0 +1,58 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+{% block title %}Task 2: Survey (Part 3){% endblock %}
+
+{% block content %}
+<style>
+  td{
+    padding: 10px;
+    width: 25%;
+  }
+</style>
+{% if round_2 %}
+<p>
+Next, we will ask you a few questions about these participants.
+</p>
+{% endif %}
+<p>
+{% if round_2 %}First{% else %}Next{% endif %}, consider a participant who has chosen the following ID: <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
+</p>
+
+<table>
+  <tr>
+    <td>I think their gender is:</td>
+    <td>{% formfield player.inferred_gender %}</td>
+    <td style='text-align:right;'>How sure are you?</td>
+    <td>{% formfield player.gender_confidence %}</td>
+  </tr>
+  <tr>
+    <td>I think their age is:</td>
+    <td>{% formfield player.inferred_age %}</td>
+    <td style='text-align:right;'>How sure are you?</td>
+    <td>{% formfield player.age_confidence %}</td>
+  </tr>
+  <tr>
+    <td>I think their sexual orientation is:</td>
+    <td>{% formfield player.inferred_orientation %}</td>
+    <td style='text-align:right;'>How sure are you?</td>
+    <td>{% formfield player.orientation_confidence %}</td>
+  </tr>
+  <tr>
+    <td>I think they are an ally to the LGBTQ+ community:</td>
+    <td>{% formfield player.inferred_ally %}</td>
+    <td style='text-align:right;'>How sure are you?</td>
+    <td>{% formfield player.ally_confidence %}</td>
+  </tr>
+  <tr>
+    <td>Politically, I think they are:</td>
+    <td>{% formfield player.inferred_politics %}</td>
+    <td style='text-align:right;'>How sure are you?</td>
+    <td>{% formfield player.politics_confidence %}</td>
+  </tr>
+</table>
+
+{% delayed_next label='NEXT' wait=0 %}
+
+{% endblock %}

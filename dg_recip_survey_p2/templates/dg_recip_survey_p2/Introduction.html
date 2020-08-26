@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+
+{% block title %} Task 2: Survey (Part 2){% endblock %}
+
+
+
+{% block content %}
+
+<p>
+  We will now ask you to predict what you think will be the decisions made by the matched partners of <b>other participants who are in a similar position as you.</b>
+</p>
+<p>
+  Specifically, you will be shown the IDs chosen by other participants, and you will be asked to predict what would be the average number of ECU sent to each participant by their matched partner(s).
+  At the end of the experiment, <b>you will be paid</b> for the accuracy of <b>one</b> of your predictions.
+
+</p>
+<p>
+  Clicking the button below will provide a detailed description of how you will be paid for your predictions.
+  You do not need to know it in detail, except that the procedure is designed so that <b>it is in your best interest to state your predictions as accurately as possible.</b>
+</p>
+<div style="text-align: center;">
+  <button type="button" onclick="show_hide_Instructions()">Show/Hide Additional Details</button>
+</div>
+    <div id="instructions">
+      <div class="card bg-secondary text-white m-3">
+        <div class="card-body">
+          <iframe src= "{% static details %}" width="100%" height="500px">
+          </iframe>
+        </div>
+      </div>
+    </div>
+<style>
+    #instructions {
+      display: none;
+    }
+</style>
+<script>
+function show_hide_Instructions() {
+  var x = document.getElementById("instructions");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+  {% delayed_next wait=0 label='NEXT' %}
+{% endblock %}

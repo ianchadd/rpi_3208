@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+{% block title %}
+{{block.super}}
+{% endblock %}
+
+{% block content %}
+
+{% if recip %}
+    <p>
+        This is the last part of the survey.
+    </p>
+{% endif %}
+    <p>
+        Over the next several pages, you will be asked questions <strong>about yourself</strong>.
+    </p>
+    <p>
+        Please answer each question to the best of your ability.
+    </p>
+
+{% delayed_next wait=0 label='NEXT' %}
+
+{% endblock %}

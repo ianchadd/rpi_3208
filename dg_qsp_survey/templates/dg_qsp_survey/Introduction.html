@@ -1,24 +1,26 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 
-{% block title %} Task 4: Survey{% endblock %}
+{% block title %}
+{{block.super}}: Instructions
+{% endblock %}
 
 
 
 {% block content %}
 
 <p>Welcome to the last task of our study.
-  In this task, we ask you to answer some questions.
+  In this task, we will ask you to answer some questions.
   Please answer the following questions to the best of your ability.
 </p>
 
-<p>The survey consists of four main parts.
+
+{% formfields %}
+
+<p>The rest of the survey consists of four parts.
 
 </p>
-
-
-<div style="text-align: right;">
-  {% next_button %}
-</div>
+  {% delayed_next wait=0 label='NEXT' %}
 {% endblock %}

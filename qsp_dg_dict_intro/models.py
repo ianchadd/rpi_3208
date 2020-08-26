@@ -25,6 +25,7 @@ class Constants(BaseConstants):
     name_in_url = 'qsp_dg_dict_intro'
     players_per_group = None
     num_rounds = 1
+    global_progress = False
 
 
 class Subsession(BaseSubsession):

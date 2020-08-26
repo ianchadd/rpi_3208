@@ -1,0 +1,14 @@
+{% extends "iat_so/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{{block.super}}
+{% endblock %}
+
+
+{% block content %}
+    <p>Thank you for taking part in the experiment.</p>
+
+    {% next_button %}
+
+{% endblock %}

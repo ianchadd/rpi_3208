@@ -71,6 +71,12 @@ class Choose_ID_O(Page):
     form_model = 'player'
     form_fields = ['chooseID']
 
+    def vars_for_template(self):
+
+        return dict(
+            participant_vars = self.player.participant.vars
+            )
+
     def before_next_page(self):
         self.player.set_ID(self.player.chooseID)
 

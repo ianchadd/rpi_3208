@@ -28,6 +28,14 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    def participant_vars_dump(self, page):
+        for field in page.form_fields:
+            if type(getattr(self, field)) != type(None):
+                if Constants.num_rounds > 1:
+                    self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
+                else:
+                    self.participant.vars[field] = getattr(self, field)
+
     #inferred demographic variables
     inferred_gender = models.StringField(
         label = '',
@@ -44,6 +52,11 @@ class Player(BasePlayer):
     inferred_politics = models.StringField(
         label = '',
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
+        )
+
+    inferred_ally = models.StringField(
+        label = '',
+        choices = ['Yes', 'No'],
         )
     
     #confidence variables
@@ -74,6 +87,15 @@ class Player(BasePlayer):
             [4, 'Highly confident']
             ]
         )
+    ally_confidence = models.IntegerField(
+        label = '',
+        choices = [
+            [1, 'I chose randomly'],
+            [2, 'A little confident'],
+            [3, 'Fairly confident'],
+            [4, 'Highly confident']
+            ]
+        )
     politics_confidence = models.IntegerField(
         label = '',
         choices = [
@@ -87,10 +109,27 @@ class Player(BasePlayer):
     #explanation variables
     give_explain = models.LongStringField(
         label = '')
+    
+    def give_explain_error_message(self,value):
+        if len(value) < 5:
+            return "Your response must be at least 5 characters long."
+
+    samedifferent_explain = models.LongStringField(
+        label = '')
+
+    def samedifferent_explain_error_message(self,value):
+        if len(value) < 5:
+            return "Your response must be at least 5 characters long."
 
     #own id explanation variables
     id_explain = models.LongStringField(
         label = '')
     icon_explain = models.LongStringField(
         label = '')
+
+    #open ended response
+    thoughts = models.LongStringField(
+        label ='First of all, what do you think of the study today?')
+
+            
 
