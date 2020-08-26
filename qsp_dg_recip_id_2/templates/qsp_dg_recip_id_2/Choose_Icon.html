@@ -1,0 +1,108 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load custom_tags %}
+
+{% block title %}
+  Task 1: Creation of Personal ID
+{% endblock %}
+
+{% block content %}
+
+<p><u>Step 2: Choose Icon</u></p>
+<p>All participants in this study are given these three options. Please select one to form the icon part of your personal ID.</p>
+
+    <style>
+      .flag-selector input{
+          margin:0;padding:0;
+          -webkit-appearance:none;
+             -moz-appearance:none;
+                  appearance:none;
+      }
+      .f1{background-image:url("{% static image_path_1 %}");}
+      .f2{background-image:url("{% static image_path_2 %}");}
+      .f3{background-image:url("{% static image_path_3 %}");}
+
+      .flag-selector input:active +.drinkcard-flag{opacity: .9;}
+      .flag-selector input:checked +.drinkcard-flag{
+          -webkit-filter: none;
+             -moz-filter: none;
+                  filter: none;
+      }
+      .drinkcard-flag{
+          cursor:pointer;
+          background-size:contain;
+          background-repeat:no-repeat;
+          display:inline-block;
+          width:240px;height:120px;
+          -webkit-transition: all 100ms ease-in;
+             -moz-transition: all 100ms ease-in;
+                  transition: all 100ms ease-in;
+          -webkit-filter: grayscale(0) opacity(.5);
+             -moz-filter: grayscale(0) opacity(.5);
+                  filter: grayscale(0) opacity(.5);
+      }
+      .drinkcard-flag:hover{
+          -webkit-filter: grayscale(0) opacity(.9);
+             -moz-filter: grayscale(0) opacity(.9);
+                  filter: grayscale(0) opacity(.9);
+      }
+
+      /* Extras */
+      a:visited{color:#888}
+      a{color:#444;text-decoration:none;}
+      p{margin-bottom:.3em;}
+    </style>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="flag-selector">
+      <input id="a1" type="radio" name="my_flag" value="0" />
+        <label for="a1" class= "drinkcard-flag f1"></label>
+      <input id="a2" type="radio" name="my_flag" value="1" />
+        <label for="a2" class="drinkcard-flag f2"></label>
+      <input id="a3" type="radio" name="my_flag" value="2" />
+        <label for="a3" class="drinkcard-flag f3"></label><br/>
+    </div>
+    </div>
+    </div>
+    </div>
+<!--
+      <input id="a4" type="radio" name="my_flag" value="3" />
+        <label for="a4" class="drinkcard-flag f4"></label>
+      <input id="a5" type="radio" name="my_flag" value="4" />
+        <label for="a5" class="drinkcard-flag f5"></label>
+      <input id="a6" type="radio" name="my_flag" value="5" />
+        <label for="a6" class="drinkcard-flag f6"></label><br/>
+    </div>
+-->
+<!--
+    <div>
+        <input id="a1" type="radio" name="my_flag" value="0" />
+          <label for="a1"><img src="{% static image_path_1 %}"/></label><br/>
+        <input id="a2" type="radio" name="my_flag" value="1" />
+          <label for="a2"><img src="{% static image_path_2 %}"/></label><br/>
+        <input id="a3" type="radio" name="my_flag" value="2" />
+          <label for="a3"><img src="{% static image_path_3 %}"/></label><br/>
+        <input id="a4" type="radio" name="my_flag" value="3" />
+
+    </div> -->
+<p>You <strong>do not</strong> need to remember which option you have selected.
+Your ID will always be shown to you whenever it is necessary.</p>
+<br>
+
+
+{% delayed_next wait=0 label='NEXT'%}
+
+{% endblock %}
+
+<!--
+<div class = "mc-ma">
+    {{players.otherID.label}}
+    <ul>
+        {% for choice in player.otherID %}
+    <li>
+        <label>{{choice.tag}}{{choice.choice_label}}</label>
+    </li>
+    {% endfor %}
+    </ul>
+</div> -->

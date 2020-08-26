@@ -43,6 +43,7 @@ SESSION_CONFIGS = [
                         'qsp_dg_recip_id',
                         'dg_recip_survey',
                         'dg_recip_survey_p2',
+                        'qsp_dg_recip_id_2',
                         'survey_demographics_qsp',
                         'feedback_survey',
                         'prolific_ID_end'
