@@ -8,27 +8,32 @@
 
 {% block content %}
     <p>
-    For Game 1 - Piece Rate, you will be asked to participate in the Counting Task.
-    To remind you, in the Counting Task, you will see a series of boxes containing 49 ones and zeros each as presented below.
+    We will now start with the first game. In <strong>Game 1 - Piece Rate</strong>, you will participate in the Counting Task. You will be given <strong>{{time_limit}}</strong> seconds to solve as many boxes as possible.
+  </p>
+
+  <!--
+
+  To remind you, in the Counting Task, you will see a series of boxes containing 49 ones and zeros each as presented below.
     Your task is to determine the number of <strong>zeros</strong> in each box.
-    </p>
+
 
     <img src="{% static img %}" class="rounded mx-auto d-block">
 
-    <p>
-        You will be given {{time_limit}} seconds to complete as many boxes as possible.
-        If Game 1 - Piece Rate is randomly selected for payment, then you get {{piece_rate}} cents per each box you completed successfully in the {{time_limit}} seconds.
-        We refer to this payment as the <strong>piece rate payment</strong>, since you will be paid for each completed box.
+   -->
+      <p>
+
+        If Game 1 - Piece Rate is randomly selected for payment, then you get <strong>{{piece_rate}} cents</strong> per <u>each box</u> you solve successfully.
+        We refer to this payment as the <strong>piece rate payment</strong>, since you will be paid for each solved box.
     </p>
 
     <br>
 
     <p>
-        You are now ready to start Game 1 - Piece Rate. Remember, you will have {{time_limit}} seconds to complete as many boxes as possible.
+        You are now ready to start Game 1 - Piece Rate. Remember, you will have {{time_limit}} seconds to solve as many boxes as possible.
     </p>
 
     <br>
 
-    {% delayed_next wait=30000 label='START'%}
+    {% delayed_next wait=15000 label='START'%}
 
 {% endblock %}
