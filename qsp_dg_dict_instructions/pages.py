@@ -14,11 +14,16 @@ class Instructions(Page):
             id_list.append(i)
         for i in self.participant.vars['my_flag_choices']:
             flag_list.append('flag_survey/flags/flag_{}'.format(i)+'.png')
-                                       
+
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
         return dict(
             id_list = id_list,
             flag_list = flag_list,
-            participant_vars = str(self.participant.vars)
+            participant_vars = str(pvars),
+            task = task,
+            part = part
         )
     def before_next_page(self):
         self.player.set_ID(self.player.chooseID)
@@ -57,9 +62,14 @@ class Options_List(Page):
         for i in self.participant.vars['recip_options']:
             my_list.append([i[0],'flag_survey/flags/flag_{}'.format(i[1])+'.png'])
         rows = 3
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
         return dict(
             recip_options = my_list,
-            participant_vars = str(self.participant.vars)
+            participant_vars = str(pvars),
+            task = task,
+            part = part
         )
 
     

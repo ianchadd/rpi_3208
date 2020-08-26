@@ -57,7 +57,8 @@ class Player(BasePlayer):
     doc="""Amount dictator decided to keep for himself""",
     )
     gave = models.IntegerField(
-        choices = range(0,100,1)
+        min=0,
+        max=100
         )
     
     attn_check_color = models.BooleanField(

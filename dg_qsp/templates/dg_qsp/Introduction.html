@@ -4,7 +4,9 @@
 
 
 
-{% block title %} {% if task_2 %} Task 1 : Instructions Part II {% else %} Task 2: Instructions {% endif %}{% endblock %}
+{% block title %}
+{{block.super}}: Instructions {% if task == 1 %} II {% endif %}
+{% endblock %}
 
 
 

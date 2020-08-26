@@ -9,6 +9,7 @@
 
 
 {% block content %}
+{% if id_first %}
 <p>In this task, we will ask you to answer some questions, please answer them to the best of your ability.
   You may receive <b>additional bonus payments</b> based on your responses to some of the questions.
 </p>
@@ -16,6 +17,19 @@
 <p>
 The survey consists of five parts.
 </p>
+{% else %}
+<p>
+  In this task, you will be asked to construct a personal ID (to be explained in detail later).
+</p>
+<p>
+  You will then be randomly matched with one or more participants.
+  Each of these participants will be shown your personal ID, and they will be asked to make one decision which will determine your bonus payments from this part of Task 1.
+</p>
+
+<p>
+Before we ask you to choose your personal ID, we will first explain the decision that your matched participant(s) will be making.
+</p>
+{% endif %}
 
 
 

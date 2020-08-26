@@ -130,6 +130,7 @@ class Player(BasePlayer):
 
     #average guesses
     average_guess = models.IntegerField(
-        choices = range(0,100, 1)
+        min=0,
+        max=100
         )
 

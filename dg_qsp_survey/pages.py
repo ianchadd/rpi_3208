@@ -18,6 +18,9 @@ class Introduction(Page):
             their_id = 'third_id'
         task_2 = self.round_number == 1
         task_3 = not task_2
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
         return dict(
             task_2 = task_2,
             task_3 = task_3,
@@ -25,10 +28,13 @@ class Introduction(Page):
             #my_ID = self.player.participant.vars['my_ID'],
             their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars[their_flag]),
             their_ID = self.player.participant.vars[their_id],
-            participant_vars = str(self.participant.vars)
+            participant_vars = str(pvars),
+            task = task,
+            part = part
         )
     def before_next_page(self):
         self.player.participant_vars_dump(self)
+        self.participant.vars['part'] += 1
 
 class Survey_Partner(Page):
     form_model = 'player'
@@ -53,6 +59,9 @@ class Survey_Partner(Page):
             their_id = 'third_id'
         task_2 = self.round_number == 1
         task_3 = not task_2
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
         return dict(
             task_2 = task_2,
             task_3 = task_3,
@@ -60,10 +69,14 @@ class Survey_Partner(Page):
             #my_ID = self.player.participant.vars['my_ID'],
             their_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars[their_flag]),
             their_ID = self.player.participant.vars[their_id],
-            participant_vars = str(self.participant.vars)
+            participant_vars = str(pvars),
+            task = task,
+            part = part
         )
     def before_next_page(self):
         self.player.participant_vars_dump(self)
+        if self.round_number > 1:
+            self.participant.vars['part'] += 1
 class Partner_Explain_1(Page):
     form_model = 'player'
     form_fields = [
@@ -74,6 +87,9 @@ class Partner_Explain_1(Page):
     def vars_for_template(self):
         task_2 = self.round_number == 1
         task_3 = not task_2
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
         return dict(
             task_2 = task_2,
             task_3 = task_3,
@@ -83,7 +99,9 @@ class Partner_Explain_1(Page):
             id_1 = self.player.participant.vars['other_id'],
             flag_2 = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['third_flag']),
             id_2 = self.player.participant.vars['third_id'],
-            participant_vars = str(self.participant.vars),
+            participant_vars = str(pvars),
+            task = task,
+            part = part,
             gave_1 = self.participant.vars['gave_1'],
             gave_2 = self.participant.vars['gave_2'],
         )
@@ -104,6 +122,9 @@ class Partner_Explain_2(Page):
         task_2 = self.round_number == 1
         task_3 = not task_2 ,
         same = self.participant.vars['gave_1'] == self.participant.vars['gave_2']
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
         return dict(
             task_2 = task_2,
             task_3 = task_3,
@@ -113,13 +134,16 @@ class Partner_Explain_2(Page):
             id_1 = self.player.participant.vars['other_id'],
             flag_2 = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['third_flag']),
             id_2 = self.player.participant.vars['third_id'],
-            participant_vars = str(self.participant.vars),
+            participant_vars = str(pvars),
+            task = task,
+            part = part,
             gave_1 = self.participant.vars['gave_1'],
             gave_2 = self.participant.vars['gave_2'],
             same = same
         )
     def before_next_page(self):
         self.player.participant_vars_dump(self)
+        self.participant.vars['part'] += 1
     
 class Self_Explain(Page):
     form_model = 'player'

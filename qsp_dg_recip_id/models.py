@@ -114,6 +114,7 @@ class Player(BasePlayer):
         )
     
     my_flag = models.IntegerField()
+        
     other_flag = models.IntegerField()
     
     show_ID = models.BooleanField(initial = False)

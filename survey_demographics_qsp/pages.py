@@ -10,8 +10,8 @@ class Instructions(Page):
     def vars_for_template(self):
         recip = self.session.config['recip']
         return dict(
+            self.player.vars_for_template(),
             recip = recip,
-            participant_vars = str(self.participant.vars)
         )
 class Birth(Page):
     form_model='player'
@@ -23,11 +23,11 @@ class Birth(Page):
     def before_next_page(self):
         self.player.participant_vars_dump(self)
     def vars_for_template(self):
-        parvars = self.participant.vars
-
+        recip = self.session.config['recip']
         return dict(
-            parvars = parvars
-            )
+            self.player.vars_for_template(),
+            recip = recip,
+        )
         
 class Care(Page):
     form_model='player'
@@ -39,11 +39,11 @@ class Care(Page):
     def before_next_page(self):
         self.player.participant_vars_dump(self)
     def vars_for_template(self):
-        parvars = self.participant.vars
-
+        recip = self.session.config['recip']
         return dict(
-            parvars = parvars
-            )
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 class Gender_SO(Page):
     form_model='player'
     form_fields = ['male',
@@ -69,11 +69,11 @@ class Gender_SO(Page):
     def before_next_page(self):
         self.player.participant_vars_dump(self)
     def vars_for_template(self):
-        parvars = self.participant.vars
-
+        recip = self.session.config['recip']
         return dict(
-            parvars = parvars
-            )
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 
 class S_History(Page):
     form_model = 'player'
@@ -86,11 +86,11 @@ class S_History(Page):
     def before_next_page(self):
         self.player.participant_vars_dump(self)
     def vars_for_template(self):
-        parvars = self.participant.vars
-
+        recip = self.session.config['recip']
         return dict(
-            parvars = parvars
-            )
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 
 class Gen_Demographics(Page):
     form_model = 'player'
@@ -120,11 +120,11 @@ class Gen_Demographics(Page):
     def before_next_page(self):
         self.player.participant_vars_dump(self)
     def vars_for_template(self):
-        parvars = self.participant.vars
-
+        recip = self.session.config['recip']
         return dict(
-            parvars = parvars
-            )
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 
 class Politics(Page):
     form_model = 'player'
@@ -134,11 +134,11 @@ class Politics(Page):
     def before_next_page(self):
         self.player.participant_vars_dump(self)
     def vars_for_template(self):
-        parvars = self.participant.vars
-
+        recip = self.session.config['recip']
         return dict(
-            parvars = parvars
-            )
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 
 class LGBT_Attitudes(Page):
     form_model = 'player'
@@ -151,12 +151,11 @@ class LGBT_Attitudes(Page):
     def before_next_page(self):
         self.player.participant_vars_dump(self)
     def vars_for_template(self):
-        parvars = self.participant.vars
-
+        recip = self.session.config['recip']
         return dict(
-            parvars = parvars
-            )
-
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 class LGBT_Experience(Page):
     form_model = 'player'
     form_fields = ['lgbt_met',
@@ -166,11 +165,11 @@ class LGBT_Experience(Page):
     def before_next_page(self):
         self.player.participant_vars_dump(self)
     def vars_for_template(self):
-        parvars = self.participant.vars
-
+        recip = self.session.config['recip']
         return dict(
-            parvars = parvars
-            )
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 
 class Prolific_Guess(Page):
     form_model = 'player'
@@ -188,12 +187,13 @@ class Prolific_Guess(Page):
             return 'Your answers to the final three questions on this page must add up to 100.'
     def before_next_page(self):
         self.player.participant_vars_dump(self)
+        self.participant.vars['part'] += 1
     def vars_for_template(self):
-        parvars = self.participant.vars
-
+        recip = self.session.config['recip']
         return dict(
-            parvars = parvars
-            )
+            self.player.vars_for_template(),
+            recip = recip,
+        )
     
 
 page_sequence = [Instructions,

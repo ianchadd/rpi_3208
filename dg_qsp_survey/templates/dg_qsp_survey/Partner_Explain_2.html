@@ -3,7 +3,9 @@
 {% load custom_tags %}
 
 
-{% block title %}Task 3: Survey (Part 2) {% endblock %}
+{% block title %}
+{{block.super}}
+{% endblock %}
 
 {% block content %}
 <p><b>You made the following decisions:</b></p>

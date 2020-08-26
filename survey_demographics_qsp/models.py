@@ -97,6 +97,12 @@ class Player(BasePlayer):
                     self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
                 else:
                     self.participant.vars[field] = getattr(self, field)
+
+    def vars_for_template(self):
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
+        return dict(participant_vars = str(pvars), task = task, part = part)
 #age
     age = models.IntegerField(label='What is your age?', min=13, max=125)
     yob = models.IntegerField(
