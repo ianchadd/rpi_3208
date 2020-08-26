@@ -19,7 +19,13 @@ class Intro(Page):
         return self.round_number == 1
 
     def vars_for_template(self):
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
         return {
+            'participant_vars': str(pvars),
+            'task' : task,
+            'part' : part,
             'stimuli': [
                 {
                     'label': STIMULI_LABELS[(c, l)],
@@ -51,8 +57,13 @@ class IATPage(Page):
 
             for cls, lvl in side_def:
                 stimulus_level_sides[cls][lvl] = side
-
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
         return {
+            'participant_vars': str(pvars),
+            'task' : task,
+            'part' : part,
             'debug': settings.APPS_DEBUG,
             'block_def': block_def,
             'instructions': instructions,
@@ -119,6 +130,16 @@ class IATPage(Page):
 class Outro(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
+    def vars_for_template(self):
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
+        return {
+            'participant_vars': str(pvars),
+            'task' : task,
+            'part' : part
+        }
+        
 
 
 page_sequence = [

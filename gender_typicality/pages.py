@@ -24,7 +24,8 @@ class Question(Page):
             participant_vars = self.player.participant.vars
             )
     def before_next_page(self):
-        field = self.player.participant.vars['questions'][self.round_number - 1]
-        self.participant.vars[field] = getattr(self.player, field)
+        #field = self.player.participant.vars['questions'][self.round_number - 1]
+        #self.participant.vars[field] = getattr(self.player, field)
+        self.player.participant_vars_dump(self)
 
 page_sequence = [Question]

@@ -34,6 +34,8 @@ class Average_Guess(Page):
             their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)
         )
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
     
 class Survey_Partner(Page):
     form_model = 'player'
@@ -67,6 +69,8 @@ class Survey_Partner(Page):
             their_ID = self.player.participant.vars[their_id],
             participant_vars = str(self.participant.vars)
         )
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
     
 class Self_Explain(Page):
     form_model = 'player'
@@ -82,6 +86,8 @@ class Self_Explain(Page):
             my_ID = self.player.participant.vars['my_ID'],
             participant_vars = str(self.participant.vars)
         )
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
 
 
 page_sequence = [Introduction,

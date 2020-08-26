@@ -32,7 +32,7 @@ class Constants(BaseConstants):
     decision_template = 'dg_qsp/decision_template.html'
 
     # Initial amount allocated to the dictator
-    endowment = c(100)
+    endowment = 100
 
 
 class Subsession(BaseSubsession):
@@ -44,31 +44,41 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    kept = models.CurrencyField(
+
+    def participant_vars_dump(self, page):
+        for field in page.form_fields:
+            if type(getattr(self, field)) != type(None):
+                if Constants.num_rounds > 1:
+                    self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
+                else:
+                    self.participant.vars[field] = getattr(self, field)
+
+    kept = models.IntegerField(
     doc="""Amount dictator decided to keep for himself""",
     )
-    gave = models.CurrencyField(
-        choices = currency_range(c(0),c(100), c(1))
+    gave = models.IntegerField(
+        min=0,
+        max=100
         )
     
-    attn_check_color = models.IntegerField(
+    attn_check_color = models.BooleanField(
         blank = True,
         choices = [
-            [1,'Orange'],
-            [2,'Red'],
-            [3,'Blue']
+            [False,'Orange'],
+            [True,'Red'],
+            [False,'Blue']
             ],
         label = 'Please select the second option below',
         widget = forms.widgets.RadioSelect(),
         )
     
-    attn_check_color_2 = models.IntegerField(
+    attn_check_color_2 = models.BooleanField(
         blank = True,
         choices = [
-            [1,'Red'],
-            [2,'Blue'],
-            [3,'White'],
-            [4, 'Black']
+            [False,'Red'],
+            [False,'Blue'],
+            [True,'White'],
+            [False, 'Black']
             ],
         label = 'Please select the third option below',
         widget = forms.widgets.RadioSelect(),
@@ -78,7 +88,5 @@ class Player(BasePlayer):
         self.gave = self.gave
         self.kept = Constants.endowment - self.gave
         self.payoff = self.kept
-        self.participant.vars['gave_'+str(self.round_number)] = self.gave
-        self.participant.vars['kept_'+str(self.round_number)] = self.kept
             
 

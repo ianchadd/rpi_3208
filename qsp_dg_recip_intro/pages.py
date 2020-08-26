@@ -11,6 +11,13 @@ class introduction(Page):
         return dict(
             par_vars = str(self.player.participant.vars)
             )
+
+    def app_after_this_page(self, upcoming_apps):
+        if self.participant.vars['info_treat'] == 'id_second':
+            self.participant.vars['my_flag'] = 0
+            self.participant.vars['my_ID'] = '{Your Chosen String}'
+            return 'dg_recip_survey'
+        
         
 
 

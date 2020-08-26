@@ -4,18 +4,17 @@
 
 
 
-{% block title %} {% if task_2 %} Task 1 : Instructions Part II {% else %} Task 2: Instructions {% endif %}{% endblock %}
+{% block title %}
+{{block.super}}: Instructions {% if task == 1 %} II {% endif %}
+{% endblock %}
 
 
 
 {% block content %}
 
-{% if task_3 %}
 
-<p>Task 2 is identical to Task 1 with one exception: you are matched with a <strong>different</strong> participant.</p>
-
-{% endif %}
 
 {% include Constants.instructions_template %}
+<br>
 {% delayed_next wait=1000 label='NEXT'%}
 {% endblock %}

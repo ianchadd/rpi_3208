@@ -1,7 +1,9 @@
 {% extends "iat_so/Page.html" %}
 {% load otree static %}
 
-{% block title %}Task 3: Survey (Part 4){% endblock %}
+{% block title %}
+{{block.super}}
+{% endblock %}
 
 {% block app_styles %}
 
@@ -40,7 +42,7 @@ table.stimuli th {
     <table class="stimuli">
         <tr>
             <th>Category</th>
-            <th>Word</th>
+            <th>Item</th>
         </tr>
         {% for stim in stimuli %}
             <tr>

@@ -39,8 +39,8 @@ STIMULI = {
         'neg': ['pain','sickening','annoy','disaster','sadness','evil','grief','bothersome']
     },
     'concepts': {
-        'gay': ['gay people','homosexual','lesbians','gay'],
-        'straight': ['straight','straight people','heterosexual', 'different sex']
+        'gay': ['gay people','homosexual','lesbians', 'img_gay'],
+        'straight': ['straight','straight people','heterosexual','img_straight']
     }
 }
 

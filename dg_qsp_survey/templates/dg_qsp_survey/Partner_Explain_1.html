@@ -2,10 +2,12 @@
 {% load otree %}
 {% load custom_tags %}
 
-{% block title %}Task 3: Survey (Part 2) {% endblock %}
+{% block title %}
+{{block.super}}
+{% endblock %}
 
 {% block content %}
-<p>Please briefly explain the factors influencing your decisions in Task 1 and Task 2.
+<p><b>Please briefly explain the factors influencing your decisions in Task 1 and Task 2.</b>
   </p>
   <p>
   Just to remind you, you were matched with <img style="height: 25px; width:auto;" src="{% static flag_1 %}"><b>{{id_1}}</b> in Task 1 and <img style="height: 25px; width:auto;" src="{% static flag_2 %}"><b>{{id_2}}</b> in Task 2.

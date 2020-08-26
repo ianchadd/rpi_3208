@@ -3,23 +3,25 @@
 {% load custom_tags %}
 
 
-{% block title %}Task 3: Survey (Part 2) {% endblock %}
+{% block title %}
+{{block.super}}
+{% endblock %}
 
 {% block content %}
-<p><b>You made the following decisions:</b>:</p>
+<p><b>You made the following decisions:</b></p>
 <p>
-In Task 1, you sent {{gave_1}} to <img style="height: 25px; width:auto;" src="{% static flag_1 %}"><b>{{id_1}}</b>.
+In Task 1, you sent {{gave_1}} ECU to <img style="height: 25px; width:auto;" src="{% static flag_1 %}"><b>{{id_1}}</b>.
 </p>
 
 <p>
-In Task 2, you sent {{gave_2}} to <img style="height: 25px; width:auto;" src="{% static flag_2 %}"><b>{{id_2}}</b>.
+In Task 2, you sent {{gave_2}} ECU to <img style="height: 25px; width:auto;" src="{% static flag_2 %}"><b>{{id_2}}</b>.
 </p>
 <br>
 
 <p>
-Why did you choose to send {% if same %} the same {% else %} different {% endif %} amounts to <img style="height: 25px; width:auto;" src="{% static flag_1 %}"><b>{{id_1}}</b> (your Task 1 partner) and <img style="height: 25px; width:auto;" src="{% static flag_2 %}"><b>{{id_2}}</b> (your Task 2 partner)?
+Why did you choose to send {% if same %} the <b>same</b> amount{% else %} <b>different</b> amounts{% endif %} to <img style="height: 25px; width:auto;" src="{% static flag_1 %}"><b>{{id_1}}</b> (your Task 1 partner) and <img style="height: 25px; width:auto;" src="{% static flag_2 %}"><b>{{id_2}}</b> (your Task 2 partner)?
 In your response, please refer to your partners as your “Task 1 partner” and “Task 2 partner”. </p>
 
-{% formfield player.different_explain %}
+{% formfield player.samedifferent_explain %}
 {% delayed_next wait=0 label='NEXT' %}
 {% endblock %}

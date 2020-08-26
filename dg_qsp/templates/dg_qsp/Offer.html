@@ -3,7 +3,9 @@
 {% load custom_tags %}
 
 
-{% block title %} {% if task_2 %} Task 1 {% else %} Task 2 {% endif %}: Decision {% endblock %}
+{% block title %}
+{{block.super}}: Decision
+{% endblock %}
 
 {% block content %}
     {% include Constants.decision_template %}
@@ -38,14 +40,8 @@
       }
     }
     </script>
-
-
-{% if task_2 %}
-{% formfield player.attn_check_color %}
-{% else %}
-{% formfield player.attn_check_color_2 %}
-{% endif %}
-
+<br>
+<br>
 <div id="submit">
   {% delayed_next wait=0 label='SUBMIT'%}
 </div>

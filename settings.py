@@ -37,14 +37,16 @@ SESSION_CONFIGS = [
         display_name="QSP Recipient",
         num_demo_participants=3,
         app_sequence=[
-                        #'prolific_ID_begin',
+                        'prolific_ID_begin',
                         'informed_consent',
                         'qsp_dg_recip_intro',
                         'qsp_dg_recip_id',
                         'dg_recip_survey',
+                        'qsp_dg_recip_id_2',
                         'dg_recip_survey_p2',
                         'survey_demographics_qsp',
-                        #'prolific_ID_end'
+                        'feedback_survey',
+                        'prolific_ID_end'
                         ],
         participation_fee = 2.00,
         recip = True,
@@ -57,16 +59,16 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
         pw = 'qsp_testing',
         app_sequence=[
-                    #'prolific_ID_begin',
-                        'testing_pw',
+                    'prolific_ID_begin',
                         'informed_consent',
                         'qsp_dg_dict_intro',
                       'qsp_dg_dict_instructions',
                       'dg_qsp',
                       'dg_qsp_survey',
                       'survey_demographics_qsp',
-                        #'iat_so'
-                    #'prolific_ID_end'
+                        'iat_so',
+                    'feedback_survey',
+                    'prolific_ID_end'
                       ],
         participation_fee = 2.00,
         recip=False,
