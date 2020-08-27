@@ -3,7 +3,7 @@
 {% load custom_tags %}
 
 {% block title %}
-  Task 1: Creation of Personal ID
+  {{block.super}}: Creation of Personal ID
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
 </p>
 <br>
 
-<p>We are now ready to begin Task 2</p>
+<p>We are now ready to begin the next Task.</p>
     {% formfields %}
 
 {% delayed_next wait=0 label='NEXT' %}

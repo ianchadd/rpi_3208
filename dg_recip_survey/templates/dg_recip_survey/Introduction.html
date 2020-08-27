@@ -4,7 +4,9 @@
 
 
 
-{% block title %} Task 2: Survey{% endblock %}
+{% block title %}
+{{block.super}}
+{% endblock %}
 
 
 
@@ -19,7 +21,7 @@ The survey consists of five parts.
 </p>
 {% else %}
 <p>
-  In this task, you will be asked to construct a personal ID (to be explained in detail later).
+  In this experiment, you will be asked to construct a personal ID (to be explained in detail later).
 </p>
 <p>
   You will then be randomly matched with one or more participants.
