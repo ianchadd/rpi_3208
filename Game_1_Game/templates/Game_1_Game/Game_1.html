@@ -11,13 +11,13 @@
     <b>Time Left: </b><b id="timer">5:00</b>
 </p> -->
 <p>
-    <b>Number of Correct Submissions: </b><b id="scoreboard">{{ score }}</b>
+    <b>Number of Boxes Solved: </b><b id="scoreboard">{{ score }}</b>
 </p>
 
 {% counting_box "counting_box" img answer %}
 
 <br>
 <p>Determine the number of zeros in the box.
-  You will be paid {{piece_rate}} cents per each box you complete successfully in {{time_limit}} seconds</p>
+  You will be paid {{piece_rate}} cents per each box you solve successfully in {{time_limit}} seconds</p>.
 
 {% endblock %}

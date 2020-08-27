@@ -15,17 +15,23 @@
     <h4>Overview</h4>
 
     <p>
-        As in the previous two games, you will be given {{time_limit}} seconds to participate in the Counting Task.
+        As in the previous two games, you will have {{time_limit}} seconds to participate in the Counting Task.
         However, you will now get to choose which of the two previous payment schemes (<strong>piece rate</strong> or <strong>tournament</strong>) you prefer to apply to your performance in the third game.
-        You will make this decision for each possible tournament prize of {{round_values}}.
-        If you choose the piece rate, you will be paid {{piece_rate}} cents per completed box.
-        If you choose the tournament, your performance will be evaluated relative to your group members’ past performance in Game 2 – Tournament.
+        You will make this decision for each possible tournament prize of {{round_values}}.</p>
+
+        If this game is chosen for payment, we will randomly choose a tournament prize. For that tournament prize:
+        <br>
+        <li>
+    If you choose the <strong>piece rate</strong>, you will be paid {{piece_rate}} cents per solved box.
+        </li>
+        <li>
+   If you choose the <strong>tournament</strong>, your performance will be evaluated relative to your group members’ <u><strong>past performance</u> in Game 2 – Tournament</strong>.
         And, you will be paid the tournament prize only if you win the tournament (in case of ties, the winner will be randomly determined among the top performers).
-    </p>
+    </li>
 
     <br>
-
-    <h6>Details: Determining Payments</h6>
+<!--
+    <h6>Details on Determining Payments:</h6>
     <div class="row">
         <div class="col-1"></div>
         <p class="col">
@@ -46,9 +52,13 @@
           </ul>
         </p>
 
-      <p>
 
-      {% if seed_data is not True %}
+
+        <div class="row">
+            <div class="col-1"></div>
+            <p class="col">
+
+       {% if seed_data is not True %}
       Note: nothing you do in this study will affect the payoffs of any other participants in this study.
       Your group is constructed using answers from participants who <strong>already participated</strong> in this study.
       Those subjects have already been paid and are not affected by your choices at all.
@@ -60,15 +70,15 @@
     </p>
 
     </div>
-   
-    <br>
+
+    <br> -->
 
     <p>The next computer screen will ask you to choose whether you want the piece rate or the tournament applied to your performance for each of the tournament prizes of {{round_values}}.
-      A new screen will then show you the randomly chosen prize and your choice for that prize.
+      A new screen will then show you the randomly chosen prize and your payment scheme selection for that prize.
       You will then start Game 3 - Choice and will have {{time_limit}} seconds to complete boxes.</p>
 
     <br>
 
-    {% delayed_next wait=60000%}
+    {% delayed_next wait=30000%}
 
 {% endblock %}

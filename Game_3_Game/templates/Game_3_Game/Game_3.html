@@ -8,7 +8,7 @@
 
 {% block content %}
 <p>
-    <b>Number of Correct Submissions: </b><b id="scoreboard">{{ score }}</b>
+    <b>Number of Solved Boxes: </b><b id="scoreboard">{{ score }}</b>
 </p>
 
 <p>
@@ -20,7 +20,7 @@
 <br>
 <p>Determine the number of
 zeros in the box.
-You will receive {% if piece_rate %}${{piece_rate_rate}} per box you complete. {% else %}${{ value }} per box you complete if you win the tournament, $0 otherwise.{% endif %}
+You will receive {% if piece_rate %}${{piece_rate_rate}} per box you solve. {% else %}${{ value }} per box you solve if you win the tournament, $0 otherwise.{% endif %}
 </p>
 
 {% endblock %}
