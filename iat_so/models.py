@@ -39,8 +39,8 @@ STIMULI = {
         'neg': ['pain','sickening','annoy','disaster','sadness','evil','grief','bothersome']
     },
     'concepts': {
-        'gay': ['gay people','homosexual','lesbians', 'img_gay'],
-        'straight': ['straight','straight people','heterosexual','img_straight']
+        'gay': ['gay people','homosexual','lesbians', 'img_gay', 'img_lesbian'],
+        'straight': ['straight people','heterosexual','different sex','img_straight']
     }
 }
 
@@ -58,7 +58,7 @@ STIMULI_LABELS = {
 BLOCKS = [
     {   # 1
         'label': 'Practice 1',
-        'n': 8,      # this must match the number of stimuli per side
+        'n': 9,      # this must match the number of stimuli per side
         'left': [('concepts', 'gay')],
         'right': [('concepts', 'straight')],
         'is_practice': True
@@ -72,7 +72,7 @@ BLOCKS = [
     },
     {   # 3
         'label': 'Test 1',
-        'n': 24,
+        'n': 25,
         'left': [
             ('attributes', 'neg'),
             ('concepts', 'gay'),
@@ -84,7 +84,7 @@ BLOCKS = [
     },
     {   # 4: same as #3
         'label': 'Test 2',
-        'n': 24,
+        'n': 25,
         'left': [
             ('attributes', 'neg'),
             ('concepts', 'gay'),
@@ -96,7 +96,7 @@ BLOCKS = [
     },
     {   # 5
         'label': 'Practice 3 (reversed)',
-        'n': 8,
+        'n': 9,
         'left': [('concepts', 'straight')],
         'right': [('concepts', 'gay')],
         'is_practice': True,
@@ -104,7 +104,7 @@ BLOCKS = [
     },
     {  # 6
         'label': 'Test 3',
-        'n': 24,
+        'n': 25,
         'left': [
             ('attributes', 'neg'),
             ('concepts', 'straight'),
@@ -116,7 +116,7 @@ BLOCKS = [
     },
     {  # 7: same as 6
         'label': 'Test 4',
-        'n': 24,
+        'n': 25,
         'left': [
             ('attributes', 'neg'),
             ('concepts', 'straight'),
