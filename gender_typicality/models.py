@@ -35,6 +35,10 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+
+    def participant_vars_dump(self, page):
+        for field in page.form_fields:
+            self.participant.vars[field] = getattr(self, field)
     
 
 

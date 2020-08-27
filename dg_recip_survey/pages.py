@@ -7,6 +7,7 @@ class Introduction(Page):
         return dict(
             my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
             my_ID = self.player.participant.vars['my_ID'],
+            id_first = self.participant.vars['info_treat']=='id_first',
             participant_vars = str(self.participant.vars)
         )
     
@@ -15,6 +16,7 @@ class DG_Instructions(Page):
         return dict(
             my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
             my_ID = self.player.participant.vars['my_ID'],
+            id_first = self.participant.vars['info_treat']=='id_first',
             participant_vars = str(self.participant.vars)
         )
 
@@ -23,7 +25,7 @@ class DG_Instructions(Page):
 
 class Recip_Offer(Page):
     form_model = 'player'
-    form_fields = ['gave','attn_check_color', 'attn_check_color_2']
+    form_fields = ['gave']
     def vars_for_template(self):
         return dict(
             my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag']),
@@ -32,7 +34,7 @@ class Recip_Offer(Page):
         )
 
     def before_next_page(self):
-        self.player.set_payoffs()
+        self.player.participant_vars_dump(self)
 
 class Check_Understanding(Page):
     form_model = 'player'
@@ -41,6 +43,13 @@ class Check_Understanding(Page):
         return dict(
             participant_vars = str(self.participant.vars)
         )
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+        self.player.participant.vars['check_understanding_mistakes'] = self.player.check_understanding_mistakes
+
+    def app_after_this_page(self,upcoming_apps):
+        if self.participant.vars['info_treat'] == 'id_first':
+            return upcoming_apps[1]
 '''
 class ResultsWaitPage(WaitPage):
     after_all_players_arrive = 'set_payoffs'

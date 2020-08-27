@@ -3,6 +3,7 @@
 {% load custom_tags %}
 
 {% block title %}
+{{block.super}}
 {% endblock %}
 
 {% block content %}
@@ -22,7 +23,7 @@
   Have you ever been <i>sexually attracted to</i> <strong>or</strong> had <i>sexual fantasies</i> about persons of <strong>different</strong> gender(s) than yourself?
 </p>
 {% formfield player.attraction_different %}
-{% formfield player.attn_check_1 %}
+{% formfield player.attn_check_4 %}
 
 {% delayed_next label='NEXT' wait=0 %}
 

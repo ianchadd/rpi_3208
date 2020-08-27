@@ -7,7 +7,7 @@
 
 {% block content %}
 <p>
-Once your matched participants have read the instructions, they will make their decisions on a screen as shown below: </p>
+Your matched participant(s) will make their decisions on a screen as shown below: </p>
 
 <div class="card bg-secondary text-white m-3">
     <div class="card-body">
@@ -15,7 +15,7 @@ Once your matched participants have read the instructions, they will make their 
 </div>
 </div>
 <div style="text-align: center;">
-  <button type="button" onclick="show_hide_Instructions()">Show/Hide Instructions</button>
+  <button type="button" onclick="show_hide_Instructions()">Show/Hide Information from Previous Screen</button>
 </div>
     <div id="instructions">
       <div class="card bg-secondary text-white m-3">
@@ -26,18 +26,15 @@ Once your matched participants have read the instructions, they will make their 
     </div>
     <br>
 <p>
-  Each of your matched participant(s) will use the slider above to allocate ECU between themselves and you.
-  Please use the slider above to ensure that you completely understand this task.
-  <strong><u>
-    You will not be able to move forward without first clicking on the slider.
-  </u></strong>
+  Each of your matched participant(s) will use the slider above to allocate 100 ECU between themselves and you.
 </p>
 <p>
-<b>There is no decision for you to make here,</b> but we want to make sure that you understand this task before continuing.
+To ensure that you completely understand this task, please use the slider above to see how it works.
+<b><u>There is no decision for you to make here, but you will not be able to move forward without first clicking on the slider</u></b>.
 </p>
 
 <p>
-<b>Your Payment:</b> Since you might end up being matched with more than one participant, you should know that <b>all</b> of the participants with whom you are matched will decide how many of 100 ECU to allocate to you. Your bonus payment for Task 2 will be the sum of all of those decisions.
+<b>Your Payment:</b> Since you may be matched with more than one participant, your bonus payment for this part of Task 2 will be the <b>sum</b> of all their decisions.
 </p>
 
     <style>
@@ -60,8 +57,6 @@ Once your matched participants have read the instructions, they will make their 
     }
     </script>
 
-
-{% formfield player.attn_check_color %}
 
 <div id="submit">
   {% delayed_next wait=0 label='NEXT'%}

@@ -3,11 +3,16 @@
 {% load custom_tags %}
 
 {% block title %}
-{% if recip %} Task 2: Survey (Part 5) {% else %} Task 3: Survey (Part 3) {% endif %}
+{{block.super}}
 {% endblock %}
 
 {% block content %}
 
+{% if recip %}
+    <p>
+        This is the last part of the survey.
+    </p>
+{% endif %}
     <p>
         Over the next several pages, you will be asked questions <strong>about yourself</strong>.
     </p>

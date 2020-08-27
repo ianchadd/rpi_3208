@@ -10,8 +10,8 @@ class Instructions(Page):
     def vars_for_template(self):
         recip = self.session.config['recip']
         return dict(
+            self.player.vars_for_template(),
             recip = recip,
-            participant_vars = str(self.participant.vars)
         )
 class Birth(Page):
     form_model='player'
@@ -19,6 +19,16 @@ class Birth(Page):
         'yob',
         'sex',
         ]
+
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
+        
 class Care(Page):
     form_model='player'
     form_fields = [
@@ -26,6 +36,14 @@ class Care(Page):
         ]
     def is_displayed(self):
         return not self.session.config['recip']
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 class Gender_SO(Page):
     form_model='player'
     form_fields = ['male',
@@ -48,14 +66,31 @@ class Gender_SO(Page):
         elif values['orientation'] =='Other (please state below)' and type(values['other_orientation']) == type(None) :
             return 'If you select Other, you must specify in the provided field'
 
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
+
 class S_History(Page):
     form_model = 'player'
     form_fields = ['relations_same',
                    'relations_different',
                    'attraction_same',
                    'attraction_different',
-                   'attn_check_1'
+                   'attn_check_4'
                    ]
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 
 class Gen_Demographics(Page):
     form_model = 'player'
@@ -82,29 +117,59 @@ class Gen_Demographics(Page):
             return 'If you select Other, you must specify in the provided field'
         elif (values['live_in'] =='Other (please state below)' and type(values['other_live_location']) == type(None)) or (values['grew_up_in'] =='Other (please state below)' and type(values['other_grew_up_location']) == type(None)) :
             return 'If you select Other, you must specify in the provided field'
-    
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 
 class Politics(Page):
     form_model = 'player'
     form_fields = ['econ_politics',
                    'social_politics',
                    'election_2016']
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 
 class LGBT_Attitudes(Page):
     form_model = 'player'
     form_fields = ['lgbt_free',
-                   'lgbt_discrim',
+                   'lgbt_business',
                    'lgbt_adopt',
                    'lgbt_marriage',
                    'lgbt_bathroom'
                    ]
-
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 class LGBT_Experience(Page):
     form_model = 'player'
     form_fields = ['lgbt_met',
                    'lgbt_friend',
                    'consider_lgbt_ally',
                    'program_lgbt_ally']
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 
 class Prolific_Guess(Page):
     form_model = 'player'
@@ -120,7 +185,15 @@ class Prolific_Guess(Page):
     def error_message(self,values):
         if values['prolific_liberal'] + values['prolific_equal'] + values['prolific_conservative'] != 100:
             return 'Your answers to the final three questions on this page must add up to 100.'
-    
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+        self.participant.vars['part'] += 1
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
     
 
 page_sequence = [Instructions,

@@ -27,4 +27,5 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 
     p_ID = models.StringField(label = '')
+    participant_vars = models.LongStringField()
 

@@ -28,7 +28,14 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+    def creating_session(self):
+        import itertools
+        treats = itertools.cycle(['id_first','id_second']) #id_first is ID selection > DG Instructions; id_second is the reverse
+        
+        for p in self.get_players():
+            p.participant.vars['info_treat'] = next(treats) #sets treatment var at participant level with balanced treatment
+            if 'info_treat' in self.session.config:
+                p.participant.vars['info_treat'] = self.session.config['info_treat']
 
 class Group(BaseGroup):
     pass
@@ -36,8 +43,5 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    consent = models.BooleanField(
-        initial = False,
-        label = '')
-
+    pass
 

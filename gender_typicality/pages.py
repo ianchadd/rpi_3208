@@ -90,4 +90,3 @@ page_sequence = [week,
                  agreement,
                  general,
                  random]
-

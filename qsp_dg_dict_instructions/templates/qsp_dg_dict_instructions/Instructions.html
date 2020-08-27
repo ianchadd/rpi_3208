@@ -3,24 +3,23 @@
 {% load custom_tags %}
 
 {% block title %}
-  Task 1: Instructions Part I
+{{ block.super }}: Instructions I
 {% endblock %}
 
 
 {% block content %}
   <p>
-    In Task 1, you will be matched with another participant who has completed this study previously.
-  </p>
+In Task 1, you will be matched with a participant. We asked this participant to construct an ID earlier, and you will now be asked to make a decision that will determine their bonus payment from the experiment.   </p>
 <p>
   <strong><u>Part I: Creation of Personal ID by Partner</u></strong>
 </p>
 
   <p>
-All the participants who had already participated in this study were asked to create a personal ID that is a combination of (i) an 8-digit alpha-numeric string of characters and (ii) an icon.
+Your matched partner was asked to create a personal ID that is a combination of (i) an 8-digit alpha-numeric string of characters and (ii) an icon.
   </p>
 
   <p>
-For each component, all the participants in the study were given the same three options to choose from:
+For each component, all the participants in the experiment were given the same three options to choose from:
 </p>
 <ol>
   <li>
@@ -54,8 +53,6 @@ For each component, all the participants in the study were given the same three 
 </div>
   </li>
 </ol>
-<p>They were then asked to choose one option of alpha-numeric string and one option of icon to form their personal ID.
-</p>
 
 {% formfields %}
 

@@ -8,6 +8,9 @@
 
 
 {% block content %}
+<p>
+  <i>Remember, you may receive additional bonus payments based on the accuracy of your answer.</i>
+</p>
 
 <p>
   {% if round_1 %}First,{% else %}Next,{% endif%} consider a participant who has chosen the following ID: <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
@@ -16,10 +19,9 @@
 
 </p>
 
-<p>
-  You may receive additional bonus payments based on the accuracy of your answer. It is in your best interest to state your guess as accurately as possible.
-</p>
 {% include Constants.guess_template %}
+
+{{ form.average_guess.errors }}
 
 <div id="submit">
   {% delayed_next wait=0 label='SUBMIT'%}

@@ -17,7 +17,10 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+    def creating_session(self):
+        for p in self.get_players():
+            p.participant.vars['task'] = 0
+            p.participant.vars['part'] = 0
 
 
 class Group(BaseGroup):
