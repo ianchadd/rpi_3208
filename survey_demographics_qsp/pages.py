@@ -94,12 +94,20 @@ class S_History(Page):
 
 class Gen_Demographics(Page):
     form_model = 'player'
-    form_fields = ['relationship',
+    form_fields = [
+                    'white',
+                   'black',
+                   'native',
+                   'asian',
+                   'pacif_island',
+                   'latino',
+                   'arab',
+                   'other_eth',
+                   'other_ethnicity',
+                    'relationship',
                    'other_relationship',
                    'education',
                    'income',
-                   'ethnicity',
-                   'other_ethnicity',
                    'religion',
                    'other_religion',
                    'live_in',
@@ -111,7 +119,7 @@ class Gen_Demographics(Page):
     def error_message(self,values):
         if values['relationship'] =='Other (please state below)' and type(values['other_relationship']) == type(None):
             return 'If you select Other, you must specify in the provided field'
-        elif values['ethnicity'] =='Other (please state below)' and type(values['other_ethnicity']) == type(None):
+        elif values['other_eth'] and type(values['other_ethnicity']) == type(None):
             return 'If you select Other, you must specify in the provided field'
         elif values['religion'] =='Some other religious affiliation (please specify below)' and type(values['other_religion']) == type(None):
             return 'If you select Other, you must specify in the provided field'

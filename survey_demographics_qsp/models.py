@@ -278,6 +278,46 @@ class Player(BasePlayer):
             ],
         widget = widgets.RadioSelect
         )
+
+    white = models.BooleanField(
+        label = 'White',
+        widget=widgets.CheckboxInput,
+        blank = True)
+    black = models.BooleanField(
+        label = 'Black or African American',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    native = models.BooleanField(
+        label = 'American Indian and Alaskan Native',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    asian = models.BooleanField(
+        label = 'Asian',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    pacif_island = models.BooleanField(
+        label = 'Native Hawaiian or Pacific Islander',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    latino = models.BooleanField(
+        label = 'Hispanic or Latino',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    arab = models.BooleanField(
+        label = 'Middle Eastern or Arab',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    other_eth = models.BooleanField(
+        label = 'Other (please state below)',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
     other_ethnicity = models.StringField(
         label = '',
         blank = True

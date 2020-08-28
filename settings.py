@@ -255,7 +255,9 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 DEMO_PAGE_INTRO_HTML = """
 Here are some oTree games.
 """
-
+# extra settings for otreeutils
+# ROOT_URLCONF = 'iat_so.urls'
+# CHANNEL_ROUTING = 'iat_so.routing.channel_routing'
 # don't share this with anybody.
 SECRET_KEY = '7vfsh(zo@d)v)zizkf#@xqzb3q%juzu65zoh4r+#$tckdfji5r'
 

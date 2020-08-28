@@ -145,5 +145,5 @@ class Outro(Page):
 page_sequence = [
     Intro,
     IATPage,
-    Outro
+    #Outro
 ]

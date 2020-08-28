@@ -1,5 +1,6 @@
 {% extends "iat_so/Page.html" %}
 {% load otree static %}
+{% load custom_tags %}
 
 {% block title %}
 {{block.super}}
@@ -32,7 +33,7 @@ table.stimuli th {
 
 {% block content %}
     <p>
-        We will show you several items that you should assign to the respective categories.
+        We will now show you several items that you should assign to the respective categories.
 
         Please press either the key <span class="key">{{ Constants.capture_keycodes.left.1 }}</span> or the key
         <span class="key">{{ Constants.capture_keycodes.right.1 }}</span> on your keyboard.<br>
@@ -66,6 +67,6 @@ table.stimuli th {
         There are {{ Constants.num_rounds }} sub-parts for which the instructions change. Please stay alert!
     </p>
 
-    {% next_button %}
+{% delayed_next wait=0 label='NEXT' %}
 
 {% endblock %}
