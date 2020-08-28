@@ -11,12 +11,12 @@ class Question(Page):
    # def set_formfields(self):
    #     self.form_fields.clear()
    #     self.form_fields.append(self.player.participant.vars['questions'][self.round_number - 1])
-    
+
    # def is_displayed(self):
    #     if self.round_number <= self.participant.vars['num_questions']:
    #         self.set_formfields()
    #         return True
-    
+
    # def vars_for_template(self):
    #     survey_title = self.session.config['survey_title']
    #     return dict(
@@ -61,7 +61,7 @@ class agreement(Page):
                    'others_interested',
                    'others_problems']
 
-    
+
 class general(Page):
     form_model = 'player'
     form_fields = ['weight',
@@ -78,8 +78,10 @@ class random(Page):
     form_model = 'player'
     form_fields = ['expelled',
                    'paid_sex',
+                   'faithful',
                    'gambling',
                    'tobacco',
+                   'days_tobacco',
                    'arrested',
                    'military']
 

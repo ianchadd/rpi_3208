@@ -20,7 +20,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass 
+    pass
    # def creating_session(self):
    #     if self.round_number==1:
    #         for p in self.get_players():
@@ -39,9 +39,17 @@ class Player(BasePlayer):
     def participant_vars_dump(self, page):
         for field in page.form_fields:
             self.participant.vars[field] = getattr(self, field)
-    
 
-
+    faithful = models.IntegerField(
+    label = 'Using a scale from 1 to 10, where 1 means "not important at all" and 10 means "extremely important", how important do you think being faithful is for a successful marriage or serious committed relationship?',
+    min = 0,
+    max = 10
+    )
+    days_tobacco = models.IntegerField(
+    label = "In an average month, on how many days do you use chewing tobacco (from 0 to 30)?",
+    min=0,
+    max = 30
+    )
 
     work_house = models.IntegerField(
         label = "In an average week, how many times do you do work around the house?",
@@ -174,7 +182,7 @@ class Player(BasePlayer):
             ],
         widget = widgets.RadioSelect
         )
-    
+
     hobby = models.IntegerField(
         label = "In an average week, how many times do you engage in a hobby such as working on a collection, playing cards or board games, arts and crafts, dram a, playing a musical instrument or singing with a group, or shopping just for fun?",
         choices = [
@@ -220,7 +228,7 @@ class Player(BasePlayer):
 
 
 
-    
+
     damage = models.IntegerField(
         label = "In the past 12 months, how often deliberately did you damage property that wasn’t yours?",
         choices = [
@@ -308,7 +316,7 @@ class Player(BasePlayer):
             ],
         widget = widgets.RadioSelect
         )
-    
+
 
     pray = models.IntegerField(
         label = "How often do you pray privately, that is, when you're alone in places other than a church, synagogue, temple, mosque, or religious assembly?",
@@ -324,7 +332,7 @@ class Player(BasePlayer):
             ],
         widget = widgets.RadioSelect
         )
-    
+
 
 
 
@@ -377,7 +385,7 @@ class Player(BasePlayer):
                 ],
             widget = widgets.RadioSelect
             )
-       
+
     worry = models.IntegerField(
             label = "I worry about things",
             choices = [
@@ -488,7 +496,7 @@ class Player(BasePlayer):
             widget = widgets.RadioSelect
             )
 
-     
+
 
     sun_hour = models.IntegerField(
             label = "During a typical summer week, how many hours do you spend in the sun during the day?",
@@ -504,9 +512,3 @@ class Player(BasePlayer):
                 ],
             widget = widgets.RadioSelect
             )
-
-
-
-
-
-
