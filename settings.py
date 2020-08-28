@@ -51,7 +51,7 @@ SESSION_CONFIGS = [
         participation_fee = 2.00,
         recip = True,
         consent = 'flag_survey/consent.pdf',
-        p_completion_link = 'xxxxxxxx',        
+        p_completion_link = 'xxxxxxxx',
     ),
     dict(
         name='qsp_dictator',
@@ -60,12 +60,12 @@ SESSION_CONFIGS = [
         pw = 'qsp_testing',
         app_sequence=[
                     'prolific_ID_begin',
-                        'informed_consent',
-                        'qsp_dg_dict_intro',
-                      'qsp_dg_dict_instructions',
-                      'dg_qsp',
-                      'dg_qsp_survey',
-                      'survey_demographics_qsp',
+                        #'informed_consent',
+                        #'qsp_dg_dict_intro',
+                      #'qsp_dg_dict_instructions',
+                      #'dg_qsp',
+                      #'dg_qsp_survey',
+                      #'survey_demographics_qsp',
                         'iat_so',
                     'feedback_survey',
                     'prolific_ID_end'
@@ -76,7 +76,7 @@ SESSION_CONFIGS = [
         p_completion_link = 'xxxxxxxx',
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
-    """  
+    """
     ),
     dict(
         name='gt_survey_test',
@@ -116,7 +116,7 @@ SESSION_CONFIGS = [
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
     """
-        
+
     ),
     dict(
         name='cw',
@@ -185,7 +185,7 @@ SESSION_CONFIGS = [
         """,
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
-    """ 
+    """
     ),
     dict(
         name='nbo_choice_baseline',
@@ -222,7 +222,7 @@ SESSION_CONFIGS = [
         consent = '',
         p_completion_link = 'xxxxxxxx',
         doc=    """
-                """  
+                """
     ),
 ]
 

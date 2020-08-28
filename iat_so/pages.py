@@ -123,6 +123,7 @@ class IATPage(Page):
             print('> saving trial %d in block %d (trial ID %d): key %s, time %d, correct %d'
                   % (trial.trial, trial.block, trial.pk, trial.response_key, trial.response_time_ms,
                      trial.response_correct))
+            self.participant.vars['trial %d block %d trial ID %d' % (trial.trial, trial.block, trial.pk)] =  (trial.response_key, trial.response_time_ms,trial.response_correct)
 
             trial.save()
 
@@ -139,7 +140,7 @@ class Outro(Page):
             'task' : task,
             'part' : part
         }
-        
+
 
 
 page_sequence = [

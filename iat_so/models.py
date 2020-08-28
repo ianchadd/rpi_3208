@@ -186,8 +186,9 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
-
+    def response_record(self):
+        #self.participant.vars[str(self.trial.block)+'_'+str(self.trial.trial)'_'+str(self.trial.stimulus)'_'+str(self.trial.stimulus_class)'_'+str(self.trial.stimulus_level)] = [self.trial.response_key,self.response_correct,self.response_time_ms]
+        self.participant.vars[str(self.trial.block)] = self.response_time_ms
 
 class Trial(Model):
     """
