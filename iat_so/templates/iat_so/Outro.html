@@ -1,5 +1,6 @@
 {% extends "iat_so/Page.html" %}
 {% load otree static %}
+{% load custom_tags %}
 
 {% block title %}
 {{block.super}}
@@ -9,6 +10,6 @@
 {% block content %}
     <p>Thank you for taking part in the experiment.</p>
 
-    {% next_button %}
+{% delayed_next wait=0 label='NEXT' %}
 
 {% endblock %}
