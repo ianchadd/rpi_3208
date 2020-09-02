@@ -23,10 +23,10 @@ class introduction(Page):
     def app_after_this_page(self, upcoming_apps):
         if self.participant.vars['info_treat'] == 'id_second':
             self.participant.vars['my_flag'] = 0
-            self.participant.vars['my_ID'] = '{Your Chosen String}'
+            self.participant.vars['my_ID'] = 'abcde123'
             return 'dg_recip_survey'
-        
-        
+
+
 
 
 
