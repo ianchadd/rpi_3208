@@ -135,6 +135,7 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
         #use_browser_bots=True,
         app_sequence=[
+            'feedback_survey',
             'prolific_ID_begin',
             'informed_consent',
             'Introduction',
@@ -154,7 +155,7 @@ SESSION_CONFIGS = [
             #'Game_5_Game',
             #'Game_5_Data',
             'Performance_Guesses',
-            'qcp_demographics',
+            #'qcp_demographics',
             #'Survey',
             #'feedback_survey',
             'Summary',
