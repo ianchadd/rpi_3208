@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<p>
+Considering a typical week, please answer the following questions to the best of your ability.
+</p>
+
+
+    {% formfields %}
+
+    {% next_button %}
+
+{% endblock %}

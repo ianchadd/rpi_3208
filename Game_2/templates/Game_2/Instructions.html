@@ -12,33 +12,70 @@
         Thank you for completing Game 1 - Piece Rate!
     </p>
 
-    <h4>Overview</h4>
+  <br>
+
+    <h5>Overview:</h5>
 
     <p>
-        In Game 2 - Tournament, as in Game 1 - Piece Rate, you will be given {{time_limit}} seconds to participate in the Counting Task.
-        However, for this game, your payment depends on your performance relative to that of a group of other participants.
-        In Game 2 – Tournament, you will only be paid if your performance in the Counting Task is the highest in your group (in case of ties, the winner will be randomly determined among the top performers).
-        If you are the winner of this tournament, the amount that you will receive per completed box will be randomly determined from the following amounts: {{round_values}}.
+        In <strong>Game 2 - Tournament</strong>, you will again be given {{time_limit}} seconds to participate in the Counting Task.
+        However, for this game, your payment depends on your performance <strong>relative to that of a group of 3 other participants</strong>. </p>
+
+      <p>
+        If Game 2 – Tournament is randomly chosen for payment, you will <u>only</u> be paid if your performance in the Counting Task is the <strong>highest</strong> in your group (in case of ties, the winner will be randomly determined among the top performers).
         Otherwise you will not receive any payments in Game 2 - Tournament.
-        Each group consists of four people, including you.
+      </p>
+
+      <p>
+        We refer to this as the <strong>tournament payment</strong>.
+        Each group consists of <strong>four</strong> people, including you.
     </p>
 
-    <h6>Details: Constructing Groups</h6>
+  <br>
+
+    <h5>Tournament Prize:</h5>
+
+    <p>
+
+        <p>
+        If you are the winner of this tournament, the amount that you will receive per solved box will be randomly chosen from the following amounts: <strong>{{round_values}}.</strong>
+         </p>
+
+  <p>
+    Each of these tournament prizes are equally likely to be chosen. Right now, nobody knows which prize will be chosen.
+      </p>
+
+
+    <br>
+
+    <h5>Details on Constructing Groups:</h5>
     <div class="row">
         <div class="col-1"></div>
         <p class="col">
           {% if seed_data is not True %}
-            Previously, a representative group of subjects on Prolific, like yourself, participated in this study.
-            We coded their anonymous answers into this program.
-            In order to construct your group of four, we will randomly select three past participants from this group and use their answers in determination of your earnings for Game 2 - Tournament
+          Previously, a group of subjects on Prolific, like yourself, participated in this study.
+          We coded their anonymous performances into this program.
+          In order to construct your group of four, we will randomly select three of these past participants. {% if seed_data is not True %}
+           Your performance will not affect the payoffs of your group members.
+            {% endif %}
+
+<br>
+<br>
+
+          Your group will stay the same for the remainder for this study.
           {% else %}
           In order to construct your group of four, we will randomly select three other participants and use their answers in determination of your earnings for Game 2 - Tournament.
           This group will be constructed <strong>after</strong> all participants have made their decisions in the current study.
           For this reason, you will only be informed of your performance in the tournament if Game 2 - Tournament is chosen for payment <strong>after</strong> the current study is over and when you are paid your bonus payment.
           {% endif %}
+
+        <br>
+
         </p>
+
     </div>
 
+
+<!--
     <h6>Details: Determining Payments</h6>
     <div class="row">
         <div class="col-1"></div>
@@ -48,26 +85,19 @@
                 If you complete more boxes than the other three people in your group, you will be paid some amount per completed box.
                 Otherwise, you will not be paid anything for Game 2 - Tournament.
                 The amount paid per completed box will be randomly determined at the end of the experiment from the following amounts: {{round_values}}.
-                Each of these prizes has an equal chance of being chosen.
+                Each of these prizes has an equal chance of being chosen. If there are ties, the winner will be randomly determined among the group members who tied for first place.
             </p>
-            <p>
-                We refer to this as the <strong>tournament payment</strong>.
-                If there are ties, the winner will be randomly determined among the group members who tied for first place.
-            </p>
-            <p>
-              {% if seed_data is not True %}
-              Note: nothing you do in this study will affect the payoffs of any other participants in this study.
-              Your group is constructed using answers from participants who <strong>already participated</strong> in this study.
-              Those subjects have already been paid and are not affected by your choices at all.
-              {% endif %}
-            </p>
+
+
         </div>
     </div>
+-->
+    <br>
 
-    <h6>You are now ready to start Game 2 - Tournament.  Remember, you will have {{time_limit}} seconds to complete this game.</h6>
+    <h6>You are now ready to start Game 2 - Tournament.  Remember, you will have {{time_limit}} seconds to solve as many boxes as possible.</h6>
 
     <br>
 
-    {% delayed_next wait=60000 label='START'%}
+    {% delayed_next wait=30000 label='START'%}
 
 {% endblock %}

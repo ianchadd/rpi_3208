@@ -2,7 +2,9 @@
 {% load otree %}
 {% load custom_tags %}
 
-{% block title %}Task 2: Survey (Part 3){% endblock %}
+{% block title %}
+{{block.super}}
+{% endblock %}
 
 {% block content %}
 <style>

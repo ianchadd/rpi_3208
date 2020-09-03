@@ -96,6 +96,6 @@ class Player(BasePlayer):
     def check_understanding_error_message(self,value):
         if value:
             self.check_understanding_mistakes += 1
-            return 'This statement is false. Remember that your bonus payment from this part of Task 2 is the sum of the amounts that ALL your matched partners choose to allocate to you.'
+            return 'This statement is false. Remember that your bonus payment from this part of the experiment is the sum of the amounts that ALL your matched partners choose to allocate to you.'
             
 

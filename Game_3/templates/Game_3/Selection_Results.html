@@ -9,14 +9,17 @@
 {% block content %}
 
     <p>
-        Randomly Chosen Rate: ${{ value }}
+        Randomly Chosen Tournament Prize: ${{ value }}
     </p>
     <p>
-        At this rate, you chose to be paid by {% if game_3_piece_rate %} <strong>piece rate</strong> {% else %} <strong>tournament</strong> {% endif %} scheme.
+        At this prize, you chose to be paid by {% if game_3_piece_rate %} <strong>piece rate</strong> {% else %} <strong>tournament</strong> {% endif %} scheme.
     </p>
     <p>
-        Your payment per completed box will be {% if game_3_piece_rate %} ${{piece_rate}} {% else %} ${{ value }} if you win the tournament, $0 if not.{% endif %}
+        Your payment per solved box will be {% if game_3_piece_rate %} ${{piece_rate}} {% else %} ${{ value }} if you win the tournament, $0 if not.{% endif %}
     </p>
+
+<p> You are now ready to start Game 3. Remember, you will have {{time_limit}} seconds to complete this game.</p>
+
 
     <br>
 

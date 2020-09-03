@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 {% block title %}
     Feedback
@@ -31,6 +32,6 @@ Please indicate the extent to which you agree or disagree with the following two
 
     {% formfield player.general_feedback %}
 
-    {% next_button wait=10000%}
+{% delayed_next wait=0 label='NEXT' %}
 
 {% endblock %}

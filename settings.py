@@ -51,7 +51,7 @@ SESSION_CONFIGS = [
         participation_fee = 2.00,
         recip = True,
         consent = 'flag_survey/consent.pdf',
-        p_completion_link = 'xxxxxxxx',        
+        p_completion_link = 'xxxxxxxx',
     ),
     dict(
         name='qsp_dictator',
@@ -60,8 +60,8 @@ SESSION_CONFIGS = [
         pw = 'qsp_testing',
         app_sequence=[
                     'prolific_ID_begin',
-                        'informed_consent',
-                        'qsp_dg_dict_intro',
+                    'informed_consent',
+                    'qsp_dg_dict_intro',
                       'qsp_dg_dict_instructions',
                       'dg_qsp',
                       'dg_qsp_survey',
@@ -76,7 +76,7 @@ SESSION_CONFIGS = [
         p_completion_link = 'xxxxxxxx',
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
-    """  
+    """
     ),
     dict(
         name='gt_survey_test',
@@ -116,7 +116,7 @@ SESSION_CONFIGS = [
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
     """
-        
+
     ),
     dict(
         name='cw',
@@ -186,7 +186,7 @@ SESSION_CONFIGS = [
         """,
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
-    """ 
+    """
     ),
     dict(
         name='nbo_choice_baseline',
@@ -223,7 +223,7 @@ SESSION_CONFIGS = [
         consent = '',
         p_completion_link = 'xxxxxxxx',
         doc=    """
-                """  
+                """
     ),
 ]
 
@@ -256,7 +256,9 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 DEMO_PAGE_INTRO_HTML = """
 Here are some oTree games.
 """
-
+# extra settings for otreeutils
+# ROOT_URLCONF = 'iat_so.urls'
+# CHANNEL_ROUTING = 'iat_so.routing.channel_routing'
 # don't share this with anybody.
 SECRET_KEY = '7vfsh(zo@d)v)zizkf#@xqzb3q%juzu65zoh4r+#$tckdfji5r'
 

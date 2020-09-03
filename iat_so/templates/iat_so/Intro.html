@@ -1,5 +1,6 @@
 {% extends "iat_so/Page.html" %}
 {% load otree static %}
+{% load custom_tags %}
 
 {% block title %}
 {{block.super}}
@@ -32,11 +33,11 @@ table.stimuli th {
 
 {% block content %}
     <p>
-        We will show you several words that you should assign to the respective categories.
+        We will now show you several items that you should assign to the respective categories.
 
         Please press either the key <span class="key">{{ Constants.capture_keycodes.left.1 }}</span> or the key
         <span class="key">{{ Constants.capture_keycodes.right.1 }}</span> on your keyboard.<br>
-        You should assign the following words to the following categories:
+        You should assign the following items to the following categories:
     </p>
 
     <table class="stimuli">
@@ -44,18 +45,28 @@ table.stimuli th {
             <th>Category</th>
             <th>Item</th>
         </tr>
-        {% for stim in stimuli %}
-            <tr>
-                <td>{{ stim.label }}</td>
-                <td>{{ stim.values }}</td>
-            </tr>
-        {% endfor %}
+        <tr>
+            <td>Positive Words</td>
+            <td>pleasing, cheerful, magnificent, glorious, enjoy, friendship, joyous, laughing</td>
+        </tr>
+        <tr>
+            <td>Negative Words</td>
+            <td>pain, sickening, annoy, disaster, sadness, evil, grief, bothersome</td>
+        </tr>
+        <tr>
+            <td>Gay People</td>
+            <td>gay people, homosexual, lesbian, <img src="/static/iat_so/gay.png">, <img src="/static/iat_so/lesbian.png"></td>
+        </tr>
+        <tr>
+            <td>Straight People</td>
+            <td> straight people, heterosexual, different sex, <img src="/static/iat_so/straight.png"></td>
+        </tr>
     </table>
 
     <p>
-        There are {{ Constants.num_rounds }} parts for which the instructions change. Please stay alert!
+        There are {{ Constants.num_rounds }} sub-parts for which the instructions change. Please stay alert!
     </p>
 
-    {% next_button %}
+{% delayed_next wait=0 label='NEXT' %}
 
 {% endblock %}

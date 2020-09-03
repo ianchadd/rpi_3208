@@ -72,9 +72,13 @@ class Choose_ID_O(Page):
     form_fields = ['chooseID']
 
     def vars_for_template(self):
-
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
         return dict(
-            participant_vars = self.player.participant.vars
+            participant_vars = str(pvars),
+            task = task,
+            part = part,
             )
 
     def before_next_page(self):
@@ -85,6 +89,9 @@ class Choose_Icon(Page):
     form_model = 'player'
     form_fields = ['my_flag']
     def vars_for_template(self):
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
         return dict(
             image_path_1='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][0]),
             image_path_2='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][1]),
@@ -92,7 +99,9 @@ class Choose_Icon(Page):
             #image_path_4='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][3]),
             #image_path_5='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][4]),
             #image_path_6='flag_survey/flags/flag_{}.png'.format(self.player.participant.vars['my_flag_choices'][5]),
-            participant_vars = str(self.participant.vars)
+            participant_vars = str(pvars),
+            task = task,
+            part = part
         )
 
     def before_next_page(self):
@@ -111,14 +120,20 @@ class Results(Page):
     form_fields = ['attn_check_1']
         
     def vars_for_template(self):
+        pvars = self.participant.vars
+        task = pvars['task']
+        part = pvars['part']
         return dict(
             my_flag = 'flag_survey/flags/flag_{}.png'.format(self.player.my_flag),
             my_ID = self.player.my_ID,
-            participant_vars = str(self.participant.vars)
-        )
+            participant_vars = str(pvars),
+            task = task,
+            part = part
+            )
 
     def before_next_page(self):
         self.player.participant_vars_dump(self)
+        self.participant.vars['task'] += 1
 class Eval_adj(Page):
     form_model = 'player'
     form_fields = [

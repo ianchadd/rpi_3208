@@ -28,16 +28,14 @@ class Player(BasePlayer):
 
     instructions_feedback = models.LongStringField(
         label = '',
-        blank = True
     )
     general_feedback = models.LongStringField(
         label = '',
-        blank = True
     )
     instruction_clear = models.StringField(
         label = 'The instructions were clear.',
         choices = ['Completely Agree', 'Agree', 'Neither agree nor disagree', 'Disagree', 'Completely Disagree']
-    )   
+    )
     earnings_clear = models.StringField(
         label = 'The instructions helped me understand how my earnings are calculated.',
         choices = ['Completely Agree', 'Agree', 'Neither agree nor disagree', 'Disagree', 'Completely Disagree']
