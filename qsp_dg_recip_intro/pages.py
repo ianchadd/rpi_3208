@@ -11,6 +11,7 @@ class introduction(Page):
         task = pvars['task']
         part = pvars['part']
         id_first = pvars['info_treat'] == 'id_first'
+        self.player.info_treat = pvars['info_treat']
         return dict(
             par_vars = str(pvars),
             task = task,

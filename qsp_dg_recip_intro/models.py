@@ -31,7 +31,7 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         import itertools
         treats = itertools.cycle(['id_first','id_second']) #id_first is ID selection > DG Instructions; id_second is the reverse
-        
+
         for p in self.get_players():
             p.participant.vars['info_treat'] = next(treats) #sets treatment var at participant level with balanced treatment
             if 'info_treat' in self.session.config:
@@ -43,5 +43,4 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
-
+    info_treat = models.StringField()
