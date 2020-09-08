@@ -8,12 +8,12 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-    
+
 class Constants(BaseConstants):
     name_in_url = 'survey_qsp'
     players_per_group = None
     num_rounds = 1
-    
+
 states = {
         'AK': 'Alaska',
         'AL': 'Alabama',
@@ -110,8 +110,8 @@ class Player(BasePlayer):
         min=1900,
         max=2005
         )
-        
-#sex assigned at birth 
+
+#sex assigned at birth
     sex = models.StringField(
         label = 'What sex were you assigned at birth, on your original birth certificate?',
         choices = ['Male', 'Female']
@@ -159,7 +159,7 @@ class Player(BasePlayer):
     def diff_gend_error_message(self,value):
         if self.other_g and type(value) == type(None):
             return 'If you select Other, you must specify in the provided field'
-            
+
 #sexual orientation
     orientation = models.StringField(
         label = 'Which do you consider yourself to be:',
@@ -197,27 +197,27 @@ class Player(BasePlayer):
         choices = [[True,'Yes'],[False,'No']],
         widget = widgets.RadioSelect,
         )
-    relations_same = models.BooleanField(
+    relations_same = models.IntegerField(
         label='',
-        choices = [[True,'Yes'],[False,'No']],
+        choices = [[1,'Yes'],[0,'No'],[999,'I prefer not to say']],
         widget = widgets.RadioSelect,
         )
-    relations_different = models.BooleanField(
+    relations_different = models.IntegerField(
         label='',
-        choices = [[True,'Yes'],[False,'No']],
+        choices = [[1,'Yes'],[0,'No'],[999,'I prefer not to say']],
         widget = widgets.RadioSelect,
         )
-    attraction_same = models.BooleanField(
+    attraction_same = models.IntegerField(
         label='',
-        choices = [[True,'Yes'],[False,'No']],
+        choices = [[1,'Yes'],[0,'No'],[999,'I prefer not to say']],
         widget = widgets.RadioSelect,
         )
-    attraction_different = models.BooleanField(
+    attraction_different = models.IntegerField(
         label='',
-        choices = [[True,'Yes'],[False,'No']],
+        choices = [[1,'Yes'],[0,'No'],[999,'I prefer not to say']],
         widget = widgets.RadioSelect,
         )
-    
+
 #education
     education = models.StringField(
         label = 'What is the highest education level you have attained?',
@@ -230,7 +230,7 @@ class Player(BasePlayer):
             "PhD or Higher"
             ]
         )
-        
+
 #relationship status
     relationship = models.StringField(
         label = 'Please indicate your current relationship status',
@@ -262,7 +262,7 @@ class Player(BasePlayer):
         choices = ['less than $20,000','$20,000 - $39,999','$40,000 - $59,999','$60,000 - $79,999','$80,000 - $99,999','$100,000 or more'],
         widget = widgets.RadioSelect
         )
-        
+
 #race
     ethnicity = models.StringField(
         label='What is your ethnicity?',
@@ -341,17 +341,31 @@ class Player(BasePlayer):
         label = '',
         blank = True
         )
-    
+
 #politics
-    econ_politics = models.StringField(
+    econ_politics = models.IntegerField(
         label = '',
-        choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
+        choices =
+        [
+        [5, 'Very Conservative'],
+        [4, 'Conservative'],
+        [3, 'Equally Liberal and Conservative'],
+        [2, 'Liberal'],
+        [1, 'Very Liberal'],
+        ],
         widget = widgets.RadioSelect
         )
-    
-    social_politics = models.StringField(
+
+    social_politics = models.IntegerField(
         label = '',
-        choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
+        choices =
+        [
+        [5, 'Very Conservative'],
+        [4, 'Conservative'],
+        [3, 'Equally Liberal and Conservative'],
+        [2, 'Liberal'],
+        [1, 'Very Liberal'],
+        ],
         widget = widgets.RadioSelect
         )
     election_2016 = models.StringField(
@@ -368,7 +382,7 @@ class Player(BasePlayer):
             ],
         widget = widgets.RadioSelect
         )
-        
+
 #care about what others think
     care_others = models.IntegerField(
         label = '"I care about what others think of my actions"',
@@ -380,7 +394,7 @@ class Player(BasePlayer):
                    ],
         widget = widgets.RadioSelect
         )
-        
+
 #lgbt_attitude
     #used in Aksoy et al. EER paper
     lgbt_free = models.IntegerField(
@@ -433,7 +447,7 @@ class Player(BasePlayer):
                    ],
         widget = widgets.RadioSelect
         )
-        
+
 #lgbt friend
     lgbt_friend = models.BooleanField(
         label = 'Do you have a close friend or family member who identifies as LGBTQ+?',
@@ -452,7 +466,7 @@ class Player(BasePlayer):
         widget = widgets.RadioSelect
         )
 
-    
+
 #locations
     live_in = models.StringField(
         label = 'In which US state/territory do you currently live?',
@@ -482,7 +496,7 @@ class Player(BasePlayer):
             ],
         blank = True
         )
-    
+
 #allyship questions
     consider_lgbt_ally = models.IntegerField(
         label = 'Do you consider yourself to be an ally to the LGBTQ+ community?',

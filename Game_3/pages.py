@@ -46,7 +46,8 @@ class Selection_Results(Page):
             'participant_vars': self.participant.vars,
             'value': self.participant.vars['game_3_payment'],
             'game_3_piece_rate': self.participant.vars['game_3_piece_rate'],
-            'piece_rate': self.session.config['piece_rate']
+            'piece_rate': self.session.config['piece_rate'],
+            'time_limit': self.session.config['seconds_for_counting_task'],
         }
 
 

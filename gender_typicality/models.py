@@ -42,7 +42,7 @@ class Player(BasePlayer):
 
     faithful = models.IntegerField(
     label = 'Using a scale from 1 to 10, where 1 means "not important at all" and 10 means "extremely important", how important do you think being faithful is for a successful marriage or serious committed relationship?',
-    min = 0,
+    min = 1,
     max = 10
     )
     days_tobacco = models.IntegerField(

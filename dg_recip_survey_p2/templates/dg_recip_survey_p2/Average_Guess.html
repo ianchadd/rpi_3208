@@ -16,9 +16,10 @@
 
 <p>
   {% if round_1 %}First,{% else %}Next,{% endif%} consider a participant who has chosen the following ID: <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
-  What do you think would be the average number of ECU that will be sent to <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> by their matched partner(s)?
+</p>
 
-
+<p>
+  On average, how many ECU do you think a participant with the ID <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b> will receive from their matched partner(s)?
 </p>
 
 {% include Constants.guess_template %}
