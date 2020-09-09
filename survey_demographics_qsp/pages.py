@@ -168,7 +168,7 @@ class LGBT_Attitudes(Page):
         )
 class LGBT_Experience(Page):
     form_model = 'player'
-    form_fields = ['lgbt_met',
+    form_fields = ['lgbt_interact',
                    'lgbt_friend',
                    'consider_lgbt_ally',
                    'program_lgbt_ally']
