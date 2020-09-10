@@ -35,18 +35,18 @@ IAT – Implicit Association Test
 
 STIMULI = {
     'attributes': {
-        'pos': ['pleasing','cheerful','magnificent','glorious','enjoy','friendship','joyous','laughing'],
-        'neg': ['pain','sickening','annoy','disaster','sadness','evil','grief','bothersome']
+        'good': ['Triumph', 'Enjoy', 'Cherish','Attractive','Delightful','Glorious','Friendship','Magnificent'],
+        'bad': ['Hurtful','Scorn','Dirty','Sickening','Poison','Abuse','Yucky','Ugly']
     },
     'concepts': {
-        'gay': ['gay people','homosexual','lesbians', 'img_gay', 'img_lesbian'],
-        'straight': ['straight people','heterosexual','different sex','img_straight']
+        'gay': ['Gay People','Homosexual','Gay', 'img_gay', 'img_lesbian'],
+        'straight': ['Straight','Straight People','Heterosexual','img_straight']
     }
 }
 
 STIMULI_LABELS = {
-    ('attributes', 'pos'): 'Positive words',
-    ('attributes', 'neg'): 'Negative words',
+    ('attributes', 'good'): 'Good',
+    ('attributes', 'bad'): 'Bad',
     ('concepts', 'gay'): 'Gay People',
     ('concepts', 'straight'): 'Straight People',
 }
@@ -66,19 +66,19 @@ BLOCKS = [
     {   # 2
         'label': 'Practice 2',
         'n': 16,
-        'left': [('attributes', 'neg')],
-        'right': [('attributes', 'pos')],
+        'left': [('attributes', 'bad')],
+        'right': [('attributes', 'good')],
         'is_practice': True
     },
     {   # 3
         'label': 'Test 1',
         'n': 25,
         'left': [
-            ('attributes', 'neg'),
+            ('attributes', 'bad'),
             ('concepts', 'gay'),
         ],
         'right': [
-            ('attributes', 'pos'),
+            ('attributes', 'good'),
             ('concepts', 'straight'),
         ]
     },
@@ -86,11 +86,11 @@ BLOCKS = [
         'label': 'Test 2',
         'n': 25,
         'left': [
-            ('attributes', 'neg'),
+            ('attributes', 'bad'),
             ('concepts', 'gay'),
         ],
         'right': [
-            ('attributes', 'pos'),
+            ('attributes', 'good'),
             ('concepts', 'straight'),
         ]
     },
@@ -106,11 +106,11 @@ BLOCKS = [
         'label': 'Test 3',
         'n': 25,
         'left': [
-            ('attributes', 'neg'),
+            ('attributes', 'bad'),
             ('concepts', 'straight'),
         ],
         'right': [
-            ('attributes', 'pos'),
+            ('attributes', 'good'),
             ('concepts', 'gay'),
         ]
     },
@@ -118,11 +118,11 @@ BLOCKS = [
         'label': 'Test 4',
         'n': 25,
         'left': [
-            ('attributes', 'neg'),
+            ('attributes', 'bad'),
             ('concepts', 'straight'),
         ],
         'right': [
-            ('attributes', 'pos'),
+            ('attributes', 'good'),
             ('concepts', 'gay'),
         ]
     },

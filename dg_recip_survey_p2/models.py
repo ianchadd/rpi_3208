@@ -33,11 +33,11 @@ class Player(BasePlayer):
         for field in page.form_fields:
             if type(getattr(self, field)) != type(None):
                 self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
-            
+
     #inferred demographic variables
     inferred_gender = models.StringField(
         label = '',
-        choices = ['Male','Female','Trans/Intersex/Other'],
+        choices = ['Male','Female','Trans/Non-Binary/Other'],
         )
     inferred_age = models.StringField(
         label = '',
@@ -47,16 +47,23 @@ class Player(BasePlayer):
         label = '',
         choices = ['Heterosexual or Straight', 'Non-heterosexual or Non-straight'],
         )
-    inferred_politics = models.StringField(
+    inferred_politics = models.IntegerField(
         label = '',
-        choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
+        choices =
+        [
+        [5, 'Very Conservative'],
+        [4, 'Conservative'],
+        [3, 'Equally Liberal and Conservative'],
+        [2, 'Liberal'],
+        [1, 'Very Liberal'],
+        ]
         )
 
     inferred_ally = models.StringField(
         label = '',
         choices = ['Yes', 'No'],
         )
-    
+
     #confidence variables
     gender_confidence = models.IntegerField(
         label = '',
@@ -119,7 +126,7 @@ class Player(BasePlayer):
     def id_explain_error_message(self,value):
         if len(value)<5:
             return 'Your response to this question must be at least 5 characters long.'
-        
+
     def icon_explain_error_message(self,value):
         if len(value)<5:
             return 'Your response to this question must be at least 5 characters long.'
@@ -133,4 +140,3 @@ class Player(BasePlayer):
         min=0,
         max=100
         )
-
