@@ -92,11 +92,10 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     def participant_vars_dump(self, page):
         for field in page.form_fields:
-            if type(getattr(self, field)) != type(None):
-                if Constants.num_rounds > 1:
-                    self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
-                else:
-                    self.participant.vars[field] = getattr(self, field)
+            if Constants.num_rounds > 1:
+                self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
+            else:
+                self.participant.vars[field] = getattr(self, field)
 
     def vars_for_template(self):
         pvars = self.participant.vars
