@@ -118,7 +118,7 @@ class Player(BasePlayer):
 
 
     walk = models.IntegerField(
-        label = "In an average week, how many times do you walk for exercise",
+        label = "In an average week, how many times do you walk for exercise?",
         choices = [
             [0, 'Not at all'],
             [1, '1 time'],
@@ -184,7 +184,7 @@ class Player(BasePlayer):
         )
 
     hobby = models.IntegerField(
-        label = "In an average week, how many times do you engage in a hobby such as working on a collection, playing cards or board games, arts and crafts, dram a, playing a musical instrument or singing with a group, or shopping just for fun?",
+        label = "In an average week, how many times do you engage in a hobby such as working on a collection, playing cards or board games, arts and crafts, drama, playing a musical instrument or singing with a group, or shopping just for fun?",
         choices = [
             [0, 'Not at all'],
             [1, '1 time'],
@@ -240,7 +240,7 @@ class Player(BasePlayer):
         widget = widgets.RadioSelect
         )
     fight  = models.IntegerField(
-        label = "In the past 12 months, how often did you take part in physical fight where your group against another group?",
+        label = "In the past 12 months, how often did you take part in a physical fight?",
         choices = [
             [0, 'Not at all'],
             [1, '1 or 2 times'],
@@ -295,7 +295,7 @@ class Player(BasePlayer):
         )
 
     sunblock = models.IntegerField(
-        label = 'When you go outside on a sunny day for more than one hour, how likely aare you to use sunscreen or sunblock?',
+        label = 'When you go outside on a sunny day for more than one hour, how likely are you to use sunscreen or sunblock?',
         choices = [
             [1, 'Very likely'],
             [2, 'Somewhat likely'],
@@ -505,7 +505,7 @@ class Player(BasePlayer):
             )
 
     sweat = models.BooleanField(
-            label = 'In the past 24h, have you participated in vigorous activity long enough to work up a sweat, get your heart thumping, or get out of breath?',
+            label = 'In the past 24 hours, have you participated in vigorous activity long enough to work up a sweat, get your heart thumping, or get out of breath?',
             choices = [
                 [True, 'Yes'],
                 [False, 'No'],

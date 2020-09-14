@@ -8,12 +8,12 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-    
+
 class Constants(BaseConstants):
     name_in_url = 'qcp_demographics'
     players_per_group = None
     num_rounds = 1
-    
+
 states = {
         'AK': 'Alaska',
         'AL': 'Alabama',
@@ -97,8 +97,8 @@ class Player(BasePlayer):
         min=1900,
         max=2005
         )
-        
-#sex assigned at birth 
+
+#sex assigned at birth
     sex = models.StringField(
         label = 'What sex were you assigned at birth, on your original birth certificate?',
         choices = ['Male', 'Female']
@@ -146,7 +146,7 @@ class Player(BasePlayer):
     def diff_gend_error_message(self,value):
         if self.other_g and type(value) == type(None):
             return 'If you select Other, you must specify in the provided field'
-            
+
 #sexual orientation
     orientation = models.StringField(
         label = 'Which do you consider yourself to be:',
@@ -242,6 +242,46 @@ class Player(BasePlayer):
             ],
         widget = widgets.RadioSelect
         )
+
+    white = models.BooleanField(
+        label = 'White',
+        widget=widgets.CheckboxInput,
+        blank = True)
+    black = models.BooleanField(
+        label = 'Black or African American',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    native = models.BooleanField(
+        label = 'American Indian and Alaskan Native',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    asian = models.BooleanField(
+        label = 'Asian',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    pacif_island = models.BooleanField(
+        label = 'Native Hawaiian or Pacific Islander',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    latino = models.BooleanField(
+        label = 'Hispanic or Latino',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    arab = models.BooleanField(
+        label = 'Middle Eastern or Arab',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
+    other_eth = models.BooleanField(
+        label = 'Other (please state below)',
+        widget=widgets.CheckboxInput,
+        initial = False,
+        blank = True)
     other_ethnicity = models.StringField(
         label = '',
         blank = True
@@ -265,14 +305,14 @@ class Player(BasePlayer):
         label = '',
         blank = True
         )
-    
+
 #politics
     econ_politics = models.StringField(
         label = '',
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
         widget = widgets.RadioSelect
         )
-    
+
     social_politics = models.StringField(
         label = '',
         choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
@@ -291,7 +331,7 @@ class Player(BasePlayer):
         widget = widgets.RadioSelect
         )
 
-    
+
 #locations
     live_in = models.StringField(
         label = 'In which US state/territory do you currently live?',
@@ -310,12 +350,19 @@ class Player(BasePlayer):
         blank = True
         )
 #attention check
-    attn_check_1 = models.IntegerField(
-        label = 'Please select 1 in the list below.',
-        choices = [1,2,3,4,5],
+    attn_check_1 = models.BooleanField(
+        label = 'Please select 4 in the list below.',
+        choices =
+        [
+            [False, '1'],
+            [False, '2'],
+            [False, '3'],
+            [True, '4'],
+            [False, '5']
+        ],
         blank = True
         )
-    
+
 #allyship questions
     consider_lgbt_ally = models.IntegerField(
         label = 'Do you consider yourself to be an ally to the LGBTQ+ community?',
@@ -327,5 +374,3 @@ class Player(BasePlayer):
         choices = [[1, 'Yes'],[0,'No']],
         widget = widgets.RadioSelect
         )
-        
-        

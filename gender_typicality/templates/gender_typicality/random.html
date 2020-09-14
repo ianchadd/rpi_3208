@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 {% block title %}
 {% endblock %}
@@ -13,6 +14,6 @@ Please answer the following questions about yourself.
 
     {% formfields %}
 
-    {% next_button %}
+    {% delayed_next label='NEXT' wait=0 %}
 
 {% endblock %}

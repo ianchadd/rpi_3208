@@ -78,7 +78,8 @@
       You will then start Game 3 - Choice and will have {{time_limit}} seconds to complete boxes.</p>
 
     <br>
+    {% formfields %}
 
-    {% delayed_next wait=30000%}
-
+    <!-- {% delayed_next wait=30000 label='START'%} -->
+    {% delayed_next wait=0 label='START'%}
 {% endblock %}

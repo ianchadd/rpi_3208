@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 {% block title %}
 Questionnaire
@@ -14,6 +15,6 @@ Questionnaire
         Please answer each question to the best of your ability.
     </p>
 
-    {% next_button %}
+    {% delayed_next label='NEXT' wait=0 %}
 
 {% endblock %}

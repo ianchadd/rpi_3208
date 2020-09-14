@@ -50,6 +50,7 @@ SESSION_CONFIGS = [
                         ],
         participation_fee = 2.00,
         recip = True,
+        delay = True,
         consent = 'flag_survey/consent.pdf',
         p_completion_link = 'xxxxxxxx',
     ),
@@ -72,6 +73,7 @@ SESSION_CONFIGS = [
                       ],
         participation_fee = 2.00,
         recip=False,
+        delay = True,
         consent = 'flag_survey/consent.pdf',
         p_completion_link = 'xxxxxxxx',
         doc="""

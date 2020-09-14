@@ -1,5 +1,6 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 {% block title %}
 {% endblock %}
@@ -12,6 +13,6 @@ To what extent do you agree with the following statements about yourself?
 
     {% formfields %}
 
-    {% next_button %}
+    {% delayed_next label='NEXT' wait=0 %}
 
 {% endblock %}
