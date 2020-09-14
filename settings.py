@@ -52,6 +52,7 @@ SESSION_CONFIGS = [
         recip = True,
         delay = True,
         consent = 'flag_survey/consent.pdf',
+        consent_url = 'https://virtual-experimental-lab.github.io/virtual-experimental-lab.github.io/1932%20IRB%20Approved%20Consent%20Form%208%2018%2020.pdf',
         p_completion_link = 'xxxxxxxx',
     ),
     dict(
@@ -75,6 +76,7 @@ SESSION_CONFIGS = [
         recip=False,
         delay = True,
         consent = 'flag_survey/consent.pdf',
+        consent_url = 'https://virtual-experimental-lab.github.io/virtual-experimental-lab.github.io/1932%20IRB%20Approved%20Consent%20Form%208%2018%2020.pdf',
         p_completion_link = 'xxxxxxxx',
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
