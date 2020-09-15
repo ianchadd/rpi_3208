@@ -186,6 +186,7 @@ SESSION_CONFIGS = [
                       'survey_demographics_nbo',
                       'prolific_ID_end',],
         real_world_currency_per_point = 0.10,
+        participation_fee = 1.00,
         consent = 'no_choice/consent.pdf',
         p_completion_link = 'xxxxxxxx',
         consent_additional_message = """
@@ -199,22 +200,38 @@ SESSION_CONFIGS = [
     dict(
         name='nbo_choice_baseline',
         num_demo_participants=3,
-        app_sequence=['informed_consent',
+        app_sequence=['prolific_ID_begin',
+                        'informed_consent',
                       'NBO_choice',
-                      'survey_demographics_nbo'],
+                      'survey_demographics_nbo',
+                      'prolific_ID_end',],
         treat = 'baseline',
+        participation_fee = 1.00,
         real_world_currency_per_point = 0.10,
-        consent = 'no_choice/consent.pdf'
+        consent = 'no_choice/consent.pdf',
+        p_completion_link = 'xxxxxxxx',
+        consent_additional_message = """
+        Please note that the form above is used for several experiments.
+        In this experiment we expect that you will make at least $2.25 plus a bonus payment based on your decisions.
+        """,
     ),
     dict(
         name='nbo_choice_nbo',
         num_demo_participants=3,
-        app_sequence=['informed_consent',
+        app_sequence=['prolific_ID_begin',
+                        'informed_consent',
                       'NBO_choice',
-                      'survey_demographics_nbo'],
+                      'survey_demographics_nbo',
+                      'prolific_ID_end',],
         treat = 'nbo',
         real_world_currency_per_point = 0.10,
-        consent = 'no_choice/consent.pdf'
+        participation_fee = 1.00,
+        consent = 'no_choice/consent.pdf',
+        p_completion_link = 'xxxxxxxx',
+        consent_additional_message = """
+        Please note that the form above is used for several experiments.
+        In this experiment we expect that you will make at least $2.25 plus a bonus payment based on your decisions.
+        """,
     ),
     dict(
         name = 'faces',
