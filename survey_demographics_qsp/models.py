@@ -230,6 +230,16 @@ class Player(BasePlayer):
             ]
         )
 
+#colorblind
+    colorblind = models.BooleanField(
+        label = 'Do you have any form of colorblindness?',
+        choices = [
+            [True, 'Yes'],
+            [False, 'No']
+            ],
+        widget = widgets.RadioSelect,
+        )
+
 #relationship status
     relationship = models.StringField(
         label = 'Please indicate your current relationship status',

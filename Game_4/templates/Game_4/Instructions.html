@@ -58,8 +58,8 @@
     <br>
     <p>The next computer screen will tell you how many boxes you solved in Game 1 - Piece Rate, and will ask you to choose your payment scheme.</p>
 
-    <br>
+    {% formfields %}
 
-    {% delayed_next wait=30000%}
-
+    <!-- {% delayed_next wait=30000 label='NEXT'%} -->
+    {% delayed_next wait=0 label='NEXT'%}
 {% endblock %}

@@ -53,7 +53,7 @@
         <p class="col">
           {% if seed_data is not True %}
           Previously, a group of subjects on Prolific, like yourself, participated in this study.
-          We coded their anonymous performances into this program.
+          We coded the number of boxes they solved in each game into this program.
           In order to construct your group of four, we will randomly select three of these past participants. {% if seed_data is not True %}
            Your performance will not affect the payoffs of your group members.
             {% endif %}
@@ -61,7 +61,7 @@
 <br>
 <br>
 
-          Your group will stay the same for the remainder for this study.
+          Your group will stay the same for the remainder of this study.
           {% else %}
           In order to construct your group of four, we will randomly select three other participants and use their answers in determination of your earnings for Game 2 - Tournament.
           This group will be constructed <strong>after</strong> all participants have made their decisions in the current study.
@@ -98,6 +98,7 @@
 
     <br>
 
-    {% delayed_next wait=30000 label='START'%}
+<!-- {% delayed_next wait=30000 label='START'%} -->
+{% delayed_next wait=0 label='START'%}
 
 {% endblock %}

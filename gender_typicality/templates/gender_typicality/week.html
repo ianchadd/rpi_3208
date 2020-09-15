@@ -1,17 +1,18 @@
 {% extends "global/Page.html" %}
 {% load otree %}
+{% load custom_tags %}
 
 {% block title %}
 {% endblock %}
 
 {% block content %}
 <p>
-Considering a typical week, please answer the following questions to the best of your ability.
+Considering a typical week in your life <b>last year</b> (2019), please answer the following questions to the best of your ability.
 </p>
 
 
     {% formfields %}
 
-    {% next_button %}
+    {% delayed_next label='NEXT' wait=0 %}
 
 {% endblock %}

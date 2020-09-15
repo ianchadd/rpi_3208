@@ -7,24 +7,22 @@
 {% endblock %}
 
 {% block content %}
-    <p>Here, we ask you to state your beliefs regarding your performance in Game-1 Piece Rate and Game-2 Tournament.</p>
+    <p>Here, we ask you to state your guesses regarding your performance in Game-1 Piece Rate and Game-2 Tournament.</p>
+
+    <p>For each correct answer, you will be <strong>paid an extra ${{guess_rate}}.</strong></p>
 
     <ol>
-        <li>Thinking about your performance and those of your group members in Game-1 Piece Rate, do you think that you were the best performer, second best performer, third best performer or the fourth best (i.e. worst) performer in your group? If your answer is correct, you will be paid an extra ${{guess_rate}}.
-
-            <p>In Game-1 Piece Rate, I think I was</p>
+        <li>Thinking about your performance and those of your group members in <strong>Game-1 Piece Rate</strong>, do you think that you were
             {{ form.belief_game_1.errors }}
             {{ form.belief_game_1 }}
         </li>
         <br>
-        <li>Thinking about your performance and those of your group members in Game-2 Tournament, do you think that you were the best performer, second best performer, third best performer or the fourth best (i.e. worst) performer in your group? If your answer is correct, you will be paid an extra ${{guess_rate}}.
-
-            <p>In Game-2 Tournament, I think I was</p>
+        <li>Thinking about your performance and those of your group members in <strong>Game-2 Tournament</strong>, do you think that you were
             {{ form.belief_game_2.errors }}
             {{ form.belief_game_2 }}
         </li>
     </ol>
 
-    {% delayed_next wait=20000 %}
-
+    <!-- {% delayed_next wait=20000 label='NEXT'%} -->
+    {% delayed_next wait=0 label='NEXT'%}
 {% endblock %}

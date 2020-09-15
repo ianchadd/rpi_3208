@@ -28,6 +28,20 @@ class Birth(Page):
             self.player.vars_for_template(),
             recip = recip,
         )
+class Colorblind(Page):
+    form_model='player'
+    form_fields = [
+        'colorblind',
+        ]
+
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
 
 class Care(Page):
     form_model='player'
@@ -210,6 +224,7 @@ page_sequence = [Instructions,
                  Birth,
                  Gender_SO,
                  S_History,
+                 Colorblind,
                  Gen_Demographics,
                  Politics,
                  Care,
