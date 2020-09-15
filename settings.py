@@ -26,7 +26,9 @@ SESSION_CONFIG_DEFAULTS = dict(
     piece_rate = 0.25,
     seconds_for_counting_task=5,
     guess_rate = 0.20,
-    delay = False
+    delay = False,
+    consent_link = False,
+    consent_url = 'xxxxx'
 )
 
 
@@ -53,6 +55,7 @@ SESSION_CONFIGS = [
         delay = True,
         consent = 'flag_survey/consent.pdf',
         consent_url = 'https://virtual-experimental-lab.github.io/virtual-experimental-lab.github.io/1932%20IRB%20Approved%20Consent%20Form%208%2018%2020.pdf',
+        consent_link = True,
         p_completion_link = 'xxxxxxxx',
     ),
     dict(
@@ -77,6 +80,7 @@ SESSION_CONFIGS = [
         delay = True,
         consent = 'flag_survey/consent.pdf',
         consent_url = 'https://virtual-experimental-lab.github.io/virtual-experimental-lab.github.io/1932%20IRB%20Approved%20Consent%20Form%208%2018%2020.pdf',
+        consent_link = True,
         p_completion_link = 'xxxxxxxx',
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
