@@ -34,18 +34,18 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     belief_game_1 = models.IntegerField(widget=widgets.RadioSelect,
         choices=[
-            [1, 'The best performer in my group.'],
-            [2, 'The second best performer in my group.'],
-            [3, 'The third best performer in my group.'],
-            [4, 'The fourth best (the worst) performer in my group.']
+            [1, 'The best performer in your group.'],
+            [2, 'The second best performer in your group.'],
+            [3, 'The third best performer in your group.'],
+            [4, 'The fourth best (the worst) performer in your group.']
         ]
     )
     belief_game_2 = models.IntegerField(widget=widgets.RadioSelect,
         choices=[
-            [1, 'The best performer in my group.'],
-            [2, 'The second best performer in my group.'],
-            [3, 'The third best performer in my group.'],
-            [4, 'The fourth best (the worst) performer in my group.']
+            [1, 'The best performer in your group.'],
+            [2, 'The second best performer in your group.'],
+            [3, 'The third best performer in your group.'],
+            [4, 'The fourth best (the worst) performer in your group.']
         ]
     )
     pass
