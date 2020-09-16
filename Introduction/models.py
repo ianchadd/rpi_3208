@@ -8,6 +8,7 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
+import random
 
 
 author = 'Your name here'
@@ -24,8 +25,12 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
-
+    def creating_session(self):
+        num_sample_participants = self.session.config['num_sample_participants']
+        group_size = 3
+        if self.round_number==1:
+            for p in self.get_players():
+                p.participant.vars['group'] = random.sample(range(0,10),k=group_size)
 
 class Group(BaseGroup):
     pass

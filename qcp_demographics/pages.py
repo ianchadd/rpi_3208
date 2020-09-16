@@ -129,6 +129,10 @@ class LGBT_Free(Page):
     form_model = 'player'
     form_fields = ['lgbt_free']
 
+class Risk(Page):
+    form_model = 'player'
+    form_fields = ['risk']
+
 class LGBT_Ally(Page):
     form_model = 'player'
     form_fields = ['consider_lgbt_ally',
@@ -157,6 +161,7 @@ page_sequence = [Instructions,
                  Education,
                  Attn_Check,
                  Ethnicity,
+                 Risk,
                  Prolific_Guess,
                  #Politics,
                  #LGBT_Free,

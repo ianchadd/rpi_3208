@@ -146,7 +146,12 @@ class Player(BasePlayer):
     def diff_gend_error_message(self,value):
         if self.other_g and type(value) == type(None):
             return 'If you select Other, you must specify in the provided field'
-
+#risks
+    risk = models.IntegerField(
+        label = 'Please answer the following question using a 1–10 scale, where 1 = completely unwilling and 10 = completely willing: Rate your willingness to take risks in general.',
+        choices = [1,2,3,4,5,6,7,8,9,10],
+        widget = widgets.RadioSelectHorizontal
+        )
 #sexual orientation
     orientation = models.StringField(
         label = 'Which do you consider yourself to be:',
@@ -330,7 +335,7 @@ class Player(BasePlayer):
                    ],
         widget = widgets.RadioSelect
         )
-        
+
 #prolific guesses
     prolific_female = models.StringField(
         label = 'Which of the following best describes your opinion?',
