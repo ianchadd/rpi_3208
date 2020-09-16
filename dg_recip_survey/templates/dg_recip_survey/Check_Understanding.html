@@ -4,7 +4,9 @@
 
 
 
-{% block title %} Task 2: Survey (Part 1){% endblock %}
+{% block title %}
+{{block.super}}
+{% endblock %}
 
 
 
@@ -13,12 +15,12 @@
   To check that you understand the instructions, please answer the following question.
 </p>
 <p>
-My bonus payment from this part of Task 2 is determined by the decisions of <b>one</b> randomly chosen partner I have been matched with.
+My bonus payment from this part of Task {{task}} is determined by the decisions of <b>one</b> randomly chosen partner I have been matched with.
 </p>
 
 {% formfields %}
 
 
 
-{% delayed_next wait=1000 label='CHECK ANSWERS'%}
+{% delayed_next wait=0 label='SUBMIT'%}
 {% endblock %}

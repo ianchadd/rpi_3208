@@ -26,7 +26,9 @@ SESSION_CONFIG_DEFAULTS = dict(
     piece_rate = 0.25,
     seconds_for_counting_task=5,
     guess_rate = 0.20,
-    delay = False
+    delay = False,
+    consent_link = False,
+    consent_url = 'xxxxx'
 )
 
 
@@ -50,8 +52,11 @@ SESSION_CONFIGS = [
                         ],
         participation_fee = 2.00,
         recip = True,
+        delay = True,
         consent = 'flag_survey/consent.pdf',
-        p_completion_link = 'xxxxxxxx',        
+        consent_url = 'https://virtual-experimental-lab.github.io/virtual-experimental-lab.github.io/1932%20IRB%20Approved%20Consent%20Form%208%2018%2020.pdf',
+        consent_link = True,
+        p_completion_link = 'xxxxxxxx',
     ),
     dict(
         name='qsp_dictator',
@@ -60,8 +65,8 @@ SESSION_CONFIGS = [
         pw = 'qsp_testing',
         app_sequence=[
                     'prolific_ID_begin',
-                        'informed_consent',
-                        'qsp_dg_dict_intro',
+                    'informed_consent',
+                    'qsp_dg_dict_intro',
                       'qsp_dg_dict_instructions',
                       'dg_qsp',
                       'dg_qsp_survey',
@@ -72,11 +77,14 @@ SESSION_CONFIGS = [
                       ],
         participation_fee = 2.00,
         recip=False,
+        delay = True,
         consent = 'flag_survey/consent.pdf',
+        consent_url = 'https://virtual-experimental-lab.github.io/virtual-experimental-lab.github.io/1932%20IRB%20Approved%20Consent%20Form%208%2018%2020.pdf',
+        consent_link = True,
         p_completion_link = 'xxxxxxxx',
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
-    """  
+    """
     ),
     dict(
         name='gt_survey_test',
@@ -116,7 +124,7 @@ SESSION_CONFIGS = [
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
     """
-        
+
     ),
     dict(
         name='cw',
@@ -157,6 +165,7 @@ SESSION_CONFIGS = [
             'qcp_demographics',
             #'Survey',
             #'feedback_survey',
+            'gender_typicality',
             'Summary',
             'prolific_ID_end'],
             consent = 'qcp/consent.pdf',
@@ -177,6 +186,7 @@ SESSION_CONFIGS = [
                       'survey_demographics_nbo',
                       'prolific_ID_end',],
         real_world_currency_per_point = 0.10,
+        participation_fee = 1.00,
         consent = 'no_choice/consent.pdf',
         p_completion_link = 'xxxxxxxx',
         consent_additional_message = """
@@ -185,27 +195,43 @@ SESSION_CONFIGS = [
         """,
         doc="""
     Edit the p_completion_link variable with the completion code for Prolific session
-    """ 
+    """
     ),
     dict(
         name='nbo_choice_baseline',
         num_demo_participants=3,
-        app_sequence=['informed_consent',
+        app_sequence=['prolific_ID_begin',
+                        'informed_consent',
                       'NBO_choice',
-                      'survey_demographics_nbo'],
+                      'survey_demographics_nbo',
+                      'prolific_ID_end',],
         treat = 'baseline',
+        participation_fee = 1.00,
         real_world_currency_per_point = 0.10,
-        consent = 'no_choice/consent.pdf'
+        consent = 'no_choice/consent.pdf',
+        p_completion_link = 'xxxxxxxx',
+        consent_additional_message = """
+        Please note that the form above is used for several experiments.
+        In this experiment we expect that you will make at least $2.25 plus a bonus payment based on your decisions.
+        """,
     ),
     dict(
         name='nbo_choice_nbo',
         num_demo_participants=3,
-        app_sequence=['informed_consent',
+        app_sequence=['prolific_ID_begin',
+                        'informed_consent',
                       'NBO_choice',
-                      'survey_demographics_nbo'],
+                      'survey_demographics_nbo',
+                      'prolific_ID_end',],
         treat = 'nbo',
         real_world_currency_per_point = 0.10,
-        consent = 'no_choice/consent.pdf'
+        participation_fee = 1.00,
+        consent = 'no_choice/consent.pdf',
+        p_completion_link = 'xxxxxxxx',
+        consent_additional_message = """
+        Please note that the form above is used for several experiments.
+        In this experiment we expect that you will make at least $2.25 plus a bonus payment based on your decisions.
+        """,
     ),
     dict(
         name = 'faces',
@@ -222,7 +248,7 @@ SESSION_CONFIGS = [
         consent = '',
         p_completion_link = 'xxxxxxxx',
         doc=    """
-                """  
+                """
     ),
 ]
 
@@ -255,7 +281,9 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 DEMO_PAGE_INTRO_HTML = """
 Here are some oTree games.
 """
-
+# extra settings for otreeutils
+# ROOT_URLCONF = 'iat_so.urls'
+# CHANNEL_ROUTING = 'iat_so.routing.channel_routing'
 # don't share this with anybody.
 SECRET_KEY = '7vfsh(zo@d)v)zizkf#@xqzb3q%juzu65zoh4r+#$tckdfji5r'
 

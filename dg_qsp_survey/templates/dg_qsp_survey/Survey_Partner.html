@@ -13,8 +13,9 @@
     padding:10px;
   }
 </style>
-<p>Please answer the following questions <strong>about the participant you were matched with in {% if task_2 %} Task 1{% else %} Task 2{% endif %}</strong>.</p>
-<p>We will randomly select <strong>one</strong> question below and you will receive <b>$2</b> if your guess for that question is correct (no matter how sure you are of your answer).</p>
+<p>The participant you were matched with in {% if task_2 %} Task 1{% else %} Task 2{% endif %} (<img style="height: 25px; width:auto;" src="{% static their_flag %}"><b>{{their_ID}}</b>) provided us with information about themselves.</p>
+<p>Please indicate how you think they responded to the following questions.</p>
+<p>You will receive <b>$2</b> if your guess for <strong>one</strong> randomly selected question is correct (no matter how sure you are of your answer).</p>
 
 <p>Consider <img style="height: 25px; width:auto;" src="{% static their_flag %}"><b>{{their_ID}}</b> from {% if task_2 %} Task 1 {% else %} Task 2 {% endif %}:
 </p>
@@ -22,7 +23,7 @@
 
 <table>
   <tr>
-    <td>I think their gender is:</td>
+    <td>I think their gender identity is:</td>
     <td>{% formfield player.inferred_gender %}</td>
     <td>How sure are you?</td>
     <td>{% formfield player.gender_confidence %}</td>
@@ -40,13 +41,13 @@
     <td>{% formfield player.orientation_confidence %}</td>
   </tr>
   <tr>
-    <td>I think they are an ally to the LGBTQ+ community:</td>
+    <td>I think they identify as an ally to the LGBTQ+ community:</td>
     <td>{% formfield player.inferred_ally %}</td>
     <td>How sure are you?</td>
     <td>{% formfield player.ally_confidence %}</td>
   </tr>
   <tr>
-    <td>Politically, I think they are:</td>
+    <td>On social issues, I think they are:</td>
     <td>{% formfield player.inferred_politics %}</td>
     <td>How sure are you?</td>
     <td>{% formfield player.politics_confidence %}</td>

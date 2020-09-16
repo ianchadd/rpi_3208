@@ -5,6 +5,8 @@ import time, random
 
 
 class Instructions(Page):
+    form_model = 'player'
+    form_fields = ['attention_check']
     def vars_for_template(self):
         round_values = ''
         for i in self.session.config['round_values']:
@@ -22,7 +24,7 @@ class Instructions(Page):
 
 class Selection(Page):
     form_model = 'player'
-    form_fields = ['attention_check', 'game_3_switch']
+    form_fields = ['game_3_switch']
     def before_next_page(self):
         self.participant.vars['game_3_attn_check'] = self.player.attention_check,
         if (self.player.game_3_switch == Constants.round_values[0]):
@@ -46,7 +48,8 @@ class Selection_Results(Page):
             'participant_vars': self.participant.vars,
             'value': self.participant.vars['game_3_payment'],
             'game_3_piece_rate': self.participant.vars['game_3_piece_rate'],
-            'piece_rate': self.session.config['piece_rate']
+            'piece_rate': self.session.config['piece_rate'],
+            'time_limit': self.session.config['seconds_for_counting_task'],
         }
 
 

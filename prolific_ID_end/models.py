@@ -29,3 +29,6 @@ class Player(BasePlayer):
     p_ID = models.StringField(label = '')
     participant_vars = models.LongStringField()
 
+    def p_ID_error_message(self,value):
+        if len(value) != 24:
+            return "Your prolific ID must be 24 characters long."

@@ -45,12 +45,11 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     def participant_vars_dump(self, page):
         for field in page.form_fields:
-            if type(getattr(self, field)) != type(None):
-                if Constants.num_rounds > 1:
-                    self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
-                else:
-                    self.participant.vars[field] = getattr(self, field)
-            
+            if Constants.num_rounds > 1:
+                self.participant.vars[field +'_'+str(self.round_number)] = getattr(self, field)
+            else:
+                self.participant.vars[field] = getattr(self, field)
+
     kept = models.IntegerField(
     doc="""Amount dictator decided to keep for himself""",
     )
@@ -58,7 +57,7 @@ class Player(BasePlayer):
         min=0,
         max=100,
         )
-    
+
     attn_check_color = models.BooleanField(
         blank = True,
         choices = [
@@ -69,7 +68,7 @@ class Player(BasePlayer):
         label = 'This is to check your attention. Please select the second option below',
         widget = forms.widgets.RadioSelect(),
         )
-    
+
     attn_check_color_2 = models.BooleanField(
         blank = True,
         choices = [
@@ -81,7 +80,7 @@ class Player(BasePlayer):
         label = 'This is to check your attention. Please select the third option below',
         widget = forms.widgets.RadioSelect(),
         )
-    
+
     check_understanding = models.BooleanField(
         blank = False,
         choices = [True, False],
@@ -96,6 +95,4 @@ class Player(BasePlayer):
     def check_understanding_error_message(self,value):
         if value:
             self.check_understanding_mistakes += 1
-            return 'This statement is false. Remember that your bonus payment from this part of Task 2 is the sum of the amounts that ALL your matched partners choose to allocate to you.'
-            
-
+            return 'This statement is false. Remember that your bonus payment from this part of the experiment is the sum of the amounts that ALL your matched partners choose to allocate to you.'

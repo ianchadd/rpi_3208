@@ -3,7 +3,9 @@
 {% load custom_tags %}
 
 
-{% block title %} Task 2: Survey (Part 2){% endblock %}
+{% block title %}
+{{block.super}}
+{% endblock %}
 
 
 
@@ -13,7 +15,7 @@
   We will now ask you to predict what you think will be the decisions made by the matched partners of <b>other participants who are in a similar position as you.</b>
 </p>
 <p>
-  Specifically, you will be shown the IDs chosen by other participants, and you will be asked to predict what would be the average number of ECU sent to each participant by their matched partner(s).
+  Specifically, you will be shown the IDs chosen by other participants, and you will be asked to predict what would be the average number of ECU each participant will receive from their matched partner(s).
   At the end of the experiment, <b>you will be paid</b> for the accuracy of <b>one</b> of your predictions.
 
 </p>
@@ -31,6 +33,8 @@
           </iframe>
         </div>
       </div>
+      <p>If you are unable to see the embedded document above, please click <a href='https://virtual-experimental-lab.github.io/virtual-experimental-lab.github.io/Prediction%20Payment.pdf'>here</a>
+      </p>
     </div>
 <style>
     #instructions {

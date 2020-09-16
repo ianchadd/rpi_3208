@@ -2,7 +2,9 @@
 {% load otree %}
 {% load custom_tags %}
 
-{% block title %}Task 2: Survey (Part 3){% endblock %}
+{% block title %}
+{{block.super}}
+{% endblock %}
 
 {% block content %}
 <style>
@@ -12,17 +14,15 @@
   }
 </style>
 {% if round_2 %}
-<p>
-Next, we will ask you a few questions about these participants.
-</p>
+<p> Another participant in this study has chosen the ID <img style="height: 25px; width:auto;" src="{% static their_flag %}"><b>{{their_ID}}</b> and provided us with information about themselves.</p>
+{% else %}
+<p> Now consider a participant who has chosen the ID <img style="height: 25px; width:auto;" src="{% static their_flag %}"><b>{{their_ID}}</b>.</p>
 {% endif %}
-<p>
-{% if round_2 %}First{% else %}Next{% endif %}, consider a participant who has chosen the following ID: <img style="height: 25px; width:auto;" src="{% static their_flag %}"/><b>{{their_ID}}</b>.
-</p>
+<p>Please indicate how you think they responded to the following questions.</p>
 
 <table>
   <tr>
-    <td>I think their gender is:</td>
+    <td>I think their gender identity is:</td>
     <td>{% formfield player.inferred_gender %}</td>
     <td style='text-align:right;'>How sure are you?</td>
     <td>{% formfield player.gender_confidence %}</td>
@@ -40,13 +40,13 @@ Next, we will ask you a few questions about these participants.
     <td>{% formfield player.orientation_confidence %}</td>
   </tr>
   <tr>
-    <td>I think they are an ally to the LGBTQ+ community:</td>
+    <td>I think they identify as an ally to the LGBTQ+ community:</td>
     <td>{% formfield player.inferred_ally %}</td>
     <td style='text-align:right;'>How sure are you?</td>
     <td>{% formfield player.ally_confidence %}</td>
   </tr>
   <tr>
-    <td>Politically, I think they are:</td>
+    <td>On social issues, I think they are:</td>
     <td>{% formfield player.inferred_politics %}</td>
     <td style='text-align:right;'>How sure are you?</td>
     <td>{% formfield player.politics_confidence %}</td>

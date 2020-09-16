@@ -27,7 +27,7 @@ class Summary(Page):
         guess_payment = self.session.config['guess_rate'] * (int(parvars['game_1_place'] == parvars['belief_game_1']) + int(parvars['game_2_place'] == parvars['belief_game_2']))
         #calc payout
         payment = parvars['game_%d_payout' % payment_game]
-        payout = 1.5 + guess_payment + payment
+        payout = int(self.session.config['participation_fee']) + guess_payment + payment
         payment_value = None
         if payment_game is not 5:
             payment_value = parvars['game_%d_value' % payment_game]
@@ -46,12 +46,12 @@ class Summary(Page):
             'scheme': scheme,
             'score': score,
             'win': win,
-            'guess_payment': guess_payment,
-            'payment': payment,
-            'payout': payout,
+            'guess_payment': "{:.2f}".format(guess_payment),
+            'payment': "{:.2f}".format(payment),
+            'payout': "{:.2f}".format(payout),
             'payment_value': payment_value,
             'participant_vars': parvars,
-            'participation_fee': participation_fee,
+            'participation_fee': "{:.2f}".format(participation_fee),
             'seed_data': seed_data
         }
 

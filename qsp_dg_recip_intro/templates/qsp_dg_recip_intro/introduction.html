@@ -17,7 +17,7 @@ Overview of study
 
     <h5><u>What will I have to do?</u></h5>
 
-        <p>    This study consists of <strong>two</strong> tasks which will be explained in detail later.
+        <p>    This study consists of {% if id_first %}<strong>two</strong>{% else %}<strong>four</strong>{% endif %} tasks which will be explained in detail later.
         The study should take no longer than <strong>20</strong> minutes in total.
         </p>
     <h5>  <u>How much payment will I receive for my participation?</u>
@@ -33,7 +33,7 @@ Overview of study
           At the end of the study, any ECU you have received from the tasks will be converted to USD using the following conversion rate: <strong>20 ECU = 1 USD</strong>.
         </p>
         <p>This experiment will continue over the next 21 days.
-          Once all participants complete this study, we will determine your bonus payments based on the decisions made in the tasks.
+          Once all participants complete this study, we will determine your bonus payments based on the decisions made in the tasks and pay these to you via the Prolific platform.
         </p>
 
 <h5> <u>Please note!</u>
@@ -50,7 +50,7 @@ Overview of study
 
   </body>
 </html>
-{% delayed_next wait=1000 label='NEXT'%}
+{% delayed_next wait=0 label='NEXT'%}
 
 
 {% endblock %}

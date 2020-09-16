@@ -18,11 +18,11 @@
         Your payment per solved box will be {% if game_3_piece_rate %} ${{piece_rate}} {% else %} ${{ value }} if you win the tournament, $0 if not.{% endif %}
     </p>
 
-<p> You are now ready to start Game 3. Remember, you will have {{time_limit}} seconds to complete this game.</p>
+<p> You are now ready to start Game 3. Remember, you will have {{time_limit}} seconds to solve as many boxes as possible.</p>
 
 
     <br>
 
-    {% delayed_next wait=10000%}
-
+    <!-- {% delayed_next wait=10000 label='START'%} -->
+    {% delayed_next wait=0 label='START'%}
 {% endblock %}

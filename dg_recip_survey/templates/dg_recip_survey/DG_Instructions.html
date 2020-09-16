@@ -4,22 +4,24 @@
 
 
 
-{% block title %} Task 2: Survey (Part 1){% endblock %}
+{% block title %}
+{{block.super}}
+{% endblock %}
 
 
 
 {% block content %}
 <p>
-  You will be randomly matched with one or more participants in the United States, also recruited via the Prolific platform.
+  You will be randomly matched with one or more participants from the United States, also recruited via the Prolific platform.
 </p>
 {% if not id_first %}
 <p>
-For these instructions, we will use the following placeholder for your personal ID: <img style="height: 25px; width:auto;" src="{% static my_flag %}"/><b>{{my_ID}}</b>.
-You will actually choose your personal ID later in this experiment.
+For now, assume that your personal ID is: <img style="height: 25px; width:auto;" src="{% static my_flag %}"/><b>{{my_ID}}</b>.
+(You will get to choose this later).
 </p>
 {% endif %}
 <p>
-  Each of these participants will be shown your ID (<img style="height: 25px; width:auto;" src="{% static my_flag %}"/><b>{{my_ID}}</b>), and they will be asked to make one decision which will determine the bonus payments that you will receive from this part of Task 2.
+  Each of these participants will be shown your ID (<img style="height: 25px; width:auto;" src="{% static my_flag %}"/><b>{{my_ID}}</b>), and they will be asked to make one decision which will determine the bonus payments that you will receive from this part of Task {{task}}.
 
 </p>
 
@@ -38,5 +40,5 @@ Specifically, each participant you are matched with will be given the following 
 
 
 
-{% delayed_next wait=1000 label='NEXT'%}
+{% delayed_next wait=0 label='NEXT'%}
 {% endblock %}

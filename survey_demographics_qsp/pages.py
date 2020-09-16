@@ -28,7 +28,21 @@ class Birth(Page):
             self.player.vars_for_template(),
             recip = recip,
         )
-        
+class Colorblind(Page):
+    form_model='player'
+    form_fields = [
+        'colorblind',
+        ]
+
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
+
 class Care(Page):
     form_model='player'
     form_fields = [
@@ -57,10 +71,10 @@ class Gender_SO(Page):
                    'orientation',
                    'other_orientation'
                    ]
-    
+
     def error_message(self,values):
         if values['male'] == 0 and values['female'] == 0 and values['t_male'] == 0 and values['t_female'] == 0 and values['gnc'] == 0 and values['nb'] == 0 and values['other_g'] == 0:
-            return 'You must select at least one response.'
+            return 'You must select at least one response for your gender identity.'
         elif values['other_g'] and type(values['diff_gend']) == type(None):
             return 'If you select Other, you must specify in the provided field'
         elif values['orientation'] =='Other (please state below)' and type(values['other_orientation']) == type(None) :
@@ -94,12 +108,20 @@ class S_History(Page):
 
 class Gen_Demographics(Page):
     form_model = 'player'
-    form_fields = ['relationship',
+    form_fields = [
+                    'white',
+                   'black',
+                   'native',
+                   'asian',
+                   'pacif_island',
+                   'latino',
+                   'arab',
+                   'other_eth',
+                   'other_ethnicity',
+                    'relationship',
                    'other_relationship',
                    'education',
                    'income',
-                   'ethnicity',
-                   'other_ethnicity',
                    'religion',
                    'other_religion',
                    'live_in',
@@ -107,11 +129,13 @@ class Gen_Demographics(Page):
                    'grew_up_in',
                    'other_grew_up_location'
                    ]
-    
+
     def error_message(self,values):
         if values['relationship'] =='Other (please state below)' and type(values['other_relationship']) == type(None):
             return 'If you select Other, you must specify in the provided field'
-        elif values['ethnicity'] =='Other (please state below)' and type(values['other_ethnicity']) == type(None):
+        elif values['white'] == 0 and values['black'] == 0 and values['native'] == 0 and values['asian'] == 0 and values['pacif_island'] == 0 and values['latino'] == 0 and values['arab'] == 0 and values['other_eth'] == 0:
+            return 'You must select at least one response for your ethnicity.'
+        elif values['other_eth'] and type(values['other_ethnicity']) == type(None):
             return 'If you select Other, you must specify in the provided field'
         elif values['religion'] =='Some other religious affiliation (please specify below)' and type(values['other_religion']) == type(None):
             return 'If you select Other, you must specify in the provided field'
@@ -158,7 +182,7 @@ class LGBT_Attitudes(Page):
         )
 class LGBT_Experience(Page):
     form_model = 'player'
-    form_fields = ['lgbt_met',
+    form_fields = ['lgbt_interact',
                    'lgbt_friend',
                    'consider_lgbt_ally',
                    'program_lgbt_ally']
@@ -194,12 +218,13 @@ class Prolific_Guess(Page):
             self.player.vars_for_template(),
             recip = recip,
         )
-    
+
 
 page_sequence = [Instructions,
                  Birth,
                  Gender_SO,
                  S_History,
+                 Colorblind,
                  Gen_Demographics,
                  Politics,
                  Care,

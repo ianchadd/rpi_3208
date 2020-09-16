@@ -3,7 +3,9 @@
 {% load custom_tags %}
 
 
-{% block title %} Task 2: Survey (Part 1){% endblock %}
+{% block title %}
+{{block.super}}
+{% endblock %}
 
 {% block content %}
 <p>
@@ -34,7 +36,7 @@ To ensure that you completely understand this task, please use the slider above 
 </p>
 
 <p>
-<b>Your Payment:</b> Since you may be matched with more than one participant, your bonus payment for this part of Task 2 will be the <b>sum</b> of all their decisions.
+<b>Your Payment:</b> Since you may be matched with more than one participant, your bonus payment for this part of Task {{task}} will be the <b>sum</b> of all their decisions.
 </p>
 
     <style>

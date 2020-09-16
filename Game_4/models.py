@@ -37,8 +37,10 @@ class Player(BasePlayer):
         label = 'This question is to check your attention. Please select Option 2 below',
         choices = [
             [False, 'Option 1'],
-            [True, 'Option 2']
+            [True, 'Option 2'],
+            [False, 'Option 3'],
+            [False, 'Option 4']
             ],
-        widget=widgets.RadioSelect
+            blank=True
         )
     game_4_switch = models.StringField()

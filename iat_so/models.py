@@ -35,18 +35,18 @@ IAT – Implicit Association Test
 
 STIMULI = {
     'attributes': {
-        'pos': ['pleasing','cheerful','magnificent','glorious','enjoy','friendship','joyous','laughing'],
-        'neg': ['pain','sickening','annoy','disaster','sadness','evil','grief','bothersome']
+        'good': ['Triumph', 'Enjoy', 'Cherish','Attractive','Delightful','Glorious','Friendship','Magnificent'],
+        'bad': ['Hurtful','Scorn','Dirty','Sickening','Poison','Abuse','Yucky','Ugly']
     },
     'concepts': {
-        'gay': ['gay people','homosexual','lesbians', 'img_gay'],
-        'straight': ['straight','straight people','heterosexual','img_straight']
+        'gay': ['Gay People','Homosexual','Gay', 'img_gay', 'img_lesbian'],
+        'straight': ['Straight','Straight People','Heterosexual','img_straight']
     }
 }
 
 STIMULI_LABELS = {
-    ('attributes', 'pos'): 'Positive words',
-    ('attributes', 'neg'): 'Negative words',
+    ('attributes', 'good'): 'Good',
+    ('attributes', 'bad'): 'Bad',
     ('concepts', 'gay'): 'Gay People',
     ('concepts', 'straight'): 'Straight People',
 }
@@ -58,7 +58,7 @@ STIMULI_LABELS = {
 BLOCKS = [
     {   # 1
         'label': 'Practice 1',
-        'n': 8,      # this must match the number of stimuli per side
+        'n': 9,      # this must match the number of stimuli per side
         'left': [('concepts', 'gay')],
         'right': [('concepts', 'straight')],
         'is_practice': True
@@ -66,37 +66,37 @@ BLOCKS = [
     {   # 2
         'label': 'Practice 2',
         'n': 16,
-        'left': [('attributes', 'neg')],
-        'right': [('attributes', 'pos')],
+        'left': [('attributes', 'bad')],
+        'right': [('attributes', 'good')],
         'is_practice': True
     },
     {   # 3
         'label': 'Test 1',
-        'n': 24,
+        'n': 25,
         'left': [
-            ('attributes', 'neg'),
+            ('attributes', 'bad'),
             ('concepts', 'gay'),
         ],
         'right': [
-            ('attributes', 'pos'),
+            ('attributes', 'good'),
             ('concepts', 'straight'),
         ]
     },
     {   # 4: same as #3
         'label': 'Test 2',
-        'n': 24,
+        'n': 25,
         'left': [
-            ('attributes', 'neg'),
+            ('attributes', 'bad'),
             ('concepts', 'gay'),
         ],
         'right': [
-            ('attributes', 'pos'),
+            ('attributes', 'good'),
             ('concepts', 'straight'),
         ]
     },
     {   # 5
         'label': 'Practice 3 (reversed)',
-        'n': 8,
+        'n': 9,
         'left': [('concepts', 'straight')],
         'right': [('concepts', 'gay')],
         'is_practice': True,
@@ -104,25 +104,25 @@ BLOCKS = [
     },
     {  # 6
         'label': 'Test 3',
-        'n': 24,
+        'n': 25,
         'left': [
-            ('attributes', 'neg'),
+            ('attributes', 'bad'),
             ('concepts', 'straight'),
         ],
         'right': [
-            ('attributes', 'pos'),
+            ('attributes', 'good'),
             ('concepts', 'gay'),
         ]
     },
     {  # 7: same as 6
         'label': 'Test 4',
-        'n': 24,
+        'n': 25,
         'left': [
-            ('attributes', 'neg'),
+            ('attributes', 'bad'),
             ('concepts', 'straight'),
         ],
         'right': [
-            ('attributes', 'pos'),
+            ('attributes', 'good'),
             ('concepts', 'gay'),
         ]
     },
@@ -186,8 +186,9 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
-
+    def response_record(self):
+        #self.participant.vars[str(self.trial.block)+'_'+str(self.trial.trial)'_'+str(self.trial.stimulus)'_'+str(self.trial.stimulus_class)'_'+str(self.trial.stimulus_level)] = [self.trial.response_key,self.response_correct,self.response_time_ms]
+        self.participant.vars[str(self.trial.block)] = self.response_time_ms
 
 class Trial(Model):
     """

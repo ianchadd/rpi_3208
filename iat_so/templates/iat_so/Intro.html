@@ -1,5 +1,6 @@
 {% extends "iat_so/Page.html" %}
 {% load otree static %}
+{% load custom_tags %}
 
 {% block title %}
 {{block.super}}
@@ -32,30 +33,41 @@ table.stimuli th {
 
 {% block content %}
     <p>
-        We will show you several words that you should assign to the respective categories.
-
-        Please press either the key <span class="key">{{ Constants.capture_keycodes.left.1 }}</span> or the key
-        <span class="key">{{ Constants.capture_keycodes.right.1 }}</span> on your keyboard.<br>
-        You should assign the following words to the following categories:
+        In the following pages, you will be shown a number of items and asked to use the keys <span class="key">{{ Constants.capture_keycodes.left.1 }}</span> and
+        <span class="key">{{ Constants.capture_keycodes.right.1 }}</span> on your keyboard to assign these items to categories.
     </p>
+<p>
+  You should assign the following items to the following categories:
+</p>
+
 
     <table class="stimuli">
         <tr>
             <th>Category</th>
             <th>Item</th>
         </tr>
-        {% for stim in stimuli %}
-            <tr>
-                <td>{{ stim.label }}</td>
-                <td>{{ stim.values }}</td>
-            </tr>
-        {% endfor %}
+        <tr>
+            <td>Good</td>
+            <td>Triumph, Enjoy, Cherish, Attractive, Delightful, Glorious, Friendship, Magnificent</td>
+        </tr>
+        <tr>
+            <td>Bad</td>
+            <td>Hurtful, Scorn, Dirty, Sickening, Poison, Abuse, Yucky, Ugly</td>
+        </tr>
+        <tr>
+            <td>Gay People</td>
+            <td>Gay People, Homosexual, Gay, <img src="/static/iat_so/gay.png">, <img src="/static/iat_so/lesbian.png"></td>
+        </tr>
+        <tr>
+            <td>Straight People</td>
+            <td> Straight People, Heterosexual, Straight, <img src="/static/iat_so/straight.png"></td>
+        </tr>
     </table>
 
     <p>
-        There are {{ Constants.num_rounds }} parts for which the instructions change. Please stay alert!
+        There are {{ Constants.num_rounds }} sub-parts for which the instructions change. Please stay alert!
     </p>
 
-    {% next_button %}
+{% delayed_next wait=0 label='NEXT' %}
 
 {% endblock %}

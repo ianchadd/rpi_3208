@@ -39,7 +39,7 @@ class Player(BasePlayer):
     #inferred demographic variables
     inferred_gender = models.StringField(
         label = '',
-        choices = ['Male','Female','Trans/Intersex/Other'],
+        choices = ['Male','Female','Trans/Non-Binary/Other'],
         )
     inferred_age = models.StringField(
         label = '',
@@ -49,16 +49,23 @@ class Player(BasePlayer):
         label = '',
         choices = ['Heterosexual or Straight', 'Non-heterosexual or Non-straight'],
         )
-    inferred_politics = models.StringField(
+    inferred_politics = models.IntegerField(
         label = '',
-        choices = ['More conservative than liberal', 'Equally conservative and liberal', 'More liberal than conservative'],
+        choices =
+        [
+        [5, 'Very Conservative'],
+        [4, 'Conservative'],
+        [3, 'Equally Liberal and Conservative'],
+        [2, 'Liberal'],
+        [1, 'Very Liberal'],
+        ]
         )
 
     inferred_ally = models.StringField(
         label = '',
         choices = ['Yes', 'No'],
         )
-    
+
     #confidence variables
     gender_confidence = models.IntegerField(
         label = '',
@@ -109,7 +116,7 @@ class Player(BasePlayer):
     #explanation variables
     give_explain = models.LongStringField(
         label = '')
-    
+
     def give_explain_error_message(self,value):
         if len(value) < 5:
             return "Your response must be at least 5 characters long."
@@ -130,6 +137,3 @@ class Player(BasePlayer):
     #open ended response
     thoughts = models.LongStringField(
         label ='First of all, what do you think of the study today?')
-
-            
-

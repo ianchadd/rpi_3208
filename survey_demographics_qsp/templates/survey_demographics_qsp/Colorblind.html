@@ -2,15 +2,14 @@
 {% load otree %}
 {% load custom_tags %}
 
-
 {% block title %}
+{{block.super}}
 {% endblock %}
 
 {% block content %}
 
-
     {% formfields %}
 
-    {% delayed_next wait=0 label='NEXT' %}
+{% delayed_next wait=0 label='NEXT' %}
 
 {% endblock %}

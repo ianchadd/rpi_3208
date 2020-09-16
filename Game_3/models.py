@@ -39,6 +39,6 @@ class Player(BasePlayer):
             [True, 'Option 1'],
             [False, 'Option 2']
             ],
-        widget=widgets.RadioSelect
+        blank = True,
         )
     game_3_switch = models.StringField()
