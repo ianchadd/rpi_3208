@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+{% block title %}
+{{block.super}}
+{% endblock %}
+
+{% block content %}
+{% if form.errors %}
+<div class = "custom-form-errors alert alert-danger">
+   {{ form.non_field_errors }}
+</div>
+{% endif %}
+<h5>
+We will now ask you for your opinions about the participants on <u>Prolific from the United States</u>.
+</h5>
+<br>
+<p>According to US Census Data, <b>about 51% of the US population is female.</b></p>
+{% formfield player.prolific_female %}
+<br>
+<p>According to the Gallup report, <b>about 5% of the US population identifies as LGBT.</b></p>
+{% formfield player.prolific_lgbt %}
+<br>
+{% formfield player.prolific_ally %}
+<br>
+<p>For each category below, please enter a number between 0 and 100 to indicate your beliefs about the political leanings of <b>Prolific participants from the US</b>.
+The sum of these numbers must <b>add up to 100.</b></p>
+{% formfield player.prolific_liberal %}
+{% formfield player.prolific_equal %}
+{% formfield player.prolific_conservative %}
+
+{% delayed_next wait=0 label='NEXT' %}
+
+{% endblock %}

@@ -330,6 +330,46 @@ class Player(BasePlayer):
                    ],
         widget = widgets.RadioSelect
         )
+        
+#prolific guesses
+    prolific_female = models.StringField(
+        label = 'Which of the following best describes your opinion?',
+        choices = [
+            ['<','I think less than 51% of Prolific participants from the US are female.'],
+            ['=','I think about 51% of Prolific participants from the US are female.'],
+            ['>','I think more than 51% of Prolific participants from the US are female.'],
+            ],
+        widget = widgets.RadioSelect
+        )
+    prolific_lgbt = models.StringField(
+        label = 'Which of the following best describes your opinion?',
+        choices = [
+            ['<','I think less than 5% of Prolific participants from the US identify as LGBT.'],
+            ['=','I think about 5% of Prolific participants from the US identify as LGBT.'],
+            ['>','I think more than 5% of Prolific participants from the US identify as LGBT.'],
+            ],
+        widget = widgets.RadioSelect
+        )
+    prolific_ally = models.IntegerField(
+        label = 'What percentage of Prolific participants from the US do you think are allies to the LGBTQ+ community? Please enter a number between 0 and 100',
+        min=0,
+        max=100,
+        )
+    prolific_liberal = models.IntegerField(
+        label = '(a) Percentage of Prolific participants from the US who are more liberal than conservative on social issues',
+        min=0,
+        max=100,
+        )
+    prolific_equal = models.IntegerField(
+        label = '(b) Percentage of Prolific participants from the US who are equally liberal and conservative on social issues',
+        min=0,
+        max=100,
+        )
+    prolific_conservative = models.IntegerField(
+        label = '(c) Percentage of Prolific participants from the US who are less liberal than conservative on social issues',
+        min=0,
+        max=100,
+        )
 
 
 #locations
