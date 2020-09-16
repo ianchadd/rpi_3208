@@ -172,6 +172,8 @@ SESSION_CONFIGS = [
         p_completion_link = 'xxxxxxxx',
         consent_additional_message = """
         """,
+        consent_url = 'https://virtual-experimental-lab.github.io/virtual-experimental-lab.github.io/1894%20IRB%20Approved%20Consent%20Form.pdf',
+        consent_link = True,
         seed_data = False,
         data_pages_enabled=False,
         summary_page_enabled=True,
