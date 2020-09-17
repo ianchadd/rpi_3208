@@ -168,6 +168,41 @@ class Player(BasePlayer):
         initial = '',
         blank = True
         )
+
+#out
+    out_family = models.IntegerField(
+        label = 'Think about your immediate family members who are still alive. To the best of your knowledge, which of the following statements most closely describes your situation?',
+        choices = [
+                   [3,'Everyone in my immediate family knows about my sexual orientation'],
+                   [2,'Most of my immediate family knows about my sexual orientation'],
+                   [1,'Some of my immediate family knows about my sexual orientation'],
+                   [0,'None of my immediate family knows about my sexual orientation']
+                   ],
+        widget = widgets.RadioSelect
+        )
+
+    out_friends = models.IntegerField(
+        label = 'Think about your friends. To the best of your knowledge, which of the following statements most closely describes your situation?',
+        choices = [
+                   [3,'All of my friends know about my sexual orientation'],
+                   [2,'Most of friends know about my sexual orientation'],
+                   [1,'Some of my friends know about my sexual orientation'],
+                   [0,'None of my friends know about my sexual orientation']
+                   ],
+        widget = widgets.RadioSelect
+        )
+
+    out_work = models.IntegerField(
+        label = 'Think about the people in your professional life. To the best of your knowledge, which of the following statements most closely describes your situation?',
+        choices = [
+                   [3,'Everyone in my professional life knows about my sexual orientation'],
+                   [2,'Most people in my professional life know about my sexual orientation'],
+                   [1,'Some people in my professional life know about my sexual orientation'],
+                   [0,'No one in my professional life knows about my sexual orientation']
+                   ],
+        widget = widgets.RadioSelect
+        )
+
 #sexual history and attraction
     sex_hist = models.StringField(
         label = 'In the past year, who have you had sex with?',

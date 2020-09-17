@@ -48,6 +48,14 @@ class Orientation(Page):
         if values['orientation'] =='Other (please state below)' and type(values['other_orientation']) == type(None) :
             return 'If you select Other, you must specify in the provided field'
 
+class Out(Page):
+    form_model = 'player'
+    form_fields = ['out_family',
+                    'out_friends',
+                    'out_work']
+
+    def is_displayed(self):
+        return self.player.orientation != 'Heterosexual or straight'
 
 class S_History(Page):
     form_model = 'player'
@@ -146,6 +154,7 @@ page_sequence = [Instructions,
                  Sex,
                  Gender,
                  Orientation,
+                 Out,
                  S_History,
                  Relationship,
                  Primary_Earner,
