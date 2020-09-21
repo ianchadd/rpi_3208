@@ -274,6 +274,22 @@ ROOMS = [
         name='rpi_lab',
         display_name='RPI Virtual Econ Laboratory'
     ),
+    dict(
+        name='rpi_lab_qsp_1',
+        display_name='RPI Virtual Econ Laboratory: QSP 1'
+    ),
+    dict(
+        name='rpi_lab_qsp_2',
+        display_name='RPI Virtual Econ Laboratory: QSP 2'
+    ),
+    dict(
+        name='rpi_lab_qsp_3',
+        display_name='RPI Virtual Econ Laboratory: QSP 3'
+    ),
+    dict(
+        name='rpi_lab_qsp_4',
+        display_name='RPI Virtual Econ Laboratory: QSP 4'
+    ),
 ]
 
 ADMIN_USERNAME = 'admin'

@@ -43,7 +43,7 @@ class Player(BasePlayer):
         )
 
     game_3_switch = models.FloatField(
-        label = '',
+        label = 'Would you like the tournament payment scheme to apply to your upcoming performance in Game-3?',
         widget = widgets.RadioSelect
     )
 
@@ -53,11 +53,11 @@ class Player(BasePlayer):
         choices = []
         for i in range(len(round_values)):
             if i == 0:
-                choices.append([round_values[i],'I would like to enter the tournament no matter what the tournament prize is.'])
+                choices.append([round_values[i],'Yes, I prefer the tournament scheme no matter what the tournament prize is.'])
             elif i == len(round_values) - 1:
-                choices.append([round_values[i],'I would not like to enter the tournament no matter what the tournament prize is.'])
+                choices.append([round_values[i],'No, I prefer the piece rate scheme no matter what the tournament prize is.'])
             elif i == len(round_values) - 2:
-                choices.append([round_values[i],'I would like to enter the tournament if the tournament prize is $'+str(round_values[i])+'.'])
+                choices.append([round_values[i],'Yes, only if the tournament prize is $'+str("{:.2f}".format(round_values[i]))+'.'])
             else:
-                choices.append([round_values[i],'I would like to enter the tournament if the tournament prize is $'+str(round_values[i])+' or higher.'])
+                choices.append([round_values[i],'Yes, only if the tournament prize is $'+str("{:.2f}".format(round_values[i]))+' or higher.'])
         return choices
