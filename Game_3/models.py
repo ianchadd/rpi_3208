@@ -41,4 +41,23 @@ class Player(BasePlayer):
             ],
         blank = True,
         )
-    game_3_switch = models.StringField()
+
+    game_3_switch = models.FloatField(
+        label = '',
+        widget = widgets.RadioSelect
+    )
+
+    def game_3_switch_choices(self):
+        round_values = [float(i) for i in Constants.round_values]
+        round_values.append(round_values[-1]+0.001)
+        choices = []
+        for i in range(len(round_values)):
+            if i == 0:
+                choices.append([round_values[i],'I would like to enter the tournament no matter what the tournament prize is.'])
+            elif i == len(round_values) - 1:
+                choices.append([round_values[i],'I would not like to enter the tournament no matter what the tournament prize is.'])
+            elif i == len(round_values) - 2:
+                choices.append([round_values[i],'I would like to enter the tournament if the tournament prize is $'+str(round_values[i])+'.'])
+            else:
+                choices.append([round_values[i],'I would like to enter the tournament if the tournament prize is $'+str(round_values[i])+' or higher.'])
+        return choices

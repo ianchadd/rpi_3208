@@ -35,6 +35,10 @@ class Selection(Page):
         self.participant.vars['game_4_switch'] = self.player.game_4_switch
     def vars_for_template(self):
         game_1_score = 0
+        round_values = ''
+        for i in self.session.config['round_values']:
+            round_values = round_values + '$' + i + ', '
+        round_values = round_values[:len(round_values)-2]
         try: # try catch since apps are skipped in testing
             game_1_score = int(self.participant.vars['game_1_score'])
         except:
