@@ -146,7 +146,12 @@ class Player(BasePlayer):
     def diff_gend_error_message(self,value):
         if self.other_g and type(value) == type(None):
             return 'If you select Other, you must specify in the provided field'
-
+#risks
+    risk = models.IntegerField(
+        label = 'Please answer the following question using a 1–10 scale, where 1 = completely unwilling and 10 = completely willing: Rate your willingness to take risks in general.',
+        choices = [1,2,3,4,5,6,7,8,9,10],
+        widget = widgets.RadioSelectHorizontal
+        )
 #sexual orientation
     orientation = models.StringField(
         label = 'Which do you consider yourself to be:',
@@ -163,6 +168,41 @@ class Player(BasePlayer):
         initial = '',
         blank = True
         )
+
+#out
+    out_family = models.IntegerField(
+        label = 'Think about your immediate family members who are still alive. To the best of your knowledge, which of the following statements most closely describes your situation?',
+        choices = [
+                   [3,'Everyone in my immediate family knows about my sexual orientation'],
+                   [2,'Most of my immediate family knows about my sexual orientation'],
+                   [1,'Some of my immediate family knows about my sexual orientation'],
+                   [0,'None of my immediate family knows about my sexual orientation']
+                   ],
+        widget = widgets.RadioSelect
+        )
+
+    out_friends = models.IntegerField(
+        label = 'Think about your friends. To the best of your knowledge, which of the following statements most closely describes your situation?',
+        choices = [
+                   [3,'All of my friends know about my sexual orientation'],
+                   [2,'Most of friends know about my sexual orientation'],
+                   [1,'Some of my friends know about my sexual orientation'],
+                   [0,'None of my friends know about my sexual orientation']
+                   ],
+        widget = widgets.RadioSelect
+        )
+
+    out_work = models.IntegerField(
+        label = 'Think about the people in your professional life. To the best of your knowledge, which of the following statements most closely describes your situation?',
+        choices = [
+                   [3,'Everyone in my professional life knows about my sexual orientation'],
+                   [2,'Most people in my professional life know about my sexual orientation'],
+                   [1,'Some people in my professional life know about my sexual orientation'],
+                   [0,'No one in my professional life knows about my sexual orientation']
+                   ],
+        widget = widgets.RadioSelect
+        )
+
 #sexual history and attraction
     sex_hist = models.StringField(
         label = 'In the past year, who have you had sex with?',
@@ -329,6 +369,46 @@ class Player(BasePlayer):
                    [1,'Strongly Disagree']
                    ],
         widget = widgets.RadioSelect
+        )
+
+#prolific guesses
+    prolific_female = models.StringField(
+        label = 'Which of the following best describes your opinion?',
+        choices = [
+            ['<','I think less than 51% of Prolific participants from the US are female.'],
+            ['=','I think about 51% of Prolific participants from the US are female.'],
+            ['>','I think more than 51% of Prolific participants from the US are female.'],
+            ],
+        widget = widgets.RadioSelect
+        )
+    prolific_lgbt = models.StringField(
+        label = 'Which of the following best describes your opinion?',
+        choices = [
+            ['<','I think less than 5% of Prolific participants from the US identify as LGBT.'],
+            ['=','I think about 5% of Prolific participants from the US identify as LGBT.'],
+            ['>','I think more than 5% of Prolific participants from the US identify as LGBT.'],
+            ],
+        widget = widgets.RadioSelect
+        )
+    prolific_ally = models.IntegerField(
+        label = 'What percentage of Prolific participants from the US do you think are allies to the LGBTQ+ community? Please enter a number between 0 and 100',
+        min=0,
+        max=100,
+        )
+    prolific_liberal = models.IntegerField(
+        label = '(a) Percentage of Prolific participants from the US who are more liberal than conservative on social issues',
+        min=0,
+        max=100,
+        )
+    prolific_equal = models.IntegerField(
+        label = '(b) Percentage of Prolific participants from the US who are equally liberal and conservative on social issues',
+        min=0,
+        max=100,
+        )
+    prolific_conservative = models.IntegerField(
+        label = '(c) Percentage of Prolific participants from the US who are less liberal than conservative on social issues',
+        min=0,
+        max=100,
         )
 
 

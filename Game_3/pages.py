@@ -35,10 +35,13 @@ class Selection(Page):
         self.participant.vars['game_3_payment'] = random.choice(Constants.round_values)
         self.participant.vars['game_3_piece_rate'] = float(self.participant.vars['game_3_payment']) < float(self.participant.vars['game_3_switch'])
     def vars_for_template(self):
+        round_values = []
+        for i in self.session.config['round_values']:
+            round_values.append(i)
         return {
             'participant_vars': self.participant.vars,
             'piece_rate': self.session.config['piece_rate']
-        }
+            }
 
 class Selection_Results(Page):
     def before_next_page(self):

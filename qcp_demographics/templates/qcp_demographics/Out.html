@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<p>
+In a previous question, you indicated that your sexual orientation was something other than heterosexual or straight.
+Please answer the following questions.
+</p>
+
+    {% formfields %}
+
+    {% delayed_next wait=0 label='NEXT' %}
+
+{% endblock %}

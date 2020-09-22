@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<h5>
+We will now ask you for your opinions about the participants on <u>Prolific from the United States</u>.
+</h5>
+<br>
+<p>According to US Census Data, <b>about 51% of the US population is female.</b></p>
+{% formfield player.prolific_female %}
+<br>
+<p>According to the Gallup report, <b>about 5% of the US population identifies as LGBT.</b></p>
+{% formfield player.prolific_lgbt %}
+
+{% delayed_next wait=0 label='NEXT' %}
+
+{% endblock %}

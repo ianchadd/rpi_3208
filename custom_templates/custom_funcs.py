@@ -20,7 +20,11 @@ def get_game_group_scores(game_name, player, participants):
     game_group_scores_key = game_name + '_group_scores'
     if (game_group_scores_key) in player.participant.vars:
         return player.participant.vars[game_group_scores_key]
-    group = random.sample(participants, k=3)
+    group_i = player.participant.vars['group']
+    group = []
+    for i in group_i:
+        group.append(participants[i])
+    #group = random.sample(participants, k=3)
     group_scores = list(map(lambda p: p[game_score_key], group))
     group_scores.append(get_game_score(game_name, player))
     group_scores.sort()
@@ -69,4 +73,3 @@ def set_score(game_name, player, score):
 
 def get_game_score_key(game_name):
     return game_name + '_score'
-

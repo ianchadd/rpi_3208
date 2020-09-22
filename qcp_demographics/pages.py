@@ -48,6 +48,14 @@ class Orientation(Page):
         if values['orientation'] =='Other (please state below)' and type(values['other_orientation']) == type(None) :
             return 'If you select Other, you must specify in the provided field'
 
+class Out(Page):
+    form_model = 'player'
+    form_fields = ['out_family',
+                    'out_friends',
+                    'out_work']
+
+    def is_displayed(self):
+        return self.player.orientation != 'Heterosexual or straight'
 
 class S_History(Page):
     form_model = 'player'
@@ -71,6 +79,12 @@ class Primary_Earner(Page):
 
     form_model = 'player'
     form_fields = ['primary_earner']
+
+class Prolific_Guess(Page):
+    form_model = 'player'
+    form_fields = ['prolific_female',
+                   'prolific_lgbt',
+                   ]
 
 class Income(Page):
     form_model = 'player'
@@ -115,6 +129,10 @@ class LGBT_Free(Page):
     form_model = 'player'
     form_fields = ['lgbt_free']
 
+class Risk(Page):
+    form_model = 'player'
+    form_fields = ['risk']
+
 class LGBT_Ally(Page):
     form_model = 'player'
     form_fields = ['consider_lgbt_ally',
@@ -136,6 +154,7 @@ page_sequence = [Instructions,
                  Sex,
                  Gender,
                  Orientation,
+                 Out,
                  S_History,
                  Relationship,
                  Primary_Earner,
@@ -143,7 +162,8 @@ page_sequence = [Instructions,
                  Education,
                  Attn_Check,
                  Ethnicity,
-                 #Religion,
+                 Risk,
+                 Prolific_Guess,
                  #Politics,
                  #LGBT_Free,
                  #LGBT_Ally,

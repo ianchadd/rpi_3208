@@ -61,7 +61,7 @@ class Player(BasePlayer):
             [4, '4 times'],
             [5, '5 times'],
             [6, '6 times'],
-            [7, 'More than once a day']
+            [7, '7 or more times']
             ],
         widget = widgets.RadioSelect
         )
@@ -76,7 +76,7 @@ class Player(BasePlayer):
             [4, '4 times'],
             [5, '5 times'],
             [6, '6 times'],
-            [7, 'More than once a day']
+            [7, '7 or more times']
             ],
         widget = widgets.RadioSelect
         )
@@ -93,7 +93,7 @@ class Player(BasePlayer):
             [4, '4 times'],
             [5, '5 times'],
             [6, '6 times'],
-            [7, 'More than once a day']
+            [7, '7 or more times']
             ],
         widget = widgets.RadioSelect
         )
@@ -110,7 +110,7 @@ class Player(BasePlayer):
             [4, '4 times'],
             [5, '5 times'],
             [6, '6 times'],
-            [7, 'More than once a day']
+            [7, '7 or more times']
             ],
         widget = widgets.RadioSelect
         )
@@ -127,7 +127,7 @@ class Player(BasePlayer):
             [4, '4 times'],
             [5, '5 times'],
             [6, '6 times'],
-            [7, 'More than once a day']
+            [7, '7 or more times']
             ],
         widget = widgets.RadioSelect
         )
@@ -144,7 +144,7 @@ class Player(BasePlayer):
             [4, '4 times'],
             [5, '5 times'],
             [6, '6 times'],
-            [7, 'More than once a day']
+            [7, '7 or more times']
             ],
         widget = widgets.RadioSelect
         )
@@ -161,7 +161,7 @@ class Player(BasePlayer):
             [4, '4 times'],
             [5, '5 times'],
             [6, '6 times'],
-            [7, 'More than once a day']
+            [7, '7 or more times']
             ],
         widget = widgets.RadioSelect
         )
@@ -178,7 +178,7 @@ class Player(BasePlayer):
             [4, '4 times'],
             [5, '5 times'],
             [6, '6 times'],
-            [7, 'More than once a day']
+            [7, '7 or more times']
             ],
         widget = widgets.RadioSelect
         )
@@ -193,7 +193,7 @@ class Player(BasePlayer):
             [4, '4 times'],
             [5, '5 times'],
             [6, '6 times'],
-            [7, 'More than once a day']
+            [7, '7 or more times']
             ],
         widget = widgets.RadioSelect
         )
@@ -328,7 +328,7 @@ class Player(BasePlayer):
             [4, 'Once a week'],
             [5, 'A few times a week'],
             [6, 'Once a day'],
-            [7, 'More than once a day']
+            [7, '7 or more times']
             ],
         widget = widgets.RadioSelect
         )

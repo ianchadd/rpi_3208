@@ -172,6 +172,8 @@ SESSION_CONFIGS = [
         p_completion_link = 'xxxxxxxx',
         consent_additional_message = """
         """,
+        consent_url = 'https://virtual-experimental-lab.github.io/virtual-experimental-lab.github.io/1894%20IRB%20Approved%20Consent%20Form.pdf',
+        consent_link = True,
         seed_data = False,
         data_pages_enabled=False,
         summary_page_enabled=True,
@@ -271,6 +273,22 @@ ROOMS = [
     dict(
         name='rpi_lab',
         display_name='RPI Virtual Econ Laboratory'
+    ),
+    dict(
+        name='rpi_lab_qsp_1',
+        display_name='RPI Virtual Econ Laboratory: QSP 1'
+    ),
+    dict(
+        name='rpi_lab_qsp_2',
+        display_name='RPI Virtual Econ Laboratory: QSP 2'
+    ),
+    dict(
+        name='rpi_lab_qsp_3',
+        display_name='RPI Virtual Econ Laboratory: QSP 3'
+    ),
+    dict(
+        name='rpi_lab_qsp_4',
+        display_name='RPI Virtual Econ Laboratory: QSP 4'
     ),
 ]
 
