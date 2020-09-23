@@ -14,125 +14,14 @@
 
     <p>
         Please select which payment scheme you prefer to be applied to your <strong>past performance in Game-1</strong>.</p>
-      <p>
-          <u>  Tournament Rule Reminder</u>: Your past performance in Game-1 will be evaluated relative to your group members’ past performance in Game-1.
-    <!-- Each prize has an equal chance of being chosen.
-        We ask you to indicate your choices by selecting the lowest tournament prize that you are willing to accept.
-        Once you do this, the remaining buttons will be filled in for you.  -->
-    </p>
+        <p>
+            <u>Tournament Rule Reminder</u>: Your performance in Game-1 will be evaluated relative to your group members’ <strong>past performance in Game-1 Piece Rate</strong>.
+        <!-- Each prize has an equal chance of being chosen.
+          We ask you to indicate your choices by selecting the lowest tournament prize that you are willing to accept.
+          Once you do this, the remaining buttons will be filled in for you.  -->
+        </p>
+{% formfields %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">Piece Rate</th>
-                <th scope="col"></th>
-                <th scope="col">Tournament</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <input type="hidden" name="game_4_switch" value="False"/>
-            {% for i in Constants.round_values %}
-            <tr>
-                <td>
-                    If the tournament prize is ${{i}}, which scheme do you choose:
-                </td>
-                <div class="form-check">
-                <td>
-                    <label class="radio">${{piece_rate}}</label>
-                </td>
-                <td>
-                    <input name="__{{i}}" id="switch_point_{{i}}_0" type="radio" class="form-check-input switch_point">
-                </td>
-                </div>
-                <div class="form-check">
-                <td>
-                    <label class="radio-inline">${{i}}</label>
-                </td>
-                <td>
-                    <input name="__{{i}}" id="switch_point_{{i}}_1" type="radio" class="form-check-input switch_point">
-                </td>
-                </div>
-
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-
-    <p>Before submitting your decisions, please be sure to review the entire table above to make sure it reflects your intended decisions and answer the question below.</p>
-    <!-- {% delayed_next wait=20000 label='SUBMIT'%} -->
-    {% delayed_next wait=0 label='SUBMIT'%}
-<div class="modal fade" id="invalid-selection-modal" tabindex="-1" role="dialog"
-    aria-labelledby="invalid-selection-modal-label" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="invalid-selection-modal-label">Invalid Selection</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Please make your decision in order to proceed
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
-
-{% block scripts %}
-    <script type="text/javascript">$(() => {
-        $('.switch_point').click(function() {
-            //variables reffering to the currently selected radiobtn. In the name format radio_button_val_side
-            const idArr = $(this).attr('id').split('_');
-            const side = idArr[idArr.length-1];
-            const val = idArr[idArr.length-2];
-            let switch_point = "{{ Constants.round_values|last }}";
-            /* //Debug prints
-            console.log(val);
-            console.log(side);*/
-            //create float literals out of the corrosponding strings
-            const round_values = "{{ round_vals_special }}".replace("[","").replace("]","").split(", ");
-            round_val_nums=[];
-            for(i =0; i<round_values.length;i++){
-                round_val_nums.push(parseFloat(round_values[i]));
-            }
-            //console.log(round_values);
-            if(side==="0"){//left side
-                if(switch_point==val){
-                    $('[name="game_4_switch"]').attr('value', parseFloat(round_values[round_values.length-1])+.001);
-                }else{//using the floats here instead of strings because if you pull them in from python with strings
-                    //you end up having float numbers surrounded by unicode &#39; characters (') which are inseparable here.
-                    //It's then passed back through round_values to maintain the trailing 0's in numbers like "1.00" or "1.50"
-                    $('[name="game_4_switch"]').attr('value', round_values[round_val_nums.indexOf(parseFloat(val))+1]);
-                    /* //Debug prints
-                    console.log("indexof val: ",round_val_nums.indexOf(parseFloat(val))); 
-                    console.log(round_values[round_val_nums.indexOf(parseFloat(val))+1]);*/
-                }
-            }else{//right side
-                $('[name="game_4_switch"]').attr('value', val);
-            }
-            $('.switch_point').each(function() {
-                //this loops through all the radio buttons 
-                //and makes sure they're on/off as they're meant to be.
-                const currIdArr = $(this).attr('id').split('_');
-                const currSide = currIdArr[currIdArr.length-1];
-                const currVal = currIdArr[currIdArr.length-2];
-                const after = parseFloat(currVal) > parseFloat(val)
-                $(this).prop('checked', after == parseInt(currSide) || (val== currVal &&side==currSide));                
-            });
-        });
-        $('#delayed-next-button').click(function(event) {//verify that some value has been entered.
-            if ($('[name="game_4_switch"]').attr('value') === 'False') {
-                event.preventDefault();
-                $('#invalid-selection-modal').modal('show');
-            }
-        });
-    });
-    </script>
+<!-- {% delayed_next wait=20000 label='SUBMIT'%} -->
+{% delayed_next wait=0 label='SUBMIT'%}
 {% endblock %}

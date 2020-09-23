@@ -57,7 +57,7 @@ class Player(BasePlayer):
             elif i == len(round_values) - 1:
                 choices.append([round_values[i],'No, I prefer the piece rate scheme no matter what the tournament prize is.'])
             elif i == len(round_values) - 2:
-                choices.append([round_values[i],'Yes, only if the tournament prize is $'+str("{:.2f}".format(round_values[i]))+'.'])
+                choices.append([round_values[i],'Yes, only if the tournament prize is $'+str("{:.2f}".format(round_values[i]))+'. Otherwise, I prefer the piece rate scheme.'])
             else:
-                choices.append([round_values[i],'Yes, only if the tournament prize is $'+str("{:.2f}".format(round_values[i]))+' or higher.'])
+                choices.append([round_values[i],'Yes, only if the tournament prize is $'+str("{:.2f}".format(round_values[i]))+' or higher. Otherwise, I prefer the piece rate scheme'])
         return choices
