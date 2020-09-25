@@ -37,10 +37,11 @@ class Selection(Page):
     def vars_for_template(self):
         round_values = []
         for i in self.session.config['round_values']:
-            round_values.append(i)
+            round_values.append(float(i))
         return {
             'participant_vars': self.participant.vars,
-            'piece_rate': self.session.config['piece_rate']
+            'piece_rate': self.session.config['piece_rate'],
+            'round_vals_special':round_values
             }
 
 class Selection_Results(Page):
