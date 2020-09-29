@@ -43,22 +43,4 @@ class Player(BasePlayer):
             ],
             blank=True
         )
-    game_4_switch = models.FloatField(
-        label = 'Would you like the tournament payment scheme to apply to your past performance in Game-1?',
-        widget = widgets.RadioSelect
-    )
-
-    def game_4_switch_choices(self):
-        round_values = [float(i) for i in Constants.round_values]
-        round_values.append(round_values[-1]+0.001)
-        choices = []
-        for i in range(len(round_values)):
-            if i == 0:
-                choices.append([round_values[i],'Yes, I prefer the tournament scheme no matter what the tournament prize is.'])
-            elif i == len(round_values) - 1:
-                choices.append([round_values[i],'No, I prefer the piece rate scheme no matter what the tournament prize is.'])
-            elif i == len(round_values) - 2:
-                choices.append([round_values[i],'Yes, only if the tournament prize is $'+str("{:.2f}".format(round_values[i]))+'. Otherwise, I prefer the piece rate scheme.'])
-            else:
-                choices.append([round_values[i],'Yes, only if the tournament prize is $'+str("{:.2f}".format(round_values[i]))+' or higher. Otherwise, I prefer the piece rate scheme'])
-        return choices
+    game_4_switch = models.StringField()
