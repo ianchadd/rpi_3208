@@ -9,7 +9,7 @@ class Feedback(Page):
     form_fields = ['instruction_clear',
     'earnings_clear',
     #'instructions_feedback',
-    #'general_feedback'
+    'general_feedback'
     ]
 
 
