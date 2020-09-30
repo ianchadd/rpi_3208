@@ -167,6 +167,7 @@ SESSION_CONFIGS = [
             #'feedback_survey',
             'gender_typicality',
             'Summary',
+            'feedback_survey_qcp',
             'prolific_ID_end'],
             consent = 'qcp/consent.pdf',
         p_completion_link = 'xxxxxxxx',

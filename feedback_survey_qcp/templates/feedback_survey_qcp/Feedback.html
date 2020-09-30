@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% load custom_tags %}
+
+{% block title %}
+    Feedback
+{% endblock %}
+
+{% block content %}
+
+  <p>
+Your feedback is very important to us. Please answer the following questions.
+</p>
+
+Please indicate the extent to which you agree or disagree with the following two statements.
+
+    {% formfield player.instruction_clear %}
+
+    {% formfield player.earnings_clear %}
+
+<p>
+  Do you have any additional feedback (e.g. clarity of instructions, enjoyment of study)?
+</p>
+{% formfield player.general_feedback %}
+
+
+
+{% delayed_next wait=0 label='NEXT' %}
+
+{% endblock %}
