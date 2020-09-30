@@ -185,7 +185,7 @@ class Player(BasePlayer):
         label = 'Think about your friends. To the best of your knowledge, which of the following statements most closely describes your situation?',
         choices = [
                    [3,'All of my friends know about my sexual orientation'],
-                   [2,'Most of friends know about my sexual orientation'],
+                   [2,'Most of my friends know about my sexual orientation'],
                    [1,'Some of my friends know about my sexual orientation'],
                    [0,'None of my friends know about my sexual orientation']
                    ],
