@@ -232,7 +232,7 @@ class Player(BasePlayer):
 
 #colorblind
     colorblind = models.BooleanField(
-        label = 'Do you have any form of colorblindness?',
+        label = 'Do you have any form of color blindness?',
         choices = [
             [True, 'Yes'],
             [False, 'No']

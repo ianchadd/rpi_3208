@@ -22,7 +22,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     sample_participants=sample_participants,
     num_sample_participants=10,
     consent_additional_message = """""",
-    round_values = ["0.25", "0.50","0.75","1.00","1.25","1.50","1.75"],
+    round_values = ["1.00"],
     piece_rate = 0.25,
     seconds_for_counting_task=5,
     guess_rate = 0.20,
@@ -167,11 +167,14 @@ SESSION_CONFIGS = [
             #'feedback_survey',
             'gender_typicality',
             'Summary',
+            'feedback_survey_qcp',
             'prolific_ID_end'],
             consent = 'qcp/consent.pdf',
         p_completion_link = 'xxxxxxxx',
         consent_additional_message = """
         """,
+        consent_url = 'https://virtual-experimental-lab.github.io/virtual-experimental-lab.github.io/1894%20IRB%20Approved%20Consent%20Form.pdf',
+        consent_link = True,
         seed_data = False,
         data_pages_enabled=False,
         summary_page_enabled=True,
@@ -271,6 +274,22 @@ ROOMS = [
     dict(
         name='rpi_lab',
         display_name='RPI Virtual Econ Laboratory'
+    ),
+    dict(
+        name='rpi_lab_qsp_1',
+        display_name='RPI Virtual Econ Laboratory: QSP 1'
+    ),
+    dict(
+        name='rpi_lab_qsp_2',
+        display_name='RPI Virtual Econ Laboratory: QSP 2'
+    ),
+    dict(
+        name='rpi_lab_qsp_3',
+        display_name='RPI Virtual Econ Laboratory: QSP 3'
+    ),
+    dict(
+        name='rpi_lab_qsp_4',
+        display_name='RPI Virtual Econ Laboratory: QSP 4'
     ),
 ]
 
