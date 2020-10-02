@@ -21,7 +21,7 @@ class Constants(BaseConstants):
     name_in_url = 'Game_4'
     players_per_group = None
     num_rounds = 1
-    round_values = ["0.25","0.50","0.75","1.00","1.25","1.50","1.75"]
+    round_values = ["1.00"]
 
 
 class Subsession(BaseSubsession):
