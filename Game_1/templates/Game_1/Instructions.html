@@ -8,7 +8,7 @@
 
 {% block content %}
     <p>
-    TEST TEST We will now start with the first game. In <strong>Game 1 - Piece Rate</strong>, you will participate in the Counting Task. You will be given <strong>{{time_limit}}</strong> seconds to solve as many boxes as possible.
+    We will now start with the first game. In <strong>Game 1 - Piece Rate</strong>, you will participate in the Counting Task. You will be given <strong>{{time_limit}}</strong> seconds to solve as many boxes as possible.
   </p>
 
   <!--
@@ -35,5 +35,5 @@
     <br>
 
 <!-- {% delayed_next wait=15000 label='START'%} -->
-{% delayed_next wait=0 label='START'%}
+{% delayed_next wait=15000 label='START'%}
 {% endblock %}
