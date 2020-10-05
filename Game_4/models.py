@@ -15,7 +15,7 @@ author = 'Your name here'
 doc = """
 Your app description
 """
-
+#a new comment
 
 class Constants(BaseConstants):
     name_in_url = 'Game_4'
