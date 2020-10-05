@@ -18,15 +18,13 @@
         As in the previous two games, you will have {{time_limit}} seconds to participate in the Counting Task.
         However, you will now get to choose which of the two previous payment schemes (<strong>piece rate</strong> or <strong>tournament</strong>) you prefer to apply to your performance in Game - 3.
     </p>
-
-        If this game is chosen for payment,
         <br>
         <li>
-    If you choose the <strong>piece rate</strong>, you will be paid {{piece_rate}} cents per solved box.
+    If you choose the <strong>piece rate</strong>, you will be paid <strong>{{piece_rate}} cents</strong> per solved box.
         </li>
         <li>
    If you choose the <strong>tournament</strong>, your performance will be evaluated relative to your group members’ <u><strong>past performance</u> in Game 2 – Tournament</strong>.
-        And, you will be paid the tournament prize per solved box only if you win the tournament (in case of ties, the winner will be randomly determined among the top performers).
+        And, you will be paid <strong>{{round_values}}</strong> per solved box <u>only if</u> you win the tournament (in case of ties, the winner will be randomly determined among the top performers).
     </li>
 <!--
     <h6>Details on Determining Payments:</h6>
@@ -77,5 +75,5 @@
     Please click next to make your payment scheme selection for Game-3.
     </p>
     <!-- {% delayed_next wait=30000 label='START'%} -->
-    {% delayed_next wait=0 label='NEXT'%}
+    {% delayed_next wait=20000 label='NEXT'%}
 {% endblock %}
