@@ -9,6 +9,19 @@
 {% block content %}
 
     <p>
+<<<<<<< HEAD
+    <h5>    You completed <strong>{{ game_1_score }} boxes</strong> in Game-1. </h5>
+    </p>
+    <!--  <p>
+Please select which payment scheme you prefer to apply to your <strong>past performance in Game-1</strong></p>
+        <p>
+            <u>Tournament Rule Reminder</u>: Your past performance in Game-1 will be evaluated relative to your group members’ <strong>past performance in Game-1 Piece Rate</strong>.
+       Each prize has an equal chance of being chosen.
+          We ask you to indicate your choices by selecting the lowest tournament prize that you are willing to accept.
+          Once you do this, the remaining buttons will be filled in for you.
+        </p>
+-->
+=======
     <h6>    You have completed <strong>{{ game_1_score }} boxes</strong> in Game-1 Piece Rate </h6>
     </p>
     <p>
@@ -20,6 +33,7 @@ Please select which payment scheme you prefer to apply to your <strong>past perf
           Once you do this, the remaining buttons will be filled in for you.  -->
         </p>
 
+>>>>>>> testing
              <table class="table">
                  <thead>
                      <tr>
@@ -35,7 +49,11 @@ Please select which payment scheme you prefer to apply to your <strong>past perf
                      {% for i in Constants.round_values %}
                      <tr>
                          <td>
+<<<<<<< HEAD
+                           Which do you prefer to apply to your past performance in Game-1?
+=======
                              If the tournament prize is ${{i}}, which scheme do you choose:
+>>>>>>> testing
                          </td>
                          <div class="form-check">
                          <td>
@@ -60,9 +78,27 @@ Please select which payment scheme you prefer to apply to your <strong>past perf
              </table>
              <br>
 
+<<<<<<< HEAD
+          <!--   <p>Before submitting your decisions, please be sure to review the entire table above to make sure it reflects your intended decisions.</p> -->
+<br>
+
+
+             <p>
+                 <u>Piece Rate</u>: You will be paid <strong>{{piece_rate}} cents</strong> per box you solved in Game -1.
+             </p>
+
+           <p>
+             <u>Tournament</u>: Your past performance in Game-1 will be evaluated relative to your group members’ <strong>past performance in Game 1</strong>. You will be paid <strong>$1.00</strong> per solved box <u>only if</u> you win the tournament (in case of ties, the winner will be randomly determined among the top performers).
+           </p>
+
+
+             <!-- {% delayed_next wait=20000 label='SUBMIT'%} -->
+             {% delayed_next wait=15000 label='SUBMIT'%}
+=======
              <p>Before submitting your decisions, please be sure to review the entire table above to make sure it reflects your intended decisions.</p>
              <!-- {% delayed_next wait=20000 label='SUBMIT'%} -->
              {% delayed_next wait=0 label='SUBMIT'%}
+>>>>>>> testing
          <div class="modal fade" id="invalid-selection-modal" tabindex="-1" role="dialog"
              aria-labelledby="invalid-selection-modal-label" aria-hidden="true">
              <div class="modal-dialog" role="document">
