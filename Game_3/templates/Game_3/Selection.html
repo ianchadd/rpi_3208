@@ -8,15 +8,11 @@
 
 {% block content %}
 
-    <p>
+  <!--    <p>
 Please select which payment scheme you prefer to apply to your <strong>future performance in Game-3</strong>.
-</p>
-        <p>
-            <u>Tournament Rule Reminder</u>: Your performance in Game-3 will be evaluated relative to your group members’ <strong>past performance in Game 2-Tournament</strong>.
-        <!-- Each prize has an equal chance of being chosen.
-          We ask you to indicate your choices by selecting the lowest tournament prize that you are willing to accept.
-          Once you do this, the remaining buttons will be filled in for you.  -->
-        </p>
+</p> -->
+
+
             <table class="table">
             <thead>
                 <tr>
@@ -32,7 +28,7 @@ Please select which payment scheme you prefer to apply to your <strong>future pe
                 {% for i in Constants.round_values %}
                 <tr>
                     <td>
-                        If the tournament prize is ${{i}}, which scheme do you choose:
+                        Which do you prefer to apply to your future performance in Game-3?
                     </td>
                     <div class="form-check">
                     <td>
@@ -57,11 +53,22 @@ Please select which payment scheme you prefer to apply to your <strong>future pe
             </table>
             <br>
 
-            <p>Before submitting your decisions, please be sure to review the entire table above to make sure it reflects your intended decisions.</p>
+            <br>
+
+  <!--          <p>Before submitting your decisions, please be sure to review the entire table above to make sure it reflects your intended decisions.</p> -->
+
+  <p>
+      <u>Piece Rate</u>: You will be paid <strong>{{piece_rate}} cents</strong> per box you solve in Game -3.
+  </p>
+
+<p>
+  <u>Tournament</u>: Your performance in Game-3 will be evaluated relative to your group members’ <strong>past performance in Game 2-Tournament</strong>. You will be paid <strong>$1.00</strong> per solved box <u>only if</u> you win the tournament (in case of ties, the winner will be randomly determined among the top performers).
+</p>
+
 
 
     <!-- {% delayed_next wait=20000 label='SUBMIT'%} -->
-    {% delayed_next wait=0 label='SUBMIT'%}
+    {% delayed_next wait=15000 label='SUBMIT'%}
     <div class="modal fade" id="invalid-selection-modal" tabindex="-1" role="dialog"
         aria-labelledby="invalid-selection-modal-label" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -82,7 +89,6 @@ Please select which payment scheme you prefer to apply to your <strong>future pe
         </div>
     </div>
     {% endblock %}
-
 
     {% block scripts %}
         <script type="text/javascript">$(() => {
