@@ -10,11 +10,11 @@
     <p>
         You will be paid for your decision in round {{my_pay_round}}.
     </p>
-
+{% if exo %}
     <p>
           {% if my_nbo_choice %}
 
-          You chose the No Choice option in this round and earned {{ my_payoff}}.
+          You were given the outside option in this round and earned {{ my_payoff}}.
 
           {% else %}
 
@@ -22,7 +22,19 @@
 
           {% endif %}
     </p>
+{% else %}
+<p>
+      {% if my_nbo_choice %}
 
+      You chose the outside option in this round and earned {{ my_payoff}}.
+
+      {% else %}
+
+      You chose from available options in that round and earned {{ my_payoff}}.
+
+      {% endif %}
+</p>
+{% endif %}
     {% next_button %}
 
 {% endblock %}

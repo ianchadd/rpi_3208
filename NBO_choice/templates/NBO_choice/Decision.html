@@ -51,9 +51,15 @@
   p{margin-bottom:.3em;}
 </style>
   <span style="font-family: courier">
+    {% if exo %}
+    <p>
+        In this Decision Problem, the computer program randomly chose to give you the opportunity to choose from the options displayed below. Please select one of the following options.<br/>
+    </p>
+    {% else %}
     <p>
         Please select one of the following options.<br/>
     </p>
+    {% endif %}
     <br/>
     <p>
         If this problem is chosen for payment, you will be paid for the number of {{Constants.pay_attribute}} displayed for the option you choose. <br/>

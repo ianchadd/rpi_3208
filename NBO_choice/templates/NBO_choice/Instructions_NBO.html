@@ -7,6 +7,24 @@
 
 {% block content %}
   <span style="font-family: courier">
+    {% if exo %}
+    <p>
+      At the beginning of each Decision Problem, the computer program will randomly decide between two courses of action: <br>
+      1. Show you {{Constants.num_options}} options, each with {{Constants.num_attributes}} characters (i.e. #'s and %'s). You can then earn points by choosing from those options. <br>
+      2. Give you an <b>outside option</b> that earns you {{Constants.nbo_value}} points and skip showing you any displayed options.
+    </p>
+    <p>
+      These two courses of action are <b>equally likely</b> to occur. More specifically, each happens with 50% probability.
+    </p>
+    <p>
+      This <b>outside option</b> has no display and earns you {{Constants.nbo_value}} points if it is given to you.
+      Giving you the <b>outside option</b> effectively means that the computer program is forcing you to skip the Decision Problem, opting to give you {{Constants.nbo_value}} points instead of having you earn them by selecting a displayed option.
+    </p>
+    <p>
+      This will happen in <b>every</b> Decision Problem. So if you are given the <b>outside option</b> in one Decision Problem, you may still be able to choose from displayed options in a later Decision Problem.
+    </p>
+
+    {% else %}
     <p>
       At the beginning of each Decision Problem, you are going to be given a choice between two courses of action: <br>
       1. See {{Constants.num_options}} options, each with {{Constants.num_attributes}} characters (i.e. #'s and %'s) and earn points by choosing from those options <br>
@@ -19,7 +37,7 @@
     <p>
       You will be given this choice in <b>every</b> Decision Problem. So if you decide to take the <b>outside option</b> in one Decision Problem, you can still choose to see your displayed options in a later Decision Problem.
     </p>
-
+    {% endif %}
   </span>
     {% next_button %}
 

@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Decision Problem: {{player.round_number}}
+{% endblock %}
+
+{% block content %}
+  <span style="font-family: courier">
+    <p>
+      In this Decision Problem, the computer program randomly chose to give you the <strong>outside option</strong>.
+    </p>
+    <p>
+      If this Decision Problem is selected for payment, you will receive {{Constants.nbo_value}} points.
+    </p>
+    <p>
+      Please click Next to move to the next Decision Problem.
+    </p>
+  </span>
+
+    {% next_button %}
+
+{% endblock %}
