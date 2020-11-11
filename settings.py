@@ -248,7 +248,7 @@ SESSION_CONFIGS = [
         real_world_currency_per_point = 0.10,
         participation_fee = 1.00,
         consent = 'no_choice/consent.pdf',
-        p_completion_link = 'https://app.prolific.co/submissions/complete?cc=NBOexo',
+        p_completion_link = 'https://app.prolific.co/submissions/complete?cc=2C0A1220',
         consent_additional_message = """
         Please note that the form above is used for several experiments.
         In this experiment we expect that you will make at least $2.25 plus a bonus payment based on your decisions.
