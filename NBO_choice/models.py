@@ -32,7 +32,7 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         import itertools
         treats = itertools.cycle(['baseline','nbo']) #no choice refers to baseline and choice refers to having NBO
-        
+        #with exogenous treatment, treat == 'exo'; set in the session configuration
         for p in self.get_players():
             p.participant.vars['treat'] = next(treats) #sets treatment var at participant level with balanced treatment
             if 'treat' in self.session.config:
@@ -43,6 +43,10 @@ class Subsession(BaseSubsession):
             random.shuffle(rounds)
             p.participant.vars['pay_round'] = rounds[0]
             p.participant.vars['points_per_dollar'] = int(1/self.session.config['real_world_currency_per_point'])
+            nbo_choices = []
+            for i in range(Constants.num_rounds):
+                nbo_choices.append(random.choice([False,True]))
+            p.participant.vars['nbo_choices'] = nbo_choices
 
 
 class Group(BaseGroup):
@@ -58,13 +62,13 @@ class Player(BasePlayer):
             choices=[
                 [False, 'I want to choose for myself, show me my options'],
                 [True, 'I want to take the outside option of ' + str(Constants.nbo_value) + ' points'],
-                
+
             ],
         label='Would you like to take the outside option?',
         widget=widgets.RadioSelect)
-    
+
     option_values = models.StringField()
-    
+
     option_choose = models.IntegerField()
 
     def option_choose_error_message(self,value):
@@ -74,6 +78,9 @@ class Player(BasePlayer):
     round_max = models.IntegerField()
 
     correct = models.BooleanField()
+
+    def exo_outside_option(self):
+        self.nbo_choice = self.participant.vars['nbo_choices'][self.round_number - 1]
 
     def set_option_values(self):
         self.option_values = str(Constants.option_values[self.participant.vars['order'][self.round_number-1]-1])
@@ -87,16 +94,15 @@ class Player(BasePlayer):
 
     def set_correct(self):
         self.correct = self.value == self.round_max
-    
+
     def set_value(self):
         if self.nbo_choice:
             self.value = Constants.nbo_value
         else:
             self.value = int(Constants.option_values[self.participant.vars['order'][self.round_number-1]-1][self.option_choose - 1])
-    
+
     def set_payoff(self):
         if self.round_number == self.participant.vars['pay_round']:
             self.payoff = self.value
         else:
             self.payoff = 0
-
