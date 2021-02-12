@@ -391,6 +391,21 @@ class Player(BasePlayer):
             ],
         widget = widgets.RadioSelect
         )
+    election_2020 = models.StringField(
+        label = 'Who did you vote for in the 2020 presidential election?',
+        choices = [
+            'Donald Trump',
+            'Joe Biden',
+            'Jo Jorgensen',
+            'Howie Hawkins',
+            'Gloria La Riva',
+            'Rocky De La Fuente',
+            'Don Blankenship',
+            'I was eligible, but I did not vote.',
+            'I was not eligible to vote.'
+            ],
+        widget = widgets.RadioSelect
+        )
 
 #care about what others think
     care_others = models.IntegerField(
@@ -559,4 +574,23 @@ class Player(BasePlayer):
         label = '(c) Percentage of Prolific participants from the US who are less liberal than conservative on social issues',
         min=0,
         max=100,
+        )
+
+#prolific account info
+    prolific_acct_create_recent = models.BooleanField(
+        label = 'When did you create your account on Prolific?',
+        choices = [
+            [True,'Within the last three months'],
+            [False,'More than three months ago'],
+            ],
+        widget = widgets.RadioSelect
+        )
+
+    prolific_acct_update_recent = models.BooleanField(
+        label = 'When did you last update your Prolific profile information?',
+        choices = [
+            [True,'Within the last three months'],
+            [False,'More than three months ago'],
+            ],
+        widget = widgets.RadioSelect
         )

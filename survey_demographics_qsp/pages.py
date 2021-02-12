@@ -154,7 +154,8 @@ class Politics(Page):
     form_model = 'player'
     form_fields = ['econ_politics',
                    'social_politics',
-                   'election_2016']
+                   'election_2016',
+                   'election_2020']
     def before_next_page(self):
         self.player.participant_vars_dump(self)
     def vars_for_template(self):
@@ -186,6 +187,20 @@ class LGBT_Experience(Page):
                    'lgbt_friend',
                    'consider_lgbt_ally',
                    'program_lgbt_ally']
+    def before_next_page(self):
+        self.player.participant_vars_dump(self)
+    def vars_for_template(self):
+        recip = self.session.config['recip']
+        return dict(
+            self.player.vars_for_template(),
+            recip = recip,
+        )
+
+class Prolific_Acct(Page):
+    form_model = 'player'
+    form_fields = ['prolific_acct_create_recent',
+                   'prolific_acct_update_recent',
+                   ]
     def before_next_page(self):
         self.player.participant_vars_dump(self)
     def vars_for_template(self):
@@ -230,4 +245,5 @@ page_sequence = [Instructions,
                  Care,
                  LGBT_Attitudes,
                  LGBT_Experience,
+                 Prolific_Acct,
                  Prolific_Guess]
