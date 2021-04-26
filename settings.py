@@ -271,6 +271,60 @@ SESSION_CONFIGS = [
         doc=    """
                 """
     ),
+    dict(
+       name='slider_puzzle',
+       display_name="Slider Puzzle - Two Player real time variant w/ move tracking",
+       num_demo_participants=4,
+       app_sequence=['slider_puzzle']
+    ),
+    dict(
+        name='single_player_puzzle',
+        display_name="Slider Puzzle - Single Player variant w/o move tracking",
+        num_demo_participants=2,
+        app_sequence=['single_player_puzzle']
+    ),
+    dict(
+        name='main_session',
+        display_name='Full session',
+        num_demo_participants=24,
+        app_sequence=['pt0', 'pt1', 'pt1grp', 'pt2', 'pt2grp',
+                      'pt3', 'pt4', 'pt99'],
+        test=0,
+        participation_fee=0,  # this is set to 0 b/c this is added to payoff
+        real_world_currency_per_point=1,
+        partfee=2,
+        pt1rate=0.2,
+        pt3rate=1,
+        num_part=16,
+        max_earning=25,
+        uq_error='Controlla la tua risposta.',
+        doc="""
+        Program for gender differences in the cost of contradictions.
+        Number of participants: multiple of 8.
+        Max number of participants: 32 (can be larger, but need to modify codes)
+        """
+    ),
+    dict(
+        name='main_session_test',
+        display_name='Full session (Shorter version)',
+        num_demo_participants=24,
+        app_sequence=['pt0', 'pt1', 'pt1grp', 'pt2', 'pt2grp',
+                      'pt3', 'pt4', 'pt99'],
+        test=1,
+        participation_fee=0,  # this is set to 0 b/c this is added to payoff
+        real_world_currency_per_point=1,
+        partfee=2,
+        pt1rate=0.2,
+        pt3rate=1,
+        num_part=16,
+        max_earning=25,
+        uq_error='Controlla la tua risposta.',
+        doc="""
+        Program for gender differences in the cost of contradictions.
+        Number of participants: multiple of 8.
+        Max number of participants: 32 (can be larger, but need to modify codes)
+        """
+    ),
 ]
 
 # ISO-639 code
@@ -329,7 +383,7 @@ INSTALLED_APPS = ['otree',
                   'django.contrib.humanize',
                   'otreeutils'
                   ]
-
+EXTENSION_APPS = ['slider_puzzle']
 # inactive session configs
 # dict(name='trust', display_name="Trust Game", num_demo_participants=2, app_sequence=['trust', 'payment_info']),
 # dict(name='prisoner', display_name="Prisoner's Dilemma", num_demo_participants=2,
